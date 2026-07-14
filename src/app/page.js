@@ -137,7 +137,7 @@ export default function Home() {
           </div>
           <div className="nav-dates-text">
             <span className="nav-dates-desktop">Sábado y domingo 19 y 20 de Septiembre</span>
-            <span className="nav-dates-mobile">Sábado y domingo<br />19/09 y 20/09</span>
+            <span className="nav-dates-mobile">Sábado y domingo<br />19 y 20 Septiembre</span>
           </div>
 
 
