@@ -286,7 +286,7 @@ export default function Home() {
                 'IMG_6061.jpg', 'IMG_6063.jpg', 'IMG_6110.JPG', 'IMG_6111.JPG', 'IMG_6132.JPG', 'IMG_1060.jpg'
               ].map((img, i) => (
                 <div key={`row1-${i}`} className="carousel-card">
-                  <img src={`/bloque 3/${img}`} alt="Marketing Xperience" className="carousel-img" />
+                  <img src={`/bloque_3/${img}`} alt="Marketing Xperience" className="carousel-img" />
                 </div>
               ))}
             </div>
@@ -299,7 +299,7 @@ export default function Home() {
                 'IMG_1174.jpg', 'IMG_1175.jpg', 'IMG_1215.jpg', 'IMG_1224.jpg', 'IMG_6066.jpg', 'IMG_6153.JPG'
               ].map((img, i) => (
                 <div key={`row2-${i}`} className="carousel-card">
-                  <img src={`/bloque 3/${img}`} alt="Marketing Xperience" className="carousel-img" />
+                  <img src={`/bloque_3/${img}`} alt="Marketing Xperience" className="carousel-img" />
                 </div>
               ))}
             </div>
