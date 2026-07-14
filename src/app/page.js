@@ -612,7 +612,7 @@ export default function Home() {
               
               <button 
                 className="btn-gradient-pill" 
-                onClick={() => window.open(`https://wa.me/584123060970?text=${encodeURIComponent('¡Hola! Me gustaría inscribirme en el Marketing Xperience con el pase GENERAL.')}`, '_blank')}
+                onClick={() => window.open(`https://wa.me/584123060970?text=${encodeURIComponent('¡Hola! Me gustaría inscribirme en el Marketing Xperience con la entrada GENERAL.')}`, '_blank')}
               >
                 Inscribirse por Whatsapp
               </button>
@@ -649,7 +649,7 @@ export default function Home() {
               
               <button 
                 className="btn-gradient-pill" 
-                onClick={() => window.open(`https://wa.me/584123060970?text=${encodeURIComponent('¡Hola! Me gustaría inscribirme en el Marketing Xperience con el pase VIP.')}`, '_blank')}
+                onClick={() => window.open(`https://wa.me/584123060970?text=${encodeURIComponent('¡Hola! Me gustaría inscribirme en el Marketing Xperience con la entrada VIP.')}`, '_blank')}
               >
                 Inscribirse por Whatsapp
               </button>
