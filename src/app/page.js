@@ -233,7 +233,7 @@ export default function Home() {
               priority
               style={{
                 position: 'absolute', top: '48%', right: '-5%', width: '110px', height: '110px', zIndex: 15,
-                filter: 'blur(1px)', opacity: 1, transform: `scale(1.1) translate(${mousePos.x * 1.5}px, ${mousePos.y * 1.5}px)`, transition: 'transform 0.1s ease-out'
+                filter: 'blur(4px)', opacity: 1, transform: `scale(1.1) translate(${mousePos.x * 1.5}px, ${mousePos.y * 1.5}px)`, transition: 'transform 0.1s ease-out'
               }}
             />
             <Image 
