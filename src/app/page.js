@@ -562,7 +562,7 @@ export default function Home() {
               <div className="speaker-overlay-gradient"></div>
               <div className="speaker-info-gapless">
                 <h3>Próximamente será revelado</h3>
-                <p>Comunicadora social, creadora de contenido especialista en comunicación y negocios con marca personal</p>
+                <p>Comunicadora social, creadora de contenido especialista en comunicación y negocios con marcas a nivel nacional</p>
               </div>
             </div>
 
