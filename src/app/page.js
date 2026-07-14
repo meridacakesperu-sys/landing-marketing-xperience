@@ -610,8 +610,11 @@ export default function Home() {
                 <span className="feature-pill-v3">Certificado de participación</span>
               </div>
               
-              <button className="btn-gradient-pill" onClick={() => openModal('XPERIENCE GENERAL', currentPricing.genPrice)}>
-                Obtener entrada General
+              <button 
+                className="btn-gradient-pill" 
+                onClick={() => window.open(`https://wa.me/584123060970?text=${encodeURIComponent('¡Hola! Me gustaría inscribirme en el Marketing Xperience con el pase GENERAL.')}`, '_blank')}
+              >
+                Inscribirse por Whatsapp
               </button>
               
               <div style={{ marginTop: '15px', fontSize: '0.8rem', opacity: 0.8, color: '#fff', lineHeight: '1.4' }}>
@@ -644,8 +647,11 @@ export default function Home() {
                 <span className="feature-pill-v3">Certificado de participación</span>
               </div>
               
-              <button className="btn-gradient-pill" onClick={() => openModal('XPERIENCE VIP', currentPricing.vipPrice)}>
-                Obtener entrada VIP
+              <button 
+                className="btn-gradient-pill" 
+                onClick={() => window.open(`https://wa.me/584123060970?text=${encodeURIComponent('¡Hola! Me gustaría inscribirme en el Marketing Xperience con el pase VIP.')}`, '_blank')}
+              >
+                Inscribirse por Whatsapp
               </button>
               
               <div style={{ marginTop: '15px', fontSize: '0.8rem', opacity: 0.8, color: '#fff', lineHeight: '1.4' }}>
