@@ -361,7 +361,7 @@ export default function Home() {
 
               </div>
               <div className="unified-card-right">
-                <img src="/Bloque 3.png" alt="Participantes Marketing Xperience" />
+                <img src="/Bloque_3.png" alt="Participantes Marketing Xperience" style={{ width: '100%', height: 'auto', borderRadius: '15px' }} />
               </div>
             </div>
 
@@ -496,7 +496,7 @@ export default function Home() {
           <div className="speakers-grid-gapless animate-on-scroll">
             
             <div className="speaker-card-gapless">
-              <img src="/Eduar Peña.png" alt="Eduar Peña" className="speaker-bg-full" />
+              <img src="/Eduar_Pena.png" alt="Eduar Peña" className="speaker-bg-full" />
               <div className="speaker-overlay-gradient"></div>
               <div className="speaker-info-gapless">
                 <h3>Eduar Peña</h3>
@@ -505,7 +505,7 @@ export default function Home() {
             </div>
 
             <div className="speaker-card-gapless">
-              <img src="/Juan_pinto_2.jpg" alt="Juan Pinto" className="speaker-bg-full" style={{ objectPosition: 'center' }} />
+              <img src="/Juan_Pinto.png" alt="Juan Pinto" className="speaker-bg-full" style={{ objectPosition: 'center' }} />
               <div className="speaker-overlay-gradient"></div>
               <div className="speaker-info-gapless">
                 <h3>Juan Pinto</h3>
@@ -514,7 +514,7 @@ export default function Home() {
             </div>
 
             <div className="speaker-card-gapless">
-              <img src="/Joelymar Toro.png" alt="Joelymar Toro" className="speaker-bg-full" />
+              <img src="/Joelymar_Toro.png" alt="Joelymar Toro" className="speaker-bg-full" />
               <div className="speaker-overlay-gradient"></div>
               <div className="speaker-info-gapless">
                 <h3>Joelymar Toro</h3>
@@ -523,7 +523,7 @@ export default function Home() {
             </div>
 
             <div className="speaker-card-gapless">
-              <img src="/Daniel Zambrano.png" alt="Daniel Zambrano" className="speaker-bg-full" />
+              <img src="/Daniel_Zambrano.png" alt="Daniel Zambrano" className="speaker-bg-full" />
               <div className="speaker-overlay-gradient"></div>
               <div className="speaker-info-gapless">
                 <h3>Daniel Zambrano</h3>
@@ -563,14 +563,14 @@ export default function Home() {
 
             <div className="takeaways-carousel" ref={carouselRef}>
               {[
-                "/carrusel/1.png",
-                "/carrusel/2.png",
-                "/carrusel/3.png",
-                "/carrusel/4_v2.png",
-                "/carrusel/5.png",
-                "/carrusel/6.png",
-                "/carrusel/7_v2.png",
-                "/carrusel/8_v2.png"
+                "/Carrusel/1.png",
+                "/Carrusel/2.png",
+                "/Carrusel/3.png",
+                "/Carrusel/4_v2.png",
+                "/Carrusel/5.png",
+                "/Carrusel/6.png",
+                "/Carrusel/7_v2.png",
+                "/Carrusel/8_v2.png"
               ].map((imgUrl, idx) => (
                 <div key={idx} className="takeaway-card">
                   <img src={imgUrl} alt={`Takeaway ${idx + 1}`} className="takeaway-bg" />
