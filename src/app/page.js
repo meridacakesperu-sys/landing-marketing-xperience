@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
+import Image from 'next/image';
 import RegistrationModal from '@/components/RegistrationModal';
 
 export default function Home() {
@@ -132,7 +133,7 @@ export default function Home() {
       <nav className="navbar">
         <div className="container nav-content">
           <div className="nav-logo">
-            <img src="/logo.png" alt="Marketing Xperience Logo" style={{ height: "40px", width: "auto" }} />
+            <Image src="/logo.png" alt="Marketing Xperience Logo" width={180} height={40} style={{ height: "40px", width: "auto" }} priority />
           </div>
           <div className="nav-dates-text">
             Sábado y domingo 19 y 20 de Septiembre
@@ -191,74 +192,90 @@ export default function Home() {
           </div>
           <div className="hero-image animate-on-scroll" style={{ animationDelay: '0.2s', position: 'relative', display: 'flex', justifyContent: 'center' }}>
             {/* Logos flotantes con efecto Depth of Field (blur) y parallax */}
-            <img 
+            <Image 
               className="hero-logo-keep logo-1"
               src="/logos_rrss/3.png" 
               alt="Logo TikTok"
+              width={100} height={100}
+              priority
               style={{
-                position: 'absolute', top: '12%', left: '-5%', width: '100px', zIndex: 5,
+                position: 'absolute', top: '12%', left: '-5%', width: '100px', height: '100px', zIndex: 5,
                 filter: 'blur(5px)', opacity: 0.6, transform: `scale(0.8) translate(${mousePos.x * 0.5}px, ${mousePos.y * 0.5}px)`, transition: 'transform 0.1s ease-out'
               }}
             />
-            <img 
+            <Image 
               className="hero-logo-keep logo-2"
               src="/logos_rrss/2.png" 
               alt="Logo 2"
+              width={120} height={120}
+              priority
               style={{
-                position: 'absolute', top: '25%', right: '-5%', width: '120px', zIndex: 5,
+                position: 'absolute', top: '25%', right: '-5%', width: '120px', height: '120px', zIndex: 5,
                 filter: 'blur(3px)', opacity: 0.7, transform: `scale(0.9) translate(${mousePos.x * 0.8}px, ${mousePos.y * 0.8}px)`, transition: 'transform 0.1s ease-out'
               }}
             />
-            <img 
+            <Image 
               className="hero-logo-keep logo-3"
               src="/logos_rrss/1.png" 
               alt="Logo Instagram"
+              width={140} height={140}
+              priority
               style={{
-                position: 'absolute', top: '42%', left: '-5%', width: '140px', zIndex: 15,
+                position: 'absolute', top: '42%', left: '-5%', width: '140px', height: '140px', zIndex: 15,
                 filter: 'blur(10px)', opacity: 0.9, transform: `scale(1.5) translate(${mousePos.x * 2}px, ${mousePos.y * 2}px)`, transition: 'transform 0.1s ease-out'
               }}
             />
-            <img 
+            <Image 
               className="hero-logo-hide logo-4"
               src="/logos_rrss/4.png" 
               alt="Logo 4"
+              width={110} height={110}
+              priority
               style={{
-                position: 'absolute', top: '48%', right: '-5%', width: '110px', zIndex: 15,
+                position: 'absolute', top: '48%', right: '-5%', width: '110px', height: '110px', zIndex: 15,
                 filter: 'blur(1px)', opacity: 1, transform: `scale(1.1) translate(${mousePos.x * 1.5}px, ${mousePos.y * 1.5}px)`, transition: 'transform 0.1s ease-out'
               }}
             />
-            <img 
+            <Image 
               className="hero-logo-hide logo-5"
               src="/logos_rrss/5.png" 
               alt="Logo 5"
+              width={160} height={160}
+              priority
               style={{
-                position: 'absolute', top: '65%', left: '-5%', width: '160px', zIndex: 20,
+                position: 'absolute', top: '65%', left: '-5%', width: '160px', height: '160px', zIndex: 20,
                 filter: 'blur(12px)', opacity: 0.85, transform: `scale(1.8) translate(${mousePos.x * 3}px, ${mousePos.y * 3}px)`, transition: 'transform 0.1s ease-out'
               }}
             />
-            <img 
+            <Image 
               className="hero-logo-hide logo-6"
               src="/logos_rrss/6.png" 
               alt="Logo 6"
+              width={85} height={85}
+              priority
               style={{
-                position: 'absolute', top: '80%', right: '25%', width: '85px', zIndex: 4,
+                position: 'absolute', top: '80%', right: '25%', width: '85px', height: '85px', zIndex: 4,
                 filter: 'blur(5px)', opacity: 0.6, transform: `scale(0.85) translate(${mousePos.x * 0.6}px, ${mousePos.y * 0.6}px)`, transition: 'transform 0.1s ease-out'
               }}
             />
-            <img 
+            <Image 
               className="hero-logo-keep logo-7"
               src="/logos_rrss/7.png" 
               alt="Logo 7"
+              width={95} height={95}
+              priority
               style={{
-                position: 'absolute', top: '85%', right: '-5%', width: '95px', zIndex: 4,
+                position: 'absolute', top: '85%', right: '-5%', width: '95px', height: '95px', zIndex: 4,
                 filter: 'blur(4px)', opacity: 0.7, transform: `scale(0.9) translate(${mousePos.x * 0.5}px, ${mousePos.y * 0.5}px)`, transition: 'transform 0.1s ease-out'
               }}
             />
 
-            <img 
+            <Image 
               className="hero-rocket"
               src="/cohete.png" 
               alt="Cohete Marketing Xperience" 
+              width={450} height={600}
+              priority
               style={{ 
                 width: '100%', 
                 maxWidth: '450px', 
@@ -286,7 +303,7 @@ export default function Home() {
                 'IMG_6061.jpg', 'IMG_6063.jpg', 'IMG_6110.JPG', 'IMG_6111.JPG', 'IMG_6132.JPG', 'IMG_1060.jpg'
               ].map((img, i) => (
                 <div key={`row1-${i}`} className="carousel-card">
-                  <img src={`/bloque_3/${img}`} alt="Marketing Xperience" className="carousel-img" />
+                  <Image src={`/bloque_3/${img}`} alt="Marketing Xperience" fill style={{ objectFit: 'cover' }} className="carousel-img" sizes="(max-width: 768px) 100vw, 33vw" />
                 </div>
               ))}
             </div>
@@ -299,7 +316,7 @@ export default function Home() {
                 'IMG_1174.jpg', 'IMG_1175.jpg', 'IMG_1215.jpg', 'IMG_1224.jpg', 'IMG_6066.jpg', 'IMG_6153.JPG'
               ].map((img, i) => (
                 <div key={`row2-${i}`} className="carousel-card">
-                  <img src={`/bloque_3/${img}`} alt="Marketing Xperience" className="carousel-img" />
+                  <Image src={`/bloque_3/${img}`} alt="Marketing Xperience" fill style={{ objectFit: 'cover' }} className="carousel-img" sizes="(max-width: 768px) 100vw, 33vw" />
                 </div>
               ))}
             </div>
@@ -361,7 +378,7 @@ export default function Home() {
 
               </div>
               <div className="unified-card-right">
-                <img src="/Bloque_3.png" alt="Participantes Marketing Xperience" style={{ width: '100%', height: 'auto', borderRadius: '15px' }} />
+                <Image src="/Bloque_3.png" alt="Participantes Marketing Xperience" width={500} height={350} style={{ width: '100%', height: 'auto', borderRadius: '15px' }} />
               </div>
             </div>
 
@@ -396,7 +413,7 @@ export default function Home() {
             
             {/* Tarjeta 1: Marketing */}
             <div className="bento-card">
-              <img src="/Marketing.png" alt="Marketing" className="bento-bg-image" />
+              <Image src="/Marketing.png" alt="Marketing" fill style={{ objectFit: 'cover' }} className="bento-bg-image" />
               <div className="bento-overlay"></div>
               <div className="bento-content">
                 <h3>Marketing</h3>
@@ -407,7 +424,7 @@ export default function Home() {
 
             {/* Tarjeta 2: Ventas */}
             <div className="bento-card">
-              <img src="/Ventas.png" alt="Ventas" className="bento-bg-image" />
+              <Image src="/Ventas.png" alt="Ventas" fill style={{ objectFit: 'cover' }} className="bento-bg-image" />
               <div className="bento-overlay"></div>
               <div className="bento-content">
                 <h3>Ventas</h3>
@@ -418,7 +435,7 @@ export default function Home() {
 
             {/* Tarjeta 3: Marca Personal */}
             <div className="bento-card">
-              <img src="/Marca_personal.png" alt="Marca Personal" className="bento-bg-image" />
+              <Image src="/Marca_personal.png" alt="Marca Personal" fill style={{ objectFit: 'cover' }} className="bento-bg-image" />
               <div className="bento-overlay"></div>
               <div className="bento-content">
                 <h3>Marca Personal</h3>
@@ -429,7 +446,7 @@ export default function Home() {
             
             {/* Tarjeta 4: IA */}
             <div className="bento-card">
-              <img src="/Inteligencia_artificial.jpg" alt="IA" className="bento-bg-image" />
+              <Image src="/Inteligencia_artificial.jpg" alt="IA" fill style={{ objectFit: 'cover' }} className="bento-bg-image" />
               <div className="bento-overlay"></div>
               <div className="bento-content">
                 <h3>Inteligencia Artificial</h3>
@@ -440,7 +457,7 @@ export default function Home() {
 
             {/* Tarjeta 5: Mentalidad */}
             <div className="bento-card">
-              <img src="/Mentalidad.png" alt="Mentalidad" className="bento-bg-image" />
+              <Image src="/Mentalidad.png" alt="Mentalidad" fill style={{ objectFit: 'cover' }} className="bento-bg-image" />
               <div className="bento-overlay"></div>
               <div className="bento-content">
                 <h3>Mentalidad</h3>
@@ -451,7 +468,7 @@ export default function Home() {
             
             {/* Tarjeta 6: Comunicación */}
             <div className="bento-card">
-              <img src="/Comunicacion.png" alt="Comunicacion" className="bento-bg-image" />
+              <Image src="/Comunicacion.png" alt="Comunicacion" fill style={{ objectFit: 'cover' }} className="bento-bg-image" />
               <div className="bento-overlay"></div>
               <div className="bento-content">
                 <h3>Comunicación en Cámara</h3>
@@ -470,7 +487,7 @@ export default function Home() {
       <section className="section-offwhite" style={{ paddingTop: '0px', paddingBottom: '60px' }}>
         <div className="container">
           <div className="bento-card animate-on-scroll" style={{ minHeight: '350px' }}>
-            <img src="/Merida.jpg" alt="Mérida Evento" className="bento-bg-image" />
+            <Image src="/Merida.jpg" alt="Mérida Evento" fill style={{ objectFit: 'cover' }} className="bento-bg-image" />
             <div className="bento-overlay"></div>
             <div className="bento-content">
               <h3 style={{ fontSize: '2.5rem', marginBottom: '15px' }}>MÉRIDA</h3>
@@ -496,7 +513,7 @@ export default function Home() {
           <div className="speakers-grid-gapless animate-on-scroll">
             
             <div className="speaker-card-gapless">
-              <img src="/Eduar_Pena.png" alt="Eduar Peña" className="speaker-bg-full" />
+              <Image src="/Eduar_Pena.png" alt="Eduar Peña" fill style={{ objectFit: 'cover' }} className="speaker-bg-full" />
               <div className="speaker-overlay-gradient"></div>
               <div className="speaker-info-gapless">
                 <h3>Eduar Peña</h3>
@@ -505,7 +522,7 @@ export default function Home() {
             </div>
 
             <div className="speaker-card-gapless">
-              <img src="/Juan_Pinto.png" alt="Juan Pinto" className="speaker-bg-full" style={{ objectPosition: 'center' }} />
+              <Image src="/Juan_Pinto.png" alt="Juan Pinto" fill style={{ objectFit: 'cover', objectPosition: 'center' }} className="speaker-bg-full" />
               <div className="speaker-overlay-gradient"></div>
               <div className="speaker-info-gapless">
                 <h3>Juan Pinto</h3>
@@ -514,7 +531,7 @@ export default function Home() {
             </div>
 
             <div className="speaker-card-gapless">
-              <img src="/Joelymar_Toro.png" alt="Joelymar Toro" className="speaker-bg-full" />
+              <Image src="/Joelymar_Toro.png" alt="Joelymar Toro" fill style={{ objectFit: 'cover' }} className="speaker-bg-full" />
               <div className="speaker-overlay-gradient"></div>
               <div className="speaker-info-gapless">
                 <h3>Joelymar Toro</h3>
@@ -523,7 +540,7 @@ export default function Home() {
             </div>
 
             <div className="speaker-card-gapless">
-              <img src="/Daniel_Zambrano.png" alt="Daniel Zambrano" className="speaker-bg-full" />
+              <Image src="/Daniel_Zambrano.png" alt="Daniel Zambrano" fill style={{ objectFit: 'cover' }} className="speaker-bg-full" />
               <div className="speaker-overlay-gradient"></div>
               <div className="speaker-info-gapless">
                 <h3>Daniel Zambrano</h3>
@@ -532,7 +549,7 @@ export default function Home() {
             </div>
 
             <div className="speaker-card-gapless">
-              <img src="/Jesus.png" alt="Jesus" className="speaker-bg-full" />
+              <Image src="/Jesus.png" alt="Jesus" fill style={{ objectFit: 'cover' }} className="speaker-bg-full" />
               <div className="speaker-overlay-gradient"></div>
               <div className="speaker-info-gapless">
                 <h3>Próximamente será revelado</h3>
@@ -541,7 +558,7 @@ export default function Home() {
             </div>
 
             <div className="speaker-card-gapless">
-              <img src="/Proximamente.png" alt="Proximamente" className="speaker-bg-full" />
+              <Image src="/Proximamente.png" alt="Proximamente" fill style={{ objectFit: 'cover' }} className="speaker-bg-full" />
               <div className="speaker-overlay-gradient"></div>
               <div className="speaker-info-gapless">
                 <h3>Próximamente será revelado</h3>
@@ -573,7 +590,7 @@ export default function Home() {
                 "/Carrusel/8_v2.png"
               ].map((imgUrl, idx) => (
                 <div key={idx} className="takeaway-card">
-                  <img src={imgUrl} alt={`Takeaway ${idx + 1}`} className="takeaway-bg" />
+                  <Image src={imgUrl} alt={`Takeaway ${idx + 1}`} fill style={{ objectFit: 'cover' }} className="takeaway-bg" sizes="(max-width: 768px) 100vw, 33vw" />
                 </div>
               ))}
             </div>
