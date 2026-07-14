@@ -1,4 +1,5 @@
 import { NextResponse } from 'next/server';
+import { revalidatePath } from 'next/cache';
 import db from '@/lib/db';
 import crypto from 'crypto';
 
@@ -21,6 +22,7 @@ export async function POST(request) {
       args: [name, email || '', phone || '', plan, business || '', status || 'Nuevo', notes || '', birthday || '', ticket_price || 0, purchase_stage || 'Pre-venta', agent_id || null, ticket_id]
     });
 
+    revalidatePath('/admin', 'layout');
     return NextResponse.json({ success: true, id: Number(result.lastInsertRowid) });
   } catch (error) {
     console.error('Contact creation error:', error);
@@ -38,6 +40,7 @@ export async function DELETE(request) {
     await db.execute({ sql: 'DELETE FROM reminders WHERE client_id = ?', args: [id] });
     await db.execute({ sql: 'DELETE FROM registrations WHERE id = ?', args: [id] });
 
+    revalidatePath('/admin', 'layout');
     return NextResponse.json({ success: true });
   } catch (error) {
     console.error('Contact deletion error:', error);

@@ -1,4 +1,5 @@
 import { NextResponse } from 'next/server';
+import { revalidatePath } from 'next/cache';
 import db from '@/lib/db';
 
 export async function POST(request) {
@@ -20,6 +21,7 @@ export async function POST(request) {
       args: [amount, client_id]
     });
 
+    revalidatePath('/admin', 'layout');
     return NextResponse.json({ success: true });
   } catch (error) {
     console.error('Payment error:', error);

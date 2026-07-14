@@ -1,4 +1,5 @@
 import { NextResponse } from 'next/server';
+import { revalidatePath } from 'next/cache';
 import db from '@/lib/db';
 
 export async function GET() {
@@ -25,6 +26,7 @@ export async function PUT(request) {
       args: [name, leader_id || null, id]
     });
 
+    revalidatePath('/admin', 'layout');
     return NextResponse.json({ success: true });
   } catch (error) {
     console.error('Update table error:', error);

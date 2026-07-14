@@ -1,4 +1,5 @@
 import { NextResponse } from 'next/server';
+import { revalidatePath } from 'next/cache';
 import db from '@/lib/db';
 
 export async function GET(request) {
@@ -28,6 +29,7 @@ export async function POST(request) {
       args: [attended ? 1 : 0, ticket_id]
     });
 
+    revalidatePath('/admin', 'layout');
     return NextResponse.json({ success: true });
   } catch (error) {
     return NextResponse.json({ error: error.message }, { status: 500 });
