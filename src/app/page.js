@@ -540,7 +540,7 @@ export default function Home() {
             </div>
 
             <div className="speaker-card-gapless">
-              <Image src="/Daniel_Zambrano.png" alt="Daniel Zambrano" fill style={{ objectFit: 'cover' }} className="speaker-bg-full" />
+              <Image src="/Daniel_Zambrano_2.png" alt="Daniel Zambrano" fill style={{ objectFit: 'cover' }} className="speaker-bg-full" />
               <div className="speaker-overlay-gradient"></div>
               <div className="speaker-info-gapless">
                 <h3>Daniel Zambrano</h3>
