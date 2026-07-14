@@ -161,9 +161,9 @@ export default function Home() {
 
 
 
-          <button className="btn-cyan-outline" onClick={() => openModal('XPERIENCE GENERAL', currentPricing.genPrice)}>
+          <a href="#precios" className="btn-cyan-outline" style={{ textDecoration: 'none' }}>
             Registrarme
-          </button>
+          </a>
         </div>
       </nav>
 
