@@ -1,0 +1,42 @@
+/* Hero Parallax Elements */
+
+.flag-container {
+  position: absolute;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  transition: transform 0.1s ease-out;
+}
+
+.flag-pole {
+  width: 2px;
+  height: 40px;
+  background: linear-gradient(90deg, #999, #eee, #999);
+  border-radius: 1px;
+  box-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+}
+
+.flag-cloth {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  background: var(--color-accent);
+  width: 20px;
+  height: 12px;
+  font-size: 0;
+  clip-path: polygon(0% 0%, 100% 0%, 80% 50%, 100% 100%, 0% 100%);
+  transform-origin: left center;
+  animation: wave 1.5s infinite ease-in-out alternate;
+  box-shadow: 5px 5px 15px rgba(0,0,0,0.2);
+}
+
+@keyframes wave {
+  0% { transform: perspective(300px) rotateY(-10deg); }
+  100% { transform: perspective(300px) rotateY(20deg); }
+}
+
+.hero-content-z {
+  position: relative;
+  z-index: 5;
+}

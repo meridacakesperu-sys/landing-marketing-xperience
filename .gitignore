@@ -39,3 +39,16 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# SQLite Databases
+*.sqlite
+*.db
+data/
+
+# Scripts
+*.py
+check_sqlite.js
+migrate*.js
+test_*.js
+themeMigrator.js
+recovered_page.js
