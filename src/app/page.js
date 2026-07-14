@@ -522,7 +522,7 @@ export default function Home() {
             </div>
 
             <div className="speaker-card-gapless">
-              <Image src="/Juan_Pinto.png" alt="Juan Pinto" fill style={{ objectFit: 'cover', objectPosition: 'center' }} className="speaker-bg-full" />
+              <Image src="/Juan_Pinto.png" alt="Juan Pinto" fill style={{ objectFit: 'cover', objectPosition: 'top' }} className="speaker-bg-full" />
               <div className="speaker-overlay-gradient"></div>
               <div className="speaker-info-gapless">
                 <h3>Juan Pinto</h3>
