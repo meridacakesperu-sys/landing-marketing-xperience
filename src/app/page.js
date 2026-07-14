@@ -136,7 +136,8 @@ export default function Home() {
             <Image src="/logo.png" alt="Marketing Xperience Logo" width={180} height={40} style={{ height: "40px", width: "auto" }} priority />
           </div>
           <div className="nav-dates-text">
-            Sábado y domingo 19 y 20 de Septiembre
+            <span className="nav-dates-desktop">Sábado y domingo 19 y 20 de Septiembre</span>
+            <span className="nav-dates-mobile">Sábado y domingo<br />19/09 y 20/09</span>
           </div>
 
 
