@@ -218,11 +218,11 @@ export default function Home() {
               className="hero-logo-keep logo-3"
               src="/logos_rrss/1.png" 
               alt="Logo Instagram"
-              width={100} height={100}
+              width={120} height={120}
               priority
               style={{
-                position: 'absolute', top: '42%', left: '-5%', width: '100px', height: '100px', zIndex: 15,
-                filter: 'blur(4px)', opacity: 0.9, transform: `scale(1.1) translate(${mousePos.x * 2}px, ${mousePos.y * 2}px)`, transition: 'transform 0.1s ease-out'
+                position: 'absolute', top: '42%', left: '-5%', width: '120px', height: '120px', zIndex: 15,
+                filter: 'blur(3px)', opacity: 0.9, transform: `scale(1.3) translate(${mousePos.x * 2}px, ${mousePos.y * 2}px)`, transition: 'transform 0.1s ease-out'
               }}
             />
             <Image 
@@ -240,11 +240,11 @@ export default function Home() {
               className="hero-logo-hide logo-5"
               src="/logos_rrss/5.png" 
               alt="Logo 5"
-              width={120} height={120}
+              width={140} height={140}
               priority
               style={{
-                position: 'absolute', top: '65%', left: '-5%', width: '120px', height: '120px', zIndex: 20,
-                filter: 'blur(5px)', opacity: 0.85, transform: `scale(1.2) translate(${mousePos.x * 3}px, ${mousePos.y * 3}px)`, transition: 'transform 0.1s ease-out'
+                position: 'absolute', top: '65%', left: '-5%', width: '140px', height: '140px', zIndex: 20,
+                filter: 'blur(4px)', opacity: 0.9, transform: `scale(1.4) translate(${mousePos.x * 3}px, ${mousePos.y * 3}px)`, transition: 'transform 0.1s ease-out'
               }}
             />
             <Image 
