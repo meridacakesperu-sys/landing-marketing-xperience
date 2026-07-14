@@ -930,8 +930,8 @@ section {
 
 @media (max-width: 768px) {
   .hero {
-    min-height: 90vh;
-    padding-bottom: 80px;
+    min-height: 60vh;
+    padding-bottom: 40px;
   }
   .hero-image {
     display: block !important;
