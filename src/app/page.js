@@ -14,21 +14,11 @@ export default function Home() {
   const [selectedPillarData, setSelectedPillarData] = useState(null);
   const [refCode, setRefCode] = useState('');
 
-  const [currentPricing, setCurrentPricing] = useState({ stage: 'Pre-venta', genPrice: 75, vipPrice: 120, nextGenPrice: 87, nextVipPrice: 145 });
+  const [currentPricing, setCurrentPricing] = useState({ stage: 'Pre-venta', genPrice: 75, vipPrice: 120, nextGenPrice: null, nextVipPrice: null });
 
   useEffect(() => {
-    const today = new Date();
-    // Based on year 2026
-    const etapa1Start = new Date('2026-08-11T00:00:00');
-    const etapa2Start = new Date('2026-09-06T00:00:00');
-
-    if (today >= etapa2Start) {
-      setCurrentPricing({ stage: 'Etapa 2', genPrice: 97, vipPrice: 175, nextGenPrice: null, nextVipPrice: null });
-    } else if (today >= etapa1Start) {
-      setCurrentPricing({ stage: 'Etapa 1', genPrice: 87, vipPrice: 145, nextGenPrice: 97, nextVipPrice: 175 });
-    } else {
-      setCurrentPricing({ stage: 'Pre-venta', genPrice: 75, vipPrice: 120, nextGenPrice: 87, nextVipPrice: 145 });
-    }
+    // Automatic pricing logic has been removed as requested.
+    // To change prices, simply edit the 'currentPricing' useState above.
 
     const params = new URLSearchParams(window.location.search);
     const ref = params.get('ref');
