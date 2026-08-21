@@ -11,6 +11,7 @@ export default async function TemplatesPage() {
     id: row.id,
     title: row.title,
     content: row.content,
+    category: row.category || 'Mensajes principales',
     createdAt: row.createdAt
   }));
 

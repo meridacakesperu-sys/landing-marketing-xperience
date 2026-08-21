@@ -15,15 +15,17 @@ export async function GET() {
 export async function POST(request) {
   try {
     const data = await request.json();
-    const { title, content } = data;
+    const { title, content, category } = data;
 
     if (!title || !content) {
       return NextResponse.json({ error: 'Missing required fields' }, { status: 400 });
     }
 
+    const cat = category || 'Mensajes principales';
+
     const result = await db.execute({
-      sql: 'INSERT INTO templates (title, content) VALUES (?, ?)',
-      args: [title, content]
+      sql: 'INSERT INTO templates (title, content, category) VALUES (?, ?, ?)',
+      args: [title, content, cat]
     });
 
     revalidatePath('/admin', 'layout');

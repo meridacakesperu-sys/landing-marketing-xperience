@@ -2,11 +2,20 @@
 
 import { useState } from 'react';
 
+const CATEGORIES = [
+  'Mensajes principales',
+  'Tipo de publico',
+  'Recordatorios',
+  'Pagos',
+  'Objeciones'
+];
+
 export default function TemplatesClient({ initialTemplates }) {
   const [templates, setTemplates] = useState(initialTemplates);
   const [showAddForm, setShowAddForm] = useState(false);
   const [newTitle, setNewTitle] = useState('');
   const [newContent, setNewContent] = useState('');
+  const [newCategory, setNewCategory] = useState(CATEGORIES[0]);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleAddTemplate = async (e) => {
@@ -21,7 +30,7 @@ export default function TemplatesClient({ initialTemplates }) {
       const res = await fetch('/api/admin/templates', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ title: newTitle, content: newContent })
+        body: JSON.stringify({ title: newTitle, content: newContent, category: newCategory })
       });
 
       if (res.ok) {
@@ -30,11 +39,13 @@ export default function TemplatesClient({ initialTemplates }) {
           id: data.id,
           title: newTitle,
           content: newContent,
+          category: newCategory,
           createdAt: new Date().toISOString()
         };
         setTemplates([newTemplate, ...templates]);
         setNewTitle('');
         setNewContent('');
+        setNewCategory(CATEGORIES[0]);
         setShowAddForm(false);
         alert('Plantilla guardada exitosamente');
       } else {
@@ -77,10 +88,16 @@ export default function TemplatesClient({ initialTemplates }) {
     });
   };
 
+  // Agrupar plantillas por categoría
+  const groupedTemplates = CATEGORIES.reduce((acc, cat) => {
+    acc[cat] = templates.filter(t => t.category === cat);
+    return acc;
+  }, {});
+
   return (
-    <div style={{ color: '#fff' }}>
+    <div style={{ color: '#0f172a', padding: '20px' }}>
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }}>
-        <h2>Respuestas Rápidas / Plantillas</h2>
+        <h2 style={{ margin: 0 }}>Respuestas Rápidas / Plantillas</h2>
         <button 
           onClick={() => setShowAddForm(!showAddForm)}
           style={{
@@ -98,24 +115,36 @@ export default function TemplatesClient({ initialTemplates }) {
       </div>
 
       {showAddForm && (
-        <div style={{ background: 'rgba(255,255,255,0.05)', padding: '20px', borderRadius: '10px', marginBottom: '20px' }}>
+        <div style={{ background: '#f8fafc', padding: '20px', borderRadius: '10px', marginBottom: '30px', border: '1px solid #e2e8f0', boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)' }}>
           <form onSubmit={handleAddTemplate}>
             <div style={{ marginBottom: '15px' }}>
-              <label style={{ display: 'block', marginBottom: '5px' }}>Título (ej: Confirmación de pago)</label>
+              <label style={{ display: 'block', marginBottom: '5px', fontWeight: 'bold' }}>Categoría</label>
+              <select 
+                value={newCategory}
+                onChange={e => setNewCategory(e.target.value)}
+                style={{ width: '100%', padding: '10px', borderRadius: '5px', border: '1px solid #cbd5e1', background: '#fff', color: '#0f172a' }}
+              >
+                {CATEGORIES.map(cat => (
+                  <option key={cat} value={cat}>{cat}</option>
+                ))}
+              </select>
+            </div>
+            <div style={{ marginBottom: '15px' }}>
+              <label style={{ display: 'block', marginBottom: '5px', fontWeight: 'bold' }}>Título (ej: Confirmación de pago)</label>
               <input 
                 type="text" 
                 value={newTitle}
                 onChange={e => setNewTitle(e.target.value)}
-                style={{ width: '100%', padding: '10px', borderRadius: '5px', border: '1px solid #444', background: '#222', color: '#fff' }}
+                style={{ width: '100%', padding: '10px', borderRadius: '5px', border: '1px solid #cbd5e1', background: '#fff', color: '#0f172a' }}
                 placeholder="Identificador de la plantilla"
               />
             </div>
             <div style={{ marginBottom: '15px' }}>
-              <label style={{ display: 'block', marginBottom: '5px' }}>Contenido / Mensaje</label>
+              <label style={{ display: 'block', marginBottom: '5px', fontWeight: 'bold' }}>Contenido / Mensaje</label>
               <textarea 
                 value={newContent}
                 onChange={e => setNewContent(e.target.value)}
-                style={{ width: '100%', padding: '10px', borderRadius: '5px', border: '1px solid #444', background: '#222', color: '#fff', minHeight: '120px' }}
+                style={{ width: '100%', padding: '10px', borderRadius: '5px', border: '1px solid #cbd5e1', background: '#fff', color: '#0f172a', minHeight: '120px' }}
                 placeholder="Escribe aquí el texto que se copiará..."
               />
             </div>
@@ -139,56 +168,77 @@ export default function TemplatesClient({ initialTemplates }) {
       )}
 
       {templates.length === 0 ? (
-        <p style={{ color: '#ccc' }}>No tienes plantillas guardadas aún. Crea tu primera respuesta rápida.</p>
+        <p style={{ color: '#64748b' }}>No tienes plantillas guardadas aún. Crea tu primera respuesta rápida.</p>
       ) : (
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))', gap: '20px' }}>
-          {templates.map(template => (
-            <div key={template.id} style={{ background: 'rgba(255,255,255,0.05)', padding: '20px', borderRadius: '10px', display: 'flex', flexDirection: 'column' }}>
-              <h3 style={{ marginTop: '0', color: '#00b0ff', fontSize: '1.2rem', marginBottom: '10px' }}>{template.title}</h3>
-              <div style={{ 
-                background: '#111', 
-                padding: '15px', 
-                borderRadius: '5px', 
-                whiteSpace: 'pre-wrap', 
-                fontSize: '0.9rem', 
-                flexGrow: 1, 
-                marginBottom: '15px',
-                borderLeft: '3px solid #00b0ff'
-              }}>
-                {template.content}
+        <div>
+          {CATEGORIES.map(category => (
+            groupedTemplates[category].length > 0 && (
+              <div key={category} style={{ marginBottom: '40px' }}>
+                <h3 style={{ borderBottom: '2px solid #e2e8f0', paddingBottom: '10px', color: '#334155', marginBottom: '20px' }}>
+                  {category}
+                </h3>
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))', gap: '20px' }}>
+                  {groupedTemplates[category].map(template => (
+                    <div key={template.id} style={{ 
+                      background: '#fef3c7', // Cream note color
+                      padding: '20px', 
+                      borderRadius: '8px', 
+                      display: 'flex', 
+                      flexDirection: 'column',
+                      boxShadow: '2px 4px 10px rgba(0,0,0,0.05)',
+                      borderLeft: '4px solid #f59e0b'
+                    }}>
+                      <h4 style={{ margin: '0 0 10px 0', color: '#b45309', fontSize: '1.1rem' }}>{template.title}</h4>
+                      <div style={{ 
+                        background: '#fffbeb', 
+                        padding: '15px', 
+                        borderRadius: '5px', 
+                        whiteSpace: 'pre-wrap', 
+                        fontSize: '0.95rem', 
+                        flexGrow: 1, 
+                        marginBottom: '15px',
+                        color: '#334155',
+                        border: '1px solid #fde68a'
+                      }}>
+                        {template.content}
+                      </div>
+                      <div style={{ display: 'flex', gap: '10px' }}>
+                        <button 
+                          onClick={() => handleCopy(template.content)}
+                          style={{
+                            flex: 1,
+                            padding: '10px',
+                            background: '#00b0ff',
+                            color: 'white',
+                            border: 'none',
+                            borderRadius: '5px',
+                            cursor: 'pointer',
+                            fontWeight: 'bold'
+                          }}
+                        >
+                          📋 Copiar
+                        </button>
+                        <button 
+                          onClick={() => handleDelete(template.id)}
+                          style={{
+                            padding: '10px 15px',
+                            background: 'transparent',
+                            color: '#dc3545',
+                            border: '1px solid #dc3545',
+                            borderRadius: '5px',
+                            cursor: 'pointer',
+                            fontWeight: 'bold'
+                          }}
+                          title="Eliminar"
+                        >
+                          🗑️
+                        </button>
+                      </div>
+                    </div>
+                  ))}
+                </div>
               </div>
-              <div style={{ display: 'flex', gap: '10px' }}>
-                <button 
-                  onClick={() => handleCopy(template.content)}
-                  style={{
-                    flex: 1,
-                    padding: '10px',
-                    background: '#00b0ff',
-                    color: 'white',
-                    border: 'none',
-                    borderRadius: '5px',
-                    cursor: 'pointer',
-                    fontWeight: 'bold'
-                  }}
-                >
-                  📋 Copiar
-                </button>
-                <button 
-                  onClick={() => handleDelete(template.id)}
-                  style={{
-                    padding: '10px 15px',
-                    background: 'transparent',
-                    color: '#dc3545',
-                    border: '1px solid #dc3545',
-                    borderRadius: '5px',
-                    cursor: 'pointer'
-                  }}
-                  title="Eliminar"
-                >
-                  🗑️
-                </button>
-              </div>
-            </div>
+            )
           ))}
         </div>
       )}
