@@ -137,6 +137,7 @@ export default function AdminLayout({ children }) {
     { label: 'Campaña', path: '/admin/campaign', icon: '📈', roles: ['admin', 'ventas', 'lideres'] },
     { label: 'Evento', path: '/admin/attendees', icon: '🎟️', roles: ['admin', 'ventas', 'lideres'] },
     { label: 'Check-in', path: '/admin/checkin', icon: '✅', roles: ['admin', 'lideres'] },
+    { label: 'Plantillas', path: '/admin/templates', icon: '📝', roles: ['admin', 'ventas', 'lideres'] },
     { label: 'Configuración', path: '/admin/settings', icon: '⚙️', roles: ['admin'] },
   ];
 
