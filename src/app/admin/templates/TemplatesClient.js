@@ -1,7 +1,6 @@
 'use client';
 
 import { useState } from 'react';
-import toast from 'react-hot-toast';
 
 export default function TemplatesClient({ initialTemplates }) {
   const [templates, setTemplates] = useState(initialTemplates);
@@ -13,7 +12,7 @@ export default function TemplatesClient({ initialTemplates }) {
   const handleAddTemplate = async (e) => {
     e.preventDefault();
     if (!newTitle.trim() || !newContent.trim()) {
-      toast.error('El título y el contenido son obligatorios');
+      alert('El título y el contenido son obligatorios');
       return;
     }
 
@@ -37,13 +36,13 @@ export default function TemplatesClient({ initialTemplates }) {
         setNewTitle('');
         setNewContent('');
         setShowAddForm(false);
-        toast.success('Plantilla guardada exitosamente');
+        alert('Plantilla guardada exitosamente');
       } else {
-        toast.error('Error al guardar la plantilla');
+        alert('Error al guardar la plantilla');
       }
     } catch (error) {
       console.error(error);
-      toast.error('Error de red al guardar');
+      alert('Error de red al guardar');
     } finally {
       setIsSubmitting(false);
     }
@@ -59,22 +58,22 @@ export default function TemplatesClient({ initialTemplates }) {
 
       if (res.ok) {
         setTemplates(templates.filter(t => t.id !== id));
-        toast.success('Plantilla eliminada');
+        alert('Plantilla eliminada');
       } else {
-        toast.error('Error al eliminar');
+        alert('Error al eliminar');
       }
     } catch (error) {
       console.error(error);
-      toast.error('Error al eliminar');
+      alert('Error al eliminar');
     }
   };
 
   const handleCopy = (content) => {
     navigator.clipboard.writeText(content).then(() => {
-      toast.success('Texto copiado al portapapeles');
+      alert('Texto copiado al portapapeles');
     }).catch(err => {
       console.error('Failed to copy', err);
-      toast.error('Error al copiar el texto');
+      alert('Error al copiar el texto');
     });
   };
 
