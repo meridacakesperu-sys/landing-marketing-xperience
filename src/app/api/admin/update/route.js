@@ -4,7 +4,7 @@ import db from '@/lib/db';
 export async function POST(request) {
   try {
     const data = await request.json();
-    const { id, status, notes, business, birthday, ticket_price, table_id, agent_id } = data;
+    const { id, status, notes, business, birthday, ticket_price, table_id, agent_id, plan } = data;
 
     if (!id) {
       return NextResponse.json({ error: 'Missing registration ID' }, { status: 400 });
@@ -20,6 +20,7 @@ export async function POST(request) {
     if (ticket_price !== undefined) { updates.push('ticket_price = ?'); params.push(ticket_price); }
     if (table_id !== undefined) { updates.push('table_id = ?'); params.push(table_id); }
     if (agent_id !== undefined) { updates.push('agent_id = ?'); params.push(agent_id); }
+    if (plan !== undefined) { updates.push('plan = ?'); params.push(plan); }
 
     if (updates.length === 0) {
       return NextResponse.json({ error: 'No fields to update' }, { status: 400 });

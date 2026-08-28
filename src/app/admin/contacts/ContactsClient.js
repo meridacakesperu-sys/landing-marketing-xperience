@@ -761,6 +761,7 @@ export function ClientDetailModal({ client, initialTab, onClose, onUpdate, onDel
   const [birthday, setBirthday] = useState(client.birthday || '');
   const [ticketPrice, setTicketPrice] = useState(client.ticket_price || 0);
   const [purchaseStage, setPurchaseStage] = useState(client.purchase_stage || 'Pre-venta');
+  const [plan, setPlan] = useState(client.plan || 'General');
   const [isEditingPrice, setIsEditingPrice] = useState(false);
   
   // Payment States
@@ -785,9 +786,9 @@ export function ClientDetailModal({ client, initialTab, onClose, onUpdate, onDel
     await fetch('/api/admin/update', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ id: client.id, business, notes, status, birthday, ticket_price: ticketPrice, agent_id: agentId })
+      body: JSON.stringify({ id: client.id, business, notes, status, birthday, ticket_price: ticketPrice, agent_id: agentId, plan })
     });
-    onUpdate({ ...client, business, notes, status, birthday, ticket_price: ticketPrice, agent_id: agentId });
+    onUpdate({ ...client, business, notes, status, birthday, ticket_price: ticketPrice, agent_id: agentId, plan });
     alert('Guardado');
   };
 
@@ -970,7 +971,22 @@ export function ClientDetailModal({ client, initialTab, onClose, onUpdate, onDel
           <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
             <div><strong style={{ color: '#64748b' }}>Email:</strong> <div style={{ color: '#0f172a' }}>{client.email}</div></div>
             <div><strong style={{ color: '#64748b' }}>Teléfono:</strong> <div style={{ color: '#0f172a' }}>{client.phone}</div></div>
-            <div><strong style={{ color: '#64748b' }}>Plan:</strong> <div style={{ color: 'var(--color-accent)' }}>{client.plan}</div></div>
+            <div>
+              <strong style={{ color: '#64748b' }}>Plan:</strong>
+              <select 
+                value={plan} 
+                onChange={(e) => {
+                  const newPlan = e.target.value;
+                  setPlan(newPlan);
+                  if (newPlan === 'General') setTicketPrice(75);
+                  else if (newPlan === 'VIP') setTicketPrice(120);
+                }} 
+                style={{ width: '100%', padding: '8px', background: '#ffffff', border: '1px solid #e2e8f0', color: '#0f172a', borderRadius: '4px', marginTop: '4px', fontWeight: 'bold' }}
+              >
+                <option value="General">General</option>
+                <option value="VIP">VIP</option>
+              </select>
+            </div>
             <div><strong style={{ color: '#64748b' }}>Registrado:</strong> <div style={{ color: '#0f172a' }}>{new Date(client.createdAt).toLocaleDateString()}</div></div>
             
             <div>
