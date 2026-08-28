@@ -766,6 +766,7 @@ export function ClientDetailModal({ client, initialTab, onClose, onUpdate, onDel
   
   // Payment States
   const [paymentAmount, setPaymentAmount] = useState('');
+  const [paymentDate, setPaymentDate] = useState(() => new Date().toISOString().split('T')[0]);
   const [paymentMethod, setPaymentMethod] = useState('Transferencia');
   const [paymentBank, setPaymentBank] = useState('');
   const [paymentReference, setPaymentReference] = useState('');
@@ -794,6 +795,8 @@ export function ClientDetailModal({ client, initialTab, onClose, onUpdate, onDel
 
   const savePayment = async (e) => {
     e.preventDefault();
+    const finalDate = paymentDate ? new Date(paymentDate + 'T12:00:00Z').toISOString() : new Date().toISOString();
+    
     if (editingPayment) {
       const res = await fetch('/api/admin/payments', {
         method: 'PUT',
@@ -801,7 +804,7 @@ export function ClientDetailModal({ client, initialTab, onClose, onUpdate, onDel
         body: JSON.stringify({
           id: editingPayment.id,
           amount: parseFloat(paymentAmount),
-          date: new Date().toISOString(),
+          date: finalDate,
           method: paymentMethod,
           bank: paymentBank,
           reference: paymentReference
@@ -831,6 +834,7 @@ export function ClientDetailModal({ client, initialTab, onClose, onUpdate, onDel
         onUpdate(updatedClient);
         setEditingPayment(null);
         setPaymentAmount('');
+        setPaymentDate(new Date().toISOString().split('T')[0]);
         setPaymentBank('');
         setPaymentReference('');
         fetch(`/api/admin/payments?client_id=${client.id}`).then(r => r.json()).then(setPayments);
@@ -842,7 +846,7 @@ export function ClientDetailModal({ client, initialTab, onClose, onUpdate, onDel
         body: JSON.stringify({
           client_id: client.id,
           amount: parseFloat(paymentAmount),
-          date: new Date().toISOString(),
+          date: finalDate,
           method: paymentMethod,
           bank: paymentBank,
           reference: paymentReference
@@ -1187,6 +1191,7 @@ export function ClientDetailModal({ client, initialTab, onClose, onUpdate, onDel
                   <button type="button" onClick={() => {
                     setEditingPayment(null);
                     setPaymentAmount('');
+                    setPaymentDate(new Date().toISOString().split('T')[0]);
                     setPaymentBank('');
                     setPaymentReference('');
                     setPaymentMethod('Transferencia');
@@ -1194,8 +1199,11 @@ export function ClientDetailModal({ client, initialTab, onClose, onUpdate, onDel
                 )}
               </div>
               
-              <input type="number" required placeholder="Monto $" value={paymentAmount} onChange={e=>setPaymentAmount(e.target.value)} style={{ padding: '8px', background: '#f8fafc', border: '1px solid #e2e8f0', color: '#0f172a', borderRadius: '4px' }} />
-              
+              <div style={{ display: 'flex', gap: '10px' }}>
+                <input type="number" required placeholder="Monto $" value={paymentAmount} onChange={e=>setPaymentAmount(e.target.value)} style={{ padding: '8px', background: '#f8fafc', border: '1px solid #e2e8f0', color: '#0f172a', borderRadius: '4px', flex: 1 }} />
+                <input type="date" required value={paymentDate} onChange={e=>setPaymentDate(e.target.value)} style={{ padding: '8px', background: '#f8fafc', border: '1px solid #e2e8f0', color: '#0f172a', borderRadius: '4px', flex: 1 }} />
+              </div>
+
               <select required value={paymentMethod} onChange={e=>setPaymentMethod(e.target.value)} style={{ padding: '8px', background: '#f8fafc', border: '1px solid #e2e8f0', color: '#0f172a', borderRadius: '4px' }}>
                 <option value="Transferencia">Transferencia</option>
                 <option value="Pago móvil">Pago móvil</option>
@@ -1228,32 +1236,32 @@ export function ClientDetailModal({ client, initialTab, onClose, onUpdate, onDel
             {payments.map(p => (
               <div key={p.id} style={{ display: 'flex', justifyContent: 'space-between', padding: '10px', borderBottom: '1px solid #e2e8f0', color: p.status === 'Anulado' ? '#64748b' : '#0f172a', alignItems: 'center', opacity: p.status === 'Anulado' ? 0.7 : 1 }}>
                 <div style={{ flex: 1 }}>
-                  <div style={{ fontWeight: 'bold', fontSize: '1.1rem', textDecoration: p.status === 'Anulado' ? 'line-through' : 'none' }}>
-                    ${p.amount} {p.status === 'Anulado' && <span style={{ color: '#ef4444', fontSize: '0.8rem', marginLeft: '5px', border: '1px solid #ef4444', padding: '2px 6px', borderRadius: '12px' }}>ANULADO</span>}
+                  <div style={{ fontWeight: 'bold', display: 'flex', gap: '8px', alignItems: 'center' }}>
+                    ${p.amount} 
+                    <span style={{ fontSize: '0.8rem', color: '#94a3b8', fontWeight: 'normal' }}>
+                      {new Date(p.date).toLocaleDateString()}
+                    </span>
+                    {p.status === 'Anulado' && <span style={{ fontSize: '0.7rem', background: '#ef4444', color: '#fff', padding: '2px 6px', borderRadius: '4px' }}>Anulado</span>}
                   </div>
-                  <div style={{ fontSize: '0.8rem', color: p.status === 'Anulado' ? '#64748b' : '#94a3b8' }}>
-                    {p.method} {p.bank ? `(${p.bank})` : ''} 
-                    {p.reference ? ` - Ref: ${p.reference}` : ''}
+                  <div style={{ fontSize: '0.9rem', color: '#64748b' }}>
+                    {p.method} {p.bank ? `(${p.bank})` : ''} {p.reference ? `- Ref: ${p.reference}` : ''}
                   </div>
-                  <div style={{ fontSize: '0.7rem', color: '#64748b' }}>{new Date(p.date).toLocaleString()}</div>
-                  {p.history && (
-                    <div style={{ fontSize: '0.75rem', color: '#eab308', marginTop: '6px', fontStyle: 'italic', background: 'rgba(234, 179, 8, 0.1)', padding: '6px', borderRadius: '4px' }}>
-                      <span style={{ fontWeight: 'bold' }}>Historial:</span> {p.history}
-                    </div>
+                </div>
+                <div style={{ display: 'flex', gap: '8px' }}>
+                  {p.status !== 'Anulado' && (
+                    <>
+                      <button onClick={() => {
+                        setEditingPayment(p);
+                        setPaymentAmount(p.amount);
+                        setPaymentDate(new Date(p.date).toISOString().split('T')[0]);
+                        setPaymentMethod(p.method || 'Transferencia');
+                        setPaymentBank(p.bank || '');
+                        setPaymentReference(p.reference || '');
+                      }} style={{ background: 'transparent', border: 'none', color: '#64748b', cursor: 'pointer', fontSize: '1.2rem' }} title="Editar">✏️</button>
+                      <button onClick={() => deletePayment(p)} style={{ background: 'transparent', border: 'none', color: '#64748b', cursor: 'pointer', fontSize: '1.2rem' }} title="Anular">🗑️</button>
+                    </>
                   )}
                 </div>
-                {p.status !== 'Anulado' && (
-                  <div style={{ display: 'flex', gap: '5px', marginLeft: '10px' }}>
-                    <button onClick={() => {
-                      setEditingPayment(p);
-                      setPaymentAmount(p.amount);
-                      setPaymentMethod(p.method || 'Transferencia');
-                      setPaymentBank(p.bank || '');
-                      setPaymentReference(p.reference || '');
-                    }} style={{ background: 'transparent', border: 'none', color: '#64748b', cursor: 'pointer', fontSize: '1.2rem' }} title="Editar">✏️</button>
-                    <button onClick={() => deletePayment(p)} style={{ background: 'transparent', border: 'none', color: '#64748b', cursor: 'pointer', fontSize: '1.2rem' }} title="Anular">🗑️</button>
-                  </div>
-                )}
               </div>
             ))}
           </div>
