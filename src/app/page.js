@@ -544,14 +544,6 @@ export default function Home() {
             </div>
 
             <div className="speaker-card-gapless">
-              <Image src="/Jesus.png" alt="Jesus" fill style={{ objectFit: 'cover' }} className="speaker-bg-full" />
-              <div className="speaker-overlay-gradient"></div>
-              <div className="speaker-info-gapless">
-                <h3>Próximamente será revelado</h3>
-              </div>
-            </div>
-
-            <div className="speaker-card-gapless">
               <Image src="/Proximamente.png" alt="Proximamente" fill style={{ objectFit: 'cover' }} className="speaker-bg-full" />
               <div className="speaker-overlay-gradient"></div>
               <div className="speaker-info-gapless">
