@@ -544,7 +544,6 @@ export default function Home() {
               <div className="speaker-overlay-gradient"></div>
               <div className="speaker-info-gapless">
                 <h3>Próximamente será revelado</h3>
-                <p>Ventas online y offline. Experto en escalar negocios a través de estrategias de venta digital y retail tradicional</p>
               </div>
             </div>
 
@@ -553,7 +552,6 @@ export default function Home() {
               <div className="speaker-overlay-gradient"></div>
               <div className="speaker-info-gapless">
                 <h3>Próximamente será revelado</h3>
-                <p>Comunicadora social, creadora de contenido especialista en comunicación y negocios con marcas a nivel nacional</p>
               </div>
             </div>
 
