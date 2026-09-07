@@ -656,7 +656,7 @@ export default function Home() {
               </div>
 
               <div className="price-card-v3" style={{ background: '#bb9154', border: 'none', borderRadius: '20px', width: '100%', zIndex: 2, padding: '40px 30px 30px', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-                <div style={{ fontSize: '1.6rem', fontWeight: 'bold', color: '#fff', textTransform: 'uppercase' }}>ETAPA 1</div>
+                <div style={{ fontSize: '1.6rem', fontWeight: 'bold', color: '#fff', textTransform: 'uppercase' }}>ETAPA ACTUAL</div>
                 <div style={{ fontSize: '4.5rem', fontWeight: 800, color: '#fff', lineHeight: '1', margin: '15px 0 5px' }}>${currentPricing.vipPrice}</div>
                 <div style={{ fontSize: '0.85rem', color: '#fff', opacity: 0.8, marginBottom: '20px' }}>Tasa BCV</div>
                 
