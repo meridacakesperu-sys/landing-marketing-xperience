@@ -14,7 +14,16 @@ export default function Home() {
   const [selectedPillarData, setSelectedPillarData] = useState(null);
   const [refCode, setRefCode] = useState('');
 
-  const [currentPricing, setCurrentPricing] = useState({ stage: 'Pre-venta', genPrice: 75, vipPrice: 120, nextGenPrice: null, nextVipPrice: null });
+  const [currentPricing, setCurrentPricing] = useState({ 
+    stage: 'Etapa Actual', 
+    genPrice: 87, 
+    vipPrice: 135, 
+    nextGenPrice: 97, 
+    nextVipPrice: 150,
+    prevStage: 'PRE-VENTA (DURÓ HASTA EL 6/09/26)',
+    prevGenPrice: 75,
+    prevVipPrice: 120
+  });
 
   useEffect(() => {
     // Automatic pricing logic has been removed as requested.
@@ -595,74 +604,85 @@ export default function Home() {
           </h3>
           <div className="pricing-grid-v3 mt-4 animate-on-scroll">
             
-            <div className="price-card-v3 cyan-theme">
-              <div className="price-subtitle-v3">Entrada</div>
-              <div className="price-title-v3">GENERAL</div>
-              {currentPricing.nextGenPrice && (
-                <div className="price-next-v3" style={{ fontSize: '0.9rem', opacity: 0.8, color: '#e6b85c', marginBottom: '5px' }}>
-                  Próximo precio ${currentPricing.nextGenPrice}
+            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', width: '350px' }}>
+              <div style={{ display: 'flex', alignItems: 'center', marginBottom: '20px' }}>
+                <span style={{ color: '#e6b85c', fontSize: '2rem', fontWeight: 800 }}>X</span>
+                <span style={{ color: '#fff', fontSize: '1.8rem', fontWeight: 800, letterSpacing: '1px' }}>PERIENCE GENERAL</span>
+              </div>
+              
+              <div style={{ background: '#223340', width: '80%', padding: '15px 20px 30px', borderRadius: '20px 20px 0 0', textAlign: 'center', marginBottom: '-25px', zIndex: 1, position: 'relative' }}>
+                <div style={{ fontSize: '0.75rem', color: '#fff', opacity: 0.8, fontWeight: 'bold' }}>PRÓXIMO PRECIO - ULTIMA ETAPA</div>
+                <div style={{ fontSize: '1.4rem', color: '#fff', fontWeight: 'bold', marginTop: '5px' }}>${currentPricing.nextGenPrice}</div>
+              </div>
+
+              <div className="price-card-v3" style={{ background: '#2b3e4d', border: 'none', borderRadius: '20px', width: '100%', zIndex: 2, padding: '40px 30px 30px', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                <div style={{ fontSize: '1.6rem', fontWeight: 'bold', color: '#fff', textTransform: 'uppercase' }}>ETAPA ACTUAL</div>
+                <div style={{ fontSize: '4.5rem', fontWeight: 800, color: '#fff', lineHeight: '1', margin: '15px 0 5px' }}>${currentPricing.genPrice}</div>
+                <div style={{ fontSize: '0.85rem', color: '#fff', opacity: 0.8, marginBottom: '20px' }}>Tasa BCV</div>
+                
+                <div style={{ width: '100%', height: '1px', background: '#fff', opacity: 0.3, marginBottom: '20px' }}></div>
+                
+                <div style={{ fontWeight: 'bold', color: '#fff', marginBottom: '15px', letterSpacing: '1px' }}>INCLUYE</div>
+                <div className="pricing-features-v3" style={{ display: 'flex', flexDirection: 'column', gap: '15px', color: '#fff', opacity: 0.9, textAlign: 'center', marginBottom: '30px' }}>
+                  <div>Entrada general a los dos días<br/>de capacitación</div>
+                  <div>Kit de bienvenida</div>
+                  <div>Certificado de participación</div>
                 </div>
-              )}
-              <div className="price-desc-v3" style={{ marginBottom: '5px', textTransform: 'uppercase' }}>{currentPricing.stage} (Tasa BCV)</div>
-              <div className="price-amount-v3">${currentPricing.genPrice}</div>
-              
-              <div className="pricing-features-v3">
-                <span className="feature-pill-v3">Entrada general 2 días</span>
-                <span className="feature-pill-v3">Kit de bienvenida</span>
-                <span className="feature-pill-v3">Certificado de participación</span>
+
+                <button 
+                  className="btn-gradient-pill" 
+                  style={{ width: '100%', padding: '15px', background: '#fff', color: '#2b3e4d', boxShadow: '0 4px 15px rgba(0,0,0,0.2)' }}
+                  onClick={() => window.open(`https://wa.me/584123060970?text=${encodeURIComponent('¡Hola! Me gustaría inscribirme en el Marketing Xperience con la entrada GENERAL.')}`, '_blank')}
+                >
+                  Inscribirse por Whatsapp
+                </button>
               </div>
-              
-              <button 
-                className="btn-gradient-pill" 
-                onClick={() => window.open(`https://wa.me/584123060970?text=${encodeURIComponent('¡Hola! Me gustaría inscribirme en el Marketing Xperience con la entrada GENERAL.')}`, '_blank')}
-              >
-                Inscribirse por Whatsapp
-              </button>
-              
-              <div style={{ marginTop: '15px', fontSize: '0.8rem', opacity: 0.8, color: '#fff', lineHeight: '1.4' }}>
-                <div>Puedes pagarlo en cuotas</div>
-                <div>Precio corporativo especial a partir de 3</div>
-              </div>
-              
-              <div className="payment-icons">
-                <svg width="40" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M16.9 16.3l-1.4-8h-2.3l-2.4 8h2l.3-1.2h2.5l.2 1.2h1.1zM13.6 14l.8-3.4.8 3.4h-1.6zm-5.7 2.3h-2l-1.3-8h2.1l.6 5 1.1-5h1.9l-2.4 8zM22 8.3h-2.1c-.4 0-.8.2-1 .6l-2.4 5.8-1.1-6.4h-2.2l1.6 8h2.1l2.5-5.9.8 4.7-1.7 1.2h2.2l1.3-8zM8.1 8.3C7.5 8.1 6.8 8 6 8c-2 0-3.4 1-3.4 2.5 0 1.1.9 1.7 2.2 2.3 1.5.7 1.8 1.1 1.8 1.8 0 .8-.9 1.3-2.1 1.3-1.2 0-2.1-.2-3.1-.7v1.8c1.1.5 2.1.8 3.3.8 2.2 0 3.6-1.1 3.6-2.6 0-1.2-1.1-1.7-2.3-2.3-1.4-.7-1.7-1-1.7-1.7 0-.7.7-1.2 1.9-1.2.9 0 1.7.2 2.5.6V8.3z"/></svg>
-                <svg width="40" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M15.2 7.7a7 7 0 10-6.4 0 7.3 7.3 0 000 8.6 7 7 0 106.4 0 7.3 7.3 0 000-8.6zm-3.2 7a5 5 0 110-5.4 5 5 0 010 5.4zM21 12a7 7 0 01-2 4.9 5 5 0 000-9.8A7 7 0 0121 12zM3 12a7 7 0 012-4.9 5 5 0 000 9.8A7 7 0 013 12z"/></svg>
+
+              <div style={{ background: '#223340', width: '80%', padding: '35px 20px 15px', borderRadius: '0 0 20px 20px', textAlign: 'center', marginTop: '-25px', zIndex: 1, position: 'relative' }}>
+                <div style={{ fontSize: '0.75rem', color: '#fff', opacity: 0.8, fontWeight: 'bold', textTransform: 'uppercase' }}>{currentPricing.prevStage}</div>
+                <div style={{ fontSize: '1.4rem', color: '#fff', fontWeight: 'bold', textDecoration: 'line-through', opacity: 0.8, marginTop: '5px' }}>${currentPricing.prevGenPrice}</div>
               </div>
             </div>
 
-            <div className="price-card-v3 gold-theme">
-              <div className="price-subtitle-v3">Entrada</div>
-              <div className="price-title-v3">VIP</div>
-              {currentPricing.nextVipPrice && (
-                <div className="price-next-v3" style={{ fontSize: '0.9rem', opacity: 0.8, color: '#e6b85c', marginBottom: '5px' }}>
-                  Próximo precio ${currentPricing.nextVipPrice}
+            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', width: '350px' }}>
+              <div style={{ display: 'flex', alignItems: 'center', marginBottom: '20px' }}>
+                <span style={{ color: '#e6b85c', fontSize: '2rem', fontWeight: 800 }}>X</span>
+                <span style={{ color: '#e6b85c', fontSize: '1.8rem', fontWeight: 800, letterSpacing: '1px' }}>PERIENCE VIP</span>
+              </div>
+              
+              <div style={{ background: '#8b7147', width: '80%', padding: '15px 20px 30px', borderRadius: '20px 20px 0 0', textAlign: 'center', marginBottom: '-25px', zIndex: 1, position: 'relative' }}>
+                <div style={{ fontSize: '0.75rem', color: '#fff', opacity: 0.8, fontWeight: 'bold' }}>PRÓXIMO PRECIO - ULTIMA ETAPA</div>
+                <div style={{ fontSize: '1.4rem', color: '#fff', fontWeight: 'bold', marginTop: '5px' }}>${currentPricing.nextVipPrice}</div>
+              </div>
+
+              <div className="price-card-v3" style={{ background: '#bb9154', border: 'none', borderRadius: '20px', width: '100%', zIndex: 2, padding: '40px 30px 30px', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                <div style={{ fontSize: '1.6rem', fontWeight: 'bold', color: '#fff', textTransform: 'uppercase' }}>ETAPA 1</div>
+                <div style={{ fontSize: '4.5rem', fontWeight: 800, color: '#fff', lineHeight: '1', margin: '15px 0 5px' }}>${currentPricing.vipPrice}</div>
+                <div style={{ fontSize: '0.85rem', color: '#fff', opacity: 0.8, marginBottom: '20px' }}>Tasa BCV</div>
+                
+                <div style={{ width: '100%', height: '1px', background: '#fff', opacity: 0.5, marginBottom: '20px' }}></div>
+                
+                <div style={{ fontWeight: 'bold', color: '#fff', marginBottom: '15px', letterSpacing: '1px' }}>INCLUYE</div>
+                <div className="pricing-features-v3" style={{ display: 'flex', flexDirection: 'column', gap: '15px', color: '#fff', opacity: 0.9, textAlign: 'center', marginBottom: '30px' }}>
+                  <div>Kit de bienvenida PREMIUM</div>
+                  <div>Encuentro privado un día<br/>antes con los ponentes y<br/>networking de alto nivel</div>
+                  <div>Masterclass de edición PRO</div>
+                  <div>Entrada general a los dos días<br/>de capacitación</div>
+                  <div>Certificado de participación</div>
                 </div>
-              )}
-              <div className="price-desc-v3" style={{ marginBottom: '5px', textTransform: 'uppercase' }}>{currentPricing.stage} (Tasa BCV)</div>
-              <div className="price-amount-v3">${currentPricing.vipPrice}</div>
-              
-              <div className="pricing-features-v3">
-                <span className="feature-pill-v3">Kit de bienvenida PREMIUM</span>
-                <span className="feature-pill-v3">Encuentro privado con ponentes</span>
-                <span className="feature-pill-v3">Masterclass de edición PRO</span>
-                <span className="feature-pill-v3">Entrada general 2 días</span>
-                <span className="feature-pill-v3">Certificado de participación</span>
+
+                <button 
+                  className="btn-gradient-pill" 
+                  style={{ width: '100%', padding: '15px', background: '#fff', color: '#bb9154', boxShadow: '0 4px 15px rgba(0,0,0,0.2)' }}
+                  onClick={() => window.open(`https://wa.me/584123060970?text=${encodeURIComponent('¡Hola! Me gustaría inscribirme en el Marketing Xperience con la entrada VIP.')}`, '_blank')}
+                >
+                  Inscribirse por Whatsapp
+                </button>
               </div>
-              
-              <button 
-                className="btn-gradient-pill" 
-                onClick={() => window.open(`https://wa.me/584123060970?text=${encodeURIComponent('¡Hola! Me gustaría inscribirme en el Marketing Xperience con la entrada VIP.')}`, '_blank')}
-              >
-                Inscribirse por Whatsapp
-              </button>
-              
-              <div style={{ marginTop: '15px', fontSize: '0.8rem', opacity: 0.8, color: '#fff', lineHeight: '1.4' }}>
-                <div>Puedes pagarlo en cuotas</div>
-              </div>
-              
-              <div className="payment-icons">
-                <svg width="40" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M16.9 16.3l-1.4-8h-2.3l-2.4 8h2l.3-1.2h2.5l.2 1.2h1.1zM13.6 14l.8-3.4.8 3.4h-1.6zm-5.7 2.3h-2l-1.3-8h2.1l.6 5 1.1-5h1.9l-2.4 8zM22 8.3h-2.1c-.4 0-.8.2-1 .6l-2.4 5.8-1.1-6.4h-2.2l1.6 8h2.1l2.5-5.9.8 4.7-1.7 1.2h2.2l1.3-8zM8.1 8.3C7.5 8.1 6.8 8 6 8c-2 0-3.4 1-3.4 2.5 0 1.1.9 1.7 2.2 2.3 1.5.7 1.8 1.1 1.8 1.8 0 .8-.9 1.3-2.1 1.3-1.2 0-2.1-.2-3.1-.7v1.8c1.1.5 2.1.8 3.3.8 2.2 0 3.6-1.1 3.6-2.6 0-1.2-1.1-1.7-2.3-2.3-1.4-.7-1.7-1-1.7-1.7 0-.7.7-1.2 1.9-1.2.9 0 1.7.2 2.5.6V8.3z"/></svg>
-                <svg width="40" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M15.2 7.7a7 7 0 10-6.4 0 7.3 7.3 0 000 8.6 7 7 0 106.4 0 7.3 7.3 0 000-8.6zm-3.2 7a5 5 0 110-5.4 5 5 0 010 5.4zM21 12a7 7 0 01-2 4.9 5 5 0 000-9.8A7 7 0 0121 12zM3 12a7 7 0 012-4.9 5 5 0 000 9.8A7 7 0 013 12z"/></svg>
+
+              <div style={{ background: '#7b6138', width: '80%', padding: '35px 20px 15px', borderRadius: '0 0 20px 20px', textAlign: 'center', marginTop: '-25px', zIndex: 1, position: 'relative' }}>
+                <div style={{ fontSize: '0.75rem', color: '#fff', opacity: 0.8, fontWeight: 'bold', textTransform: 'uppercase' }}>{currentPricing.prevStage}</div>
+                <div style={{ fontSize: '1.4rem', color: '#fff', fontWeight: 'bold', textDecoration: 'line-through', opacity: 0.8, marginTop: '5px' }}>{currentPricing.prevVipPrice}$</div>
               </div>
             </div>
 
