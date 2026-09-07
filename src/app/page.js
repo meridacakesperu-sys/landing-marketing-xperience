@@ -136,10 +136,10 @@ export default function Home() {
           </div>
           <div className="nav-progress-container" style={{ flex: 1, maxWidth: '300px', margin: '0 20px', textAlign: 'center' }}>
             <div style={{ fontSize: '0.85rem', fontWeight: 'bold', color: '#fff', marginBottom: '4px' }}>
-              75% de entradas vendidas
+              80% de entradas vendidas
             </div>
             <div style={{ background: 'rgba(255,255,255,0.2)', borderRadius: '10px', height: '8px', width: '100%', overflow: 'hidden' }}>
-              <div style={{ background: '#e6b85c', width: '75%', height: '100%', borderRadius: '10px' }}></div>
+              <div style={{ background: '#e6b85c', width: '80%', height: '100%', borderRadius: '10px' }}></div>
             </div>
           </div>
 
