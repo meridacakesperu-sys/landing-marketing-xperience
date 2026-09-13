@@ -613,6 +613,7 @@ export default function AttendeesClient({ initialRegistrations, initialTables, i
                   <button type="submit" style={{ padding: '12px', background: 'var(--color-accent)', color: '#fff', border: 'none', borderRadius: '4px', cursor: 'pointer', fontWeight: 'bold', marginTop: '10px' }}>Guardar Líder</button>
                 </form>
               )}
+            </div>
           </div>
         </div>
       )}
