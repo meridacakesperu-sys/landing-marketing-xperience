@@ -63,7 +63,7 @@ export default function RegistroLider() {
             
             <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
               <label style={{ fontSize: '0.9rem', color: '#cbd5e1' }}>Nombre Completo *</label>
-              <input required type="text" name="name" value={formData.name} onChange={handleChange} style={{ padding: '12px 16px', borderRadius: '8px', border: '1px solid #334155', background: '#0f172a', color: '#fff', outline: 'none' }} placeholder="Ej. Yissel Carpio" />
+              <input required type="text" name="name" value={formData.name} onChange={handleChange} style={{ padding: '12px 16px', borderRadius: '8px', border: '1px solid #334155', background: '#0f172a', color: '#fff', outline: 'none' }} placeholder="Tu nombre aquí" />
             </div>
 
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }}>
