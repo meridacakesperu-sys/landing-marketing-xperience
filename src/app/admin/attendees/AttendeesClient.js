@@ -15,6 +15,7 @@ export default function AttendeesClient({ initialRegistrations, initialTables, i
   const [editTableName, setEditTableName] = useState('');
   const [editTableLeaderId, setEditTableLeaderId] = useState('');
   const [showLeadersModal, setShowLeadersModal] = useState(false);
+  const [selectedLeader, setSelectedLeader] = useState(null);
   const [newLeader, setNewLeader] = useState({ name: '', email: '', phone: '', business: '', birthday: '', notes: '' });
   const [selectedClient, setSelectedClient] = useState(null);
 
@@ -89,6 +90,19 @@ export default function AttendeesClient({ initialRegistrations, initialTables, i
       }
     } catch (err) {
       console.error("Error creating leader", err);
+    }
+  };
+
+  const handleDeleteLeader = async (id) => {
+    if (!confirm('¿Estás seguro de eliminar a este líder?')) return;
+    try {
+      const res = await fetch(`/api/admin/leaders?id=${id}`, { method: 'DELETE' });
+      if (res.ok) {
+        setLeaders(leaders.filter(l => l.id !== id));
+        setSelectedLeader(null);
+      }
+    } catch (err) {
+      console.error('Error deleting leader', err);
     }
   };
 
@@ -503,7 +517,11 @@ export default function AttendeesClient({ initialRegistrations, initialTables, i
               <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
                 {leaders.length === 0 && <div style={{ color: '#64748b' }}>No hay líderes registrados.</div>}
                 {leaders.map(l => (
-                  <div key={l.id} style={{ background: '#f8fafc', padding: '12px', borderRadius: '6px', border: '1px solid #e2e8f0' }}>
+                  <div 
+                    key={l.id} 
+                    onClick={() => setSelectedLeader(l)}
+                    style={{ background: selectedLeader?.id === l.id ? '#e2e8f0' : '#f8fafc', padding: '12px', borderRadius: '6px', border: '1px solid #e2e8f0', cursor: 'pointer', transition: 'background 0.2s' }}
+                  >
                     <div style={{ fontWeight: 'bold', color: '#0f172a' }}>{l.name}</div>
                     <div style={{ fontSize: '0.8rem', color: '#64748b' }}>{l.email || 'Sin email'} • {l.phone || 'Sin tel'}</div>
                     {l.birthday && getZodiacInfo(l.birthday) && (
@@ -517,36 +535,84 @@ export default function AttendeesClient({ initialRegistrations, initialTables, i
             </div>
             <div style={{ flex: 1, borderLeft: '1px solid #e2e8f0', paddingLeft: '30px' }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }}>
-                <h3 style={{ color: '#0f172a', margin: 0 }}>Crear Nuevo Líder</h3>
-                <button onClick={() => setShowLeadersModal(false)} style={{ background: 'transparent', border: 'none', color: '#0f172a', fontSize: '1.5rem', cursor: 'pointer' }}>×</button>
+                <h3 style={{ color: '#0f172a', margin: 0 }}>{selectedLeader ? 'Detalle del Líder' : 'Crear Nuevo Líder'}</h3>
+                <button onClick={() => { setShowLeadersModal(false); setSelectedLeader(null); }} style={{ background: 'transparent', border: 'none', color: '#0f172a', fontSize: '1.5rem', cursor: 'pointer' }}>×</button>
               </div>
-              <form onSubmit={handleCreateLeader} style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
-                <input required placeholder="Nombre Completo" value={newLeader.name} onChange={e => setNewLeader({...newLeader, name: e.target.value})} style={{ padding: '10px', borderRadius: '4px', background: '#f8fafc', border: '1px solid #e2e8f0', color: '#0f172a' }} />
-                <div style={{ display: 'flex', gap: '10px' }}>
-                  <input type="email" placeholder="Correo" value={newLeader.email} onChange={e => setNewLeader({...newLeader, email: e.target.value})} style={{ flex: 1, padding: '10px', borderRadius: '4px', background: '#f8fafc', border: '1px solid #e2e8f0', color: '#0f172a' }} />
-                  <input placeholder="Teléfono" value={newLeader.phone} onChange={e => setNewLeader({...newLeader, phone: e.target.value})} style={{ flex: 1, padding: '10px', borderRadius: '4px', background: '#f8fafc', border: '1px solid #e2e8f0', color: '#0f172a' }} />
-                </div>
-                <div style={{ display: 'flex', gap: '10px' }}>
-                  <div style={{ flex: 1 }}>
-                    <label style={{ fontSize: '0.8rem', color: '#64748b', display: 'block', marginBottom: '4px' }}>Cumpleaños</label>
-                    <input type="date" value={newLeader.birthday} onChange={e => setNewLeader({...newLeader, birthday: e.target.value})} style={{ width: '100%', padding: '10px', borderRadius: '4px', background: '#f8fafc', border: '1px solid #e2e8f0', color: '#0f172a' }} />
-                  </div>
-                </div>
-                <input placeholder="Negocio / Empresa" value={newLeader.business} onChange={e => setNewLeader({...newLeader, business: e.target.value})} style={{ padding: '10px', borderRadius: '4px', background: '#f8fafc', border: '1px solid #e2e8f0', color: '#0f172a' }} />
-                
-                {newLeader.birthday && getZodiacInfo(newLeader.birthday) && (
-                  <div style={{ background: 'rgba(74, 137, 167, 0.1)', border: '1px solid var(--color-accent)', padding: '12px', borderRadius: '8px' }}>
-                    <div style={{ fontWeight: 'bold', color: 'var(--color-bg)', marginBottom: '8px' }}>
-                      Signo: {getZodiacInfo(newLeader.birthday).sign} | Numerología: {getZodiacInfo(newLeader.birthday).numerology}
+              
+              {selectedLeader ? (
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '15px' }}>
+                  <div style={{ background: '#f8fafc', padding: '20px', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
+                    <div style={{ fontSize: '1.2rem', fontWeight: 'bold', color: '#0f172a', marginBottom: '5px' }}>{selectedLeader.name}</div>
+                    <div style={{ color: '#64748b', marginBottom: '15px' }}>Registrado el: {new Date(selectedLeader.createdAt).toLocaleDateString()}</div>
+                    
+                    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '15px', marginBottom: '15px' }}>
+                      <div>
+                        <div style={{ fontSize: '0.8rem', color: '#64748b' }}>Correo</div>
+                        <div style={{ color: '#0f172a' }}>{selectedLeader.email || '-'}</div>
+                      </div>
+                      <div>
+                        <div style={{ fontSize: '0.8rem', color: '#64748b' }}>Teléfono</div>
+                        <div style={{ color: '#0f172a' }}>{selectedLeader.phone || '-'}</div>
+                      </div>
+                      <div>
+                        <div style={{ fontSize: '0.8rem', color: '#64748b' }}>Cumpleaños</div>
+                        <div style={{ color: '#0f172a' }}>{selectedLeader.birthday || '-'}</div>
+                      </div>
+                      <div>
+                        <div style={{ fontSize: '0.8rem', color: '#64748b' }}>Negocio/Empresa</div>
+                        <div style={{ color: '#0f172a' }}>{selectedLeader.business || '-'}</div>
+                      </div>
+                    </div>
+                    
+                    {selectedLeader.birthday && getZodiacInfo(selectedLeader.birthday) && (
+                      <div style={{ background: 'rgba(74, 137, 167, 0.1)', border: '1px solid var(--color-accent)', padding: '12px', borderRadius: '8px', marginBottom: '15px' }}>
+                        <div style={{ fontWeight: 'bold', color: 'var(--color-bg)' }}>
+                          Signo: {getZodiacInfo(selectedLeader.birthday).sign} | Numerología: {getZodiacInfo(selectedLeader.birthday).numerology}
+                        </div>
+                      </div>
+                    )}
+                    
+                    <div>
+                      <div style={{ fontSize: '0.8rem', color: '#64748b' }}>Notas Internas</div>
+                      <div style={{ color: '#0f172a', background: '#fff', padding: '10px', borderRadius: '4px', border: '1px solid #e2e8f0', minHeight: '60px' }}>
+                        {selectedLeader.notes || '-'}
+                      </div>
                     </div>
                   </div>
-                )}
-                
-                <textarea placeholder="Notas Internas..." value={newLeader.notes} onChange={e => setNewLeader({...newLeader, notes: e.target.value})} rows="3" style={{ padding: '10px', borderRadius: '4px', background: '#f8fafc', border: '1px solid #e2e8f0', color: '#0f172a' }} />
-                
-                <button type="submit" style={{ padding: '12px', background: 'var(--color-accent)', color: '#fff', border: 'none', borderRadius: '4px', cursor: 'pointer', fontWeight: 'bold', marginTop: '10px' }}>Guardar Líder</button>
-              </form>
-            </div>
+                  
+                  <div style={{ display: 'flex', gap: '10px' }}>
+                    <button onClick={() => setSelectedLeader(null)} style={{ flex: 1, padding: '10px', background: '#e2e8f0', color: '#0f172a', border: 'none', borderRadius: '4px', cursor: 'pointer', fontWeight: 'bold' }}>Cerrar Detalles</button>
+                    <button onClick={() => handleDeleteLeader(selectedLeader.id)} style={{ padding: '10px 20px', background: '#ef4444', color: '#fff', border: 'none', borderRadius: '4px', cursor: 'pointer', fontWeight: 'bold' }}>Eliminar</button>
+                  </div>
+                </div>
+              ) : (
+                <form onSubmit={handleCreateLeader} style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+                  <input required placeholder="Nombre Completo" value={newLeader.name} onChange={e => setNewLeader({...newLeader, name: e.target.value})} style={{ padding: '10px', borderRadius: '4px', background: '#f8fafc', border: '1px solid #e2e8f0', color: '#0f172a' }} />
+                  <div style={{ display: 'flex', gap: '10px' }}>
+                    <input type="email" placeholder="Correo" value={newLeader.email} onChange={e => setNewLeader({...newLeader, email: e.target.value})} style={{ flex: 1, padding: '10px', borderRadius: '4px', background: '#f8fafc', border: '1px solid #e2e8f0', color: '#0f172a' }} />
+                    <input placeholder="Teléfono" value={newLeader.phone} onChange={e => setNewLeader({...newLeader, phone: e.target.value})} style={{ flex: 1, padding: '10px', borderRadius: '4px', background: '#f8fafc', border: '1px solid #e2e8f0', color: '#0f172a' }} />
+                  </div>
+                  <div style={{ display: 'flex', gap: '10px' }}>
+                    <div style={{ flex: 1 }}>
+                      <label style={{ fontSize: '0.8rem', color: '#64748b', display: 'block', marginBottom: '4px' }}>Cumpleaños</label>
+                      <input type="date" value={newLeader.birthday} onChange={e => setNewLeader({...newLeader, birthday: e.target.value})} style={{ width: '100%', padding: '10px', borderRadius: '4px', background: '#f8fafc', border: '1px solid #e2e8f0', color: '#0f172a' }} />
+                    </div>
+                  </div>
+                  <input placeholder="Negocio / Empresa" value={newLeader.business} onChange={e => setNewLeader({...newLeader, business: e.target.value})} style={{ padding: '10px', borderRadius: '4px', background: '#f8fafc', border: '1px solid #e2e8f0', color: '#0f172a' }} />
+                  
+                  {newLeader.birthday && getZodiacInfo(newLeader.birthday) && (
+                    <div style={{ background: 'rgba(74, 137, 167, 0.1)', border: '1px solid var(--color-accent)', padding: '12px', borderRadius: '8px' }}>
+                      <div style={{ fontWeight: 'bold', color: 'var(--color-bg)', marginBottom: '8px' }}>
+                        Signo: {getZodiacInfo(newLeader.birthday).sign} | Numerología: {getZodiacInfo(newLeader.birthday).numerology}
+                      </div>
+                    </div>
+                  )}
+                  
+                  <textarea placeholder="Notas Internas..." value={newLeader.notes} onChange={e => setNewLeader({...newLeader, notes: e.target.value})} rows="3" style={{ padding: '10px', borderRadius: '4px', background: '#f8fafc', border: '1px solid #e2e8f0', color: '#0f172a' }} />
+                  
+                  <button type="submit" style={{ padding: '12px', background: 'var(--color-accent)', color: '#fff', border: 'none', borderRadius: '4px', cursor: 'pointer', fontWeight: 'bold', marginTop: '10px' }}>Guardar Líder</button>
+                </form>
+              )}
           </div>
         </div>
       )}

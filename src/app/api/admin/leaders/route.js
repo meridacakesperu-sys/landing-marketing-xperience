@@ -52,3 +52,24 @@ export async function PUT(request) {
     return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
   }
 }
+
+export async function DELETE(request) {
+  try {
+    const { searchParams } = new URL(request.url);
+    const id = searchParams.get('id');
+    
+    if (!id) {
+      return NextResponse.json({ error: 'ID is required' }, { status: 400 });
+    }
+
+    await db.execute({
+      sql: 'DELETE FROM leaders WHERE id = ?',
+      args: [id]
+    });
+
+    return NextResponse.json({ success: true });
+  } catch (error) {
+    console.error('Delete leader error:', error);
+    return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
+  }
+}
