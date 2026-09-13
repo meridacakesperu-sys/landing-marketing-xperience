@@ -566,8 +566,15 @@ export default function AttendeesClient({ initialRegistrations, initialTables, i
                     
                     {selectedLeader.birthday && getZodiacInfo(selectedLeader.birthday) && (
                       <div style={{ background: 'rgba(74, 137, 167, 0.1)', border: '1px solid var(--color-accent)', padding: '12px', borderRadius: '8px', marginBottom: '15px' }}>
-                        <div style={{ fontWeight: 'bold', color: 'var(--color-bg)' }}>
+                        <div style={{ fontWeight: 'bold', color: 'var(--color-bg)', marginBottom: '8px' }}>
                           Signo: {getZodiacInfo(selectedLeader.birthday).sign} | Numerología: {getZodiacInfo(selectedLeader.birthday).numerology}
+                        </div>
+                        <div style={{ fontSize: '0.85rem', color: '#334155', display: 'flex', flexDirection: 'column', gap: '6px' }}>
+                          <div><strong style={{color: '#0f172a'}}>En el Trabajo:</strong> {getZodiacInfo(selectedLeader.birthday).work}</div>
+                          <div><strong style={{color: '#0f172a'}}>En lo Social:</strong> {getZodiacInfo(selectedLeader.birthday).social}</div>
+                          <div><strong style={{color: '#0f172a'}}>En lo Interno:</strong> {getZodiacInfo(selectedLeader.birthday).internal}</div>
+                          <div><strong style={{color: '#0f172a'}}>Con el Dinero:</strong> {getZodiacInfo(selectedLeader.birthday).money}</div>
+                          <div><strong style={{color: '#0f172a'}}>Con su Familia:</strong> {getZodiacInfo(selectedLeader.birthday).family}</div>
                         </div>
                       </div>
                     )}
@@ -604,6 +611,13 @@ export default function AttendeesClient({ initialRegistrations, initialTables, i
                     <div style={{ background: 'rgba(74, 137, 167, 0.1)', border: '1px solid var(--color-accent)', padding: '12px', borderRadius: '8px' }}>
                       <div style={{ fontWeight: 'bold', color: 'var(--color-bg)', marginBottom: '8px' }}>
                         Signo: {getZodiacInfo(newLeader.birthday).sign} | Numerología: {getZodiacInfo(newLeader.birthday).numerology}
+                      </div>
+                      <div style={{ fontSize: '0.85rem', color: '#334155', display: 'flex', flexDirection: 'column', gap: '6px' }}>
+                        <div><strong style={{color: '#0f172a'}}>En el Trabajo:</strong> {getZodiacInfo(newLeader.birthday).work}</div>
+                        <div><strong style={{color: '#0f172a'}}>En lo Social:</strong> {getZodiacInfo(newLeader.birthday).social}</div>
+                        <div><strong style={{color: '#0f172a'}}>En lo Interno:</strong> {getZodiacInfo(newLeader.birthday).internal}</div>
+                        <div><strong style={{color: '#0f172a'}}>Con el Dinero:</strong> {getZodiacInfo(newLeader.birthday).money}</div>
+                        <div><strong style={{color: '#0f172a'}}>Con su Familia:</strong> {getZodiacInfo(newLeader.birthday).family}</div>
                       </div>
                     </div>
                   )}
