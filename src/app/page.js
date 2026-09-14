@@ -655,7 +655,8 @@ export default function Home() {
                 <div style={{ fontSize: '1.4rem', color: '#fff', fontWeight: 'bold', marginTop: '5px' }}>${currentPricing.nextVipPrice}</div>
               </div>
 
-              <div className="price-card-v3" style={{ background: '#bb9154', border: 'none', borderRadius: '20px', width: '100%', zIndex: 2, padding: '40px 30px 30px', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+              <div className="price-card-v3" style={{ position: 'relative', background: '#bb9154', border: 'none', borderRadius: '20px', width: '100%', zIndex: 2, padding: '40px 30px 30px', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                <img src="/sold-out.png" style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%) rotate(-15deg)', width: '120%', zIndex: 10, pointerEvents: 'none', opacity: 0.9 }} alt="Sold Out" />
                 <div style={{ fontSize: '1.6rem', fontWeight: 'bold', color: '#fff', textTransform: 'uppercase' }}>ETAPA ACTUAL</div>
                 <div style={{ fontSize: '4.5rem', fontWeight: 800, color: '#fff', lineHeight: '1', margin: '15px 0 5px' }}>${currentPricing.vipPrice}</div>
                 <div style={{ fontSize: '0.85rem', color: '#fff', opacity: 0.8, marginBottom: '20px' }}>Tasa BCV</div>
@@ -670,14 +671,6 @@ export default function Home() {
                   <div>Entrada general a los dos días<br/>de capacitación</div>
                   <div>Certificado de participación</div>
                 </div>
-
-                <button 
-                  className="btn-gradient-pill" 
-                  style={{ width: '100%', padding: '15px', background: '#fff', color: '#bb9154', boxShadow: '0 4px 15px rgba(0,0,0,0.2)' }}
-                  onClick={() => window.open(`https://wa.me/584123060970?text=${encodeURIComponent('¡Hola! Me gustaría inscribirme en el Marketing Xperience con la entrada VIP.')}`, '_blank')}
-                >
-                  Inscribirse por Whatsapp
-                </button>
               </div>
 
               <div style={{ background: '#7b6138', width: '80%', padding: '35px 20px 15px', borderRadius: '0 0 20px 20px', textAlign: 'center', marginTop: '-25px', zIndex: 1, position: 'relative' }}>
