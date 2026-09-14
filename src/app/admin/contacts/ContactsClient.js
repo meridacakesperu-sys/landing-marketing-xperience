@@ -108,9 +108,12 @@ export default function ContactsClient({ initialData, agents = [] }) {
 
   // Filter Logic
   const filteredRegistrations = registrations.filter(reg => {
+    const normalize = str => str ? str.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase() : '';
+    const searchNormalized = normalize(searchName);
+    
     const matchesSearch = searchName === '' || 
-      reg.name.toLowerCase().includes(searchName.toLowerCase()) || 
-      reg.email.toLowerCase().includes(searchName.toLowerCase());
+      normalize(reg.name).includes(searchNormalized) || 
+      normalize(reg.email).includes(searchNormalized);
     
     const matchesPlan = filterPlan === 'Todos' || reg.plan.includes(filterPlan);
     const matchesDate = filterDate === '' || reg.createdAt.startsWith(filterDate);

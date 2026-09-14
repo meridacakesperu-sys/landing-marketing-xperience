@@ -20,13 +20,18 @@ export default function CheckinClient({ initialData, tables = [] }) {
   const [loadingPayments, setLoadingPayments] = useState(false);
   const scannerRef = useRef(null);
 
-  const filteredClients = clients.filter(c => 
-    c.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    c.email.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    (c.phone && c.phone.includes(searchQuery)) ||
-    (c.ticket_id && c.ticket_id.includes(searchQuery)) ||
-    c.plan.toLowerCase().includes(searchQuery.toLowerCase())
-  );
+  const filteredClients = clients.filter(c => {
+    if (!searchQuery) return true;
+    const normalize = str => str ? str.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase() : '';
+    const q = normalize(searchQuery);
+    return (
+      normalize(c.name).includes(q) ||
+      normalize(c.email).includes(q) ||
+      (c.ticket_id && normalize(c.ticket_id).includes(q)) ||
+      (c.phone && normalize(c.phone).includes(q)) ||
+      normalize(c.plan).includes(q)
+    );
+  });
 
   useEffect(() => {
     if (isScanning) {
