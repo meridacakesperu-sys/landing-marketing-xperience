@@ -460,11 +460,11 @@ export default function CheckinClient({ initialData, tables = [] }) {
                   <div style={{ fontSize: '0.85rem', color: '#94a3b8', fontFamily: 'monospace' }}>{client.ticket_id}</div>
                 </td>
                 <td style={{ padding: '15px 20px' }}>
-                  <div style={{ color: client.status === 'Completado' ? '#10b981' : '#ef4444', fontWeight: 'bold', fontSize: '0.9rem', display: 'flex', alignItems: 'center', gap: '5px' }}>
-                    <div style={{ width: '8px', height: '8px', borderRadius: '50%', background: client.status === 'Completado' ? '#10b981' : '#ef4444' }}></div>
-                    {client.status === 'Completado' ? 'Pagado' : 'Pendiente'}
+                  <div style={{ color: (client.status === 'Completado' || client.status === 'Invitado') ? '#10b981' : '#ef4444', fontWeight: 'bold', fontSize: '0.9rem', display: 'flex', alignItems: 'center', gap: '5px' }}>
+                    <div style={{ width: '8px', height: '8px', borderRadius: '50%', background: (client.status === 'Completado' || client.status === 'Invitado') ? '#10b981' : '#ef4444' }}></div>
+                    {client.status === 'Completado' ? 'Pagado' : client.status === 'Invitado' ? 'Invitado' : 'Pendiente'}
                   </div>
-                  {client.status !== 'Completado' && (
+                  {client.status !== 'Completado' && client.status !== 'Invitado' && (
                     <div style={{ fontSize: '0.85rem', color: '#ef4444', marginTop: '4px', fontWeight: 'bold' }}>
                       Debe: ${((client.ticket_price || 0) - (client.total_paid || 0)).toFixed(2)}
                     </div>
@@ -481,9 +481,10 @@ export default function CheckinClient({ initialData, tables = [] }) {
                       Entró ✅
                     </button>
                   ) : (
-                    <button onClick={() => {
-                        if (client.status === 'Completado') {
-                          markAttendance(client.ticket_id, 1);
+                    <button onClick={async () => {
+                        if (client.status === 'Completado' || client.status === 'Invitado') {
+                          await markAttendance(client.ticket_id, 1);
+                          alert(`✅ Check-in exitoso. Entrada validada correctamente.`);
                         } else {
                           const owed = (client.ticket_price || 0) - (client.total_paid || 0);
                           setPaymentAmount(owed > 0 ? owed.toString() : '');
@@ -491,9 +492,9 @@ export default function CheckinClient({ initialData, tables = [] }) {
                           setIsScanning(false);
                         }
                       }} 
-                      style={{ background: client.status === 'Completado' ? '#10b981' : '#f59e0b', color: '#fff', border: 'none', padding: '6px 12px', borderRadius: '6px', cursor: 'pointer', fontSize: '0.85rem', fontWeight: 'bold' }}
+                      style={{ background: (client.status === 'Completado' || client.status === 'Invitado') ? '#10b981' : '#f59e0b', color: '#fff', border: 'none', padding: '6px 12px', borderRadius: '6px', cursor: 'pointer', fontSize: '0.85rem', fontWeight: 'bold' }}
                     >
-                      {client.status === 'Completado' ? 'Marcar' : 'Cobrar e Ingresar'}
+                      {(client.status === 'Completado' || client.status === 'Invitado') ? 'Marcar' : 'Cobrar e Ingresar'}
                     </button>
                   )}
                 </td>

@@ -1175,7 +1175,11 @@ export function ClientDetailModal({ client, initialTab, onClose, onUpdate, onDel
               </div>
               <div style={{ textAlign: 'right' }}>
                 <div style={{ color: '#64748b' }}>Costo Entrada: ${ticketPrice}</div>
-                {((client.total_paid || 0) >= ticketPrice && ticketPrice > 0) ? (
+                {client.status === 'Invitado' ? (
+                  <div style={{ marginTop: '5px', padding: '4px 10px', background: 'rgba(245, 158, 11, 0.2)', color: '#f59e0b', borderRadius: '20px', fontWeight: 'bold', display: 'inline-block', fontSize: '0.9rem' }}>
+                    🎫 Invitado
+                  </div>
+                ) : ((client.total_paid || 0) >= ticketPrice && ticketPrice > 0) ? (
                   <div style={{ marginTop: '5px', padding: '4px 10px', background: 'rgba(74, 222, 128, 0.2)', color: '#4ade80', borderRadius: '20px', fontWeight: 'bold', display: 'inline-block', fontSize: '0.9rem' }}>
                     ✅ Pago completado
                   </div>
@@ -1189,7 +1193,20 @@ export function ClientDetailModal({ client, initialTab, onClose, onUpdate, onDel
 
             <form onSubmit={savePayment} style={{ display: 'flex', flexDirection: 'column', gap: '10px', marginBottom: '20px', background: '#ffffff', padding: '16px', borderRadius: '8px' }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                <h4 style={{ margin: 0, color: '#0f172a' }}>{editingPayment ? 'Editar Pago' : 'Registrar Pago'}</h4>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                  <h4 style={{ margin: 0, color: '#0f172a' }}>{editingPayment ? 'Editar Pago' : 'Registrar Pago'}</h4>
+                  {!editingPayment && client.status !== 'Invitado' && (
+                    <button type="button" onClick={() => {
+                      if(confirm('¿Seguro que quieres marcar a este contacto como INVITADO? No se le cobrará nada.')) {
+                        updateStatus(client.id, 'Invitado');
+                        setRegistrations(regs => regs.map(r => r.id === client.id ? { ...r, status: 'Invitado' } : r));
+                        setSelectedClient({ ...client, status: 'Invitado' });
+                      }
+                    }} style={{ background: '#f59e0b', color: '#fff', border: 'none', padding: '4px 10px', borderRadius: '4px', cursor: 'pointer', fontSize: '0.75rem', fontWeight: 'bold' }}>
+                      Marcar como Invitado
+                    </button>
+                  )}
+                </div>
                 {editingPayment && (
                   <button type="button" onClick={() => {
                     setEditingPayment(null);
