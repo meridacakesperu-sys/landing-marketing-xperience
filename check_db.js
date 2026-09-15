@@ -7,8 +7,12 @@ const client = createClient({
 
 async function run() {
   try {
-    const regResult = await client.execute("SELECT * FROM registrations WHERE name LIKE '%jesús%' OR name LIKE '%jesus%'");
-    console.log("Registrations:", JSON.stringify(regResult.rows, null, 2));
+    const regResult = await client.execute("SELECT id, name, email, phone, createdAt FROM registrations WHERE name LIKE '%mariangel%' OR name LIKE '%briceño%' OR name LIKE '%briceno%' COLLATE NOCASE");
+    console.log("Registrations:", regResult.rows);
+
+    const leadResult = await client.execute("SELECT id, name, email, phone, createdAt FROM leaders WHERE name LIKE '%mariangel%' OR name LIKE '%briceño%' OR name LIKE '%briceno%' COLLATE NOCASE");
+    console.log("Leaders:", leadResult.rows);
+
   } catch (err) {
     console.error("Error:", err);
   }

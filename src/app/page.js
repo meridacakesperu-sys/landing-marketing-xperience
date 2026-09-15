@@ -615,7 +615,8 @@ export default function Home() {
                 <div style={{ fontSize: '1.4rem', color: '#fff', fontWeight: 'bold', marginTop: '5px' }}>${currentPricing.nextGenPrice}</div>
               </div>
 
-              <div className="price-card-v3" style={{ background: '#2b3e4d', border: 'none', borderRadius: '20px', width: '100%', zIndex: 2, padding: '40px 30px 30px', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+              <div className="price-card-v3" style={{ position: 'relative', background: '#2b3e4d', border: 'none', borderRadius: '20px', width: '100%', zIndex: 2, padding: '40px 30px 30px', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                <img src="/sold-out.png" style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%) rotate(-15deg)', width: '120%', zIndex: 10, pointerEvents: 'none', opacity: 0.9 }} alt="Sold Out" />
                 <div style={{ fontSize: '1.6rem', fontWeight: 'bold', color: '#fff', textTransform: 'uppercase' }}>ETAPA ACTUAL</div>
                 <div style={{ fontSize: '4.5rem', fontWeight: 800, color: '#fff', lineHeight: '1', margin: '15px 0 5px' }}>${currentPricing.genPrice}</div>
                 <div style={{ fontSize: '0.85rem', color: '#fff', opacity: 0.8, marginBottom: '20px' }}>Tasa BCV</div>
@@ -631,10 +632,10 @@ export default function Home() {
 
                 <button 
                   className="btn-gradient-pill" 
-                  style={{ width: '100%', padding: '15px', background: '#fff', color: '#2b3e4d', boxShadow: '0 4px 15px rgba(0,0,0,0.2)' }}
-                  onClick={() => window.open(`https://wa.me/584123060970?text=${encodeURIComponent('¡Hola! Me gustaría inscribirme en el Marketing Xperience con la entrada GENERAL.')}`, '_blank')}
+                  style={{ position: 'relative', zIndex: 11, width: '100%', padding: '15px', background: '#fff', color: '#2b3e4d', boxShadow: '0 4px 15px rgba(0,0,0,0.2)' }}
+                  onClick={() => window.open(`https://wa.me/584123060970?text=${encodeURIComponent('Hola, quiero ingresar a la lista de espera de Marketing Xperience.')}`, '_blank')}
                 >
-                  Inscribirse por Whatsapp
+                  Lista de espera
                 </button>
               </div>
 
