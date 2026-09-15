@@ -166,7 +166,7 @@ export default function Home() {
 
 
           <a href="#precios" className="btn-cyan-outline" style={{ textDecoration: 'none' }}>
-            Registrarme
+            Lista de espera
           </a>
         </div>
       </nav>
@@ -187,7 +187,7 @@ export default function Home() {
                 style={{ letterSpacing: '2px', padding: '16px 32px' }}
                 onClick={() => document.getElementById('precios').scrollIntoView({behavior: 'smooth'})}
               >
-                ASEGURA TU ENTRADA
+                LISTA DE ESPERA
               </button>
             </div>
             <div className="hero-dates-pill">
@@ -339,7 +339,7 @@ export default function Home() {
                 <p className="unified-card-desc">
                   Estarás dentro de una mesa de trabajo con emprendedores reales, resolviendo tus bloqueos en tiempo real. No vienes a mirar, vienes a ejecutar.
                 </p>
-                <a href="#precios" className="btn-blue card-btn">Registrarme Ahora</a>
+                <a href="#precios" className="btn-blue card-btn">Lista de espera</a>
 
                 <div className="unified-features-grid">
                   <div className="unified-feature-item">
@@ -707,7 +707,7 @@ export default function Home() {
               <h3 className="pillar-modal-title" style={{ marginTop: '10px' }}>{selectedPillarData.title}</h3>
               <p className="pillar-modal-text">{selectedPillarData.text}</p>
               <div className="pillar-modal-actions">
-                <button className="btn-blue" onClick={() => { setPillarModalOpen(false); window.location.href = '#precios'; }}>Reservar Entrada</button>
+                <button className="btn-blue" onClick={() => { setPillarModalOpen(false); window.location.href = '#precios'; }}>Lista de espera</button>
               </div>
             </div>
           </div>
