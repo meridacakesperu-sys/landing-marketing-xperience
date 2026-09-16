@@ -90,7 +90,7 @@ export default function CheckinClient({ initialData, tables = [] }) {
       return;
     }
 
-    if (client.status === 'Completado') {
+    if (client.status === 'Completado' || client.status === 'Invitado') {
       setScanResult({ type: 'success', message: 'ACCESO PERMITIDO', client });
       markAttendance(client.ticket_id, 1);
     } else {
