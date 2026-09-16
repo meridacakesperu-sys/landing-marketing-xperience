@@ -1196,11 +1196,14 @@ export function ClientDetailModal({ client, initialTab, onClose, onUpdate, onDel
                 <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
                   <h4 style={{ margin: 0, color: '#0f172a' }}>{editingPayment ? 'Editar Pago' : 'Registrar Pago'}</h4>
                   {!editingPayment && client.status !== 'Invitado' && (
-                    <button type="button" onClick={() => {
-                      if(confirm('¿Seguro que quieres marcar a este contacto como INVITADO? No se le cobrará nada.')) {
-                        updateStatus(client.id, 'Invitado');
-                        setRegistrations(regs => regs.map(r => r.id === client.id ? { ...r, status: 'Invitado' } : r));
-                        setSelectedClient({ ...client, status: 'Invitado' });
+                    <button type="button" onClick={async () => {
+                      if(window.confirm('¿Seguro que quieres marcar a este contacto como INVITADO? No se le cobrará nada.')) {
+                        await fetch('/api/admin/update', {
+                          method: 'POST',
+                          headers: { 'Content-Type': 'application/json' },
+                          body: JSON.stringify({ id: client.id, status: 'Invitado' })
+                        });
+                        onUpdate({ ...client, status: 'Invitado' });
                       }
                     }} style={{ background: '#f59e0b', color: '#fff', border: 'none', padding: '4px 10px', borderRadius: '4px', cursor: 'pointer', fontSize: '0.75rem', fontWeight: 'bold' }}>
                       Marcar como Invitado
