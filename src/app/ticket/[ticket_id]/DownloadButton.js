@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import * as htmlToImage from 'html-to-image';
+import html2canvas from 'html2canvas';
 
 export default function DownloadButton({ targetId, fileName, isVIP }) {
   const [downloading, setDownloading] = useState(false);
@@ -12,11 +12,13 @@ export default function DownloadButton({ targetId, fileName, isVIP }) {
       const element = document.getElementById(targetId);
       if (!element) return;
       
-      // Use html-to-image which is more robust
-      const dataUrl = await htmlToImage.toPng(element, {
+      const canvas = await html2canvas(element, {
+        scale: 2,
         backgroundColor: '#0f172a',
-        pixelRatio: 2,
+        useCORS: true
       });
+      
+      const dataUrl = canvas.toDataURL('image/png');
       
       const link = document.createElement('a');
       link.href = dataUrl;
