@@ -67,7 +67,23 @@ export default async function TicketPage({ params }) {
             Entrada Válida para el Evento.
           </div>
 
-          <DownloadButton targetId="ticket-card" fileName={`Entrada_${client.ticket_id}.png`} isVIP={isVIP} />
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '15px' }}>
+            <DownloadButton targetId="ticket-card" fileName={`Entrada_${client.ticket_id}.png`} isVIP={isVIP} />
+            <a 
+              href={`/certificado/${client.ticket_id}`} 
+              style={{ 
+                color: isVIP ? '#c19845' : '#3b82f6', 
+                textDecoration: 'none', 
+                fontWeight: 'bold', 
+                fontSize: '0.9rem',
+                border: `1px solid ${isVIP ? '#c19845' : '#3b82f6'}`,
+                padding: '10px 20px',
+                borderRadius: '8px'
+              }}
+            >
+              🎓 Ver mi Certificado
+            </a>
+          </div>
         </div>
 
       </div>
