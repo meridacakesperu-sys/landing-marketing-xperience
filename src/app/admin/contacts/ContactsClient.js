@@ -5,6 +5,7 @@ import { DragDropContext, Droppable, Draggable } from '@hello-pangea/dnd';
 import { AreaChart, Area, XAxis, YAxis, Tooltip, ResponsiveContainer, PieChart, Pie, Cell, BarChart, Bar, Legend } from 'recharts';
 import { QRCodeSVG } from 'qrcode.react';
 import * as htmlToImage from 'html-to-image';
+import jsPDF from 'jspdf';
 
 export const COLUMNS = [
   { id: 'Nuevo', title: 'Nuevos', color: '#64748b' },
@@ -171,6 +172,49 @@ export default function ContactsClient({ initialData, agents = [] }) {
   const cardTitle = { fontSize: '1.1rem', fontWeight: '600', color: '#0f172a', marginBottom: '8px' };
   const cardSubtitle = { fontSize: '0.8rem', color: '#64748b', marginBottom: '24px' };
 
+  const [generatingAllCerts, setGeneratingAllCerts] = useState(false);
+  const generateAllCerts = async () => {
+    try {
+      setGeneratingAllCerts(true);
+      const toGenerate = filteredRegistrations.filter(r => r.status === 'Completado' || r.status === 'Invitado');
+      if (toGenerate.length === 0) {
+        alert('No hay contactos con estado Completado o Invitado en los resultados actuales.');
+        setGeneratingAllCerts(false);
+        return;
+      }
+
+      const response = await fetch('/certificado_bg.png');
+      const blob = await response.blob();
+      const base64Bg = await new Promise((resolve) => {
+        const reader = new FileReader();
+        reader.onloadend = () => resolve(reader.result);
+        reader.readAsDataURL(blob);
+      });
+
+      const pdf = new jsPDF({
+        orientation: 'landscape',
+        unit: 'px',
+        format: [1024, 791]
+      });
+
+      for (let i = 0; i < toGenerate.length; i++) {
+        if (i > 0) pdf.addPage([1024, 791], 'landscape');
+        pdf.addImage(base64Bg, 'PNG', 0, 0, 1024, 791);
+        pdf.setFont("times", "bold");
+        pdf.setFontSize(38);
+        pdf.setTextColor(15, 23, 42);
+        pdf.text(toGenerate[i].name.toUpperCase(), 512, 400, { align: 'center' });
+      }
+
+      pdf.save('Certificados_Asistentes.pdf');
+    } catch (error) {
+      console.error(error);
+      alert('Error al generar el PDF con todos los certificados.');
+    } finally {
+      setGeneratingAllCerts(false);
+    }
+  };
+
   return (
     <div style={{ display: 'flex', flexDirection: 'column', height: '100%', overflowY: 'auto' }}>
       
@@ -278,12 +322,21 @@ export default function ContactsClient({ initialData, agents = [] }) {
                 <h2 style={{ fontSize: '1.5rem', color: '#0f172a', margin: 0 }}>Tablero Kanban</h2>
                 <p style={{ fontSize: '0.85rem', color: '#64748b', margin: 0 }}>Filtra y gestiona tus clientes</p>
               </div>
-              <button 
-                onClick={() => setShowAddModal(true)}
-                style={{ background: 'var(--color-accent)', color: '#fff', border: 'none', padding: '10px 20px', borderRadius: '6px', fontWeight: 'bold', cursor: 'pointer' }}
-              >
-                + Nuevo Cliente
-              </button>
+              <div style={{ display: 'flex', gap: '10px' }}>
+                <button 
+                  onClick={generateAllCerts}
+                  disabled={generatingAllCerts}
+                  style={{ background: '#3b82f6', color: '#fff', border: 'none', padding: '10px 20px', borderRadius: '6px', fontWeight: 'bold', cursor: generatingAllCerts ? 'not-allowed' : 'pointer', opacity: generatingAllCerts ? 0.7 : 1 }}
+                >
+                  {generatingAllCerts ? 'Generando PDF...' : '🖨️ Generar PDF Todos'}
+                </button>
+                <button 
+                  onClick={() => setShowAddModal(true)}
+                  style={{ background: 'var(--color-accent)', color: '#fff', border: 'none', padding: '10px 20px', borderRadius: '6px', fontWeight: 'bold', cursor: 'pointer' }}
+                >
+                  + Nuevo Cliente
+                </button>
+              </div>
             </div>
 
         {/* Filters Row */}
