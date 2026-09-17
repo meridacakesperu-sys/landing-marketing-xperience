@@ -176,9 +176,9 @@ export default function ContactsClient({ initialData, agents = [] }) {
   const generateAllCerts = async () => {
     try {
       setGeneratingAllCerts(true);
-      const toGenerate = filteredRegistrations.filter(r => r.status === 'Completado' || r.status === 'Invitado');
+      const toGenerate = filteredRegistrations;
       if (toGenerate.length === 0) {
-        alert('No hay contactos con estado Completado o Invitado en los resultados actuales.');
+        alert('No hay contactos en los resultados actuales para generar certificados.');
         setGeneratingAllCerts(false);
         return;
       }
