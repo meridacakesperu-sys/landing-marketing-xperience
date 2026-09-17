@@ -201,9 +201,11 @@ export default function ContactsClient({ initialData, agents = [] }) {
         if (i > 0) pdf.addPage([1024, 791], 'landscape');
         pdf.addImage(base64Bg, 'PNG', 0, 0, 1024, 791);
         pdf.setFont("times", "bold");
-        pdf.setFontSize(38);
+        pdf.setFontSize(55); // Increased from 38 to 55 to match individual generation
+        if (pdf.setCharSpace) pdf.setCharSpace(2); // Emulate letter-spacing if supported
         pdf.setTextColor(15, 23, 42);
-        pdf.text(toGenerate[i].name.toUpperCase(), 512, 400, { align: 'center' });
+        // Using 415 as Y to account for the baseline of a 55pt font centered at ~49% of 791px height
+        pdf.text(toGenerate[i].name.toUpperCase(), 512, 415, { align: 'center' });
       }
 
       pdf.save('Certificados_Asistentes.pdf');
