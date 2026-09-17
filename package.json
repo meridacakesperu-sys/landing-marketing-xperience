@@ -12,6 +12,7 @@
     "@hello-pangea/dnd": "^18.0.1",
     "@libsql/client": "^0.17.4",
     "html-to-image": "^1.11.13",
+    "html2canvas": "^1.4.1",
     "html5-qrcode": "^2.3.8",
     "next": "16.2.10",
     "nodemailer": "^9.0.3",

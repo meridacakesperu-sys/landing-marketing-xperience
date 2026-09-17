@@ -1,5 +1,6 @@
 import { headers } from 'next/headers';
 import db from '@/lib/db';
+import DownloadButton from './DownloadButton';
 
 export const dynamic = 'force-dynamic';
 
@@ -65,9 +66,7 @@ export default async function TicketPage({ params }) {
             Entrada Válida para el Evento.
           </div>
 
-          <a href={qrUrl} download={`Entrada_${client.ticket_id}.png`} style={{ background: isVIP ? '#c19845' : '#3b82f6', color: '#fff', padding: '10px 20px', borderRadius: '8px', textDecoration: 'none', fontWeight: 'bold', display: 'inline-block' }}>
-            ⬇️ Guardar Código QR
-          </a>
+          <DownloadButton targetId="ticket-card" fileName={`Entrada_${client.ticket_id}.png`} isVIP={isVIP} />
         </div>
 
       </div>
