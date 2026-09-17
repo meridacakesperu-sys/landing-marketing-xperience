@@ -62,7 +62,7 @@ export async function POST(request) {
           </div>
           <div style="padding: 30px; background: #f8fafc; color: #0f172a;">
             <h2 style="margin-top: 0;">Hola, ${client.name}</h2>
-            <p>Aquí tienes tu entrada digital para el evento. Presenta el código QR en la entrada el día del evento.</p>
+            <p>Aquí tienes tu entrada digital para el evento. Descárgalo y presenta el código QR en la entrada el día del evento.</p>
             <div style="text-align: center; margin: 30px 0;">
               <div style="background: #fff; display: inline-block; padding: 20px; border-radius: 12px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);">
                 <img src="${qrUrl}" alt="QR Code" style="width: 200px; height: 200px; display: block;" />
@@ -76,7 +76,7 @@ export async function POST(request) {
               <span style="font-family: monospace; font-size: 1.1rem;">${client.ticket_id}</span>
             </div>
             <div style="text-align: center; margin-top: 30px;">
-              <a href="${ticketUrl}" style="background: #4a89a7; color: #fff; padding: 12px 24px; text-decoration: none; border-radius: 6px; font-weight: bold; display: inline-block;">Ver mi Entrada en Línea</a>
+              <a href="${ticketUrl}" style="background: #4a89a7; color: #fff; padding: 12px 24px; text-decoration: none; border-radius: 6px; font-weight: bold; display: inline-block;">Ver y Descargar mi Entrada</a>
             </div>
           </div>
         </div>

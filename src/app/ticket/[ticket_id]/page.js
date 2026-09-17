@@ -1,10 +1,9 @@
+import { headers } from 'next/headers';
 import db from '@/lib/db';
 
 export const dynamic = 'force-dynamic';
 
 export default async function TicketPage({ params }) {
-  // In Next.js 15, params is often treated as a Promise, but we can destructure it directly or await it. 
-  // Let's await it to be safe.
   const resolvedParams = await params;
   const { ticket_id } = resolvedParams;
   
@@ -26,10 +25,16 @@ export default async function TicketPage({ params }) {
   }
 
   const isVIP = client.plan.includes('VIP');
+  
+  const headersList = headers();
+  const host = headersList.get('host') || 'localhost:3000';
+  const protocol = headersList.get('x-forwarded-proto') || 'https';
+  const ticketUrl = `${protocol}://${host}/ticket/${client.ticket_id}`;
+  const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=${encodeURIComponent(ticketUrl)}`;
 
   return (
     <div style={{ minHeight: '100vh', background: '#020617', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '20px' }}>
-      <div style={{ width: '100%', maxWidth: '400px', background: 'rgba(30, 41, 59, 0.8)', border: `1px solid ${isVIP ? '#c19845' : '#4a89a7'}`, borderRadius: '24px', overflow: 'hidden', boxShadow: '0 25px 50px -12px rgba(0,0,0,0.5)' }}>
+      <div id="ticket-card" style={{ width: '100%', maxWidth: '400px', background: 'rgba(30, 41, 59, 0.8)', border: `1px solid ${isVIP ? '#c19845' : '#4a89a7'}`, borderRadius: '24px', overflow: 'hidden', boxShadow: '0 25px 50px -12px rgba(0,0,0,0.5)' }}>
         
         <div style={{ background: isVIP ? 'linear-gradient(135deg, #c19845, #d4af37)' : 'linear-gradient(135deg, #4a89a7, #3b82f6)', padding: '30px 20px', textAlign: 'center' }}>
           <h2 style={{ color: '#0f172a', margin: 0, fontSize: '1.5rem', fontWeight: '800' }}>Marketing Xperience</h2>
@@ -39,7 +44,9 @@ export default async function TicketPage({ params }) {
         </div>
 
         <div style={{ padding: '30px', textAlign: 'center' }}>
-          <div style={{ fontSize: '3rem', marginBottom: '10px' }}>✅</div>
+          <div style={{ background: '#fff', display: 'inline-block', padding: '15px', borderRadius: '16px', marginBottom: '20px' }}>
+            <img src={qrUrl} alt="QR Code" style={{ width: '200px', height: '200px', display: 'block' }} />
+          </div>
           <h1 style={{ color: '#f8fafc', fontSize: '1.8rem', margin: '0 0 5px 0' }}>{client.name}</h1>
           <p style={{ color: '#94a3b8', margin: '0 0 20px 0' }}>{client.email}</p>
           
@@ -54,9 +61,13 @@ export default async function TicketPage({ params }) {
             </div>
           </div>
 
-          <div style={{ fontSize: '0.85rem', color: '#64748b' }}>
+          <div style={{ fontSize: '0.85rem', color: '#64748b', marginBottom: '20px' }}>
             Entrada Válida para el Evento.
           </div>
+
+          <a href={qrUrl} download={`Entrada_${client.ticket_id}.png`} style={{ background: isVIP ? '#c19845' : '#3b82f6', color: '#fff', padding: '10px 20px', borderRadius: '8px', textDecoration: 'none', fontWeight: 'bold', display: 'inline-block' }}>
+            ⬇️ Guardar Código QR
+          </a>
         </div>
 
       </div>
