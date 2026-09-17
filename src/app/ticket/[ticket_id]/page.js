@@ -1,5 +1,6 @@
 import { headers } from 'next/headers';
 import db from '@/lib/db';
+import QRCode from 'qrcode';
 import DownloadButton from './DownloadButton';
 
 export const dynamic = 'force-dynamic';
@@ -31,7 +32,7 @@ export default async function TicketPage({ params }) {
   const host = headersList.get('host') || 'localhost:3000';
   const protocol = headersList.get('x-forwarded-proto') || 'https';
   const ticketUrl = `${protocol}://${host}/ticket/${client.ticket_id}`;
-  const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=${encodeURIComponent(ticketUrl)}`;
+  const qrUrl = await QRCode.toDataURL(ticketUrl, { width: 300, margin: 1 });
 
   return (
     <div style={{ minHeight: '100vh', background: '#020617', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '20px' }}>
