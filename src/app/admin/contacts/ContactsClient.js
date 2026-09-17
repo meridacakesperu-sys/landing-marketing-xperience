@@ -757,6 +757,8 @@ export function ClientDetailModal({ client, initialTab, onClose, onUpdate, onDel
   const ticketRef = useRef(null);
   const [sendingEmail, setSendingEmail] = useState(false);
   const [activeTab, setActiveTab] = useState(initialTab || 'info');
+  const [email, setEmail] = useState(client.email || '');
+  const [phone, setPhone] = useState(client.phone || '');
   const [agentId, setAgentId] = useState(client.agent_id || '');
   const [business, setBusiness] = useState(client.business || '');
   const [notes, setNotes] = useState(client.notes || '');
@@ -790,9 +792,9 @@ export function ClientDetailModal({ client, initialTab, onClose, onUpdate, onDel
     await fetch('/api/admin/update', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ id: client.id, business, notes, status, birthday, ticket_price: ticketPrice, agent_id: agentId, plan })
+      body: JSON.stringify({ id: client.id, email, phone, business, notes, status, birthday, ticket_price: ticketPrice, agent_id: agentId, plan })
     });
-    onUpdate({ ...client, business, notes, status, birthday, ticket_price: ticketPrice, agent_id: agentId, plan });
+    onUpdate({ ...client, email, phone, business, notes, status, birthday, ticket_price: ticketPrice, agent_id: agentId, plan });
     alert('Guardado');
   };
 
@@ -976,8 +978,14 @@ export function ClientDetailModal({ client, initialTab, onClose, onUpdate, onDel
 
         {activeTab === 'info' && (
           <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-            <div><strong style={{ color: '#64748b' }}>Email:</strong> <div style={{ color: '#0f172a' }}>{client.email}</div></div>
-            <div><strong style={{ color: '#64748b' }}>Teléfono:</strong> <div style={{ color: '#0f172a' }}>{client.phone}</div></div>
+            <div>
+              <strong style={{ color: '#64748b' }}>Email:</strong>
+              <input type="email" value={email} onChange={e=>setEmail(e.target.value)} style={{ width: '100%', padding: '8px', background: '#ffffff', border: '1px solid #e2e8f0', color: '#0f172a', borderRadius: '4px', marginTop: '4px' }} />
+            </div>
+            <div>
+              <strong style={{ color: '#64748b' }}>Teléfono:</strong>
+              <input value={phone} onChange={e=>setPhone(e.target.value)} style={{ width: '100%', padding: '8px', background: '#ffffff', border: '1px solid #e2e8f0', color: '#0f172a', borderRadius: '4px', marginTop: '4px' }} />
+            </div>
             <div>
               <strong style={{ color: '#64748b' }}>Plan:</strong>
               <select 
