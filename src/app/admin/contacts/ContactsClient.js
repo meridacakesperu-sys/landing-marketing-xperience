@@ -972,6 +972,7 @@ export function ClientDetailModal({ client, initialTab, onClose, onUpdate, onDel
           <button onClick={() => setActiveTab('info')} style={{ background: 'transparent', color: activeTab==='info'?'var(--color-accent)':'#94a3b8', border: 'none', fontWeight: 'bold', cursor: 'pointer' }}>Info</button>
           <button onClick={() => setActiveTab('survey')} style={{ background: 'transparent', color: activeTab==='survey'?'var(--color-accent)':'#94a3b8', border: 'none', fontWeight: 'bold', cursor: 'pointer' }}>Encuesta</button>
           <button onClick={() => setActiveTab('ticket')} style={{ background: 'transparent', color: activeTab==='ticket'?'var(--color-accent)':'#94a3b8', border: 'none', fontWeight: 'bold', cursor: 'pointer' }}>Entrada</button>
+          <button onClick={() => setActiveTab('cert')} style={{ background: 'transparent', color: activeTab==='cert'?'var(--color-accent)':'#94a3b8', border: 'none', fontWeight: 'bold', cursor: 'pointer' }}>Certificado</button>
           {!hideExtraTabs && <button onClick={() => setActiveTab('payments')} style={{ background: 'transparent', color: activeTab==='payments'?'var(--color-accent)':'#94a3b8', border: 'none', fontWeight: 'bold', cursor: 'pointer' }}>Pagos</button>}
           {!hideExtraTabs && <button onClick={() => setActiveTab('reminders')} style={{ background: 'transparent', color: activeTab==='reminders'?'var(--color-accent)':'#94a3b8', border: 'none', fontWeight: 'bold', cursor: 'pointer' }}>Recordatorios</button>}
         </div>
@@ -1171,6 +1172,37 @@ export function ClientDetailModal({ client, initialTab, onClose, onUpdate, onDel
               </button>
             </div>
             
+          </div>
+        )}
+
+        {activeTab === 'cert' && (
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '20px', alignItems: 'center', textAlign: 'center' }}>
+            <h3 style={{ margin: 0, color: '#0f172a' }}>Certificado de Participación</h3>
+            <p style={{ color: '#64748b' }}>
+              Los certificados se generan en formato PDF de alta resolución o imagen, listos para imprimir.
+            </p>
+            <div style={{ padding: '20px', background: '#f8fafc', borderRadius: '12px', border: '1px solid #e2e8f0', width: '100%' }}>
+              <div style={{ fontWeight: 'bold', fontSize: '1.2rem', color: '#0f172a', marginBottom: '10px' }}>
+                {client.name}
+              </div>
+              <a 
+                href={`/certificado/${client.ticket_id}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{ 
+                  display: 'inline-block',
+                  background: '#3b82f6', 
+                  color: '#fff', 
+                  padding: '12px 24px', 
+                  borderRadius: '8px', 
+                  textDecoration: 'none', 
+                  fontWeight: 'bold',
+                  marginTop: '10px'
+                }}
+              >
+                🖨️ Abrir Generador de Certificado
+              </a>
+            </div>
           </div>
         )}
 
