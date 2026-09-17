@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import html2canvas from 'html2canvas';
+import * as htmlToImage from 'html-to-image';
 
 export default function DownloadButton({ targetId, fileName, isVIP }) {
   const [downloading, setDownloading] = useState(false);
@@ -12,16 +12,14 @@ export default function DownloadButton({ targetId, fileName, isVIP }) {
       const element = document.getElementById(targetId);
       if (!element) return;
       
-      // We use html2canvas to capture the element
-      const canvas = await html2canvas(element, {
-        scale: 2, // High resolution
-        backgroundColor: '#0f172a', // Match the card's theme roughly
-        useCORS: true,
+      // Use html-to-image which is more robust
+      const dataUrl = await htmlToImage.toPng(element, {
+        backgroundColor: '#0f172a',
+        pixelRatio: 2,
       });
       
-      const image = canvas.toDataURL('image/png');
       const link = document.createElement('a');
-      link.href = image;
+      link.href = dataUrl;
       link.download = fileName;
       link.click();
     } catch (error) {
