@@ -26,7 +26,7 @@ export default async function TicketPage({ params }) {
 
   const isVIP = client.plan.includes('VIP');
   
-  const headersList = headers();
+  const headersList = await headers();
   const host = headersList.get('host') || 'localhost:3000';
   const protocol = headersList.get('x-forwarded-proto') || 'https';
   const ticketUrl = `${protocol}://${host}/ticket/${client.ticket_id}`;
