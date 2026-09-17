@@ -822,6 +822,7 @@ export function ClientDetailModal({ client, initialTab, onClose, onUpdate, onDel
   const ticketRef = useRef(null);
   const [sendingEmail, setSendingEmail] = useState(false);
   const [activeTab, setActiveTab] = useState(initialTab || 'info');
+  const [clientName, setClientName] = useState(client.name || '');
   const [email, setEmail] = useState(client.email || '');
   const [phone, setPhone] = useState(client.phone || '');
   const [agentId, setAgentId] = useState(client.agent_id || '');
@@ -833,6 +834,7 @@ export function ClientDetailModal({ client, initialTab, onClose, onUpdate, onDel
   const [purchaseStage, setPurchaseStage] = useState(client.purchase_stage || 'Pre-venta');
   const [plan, setPlan] = useState(client.plan || 'General');
   const [isEditingPrice, setIsEditingPrice] = useState(false);
+  const [isEditingName, setIsEditingName] = useState(false);
   
   // Payment States
   const [paymentAmount, setPaymentAmount] = useState('');
@@ -857,9 +859,9 @@ export function ClientDetailModal({ client, initialTab, onClose, onUpdate, onDel
     await fetch('/api/admin/update', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ id: client.id, email, phone, business, notes, status, birthday, ticket_price: ticketPrice, agent_id: agentId, plan })
+      body: JSON.stringify({ id: client.id, name: clientName, email, phone, business, notes, status, birthday, ticket_price: ticketPrice, agent_id: agentId, plan })
     });
-    onUpdate({ ...client, email, phone, business, notes, status, birthday, ticket_price: ticketPrice, agent_id: agentId, plan });
+    onUpdate({ ...client, name: clientName, email, phone, business, notes, status, birthday, ticket_price: ticketPrice, agent_id: agentId, plan });
     alert('Guardado');
   };
 
@@ -1006,7 +1008,24 @@ export function ClientDetailModal({ client, initialTab, onClose, onUpdate, onDel
       <div style={{ background: '#f8fafc', width: '95%', maxWidth: '500px', height: '100%', padding: '30px', overflowY: 'auto', borderLeft: '1px solid #e2e8f0', animation: 'slideIn 0.3s forwards' }}>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '15px' }}>
-            <h2 style={{ color: '#0f172a', margin: 0 }}>{client.name}</h2>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
+              {isEditingName ? (
+                <input
+                  autoFocus
+                  type="text"
+                  value={clientName}
+                  onChange={e => setClientName(e.target.value)}
+                  onBlur={() => { setIsEditingName(false); saveDetails(); }}
+                  onKeyDown={(e) => { if (e.key === 'Enter') { setIsEditingName(false); saveDetails(); } }}
+                  style={{ fontSize: '1.5rem', fontWeight: 'bold', width: '200px', background: 'transparent', border: 'none', color: '#0f172a', borderBottom: '2px solid var(--color-accent)', outline: 'none' }}
+                />
+              ) : (
+                <>
+                  <h2 style={{ color: '#0f172a', margin: 0 }}>{clientName}</h2>
+                  <button onClick={() => setIsEditingName(true)} style={{ background: 'none', border: 'none', color: '#64748b', cursor: 'pointer', padding: '0 0 0 5px', fontSize: '1rem' }}>✏️</button>
+                </>
+              )}
+            </div>
             <div style={{ display: 'flex', alignItems: 'center', gap: '5px', background: 'rgba(255,255,255,0.1)', padding: '4px 10px', borderRadius: '20px' }}>
               <span style={{ color: '#e6b85c', fontWeight: 'bold' }}>$</span>
               {isEditingPrice ? (

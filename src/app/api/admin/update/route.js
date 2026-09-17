@@ -4,7 +4,7 @@ import db from '@/lib/db';
 export async function POST(request) {
   try {
     const data = await request.json();
-    const { id, status, notes, business, birthday, ticket_price, table_id, agent_id, plan, email, phone } = data;
+    const { id, name, status, notes, business, birthday, ticket_price, table_id, agent_id, plan, email, phone } = data;
 
     if (!id) {
       return NextResponse.json({ error: 'Missing registration ID' }, { status: 400 });
@@ -13,6 +13,7 @@ export async function POST(request) {
     let updates = [];
     let params = [];
 
+    if (name !== undefined) { updates.push('name = ?'); params.push(name); }
     if (status !== undefined) { updates.push('status = ?'); params.push(status); }
     if (notes !== undefined) { updates.push('notes = ?'); params.push(notes); }
     if (business !== undefined) { updates.push('business = ?'); params.push(business); }
