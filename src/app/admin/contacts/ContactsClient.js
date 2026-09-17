@@ -201,10 +201,21 @@ export default function ContactsClient({ initialData, agents = [] }) {
         if (i > 0) pdf.addPage([1024, 791], 'landscape');
         pdf.addImage(base64Bg, 'PNG', 0, 0, 1024, 791);
         pdf.setFont("times", "bold");
-        pdf.setFontSize(55); 
         pdf.setTextColor(15, 23, 42);
-        // Removed setCharSpace because it breaks jsPDF's internal width calculation for align: 'center'
-        pdf.text(toGenerate[i].name.toUpperCase(), 512, 415, { align: 'center' });
+        
+        const nameText = toGenerate[i].name.toUpperCase();
+        let fontSize = 55;
+        pdf.setFontSize(fontSize);
+        
+        // Auto-shrink font size if name is too long (prevents bleeding off edges)
+        let textWidth = pdf.getTextWidth ? pdf.getTextWidth(nameText) : (pdf.getStringUnitWidth(nameText) * fontSize);
+        while (textWidth > 800 && fontSize > 20) {
+          fontSize -= 2;
+          pdf.setFontSize(fontSize);
+          textWidth = pdf.getTextWidth ? pdf.getTextWidth(nameText) : (pdf.getStringUnitWidth(nameText) * fontSize);
+        }
+        
+        pdf.text(nameText, 512, 415, { align: 'center' });
       }
 
       pdf.save('Certificados_Asistentes.pdf');
