@@ -3,10 +3,10 @@ import db from '@/lib/db';
 import AttendeesClient from './AttendeesClient';
 
 export default async function AttendeesPage() {
-  // Fetch only attendees with status 'Completado'
+  // Fetch only attendees with status 'Completado' or 'Invitado'
   const registrationsResult = await db.execute({
-    sql: 'SELECT * FROM registrations WHERE status = ?',
-    args: ['Completado']
+    sql: 'SELECT * FROM registrations WHERE status IN (?, ?)',
+    args: ['Completado', 'Invitado']
   });
   const registrations = registrationsResult.rows;
 
