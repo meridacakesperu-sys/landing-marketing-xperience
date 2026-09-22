@@ -6,7 +6,7 @@ export const metadata = {
   description: 'Revive los mejores momentos del evento Marketing Xperience y descarga tus fotografías.',
 };
 
-export const dynamic = 'force-dynamic';
+export const revalidate = 300; // Cache the page for 5 minutes (300 seconds)
 
 cloudinary.config({
   cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
