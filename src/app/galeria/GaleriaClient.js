@@ -55,7 +55,16 @@ export default function GaleriaClient({ initialPhotos }) {
     <div style={{ minHeight: '100vh', backgroundColor: '#0f172a', padding: '40px 20px', fontFamily: 'system-ui, sans-serif' }}>
       <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
         
-        <header style={{ textAlign: 'center', marginBottom: '40px' }}>
+        <header style={{ textAlign: 'center', marginBottom: '40px', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+          <div style={{ position: 'relative', width: '200px', height: '100px', marginBottom: '10px' }}>
+            <Image 
+              src="/logo.png" 
+              alt="Marketing Xperience Logo" 
+              fill 
+              style={{ objectFit: 'contain' }}
+              priority
+            />
+          </div>
           <h1 style={{ color: '#e6b85c', fontSize: '2.5rem', marginBottom: '10px' }}>Galería Oficial</h1>
           <p style={{ color: '#94a3b8', fontSize: '1.1rem' }}>Revive los mejores momentos de Marketing Xperience. Selecciona las fotos en las que apareces y descárgalas.</p>
         </header>
