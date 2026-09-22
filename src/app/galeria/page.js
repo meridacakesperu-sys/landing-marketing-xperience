@@ -19,9 +19,9 @@ export default async function GaleriaPage() {
   let photos = [];
   
   try {
-    // Fetch images from the 'marketing_xperience' folder
+    // Fetch images from the 'samples/marketing_xperience' folder
     const result = await cloudinary.search
-      .expression('folder:marketing_xperience/*')
+      .expression('folder:samples/marketing_xperience/*')
       .sort_by('created_at', 'desc')
       .max_results(500)
       .execute();
