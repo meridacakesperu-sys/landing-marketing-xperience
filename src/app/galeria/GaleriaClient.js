@@ -8,8 +8,12 @@ import { saveAs } from 'file-saver';
 export default function GaleriaClient({ initialPhotos }) {
   const [selectedPhotos, setSelectedPhotos] = useState([]);
   const [isDownloading, setIsDownloading] = useState(false);
+  const [downloadingSingle, setDownloadingSingle] = useState(null); // Track which photo is downloading
 
-  const toggleSelection = (photoUrl) => {
+  const toggleSelection = (photoUrl, e) => {
+    // Prevent toggling selection when clicking the download button
+    if (e && e.target.closest('button')) return;
+
     if (selectedPhotos.includes(photoUrl)) {
       setSelectedPhotos(selectedPhotos.filter(url => url !== photoUrl));
     } else {
@@ -17,7 +21,24 @@ export default function GaleriaClient({ initialPhotos }) {
     }
   };
 
-  const handleDownload = async () => {
+  const handleDownloadSingle = async (url, index, e) => {
+    e.stopPropagation(); // Don't trigger the photo selection
+    setDownloadingSingle(url);
+    try {
+      const response = await fetch(url);
+      const blob = await response.blob();
+      const urlObj = new URL(url, window.location.href);
+      const filename = urlObj.pathname.split('/').pop() || `foto_${index + 1}.jpg`;
+      saveAs(blob, filename);
+    } catch (error) {
+      console.error("Error al descargar la foto:", error);
+      alert("Hubo un error al descargar la foto.");
+    } finally {
+      setDownloadingSingle(null);
+    }
+  };
+
+  const handleDownloadZip = async () => {
     if (selectedPhotos.length === 0) return;
     setIsDownloading(true);
     
@@ -66,21 +87,22 @@ export default function GaleriaClient({ initialPhotos }) {
             />
           </div>
           <h1 style={{ color: '#e6b85c', fontSize: '2.5rem', marginBottom: '10px' }}>Galería Oficial</h1>
-          <p style={{ color: '#94a3b8', fontSize: '1.1rem' }}>Revive los mejores momentos de Marketing Xperience. Selecciona las fotos en las que apareces y descárgalas.</p>
+          <p style={{ color: '#94a3b8', fontSize: '1.1rem' }}>Revive los mejores momentos de Marketing Xperience. Selecciona las fotos en las que apareces para descargarlas todas juntas, o descarga cada una individualmente.</p>
         </header>
 
         <div style={{ 
           display: 'grid', 
           gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', 
           gap: '20px',
-          paddingBottom: '100px' // Space for the fixed bottom bar
+          paddingBottom: '120px' // Space for the fixed bottom bar
         }}>
           {initialPhotos.map((photo, index) => {
             const isSelected = selectedPhotos.includes(photo.url);
+            const isDownloadingThis = downloadingSingle === photo.url;
             return (
               <div 
                 key={index} 
-                onClick={() => toggleSelection(photo.url)}
+                onClick={(e) => toggleSelection(photo.url, e)}
                 style={{
                   position: 'relative',
                   aspectRatio: '3/2',
@@ -102,6 +124,35 @@ export default function GaleriaClient({ initialPhotos }) {
                   loading="lazy"
                 />
                 
+                {/* Download Single Icon */}
+                <button
+                  onClick={(e) => handleDownloadSingle(photo.url, index, e)}
+                  disabled={isDownloadingThis}
+                  title="Descargar solo esta foto"
+                  style={{
+                    position: 'absolute',
+                    bottom: '10px',
+                    right: '10px',
+                    width: '36px',
+                    height: '36px',
+                    borderRadius: '50%',
+                    backgroundColor: 'rgba(15, 23, 42, 0.7)',
+                    border: '1px solid rgba(255,255,255,0.3)',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    color: 'white',
+                    cursor: isDownloadingThis ? 'not-allowed' : 'pointer',
+                    zIndex: 10,
+                    backdropFilter: 'blur(4px)',
+                    transition: 'all 0.2s ease'
+                  }}
+                  onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#e6b85c'}
+                  onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'rgba(15, 23, 42, 0.7)'}
+                >
+                  {isDownloadingThis ? '⌛' : '⬇️'}
+                </button>
+
                 {/* Selection Overlay */}
                 <div style={{
                   position: 'absolute',
@@ -138,8 +189,9 @@ export default function GaleriaClient({ initialPhotos }) {
           backgroundColor: 'rgba(15, 23, 42, 0.95)',
           backdropFilter: 'blur(10px)',
           borderTop: '1px solid #1e293b',
-          padding: '20px',
+          padding: '15px 20px',
           display: 'flex',
+          flexDirection: 'column',
           justifyContent: 'center',
           alignItems: 'center',
           zIndex: 100,
@@ -152,22 +204,22 @@ export default function GaleriaClient({ initialPhotos }) {
             }
           `}</style>
           
-          <div style={{ display: 'flex', alignItems: 'center', gap: '20px', flexWrap: 'wrap', justifyContent: 'center' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '20px', flexWrap: 'wrap', justifyContent: 'center', marginBottom: '8px' }}>
             <span style={{ color: '#fff', fontSize: '1.1rem' }}>
               <strong style={{ color: '#e6b85c' }}>{selectedPhotos.length}</strong> {selectedPhotos.length === 1 ? 'foto seleccionada' : 'fotos seleccionadas'}
             </span>
             
             <button 
-              onClick={handleDownload}
+              onClick={handleDownloadZip}
               disabled={isDownloading}
               style={{
                 backgroundColor: '#e6b85c',
                 color: '#0f172a',
                 border: 'none',
-                padding: '12px 30px',
+                padding: '10px 25px',
                 borderRadius: '50px',
                 fontWeight: 'bold',
-                fontSize: '1.1rem',
+                fontSize: '1rem',
                 cursor: isDownloading ? 'not-allowed' : 'pointer',
                 display: 'flex',
                 alignItems: 'center',
@@ -177,7 +229,7 @@ export default function GaleriaClient({ initialPhotos }) {
                 opacity: isDownloading ? 0.7 : 1
               }}
             >
-              {isDownloading ? 'Empaquetando...' : `⬇️ Descargar ${selectedPhotos.length}`}
+              {isDownloading ? 'Empaquetando...' : `⬇️ Descargar ${selectedPhotos.length} en ZIP`}
             </button>
 
             <button 
@@ -186,14 +238,18 @@ export default function GaleriaClient({ initialPhotos }) {
                 backgroundColor: 'transparent',
                 color: '#94a3b8',
                 border: '1px solid #334155',
-                padding: '10px 20px',
+                padding: '8px 16px',
                 borderRadius: '50px',
-                cursor: 'pointer'
+                cursor: 'pointer',
+                fontSize: '0.9rem'
               }}
             >
               Cancelar
             </button>
           </div>
+          <p style={{ color: '#64748b', fontSize: '0.85rem', margin: 0, textAlign: 'center' }}>
+            💡 <strong>Tip desde tu celular:</strong> Las fotos en ZIP se guardarán en tu app de <i>Descargas</i> o <i>Archivos</i>. Tócalo para extraerlas.
+          </p>
         </div>
       )}
     </div>
