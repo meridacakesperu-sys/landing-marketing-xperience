@@ -11,10 +11,12 @@
   "dependencies": {
     "@hello-pangea/dnd": "^18.0.1",
     "@libsql/client": "^0.17.4",
+    "file-saver": "^2.0.5",
     "html-to-image": "^1.11.13",
     "html2canvas": "^1.4.1",
     "html5-qrcode": "^2.3.8",
     "jspdf": "^4.2.1",
+    "jszip": "^3.10.2",
     "next": "16.2.10",
     "nodemailer": "^9.0.3",
     "qrcode": "^1.5.4",
