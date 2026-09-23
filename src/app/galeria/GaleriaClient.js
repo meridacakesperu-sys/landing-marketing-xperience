@@ -1,10 +1,22 @@
 "use client";
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Image from 'next/image';
 
 export default function GaleriaClient({ initialPhotos }) {
   const [activePhoto, setActivePhoto] = useState(null);
+  const [isMobile, setIsMobile] = useState(true); // Default to mobile to be safe
+
+  useEffect(() => {
+    // Check if device supports touch or has a small screen
+    const checkDevice = () => {
+      const isTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+      setIsMobile(isTouch || window.innerWidth < 1024);
+    };
+    checkDevice();
+    window.addEventListener('resize', checkDevice);
+    return () => window.removeEventListener('resize', checkDevice);
+  }, []);
 
   // Prevent scrolling when lightbox is open
   if (typeof window !== 'undefined') {
@@ -132,9 +144,11 @@ export default function GaleriaClient({ initialPhotos }) {
             boxShadow: '0 4px 15px rgba(0,0,0,0.5)',
             pointerEvents: 'none', // Allows clicking through the text to the image if needed
             width: '80%',
-            maxWidth: '400px'
+            maxWidth: '500px'
           }}>
-            💡 Mantén presionada la foto para guardarla en tu galería
+            {isMobile 
+              ? '💡 Mantén presionada la foto para guardarla en tu galería' 
+              : '💡 Haz clic derecho sobre la foto y selecciona "Guardar imagen como..."'}
           </div>
 
           <div 
