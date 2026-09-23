@@ -107,10 +107,10 @@ export default function AdminWaitlist() {
               <tbody>
                 {waitlist.map((item) => (
                   <tr key={item.id} style={{ borderBottom: '1px solid #334155', transition: 'background-color 0.2s' }}>
-                    <td style={{ padding: '12px' }}>#{item.id}</td>
-                    <td style={{ padding: '12px', fontWeight: 'bold' }}>{item.full_name}</td>
+                    <td style={{ padding: '12px', color: '#cbd5e1' }}>#{item.id}</td>
+                    <td style={{ padding: '12px', fontWeight: 'bold', color: '#f8fafc' }}>{item.full_name}</td>
                     <td style={{ padding: '12px', color: '#38bdf8' }}>{item.email}</td>
-                    <td style={{ padding: '12px' }}>{item.phone}</td>
+                    <td style={{ padding: '12px', color: '#cbd5e1' }}>{item.phone}</td>
                     <td style={{ padding: '12px', color: '#94a3b8' }}>
                       {new Date(item.created_at).toLocaleString()}
                     </td>
