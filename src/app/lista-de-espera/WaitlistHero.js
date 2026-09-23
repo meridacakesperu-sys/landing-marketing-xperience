@@ -19,10 +19,25 @@ export default function WaitlistHero({ carouselPhotos1, carouselPhotos2 }) {
   }, []);
 
   return (
-    <div className="hero-combined-bg" style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
+    <div 
+      className="hero-combined-bg" 
+      style={{ 
+        minHeight: '100vh', 
+        display: 'flex', 
+        flexDirection: 'column',
+        background: `linear-gradient(rgba(15, 23, 42, 0.4), rgba(15, 23, 42, 0.8)), url('/hero_bg_sky_new.png') center top / cover no-repeat`
+      }}
+    >
       {/* Hero Section */}
       <section className="hero" style={{ paddingBottom: '0' }}>
-        <div className="hero-bg-layer"></div>
+        <div 
+          className="hero-bg-layer"
+          style={{ 
+            background: `url('/hero_bg_sky_new.png') center center / cover no-repeat`,
+            opacity: 0.7,
+            filter: 'blur(3px) brightness(0.7)'
+          }}
+        ></div>
         <div className="container hero-split">
           <div className="hero-text">
             <span className="subtitle-cyan" style={{ color: '#e6b85c' }}>MARKETING XPERIENCE 2027</span>
@@ -82,7 +97,7 @@ export default function WaitlistHero({ carouselPhotos1, carouselPhotos2 }) {
             />
 
             <Image 
-              src="/rocket.png" 
+              src="/rocket_new.png" 
               alt="Rocket"
               width={400} 
               height={600}
@@ -97,7 +112,7 @@ export default function WaitlistHero({ carouselPhotos1, carouselPhotos2 }) {
       {/* Dynamic Image Carousel (from Cloudinary) */}
       <div className="carousel-wrapper" style={{ marginTop: '50px', marginBottom: '80px', zIndex: 10 }}>
         <div className="carousel-track">
-          <div className="carousel-inner">
+          <div className="carousel-inner" style={{ animationDuration: '100s' }}>
             {carouselPhotos1.map((url, i) => (
               <div key={i} className="carousel-card">
                 <Image src={url} alt={`Gallery Image ${i}`} fill style={{ objectFit: 'cover' }} sizes="(max-width: 768px) 50vw, 350px" />
@@ -106,7 +121,7 @@ export default function WaitlistHero({ carouselPhotos1, carouselPhotos2 }) {
           </div>
         </div>
         <div className="carousel-track">
-          <div className="carousel-inner inner-right">
+          <div className="carousel-inner inner-right" style={{ animationDuration: '100s' }}>
             {carouselPhotos2.map((url, i) => (
               <div key={i} className="carousel-card">
                 <Image src={url} alt={`Gallery Image ${i}`} fill style={{ objectFit: 'cover' }} sizes="(max-width: 768px) 50vw, 350px" />
