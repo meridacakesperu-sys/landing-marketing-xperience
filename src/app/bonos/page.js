@@ -168,7 +168,7 @@ export default function BonosPage() {
               ¿Crees que puedes acelerar el crecimiento de tu negocio digital?
             </h2>
             <p style={{ color: '#cbd5e1', fontSize: '1.15rem', marginBottom: '30px', lineHeight: '1.6' }}>
-              Implementemos juntos el sistema que me ha funcionado todos estos años en negocios digitales.
+              Implementemos juntos en tu negocio el sistema que me ha funcionado todos estos años en negocios digitales.
             </p>
             <a 
               href="https://wa.me/584123060970?text=Hola%20quiero%20tener%20la%20consultoría%20Xperience" 
