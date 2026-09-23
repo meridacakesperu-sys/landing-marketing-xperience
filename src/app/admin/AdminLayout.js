@@ -139,6 +139,7 @@ export default function AdminLayout({ children }) {
     { label: 'Check-in', path: '/admin/checkin', icon: '✅', roles: ['admin', 'lideres'] },
     { label: 'Plantillas', path: '/admin/templates', icon: '📝', roles: ['admin', 'ventas', 'lideres'] },
     { label: 'Configuración', path: '/admin/settings', icon: '⚙️', roles: ['admin'] },
+    { label: 'Lista de Espera', path: '/admin/waitlist', icon: '⏳', roles: ['admin', 'ventas', 'lideres'] },
   ];
 
   const navItems = allNavItems.filter(item => item.roles.includes(role));
