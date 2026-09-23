@@ -234,15 +234,17 @@ export default function BonosPage() {
           .cta-container {
             flex-direction: column !important;
             text-align: center;
-            padding: 30px 20px !important;
+            padding: 20px 20px 40px 20px !important;
           }
           .cta-container h2 {
             fontSize: 1.8rem !important;
           }
           .cta-image-wrapper {
             width: 100% !important;
-            height: 280px !important;
+            height: 380px !important;
             order: -1; /* Put image on top on mobile */
+            margin-bottom: -10px;
+            margin-top: 10px;
           }
           .btn-whatsapp {
             width: 100%;
