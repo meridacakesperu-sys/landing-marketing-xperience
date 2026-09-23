@@ -23,6 +23,16 @@ export default function WaitlistHero({ carouselPhotos1, carouselPhotos2 }) {
     <style jsx>{`
       @media (max-width: 768px) {
         .hero-title-group {
+          text-align: center !important;
+          align-items: center !important;
+          margin: 15px auto !important;
+        }
+        .hero-title-group .subtitle-cyan {
+          text-align: center !important;
+        }
+        .hero-title-group .hero-logo-img-wrapper {
+          margin-left: 0 !important;
+        }
           align-items: center !important;
           margin: 15px auto !important;
         }
@@ -53,9 +63,9 @@ export default function WaitlistHero({ carouselPhotos1, carouselPhotos2 }) {
         <div className="container hero-split">
           <div className="hero-text">
             <div className="hero-title-group" style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', maxWidth: '450px', marginBottom: '15px' }}>
-              <span className="subtitle-cyan" style={{ color: '#e6b85c', width: '100%', textAlign: 'center', marginBottom: '10px' }}>EL ANTES Y DESPUÉS DE TU MARCA</span>
-              <div style={{ width: '100%' }}>
-                <img src="/logo.png" alt="Marketing Xperience" style={{ width: '100%', height: 'auto', display: 'block' }} />
+              <span className="subtitle-cyan" style={{ color: '#e6b85c', width: '100%', textAlign: 'left', marginBottom: '10px', paddingLeft: '2px' }}>EL ANTES Y DESPUÉS DE TU MARCA</span>
+              <div className="hero-logo-img-wrapper" style={{ width: '100%', marginLeft: '-8px' }}>
+                <img src="/logo.png" alt="Marketing Xperience" style={{ width: '100%', height: 'auto', display: 'block', objectFit: 'contain', objectPosition: 'left center' }} />
               </div>
             </div>
             <p className="subtitle" style={{ fontSize: '1.2rem', marginTop: '1rem' }}>
