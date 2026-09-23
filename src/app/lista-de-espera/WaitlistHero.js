@@ -19,6 +19,14 @@ export default function WaitlistHero({ carouselPhotos1, carouselPhotos2 }) {
   }, []);
 
   return (
+    <>
+    <style jsx>{`
+      @media (max-width: 768px) {
+        .hero-logo-wrapper {
+          margin: 15px auto !important;
+        }
+      }
+    `}</style>
     <div 
       className="hero-combined-bg" 
       style={{ 
@@ -41,7 +49,9 @@ export default function WaitlistHero({ carouselPhotos1, carouselPhotos2 }) {
         <div className="container hero-split">
           <div className="hero-text">
             <span className="subtitle-cyan" style={{ color: '#e6b85c' }}>MARKETING XPERIENCE 2027</span>
-            <h1>El antes y después de tu marca</h1>
+            <div style={{ margin: '15px 0', maxWidth: '350px' }} className="hero-logo-wrapper">
+              <img src="/logo.png" alt="Marketing Xperience" style={{ width: '100%', height: 'auto', display: 'block' }} />
+            </div>
             <p className="subtitle" style={{ fontSize: '1.2rem', marginTop: '1rem' }}>
               Vive la experiencia multisensorial de un entrenamiento de 2 días de clases Teórico - Prácticas. Compartirás con personas con una visión y una mentalidad increíble.
             </p>
@@ -149,5 +159,6 @@ export default function WaitlistHero({ carouselPhotos1, carouselPhotos2 }) {
         </div>
       </div>
     </div>
+    </>
   );
 }
