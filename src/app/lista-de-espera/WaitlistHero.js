@@ -22,6 +22,10 @@ export default function WaitlistHero({ carouselPhotos1, carouselPhotos2 }) {
     <>
     <style jsx>{`
       @media (max-width: 768px) {
+        .hero-title-group {
+          align-items: center !important;
+          margin: 15px auto !important;
+        }
         .hero-logo-wrapper {
           margin: 15px auto !important;
         }
@@ -48,9 +52,11 @@ export default function WaitlistHero({ carouselPhotos1, carouselPhotos2 }) {
         ></div>
         <div className="container hero-split">
           <div className="hero-text">
-            <span className="subtitle-cyan" style={{ color: '#e6b85c' }}>MARKETING XPERIENCE 2027</span>
-            <div style={{ margin: '15px 0', maxWidth: '350px' }} className="hero-logo-wrapper">
-              <img src="/logo.png" alt="Marketing Xperience" style={{ width: '100%', height: 'auto', display: 'block' }} />
+            <div className="hero-title-group" style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', maxWidth: '450px', marginBottom: '15px' }}>
+              <span className="subtitle-cyan" style={{ color: '#e6b85c', width: '100%', textAlign: 'center', marginBottom: '10px' }}>EL ANTES Y DESPUÉS DE TU MARCA</span>
+              <div style={{ width: '100%' }}>
+                <img src="/logo.png" alt="Marketing Xperience" style={{ width: '100%', height: 'auto', display: 'block' }} />
+              </div>
             </div>
             <p className="subtitle" style={{ fontSize: '1.2rem', marginTop: '1rem' }}>
               Vive la experiencia multisensorial de un entrenamiento de 2 días de clases Teórico - Prácticas. Compartirás con personas con una visión y una mentalidad increíble.

@@ -6,7 +6,7 @@ export const metadata = {
   description: 'Únete a la lista de espera para Marketing Xperience 2027 y obtén beneficios exclusivos.',
 };
 
-export const revalidate = 300; // Cache the page for 5 minutes
+export const revalidate = 300;
 
 cloudinary.config({
   cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
@@ -22,10 +22,18 @@ export default async function WaitlistPage() {
     const result = await cloudinary.search
       .expression('folder:samples/marketing_xperience/*')
       .sort_by('created_at', 'desc')
-      .max_results(20) // Only need some for the carousel
+      .max_results(50) // Get more photos to avoid seeing repetitions
       .execute();
       
     photos = result.resources.map(res => res.secure_url);
+    
+    // Try to find the group photo (usually one of the last ones taken, let's guess DSC09969 or similar)
+    // If we find it, move it to the front
+    const groupPhotoIndex = photos.findIndex(url => url.includes('DSC09969') || url.includes('DSC09967'));
+    if (groupPhotoIndex > -1) {
+      const groupPhoto = photos.splice(groupPhotoIndex, 1)[0];
+      photos.unshift(groupPhoto);
+    }
   } catch (error) {
     console.error("Error fetching images for waitlist:", error);
   }
@@ -39,9 +47,14 @@ export default async function WaitlistPage() {
     ];
   }
 
-  // Duplicate photos to ensure smooth continuous scrolling
-  const carouselPhotos1 = [...photos, ...photos];
-  const carouselPhotos2 = [...photos.reverse(), ...photos.reverse()];
+  // We split the photos in two rows
+  const half = Math.ceil(photos.length / 2);
+  const row1 = photos.slice(0, half);
+  const row2 = photos.slice(half);
+
+  // For CSS infinite marquee to work, we MUST duplicate the nodes once
+  const carouselPhotos1 = [...row1, ...row1];
+  const carouselPhotos2 = [...row2, ...row2];
 
   return <WaitlistHero carouselPhotos1={carouselPhotos1} carouselPhotos2={carouselPhotos2} />;
 }
