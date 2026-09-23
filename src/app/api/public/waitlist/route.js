@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { db } from '../../../../lib/db'; // adjust path if needed
+import db from '../../../../lib/db'; // adjust path if needed
 
 export async function POST(request) {
   try {
