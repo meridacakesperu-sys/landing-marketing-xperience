@@ -67,6 +67,9 @@ export default function WaitlistHero({ carouselPhotos1, carouselPhotos2 }) {
               <div className="hero-logo-img-wrapper" style={{ width: '100%', marginLeft: '-8px' }}>
                 <img src="/logo.png" alt="Marketing Xperience" style={{ width: '100%', height: 'auto', display: 'block', objectFit: 'contain', objectPosition: 'left center' }} />
               </div>
+              <div className="year-2027-text" style={{ fontFamily: 'Impact, Arial Black, sans-serif', fontSize: 'clamp(4rem, 8vw, 6rem)', fontWeight: '900', color: '#ffffff', lineHeight: 1, marginTop: '-5px', letterSpacing: '4px' }}>
+                2027
+              </div>
             </div>
             <p className="subtitle" style={{ fontSize: '1.2rem', marginTop: '1rem' }}>
               Vive la experiencia multisensorial de un entrenamiento de 2 días de clases Teórico - Prácticas. Compartirás con personas con una visión y una mentalidad increíble.
