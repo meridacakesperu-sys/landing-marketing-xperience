@@ -1,7 +1,7 @@
 import Image from 'next/image';
 
 export const metadata = {
-  title: 'Clase Gratuita | Marketing Xperience',
+  title: 'Tus primeros 1000$ | Marketing Xperience',
   description: 'Disfruta de esta clase exclusiva como bono gratuito de Marketing Xperience.',
 };
 
