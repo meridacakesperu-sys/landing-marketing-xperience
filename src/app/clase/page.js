@@ -25,10 +25,10 @@ export default function ClasePage() {
         {/* Video Section */}
         <div style={{ textAlign: 'center', marginBottom: '60px' }}>
           <h1 style={{ color: '#e6b85c', fontSize: '2.5rem', marginBottom: '15px', fontWeight: '900', lineHeight: '1.2' }}>
-            TU CLASE GRATUITA
+            Tus primeros 1000$ al mes con tu talento
           </h1>
           <p style={{ color: '#cbd5e1', fontSize: '1.2rem', marginBottom: '40px', maxWidth: '700px', margin: '0 auto 40px auto' }}>
-            Disfruta de este contenido exclusivo diseñado para llevar tu negocio digital al siguiente nivel.
+            Aprende la hoja de ruta exacta para monetizar lo que sabes y llegar a tus primeros $1,000 mensuales.
           </p>
 
           <div style={{
@@ -49,6 +49,31 @@ export default function ClasePage() {
               ></iframe>
             </div>
             <script src="https://player.vimeo.com/api/player.js"></script>
+          </div>
+
+          <div style={{ marginTop: '40px', display: 'flex', justifyContent: 'center' }}>
+            <a 
+              href="/primeros_1000_al_mes.pdf" 
+              download 
+              className="btn-download"
+              style={{
+                backgroundColor: '#e6b85c',
+                color: '#0f172a',
+                padding: '16px 36px',
+                borderRadius: '50px',
+                fontWeight: 'bold',
+                textDecoration: 'none',
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '12px',
+                fontSize: '1.2rem',
+                boxShadow: '0 10px 25px rgba(230, 184, 92, 0.4)',
+                transition: 'all 0.3s ease'
+              }}
+            >
+              <svg width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+              Descargar PDF de la Clase
+            </a>
           </div>
         </div>
 
@@ -118,6 +143,10 @@ export default function ClasePage() {
       
       {/* Global styles for responsiveness and hover effects */}
       <style dangerouslySetInnerHTML={{__html: `
+        .btn-download:hover {
+          transform: translateY(-3px);
+          box-shadow: 0 15px 35px rgba(230, 184, 92, 0.5) !important;
+        }
         .btn-whatsapp:hover {
           transform: translateY(-3px);
           box-shadow: 0 15px 35px rgba(37, 211, 102, 0.5) !important;
