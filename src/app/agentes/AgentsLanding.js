@@ -28,8 +28,7 @@ const AGENTS = [
     role: 'Community Manager',
     category: 'Comunidad & Ventas',
     image: '/agentes/01_Sofia_Community_Manager.png',
-    coverBg: 'linear-gradient(135deg, #a855f7 0%, #ec4899 100%)',
-    avatarBg: '#9333ea',
+    coverBg: 'linear-gradient(180deg, #f3e8ff 0%, #fae8ff 100%)',
     accentColor: '#a855f7',
     description: 'Monitorea tus redes sociales, responde comentarios con tono humano y clasifica prospectos en mensajes directos para agendar llamadas o ventas.',
     connectedTo: 'Ari & Audiencia',
@@ -42,8 +41,7 @@ const AGENTS = [
     role: 'Diseñadora Gráfica',
     category: 'Identidad & Creativos',
     image: '/agentes/02_Dalia_Disenadora.png',
-    coverBg: 'linear-gradient(135deg, #10b981 0%, #06b6d4 100%)',
-    avatarBg: '#059669',
+    coverBg: 'linear-gradient(180deg, #ecfdf5 0%, #ccfbf1 100%)',
     accentColor: '#10b981',
     description: 'Diseña portadas llamativas, carruseles de alto valor y piezas publicitarias consistentes con la paleta de colores y tipografía de tu marca.',
     connectedTo: 'Ari & Pluma',
@@ -56,8 +54,7 @@ const AGENTS = [
     role: 'Investigador de Contenido',
     category: 'Tendencias & Nicho',
     image: '/agentes/03_Nova_Investigador_Contenido.png',
-    coverBg: 'linear-gradient(135deg, #06b6d4 0%, #3b82f6 100%)',
-    avatarBg: '#0284c7',
+    coverBg: 'linear-gradient(180deg, #e0f2fe 0%, #dbeafe 100%)',
     accentColor: '#0284c7',
     description: 'Rastrea en tiempo real qué formatos y temas están explotando en tu nicho en TikTok, Instagram y YouTube para no improvisar nunca.',
     connectedTo: 'Ari & Valeria',
@@ -67,11 +64,10 @@ const AGENTS = [
   {
     id: 'valeria',
     name: 'Valeria',
-    role: 'Adaptador de Contenido y Ganchos Virales',
+    role: 'Ganchos Virales & Retención',
     category: 'Retención & Hooks',
     image: '/agentes/04_Valeria_Ganchos_Virales.png',
-    coverBg: 'linear-gradient(135deg, #f59e0b 0%, #ea580c 100%)',
-    avatarBg: '#d97706',
+    coverBg: 'linear-gradient(180deg, #fef3c7 0%, #ffedd5 100%)',
     accentColor: '#ea580c',
     description: 'Transforma cualquier idea en ganchos psicológicos de alta retención para atrapar la atención en los primeros 3 segundos del video.',
     connectedTo: 'Nova & Marco',
@@ -81,11 +77,10 @@ const AGENTS = [
   {
     id: 'marco',
     name: 'Marco',
-    role: 'Guionista',
+    role: 'Guionista Audiovisual',
     category: 'Estructura & Storytelling',
     image: '/agentes/05_Marco_Guionista.png',
-    coverBg: 'linear-gradient(135deg, #2563eb 0%, #4338ca 100%)',
-    avatarBg: '#1d4ed8',
+    coverBg: 'linear-gradient(180deg, #eff6ff 0%, #e0e7ff 100%)',
     accentColor: '#2563eb',
     description: 'Redacta los guiones completos palabra por palabra listos para leer en teleprónter o cámara: apertura, cuerpo dinámico y llamado a la acción.',
     connectedTo: 'Valeria & Pluma',
@@ -95,11 +90,10 @@ const AGENTS = [
   {
     id: 'pluma',
     name: 'Pluma',
-    role: 'Copywriting',
+    role: 'Copywriting de Conversión',
     category: 'Persuasión & Captions',
     image: '/agentes/06_Pluma_Copywriting.png',
-    coverBg: 'linear-gradient(135deg, #c026d3 0%, #db2777 100%)',
-    avatarBg: '#a21caf',
+    coverBg: 'linear-gradient(180deg, #fae8ff 0%, #fce7f3 100%)',
     accentColor: '#c026d3',
     description: 'Escribe los copies de publicaciones, descripciones de videos y secuencias de emails con fórmulas de persuasión que motivan a tomar acción.',
     connectedTo: 'Marco & Sofia',
@@ -112,8 +106,7 @@ const AGENTS = [
     role: 'Montaje para Edición',
     category: 'Corte & Ritmo',
     image: '/agentes/07_Martin_Montaje_Edicion.png',
-    coverBg: 'linear-gradient(135deg, #0ea5e9 0%, #6366f1 100%)',
-    avatarBg: '#0369a1',
+    coverBg: 'linear-gradient(180deg, #e0f2fe 0%, #e0e7ff 100%)',
     accentColor: '#0ea5e9',
     description: 'Limpia el video en crudo: elimina silencios, muletillas y pausas para lograr un ritmo ágil y continuo que evita que la gente se vaya.',
     connectedTo: 'Marco & Tomás',
@@ -126,8 +119,7 @@ const AGENTS = [
     role: 'Montaje de Video',
     category: 'Efectos & Dinamismo',
     image: '/agentes/08_Tomas_Montaje_Video.png',
-    coverBg: 'linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%)',
-    avatarBg: '#4338ca',
+    coverBg: 'linear-gradient(180deg, #e0e7ff 0%, #ede9fe 100%)',
     accentColor: '#4f46e5',
     description: 'Aplica zooms de énfasis (punch-ins), transiciones cinematográficas y movimientos de cámara en sincronía con el tono de voz.',
     connectedTo: 'Martin & Rita',
@@ -137,11 +129,10 @@ const AGENTS = [
   {
     id: 'rita',
     name: 'Rita',
-    role: 'Movimiento',
+    role: 'Movimiento & Kinetic Text',
     category: 'Motion & Subtítulos',
     image: '/agentes/09_Rita_Movimiento.png',
-    coverBg: 'linear-gradient(135deg, #eab308 0%, #d97706 100%)',
-    avatarBg: '#ca8a04',
+    coverBg: 'linear-gradient(180deg, #fef9c3 0%, #fef3c7 100%)',
     accentColor: '#d97706',
     description: 'Crea subtítulos animados palabra por palabra estilo viral, destaca palabras clave con colores llamativos y añade stickers cinéticos.',
     connectedTo: 'Tomas & Lucas',
@@ -151,11 +142,10 @@ const AGENTS = [
   {
     id: 'lucas',
     name: 'Lucas',
-    role: 'Tomas de Apoyo',
+    role: 'Tomas de Apoyo & B-Roll',
     category: 'B-Roll & Visuales',
     image: '/agentes/10_Lucas_Tomas_de_Apoyo.png',
-    coverBg: 'linear-gradient(135deg, #059669 0%, #16a34a 100%)',
-    avatarBg: '#047857',
+    coverBg: 'linear-gradient(180deg, #dcfce7 0%, #d1fae5 100%)',
     accentColor: '#059669',
     description: 'Selecciona e inserta clips de apoyo (B-rolls), capturas y metáforas visuales cada 3-4 segundos para que el video mantenga el interés visual.',
     connectedTo: 'Rita & Sara',
@@ -165,11 +155,10 @@ const AGENTS = [
   {
     id: 'sara',
     name: 'Sara',
-    role: 'Acabado',
+    role: 'Acabado & Master Final',
     category: 'Color, Audio & Master',
     image: '/agentes/11_Sara_Acabado.png',
-    coverBg: 'linear-gradient(135deg, #f43f5e 0%, #dc2626 100%)',
-    avatarBg: '#be123c',
+    coverBg: 'linear-gradient(180deg, #ffe4e6 0%, #fee2e2 100%)',
     accentColor: '#e11d48',
     description: 'Realiza el pulido final de audio (ecualización y reducción de ruido), gradación de color cinematográfico y exporta en 4K listo para publicar.',
     connectedTo: 'Lucas & Ari',
@@ -183,7 +172,7 @@ export default function AgentsLanding() {
   const marqueeRef = useRef(null);
 
   const whatsappUrl = "https://wa.me/584123060970?text=" + encodeURIComponent(
-    "Hola Eduar, quiero empezar en diciembre y tener mi asistente de IA y equipo de marketing en marcha."
+    "Hola Eduar, quiero los detalles de inscripción para el Master de Inteligencia Artificial y crear mi ecosistema de agentes."
   );
 
   return (
@@ -205,11 +194,11 @@ export default function AgentsLanding() {
           position: sticky;
           top: 0;
           z-index: 50;
-          background: rgba(255, 255, 255, 0.9);
+          background: rgba(255, 255, 255, 0.92);
           backdrop-filter: blur(14px);
           -webkit-backdrop-filter: blur(14px);
           border-bottom: 1px solid rgba(226, 232, 240, 0.85);
-          padding: 16px 24px;
+          padding: 14px 24px;
         }
         .nav-inner {
           max-width: 1200px;
@@ -219,50 +208,34 @@ export default function AgentsLanding() {
           align-items: center;
         }
 
-        /* Pill Badge */
-        .pill-badge {
-          display: inline-flex;
-          align-items: center;
-          gap: 8px;
-          background: #ffffff;
-          border: 1px solid #e2e8f0;
-          padding: 6px 14px;
-          border-radius: 9999px;
-          font-size: 0.875rem;
-          font-weight: 600;
-          color: #334155;
-          box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
-        }
-        .pill-dot {
-          width: 8px;
-          height: 8px;
-          border-radius: 50%;
-          background: #10b981;
-          box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.2);
-          animation: pulse 2s infinite;
-        }
-
         /* Hero */
         .hero-section {
-          max-width: 1020px;
+          max-width: 980px;
           margin: 0 auto;
-          padding: 70px 20px 40px 20px;
+          padding: 50px 20px 30px 20px;
           text-align: center;
         }
+        .hero-logo-box {
+          display: inline-block;
+          margin-bottom: 24px;
+          transition: transform 0.3s ease;
+        }
+        .hero-logo-box:hover {
+          transform: scale(1.02);
+        }
         .hero-title {
-          font-size: clamp(2.3rem, 5.5vw, 4.1rem);
+          font-size: clamp(2.4rem, 5.5vw, 4.2rem);
           font-weight: 850;
           line-height: 1.12;
           letter-spacing: -0.04em;
           color: #09090b;
-          margin-top: 24px;
-          margin-bottom: 24px;
+          margin-bottom: 22px;
         }
         .hero-desc {
-          font-size: clamp(1.1rem, 2.2vw, 1.35rem);
+          font-size: clamp(1.1rem, 2.1vw, 1.3rem);
           color: #475569;
-          line-height: 1.6;
-          max-width: 780px;
+          line-height: 1.65;
+          max-width: 820px;
           margin: 0 auto 36px auto;
           font-weight: 400;
         }
@@ -271,13 +244,13 @@ export default function AgentsLanding() {
         .btn-primary {
           display: inline-flex;
           align-items: center;
-          gap: 10px;
+          gap: 12px;
           background: #09090b;
           color: #ffffff;
-          padding: 16px 34px;
+          padding: 18px 36px;
           border-radius: 9999px;
           font-size: 1.05rem;
-          font-weight: 600;
+          font-weight: 700;
           text-decoration: none;
           box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.25);
           transition: all 0.25s ease;
@@ -321,15 +294,19 @@ export default function AgentsLanding() {
           gap: 30px;
         }
         .coord-photo-wrapper {
-          width: 220px;
-          height: 260px;
+          width: 200px;
+          height: 250px;
           position: relative;
           border-radius: 20px;
           overflow: hidden;
-          background: #f1f5f9;
+          background: linear-gradient(180deg, #ede9fe 0%, #dbeafe 100%);
           flex-shrink: 0;
           box-shadow: 0 12px 24px -6px rgba(99, 102, 241, 0.25);
           border: 2px solid rgba(99, 102, 241, 0.2);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          padding: 8px;
         }
         .coord-info {
           flex: 1;
@@ -388,20 +365,9 @@ export default function AgentsLanding() {
           }
         }
 
-        @keyframes pulse {
-          0%, 100% {
-            opacity: 1;
-            transform: scale(1);
-          }
-          50% {
-            opacity: 0.5;
-            transform: scale(1.15);
-          }
-        }
-
-        /* Agent Card (Estilo Vilma.ai) */
+        /* Agent Card (Formato con proporciones naturales sin alargamiento) */
         .agent-card {
-          width: 360px;
+          width: 350px;
           background: #ffffff;
           border: 1px solid #e2e8f0;
           border-radius: 24px;
@@ -418,25 +384,29 @@ export default function AgentsLanding() {
           border-color: #cbd5e1;
         }
 
-        /* Card Cover / Portrait (Pixar 3D image) */
+        /* Card Cover / Stage de personaje (con altura y object-fit contain para 0 distorsión) */
         .card-cover {
-          height: 180px;
+          height: 230px;
           width: 100%;
           position: relative;
           overflow: hidden;
-          background: #f1f5f9;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          padding: 12px;
         }
         .card-cover-image {
-          object-fit: cover;
-          object-position: top center;
-          transition: transform 0.4s ease;
+          object-fit: contain !important;
+          object-position: center bottom !important;
+          filter: drop-shadow(0 10px 14px rgba(0, 0, 0, 0.1));
+          transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
         }
         .agent-card:hover .card-cover-image {
-          transform: scale(1.04);
+          transform: scale(1.05) translateY(-4px);
         }
         .card-category-pill {
           position: absolute;
-          bottom: 12px;
+          top: 12px;
           left: 14px;
           z-index: 2;
           background: rgba(255, 255, 255, 0.95);
@@ -446,7 +416,8 @@ export default function AgentsLanding() {
           font-size: 0.72rem;
           font-weight: 700;
           color: #0f172a;
-          box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
+          box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+          border: 1px solid rgba(226, 232, 240, 0.8);
         }
 
         /* Card Body */
@@ -490,43 +461,103 @@ export default function AgentsLanding() {
           font-style: italic;
         }
 
-        /* Pipeline / Workflow section */
-        .pipeline-section {
-          max-width: 1100px;
-          margin: 60px auto 40px auto;
+        /* Dashboard Showcase Section */
+        .dashboard-section {
+          max-width: 1140px;
+          margin: 70px auto 40px auto;
           padding: 0 20px;
         }
-        .pipeline-grid {
-          display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-          gap: 20px;
-          margin-top: 30px;
+        .dashboard-mockup {
+          background: #0f172a;
+          border-radius: 28px;
+          border: 1px solid rgba(255, 255, 255, 0.1);
+          box-shadow: 0 25px 60px -15px rgba(15, 23, 42, 0.4);
+          overflow: hidden;
+          color: #ffffff;
         }
-        .pipeline-step {
+        .dash-topbar {
+          background: #1e293b;
+          padding: 14px 24px;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .dash-dots {
+          display: flex;
+          gap: 8px;
+        }
+        .dash-dot {
+          width: 12px;
+          height: 12px;
+          border-radius: 50%;
+        }
+        .dash-body {
+          padding: 30px;
+        }
+        .kpi-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+          gap: 16px;
+          margin-bottom: 24px;
+        }
+        .kpi-card {
+          background: rgba(255, 255, 255, 0.04);
+          border: 1px solid rgba(255, 255, 255, 0.08);
+          border-radius: 16px;
+          padding: 18px;
+        }
+        .workflow-preview {
+          background: rgba(255, 255, 255, 0.02);
+          border: 1px solid rgba(255, 255, 255, 0.06);
+          border-radius: 20px;
+          padding: 24px;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: 16px;
+          flex-wrap: wrap;
+        }
+        .workflow-node {
+          background: #1e293b;
+          border: 1px solid rgba(255, 255, 255, 0.12);
+          border-radius: 14px;
+          padding: 12px 18px;
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          font-size: 0.88rem;
+          font-weight: 600;
+        }
+        .workflow-arrow {
+          color: #6366f1;
+          font-size: 1.2rem;
+          font-weight: 800;
+        }
+
+        /* Business Capabilities Grid */
+        .systems-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+          gap: 20px;
+          margin-top: 36px;
+        }
+        .system-item {
           background: #ffffff;
           border: 1px solid #e2e8f0;
           border-radius: 20px;
           padding: 24px;
           box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02);
+          transition: transform 0.25s ease;
         }
-        .step-num {
-          width: 34px;
-          height: 34px;
-          border-radius: 10px;
-          background: #0f172a;
-          color: #ffffff;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          font-weight: 700;
-          font-size: 0.95rem;
-          margin-bottom: 16px;
+        .system-item:hover {
+          transform: translateY(-4px);
         }
 
         /* Responsive tweaks */
         @media (max-width: 768px) {
           .hero-section {
-            padding: 40px 16px 20px 16px;
+            padding: 30px 16px 20px 16px;
           }
           .coord-content-row {
             flex-direction: column;
@@ -534,12 +565,23 @@ export default function AgentsLanding() {
             padding: 20px;
           }
           .coord-photo-wrapper {
-            width: 180px;
+            width: 170px;
             height: 220px;
             margin: 0 auto;
           }
           .agent-card {
-            width: 320px;
+            width: 310px;
+          }
+          .card-cover {
+            height: 200px;
+          }
+          .workflow-preview {
+            flex-direction: column;
+            align-items: stretch;
+          }
+          .workflow-arrow {
+            text-align: center;
+            transform: rotate(90deg);
           }
         }
       `}</style>
@@ -557,18 +599,17 @@ export default function AgentsLanding() {
               priority
             />
             <span style={{ 
-              background: '#f1f5f9', 
-              color: '#475569', 
-              fontSize: '0.75rem', 
-              fontWeight: '700', 
+              background: '#0f172a', 
+              color: '#ffffff', 
+              fontSize: '0.72rem', 
+              fontWeight: '800', 
               padding: '4px 10px', 
               borderRadius: '9999px',
-              border: '1px solid #e2e8f0',
               display: 'inline-flex',
               alignItems: 'center',
               gap: '6px'
             }}>
-              <span>⚡</span> AI Team
+              <span>⚡</span> MASTER IA
             </span>
           </div>
 
@@ -577,9 +618,9 @@ export default function AgentsLanding() {
             target="_blank" 
             rel="noopener noreferrer" 
             className="btn-primary"
-            style={{ padding: '10px 22px', fontSize: '0.9rem' }}
+            style={{ padding: '10px 22px', fontSize: '0.88rem' }}
           >
-            Hablar por WhatsApp
+            Detalles de Inscripción
           </a>
         </div>
       </header>
@@ -587,20 +628,26 @@ export default function AgentsLanding() {
       {/* Hero Section */}
       <main>
         <section className="hero-section">
-          {/* Badge */}
-          <div className="pill-badge">
-            <span className="pill-dot"></span>
-            <span>Ecosistema de 12 Agentes de IA Interconectados</span>
+          {/* Logo del curso recibido */}
+          <div className="hero-logo-box">
+            <Image 
+              src="/logo_master_ia.png" 
+              alt="Master de Inteligencia Artificial" 
+              width={320} 
+              height={170}
+              style={{ objectFit: 'contain' }}
+              priority
+            />
           </div>
 
-          {/* Titular exacto solicitado */}
+          {/* Nuevo Titular Exacto */}
           <h1 className="hero-title">
-            Empieza en diciembre y llega a enero con tu asistente de IA y tu equipo de marketing en marcha
+            Crea tu ecosistema de Agentes de IA interconectados
           </h1>
 
-          {/* Descripción exacta solicitada */}
+          {/* Nueva Descripción Completa */}
           <p className="hero-desc">
-            Ahora podrás tener ideas ilimitadas, guiones comprobados listos, un equipo de editores, y vas a poder comunicar en automatico.
+            Empieza en diciembre y llega a enero con tu asistente de IA y tu equipo de marketing en marcha. Ahora podrás tener ideas ilimitadas, guiones comprobados listos, un equipo de editores, y vas a poder comunicar en automatico.
           </p>
 
           <div style={{ display: 'flex', justifyContent: 'center', gap: '16px', flexWrap: 'wrap' }}>
@@ -610,8 +657,8 @@ export default function AgentsLanding() {
               rel="noopener noreferrer" 
               className="btn-primary"
             >
-              <span>Activar mi Equipo de IA</span>
-              <svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+              <span>Ir a WhatsApp para los detalles de inscripción</span>
+              <svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
               </svg>
             </a>
@@ -625,7 +672,7 @@ export default function AgentsLanding() {
                 background: '#ffffff',
                 border: '1px solid #cbd5e1',
                 color: '#334155',
-                padding: '16px 28px',
+                padding: '18px 28px',
                 borderRadius: '9999px',
                 fontSize: '1.05rem',
                 fontWeight: '600',
@@ -635,7 +682,7 @@ export default function AgentsLanding() {
                 gap: '8px'
               }}
             >
-              <span>Ver cómo trabajan juntos</span>
+              <span>Ver cómo trabajan los agentes</span>
               <span>↓</span>
             </button>
           </div>
@@ -686,14 +733,14 @@ export default function AgentsLanding() {
               </span>
             </div>
 
-            {/* Contenido con la foto de avatar Pixar 3D de Ari */}
+            {/* Contenido con la foto de avatar Pixar 3D de Ari (sin deformación) */}
             <div className="coord-content-row">
               <div className="coord-photo-wrapper">
                 <Image 
                   src={COORDINATOR.image} 
                   alt={COORDINATOR.name} 
                   fill 
-                  style={{ objectFit: 'cover', objectPosition: 'top center' }}
+                  style={{ objectFit: 'contain', objectPosition: 'center bottom' }}
                   priority
                 />
               </div>
@@ -741,7 +788,19 @@ export default function AgentsLanding() {
         {/* 2. CARRUSEL EN MOVIMIENTO (LOS 11 AGENTES - ESTILO VILMA.AI) */}
         <section id="agentes-carrusel" style={{ padding: '20px 0 60px 0' }}>
           <div style={{ maxWidth: '1000px', margin: '0 auto 24px auto', padding: '0 20px', textAlign: 'center' }}>
-            <div className="pill-badge" style={{ marginBottom: '12px' }}>
+            <div style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '8px',
+              background: '#ffffff',
+              border: '1px solid #e2e8f0',
+              padding: '6px 14px',
+              borderRadius: '9999px',
+              fontSize: '0.875rem',
+              fontWeight: '600',
+              color: '#334155',
+              marginBottom: '12px'
+            }}>
               <span>♡</span>
               <span>Especialistas en Movimiento</span>
             </div>
@@ -794,20 +853,15 @@ export default function AgentsLanding() {
                   key={`${agent.id}-${index}`} 
                   className="agent-card"
                 >
-                  {/* Foto de portada/avatar Pixar 3D */}
-                  <div className="card-cover">
+                  {/* Foto de personaje Pixar 3D con altura óptima y contain (cero deformación) */}
+                  <div className="card-cover" style={{ background: agent.coverBg }}>
                     <Image 
                       src={agent.image} 
                       alt={agent.name} 
                       fill 
                       className="card-cover-image"
-                      sizes="(max-width: 768px) 320px, 360px"
+                      sizes="350px"
                     />
-                    <div style={{
-                      position: 'absolute',
-                      inset: 0,
-                      background: 'linear-gradient(to bottom, rgba(0,0,0,0.05) 50%, rgba(0,0,0,0.6) 100%)'
-                    }}></div>
                     <span className="card-category-pill">
                       {agent.category}
                     </span>
@@ -874,55 +928,203 @@ export default function AgentsLanding() {
           </div>
         </section>
 
-        {/* 3. CÓMO FUNCIONA EL FLUJO INTERCONECTADO */}
-        <section className="pipeline-section">
-          <div style={{ textAlign: 'center', marginBottom: '30px' }}>
-            <span style={{ color: '#0284c7', fontSize: '0.85rem', fontWeight: '800', textTransform: 'uppercase', letterSpacing: '0.08em' }}>
-              Flujo de Trabajo Automatizado
+        {/* 3. SECCIÓN NUEVA: DASHBOARD Y CREA CUALQUIER SISTEMA PARA TU NEGOCIO */}
+        <section className="dashboard-section">
+          <div style={{ textAlign: 'center', marginBottom: '36px' }}>
+            <span style={{ 
+              color: '#0284c7', 
+              fontSize: '0.85rem', 
+              fontWeight: '800', 
+              textTransform: 'uppercase', 
+              letterSpacing: '0.08em',
+              background: '#e0f2fe',
+              padding: '6px 16px',
+              borderRadius: '9999px'
+            }}>
+              Personalización & Control Total
             </span>
-            <h3 style={{ fontSize: '2rem', fontWeight: '850', color: '#0f172a', marginTop: '6px' }}>
-              Así se conectan tus agentes de principio a fin
-            </h3>
+            <h2 style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', fontWeight: '850', color: '#0f172a', marginTop: '14px', letterSpacing: '-0.03em' }}>
+              Crea el sistema inteligente que quieras para tu negocio
+            </h2>
+            <p style={{ color: '#64748b', fontSize: '1.15rem', maxWidth: '750px', margin: '14px auto 0 auto', lineHeight: '1.6' }}>
+              No te limites únicamente a la creación de contenido. En el <strong>Master de Inteligencia Artificial</strong> aprenderás a diseñar la arquitectura y el panel de control exacto para automatizar ventas, soporte, CRM y operaciones de tu empresa.
+            </p>
           </div>
 
-          <div className="pipeline-grid">
-            <div className="pipeline-step">
-              <div className="step-num">1</div>
-              <h4 style={{ fontSize: '1.15rem', fontWeight: '800', color: '#0f172a', marginBottom: '8px' }}>
-                1. Instrucción & Estrategia
-              </h4>
+          {/* Maqueta moderna de Dashboard del Sistema */}
+          <div className="dashboard-mockup">
+            {/* Topbar del Dashboard */}
+            <div className="dash-topbar">
+              <div style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
+                <div className="dash-dots">
+                  <div className="dash-dot" style={{ background: '#ef4444' }}></div>
+                  <div className="dash-dot" style={{ background: '#eab308' }}></div>
+                  <div className="dash-dot" style={{ background: '#22c55e' }}></div>
+                </div>
+                <span style={{ fontSize: '0.82rem', color: '#94a3b8', fontWeight: '600' }}>
+                  Sistema Operativo de IA • Panel Central de Negocio
+                </span>
+              </div>
+
+              <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+                <span style={{ 
+                  background: 'rgba(34, 197, 94, 0.15)', 
+                  color: '#4ade80', 
+                  fontSize: '0.75rem', 
+                  fontWeight: '700',
+                  padding: '4px 12px',
+                  borderRadius: '9999px',
+                  border: '1px solid rgba(74, 222, 128, 0.3)'
+                }}>
+                  ● 12 Agentes Operando en Sincronía
+                </span>
+                <span style={{ fontSize: '0.8rem', color: '#cbd5e1' }}>
+                  Eficiencia: <strong>98.7%</strong>
+                </span>
+              </div>
+            </div>
+
+            {/* Cuerpo del Dashboard */}
+            <div className="dash-body">
+              {/* KPIs de rendimiento */}
+              <div className="kpi-grid">
+                <div className="kpi-card">
+                  <span style={{ color: '#94a3b8', fontSize: '0.78rem', textTransform: 'uppercase', fontWeight: '700' }}>
+                    Tareas Automatizadas
+                  </span>
+                  <div style={{ fontSize: '1.8rem', fontWeight: '850', color: '#ffffff', marginTop: '6px' }}>
+                    1,420
+                  </div>
+                  <span style={{ color: '#4ade80', fontSize: '0.75rem', fontWeight: '600' }}>
+                    ↑ +34% vs mes anterior
+                  </span>
+                </div>
+
+                <div className="kpi-card">
+                  <span style={{ color: '#94a3b8', fontSize: '0.78rem', textTransform: 'uppercase', fontWeight: '700' }}>
+                    Horas de Equipo Ahorradas
+                  </span>
+                  <div style={{ fontSize: '1.8rem', fontWeight: '850', color: '#ffffff', marginTop: '6px' }}>
+                    186 hrs
+                  </div>
+                  <span style={{ color: '#38bdf8', fontSize: '0.75rem', fontWeight: '600' }}>
+                    Equivalente a 2 empleados tiempo completo
+                  </span>
+                </div>
+
+                <div className="kpi-card">
+                  <span style={{ color: '#94a3b8', fontSize: '0.78rem', textTransform: 'uppercase', fontWeight: '700' }}>
+                    Leads Calificados por IA
+                  </span>
+                  <div style={{ fontSize: '1.8rem', fontWeight: '850', color: '#ffffff', marginTop: '6px' }}>
+                    342
+                  </div>
+                  <span style={{ color: '#a78bfa', fontSize: '0.75rem', fontWeight: '600' }}>
+                    89% con alta intención de compra
+                  </span>
+                </div>
+
+                <div className="kpi-card">
+                  <span style={{ color: '#94a3b8', fontSize: '0.78rem', textTransform: 'uppercase', fontWeight: '700' }}>
+                    Tiempo Promedio de Respuesta
+                  </span>
+                  <div style={{ fontSize: '1.8rem', fontWeight: '850', color: '#ffffff', marginTop: '6px' }}>
+                    14 seg
+                  </div>
+                  <span style={{ color: '#facc15', fontSize: '0.75rem', fontWeight: '600' }}>
+                    Atención inmediata 24/7
+                  </span>
+                </div>
+              </div>
+
+              {/* Visualización del Pipeline de Agentes Conectados */}
+              <div style={{ marginTop: '20px' }}>
+                <div style={{ fontSize: '0.9rem', fontWeight: '700', color: '#e2e8f0', marginBottom: '14px' }}>
+                  Flujo de Automatización de Negocio Activo:
+                </div>
+                
+                <div className="workflow-preview">
+                  <div className="workflow-node">
+                    <span style={{ fontSize: '1.2rem' }}>💬</span>
+                    <div>
+                      <div style={{ color: '#ffffff' }}>Mensaje Entrante</div>
+                      <div style={{ fontSize: '0.72rem', color: '#94a3b8' }}>WhatsApp / Instagram</div>
+                    </div>
+                  </div>
+
+                  <span className="workflow-arrow">→</span>
+
+                  <div className="workflow-node" style={{ borderColor: 'rgba(99, 102, 241, 0.4)' }}>
+                    <span style={{ fontSize: '1.2rem' }}>🤖</span>
+                    <div>
+                      <div style={{ color: '#a5b4fc' }}>Agente Calificador</div>
+                      <div style={{ fontSize: '0.72rem', color: '#94a3b8' }}>Filtra necesidad y presupuesto</div>
+                    </div>
+                  </div>
+
+                  <span className="workflow-arrow">→</span>
+
+                  <div className="workflow-node" style={{ borderColor: 'rgba(16, 185, 129, 0.4)' }}>
+                    <span style={{ fontSize: '1.2rem' }}>🗂️</span>
+                    <div>
+                      <div style={{ color: '#6ee7b7' }}>CRM & Base de Datos</div>
+                      <div style={{ fontSize: '0.72rem', color: '#94a3b8' }}>Registro automático</div>
+                    </div>
+                  </div>
+
+                  <span className="workflow-arrow">→</span>
+
+                  <div className="workflow-node" style={{ borderColor: 'rgba(245, 158, 11, 0.4)' }}>
+                    <span style={{ fontSize: '1.2rem' }}>🚀</span>
+                    <div>
+                      <div style={{ color: '#fcd34d' }}>Ventas & Cierre</div>
+                      <div style={{ fontSize: '0.72rem', color: '#94a3b8' }}>Agenda llamada o cobra</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* 4 Sistemas que vas a poder construir */}
+          <div className="systems-grid">
+            <div className="system-item">
+              <div style={{ fontSize: '1.8rem', marginBottom: '12px' }}>🎯</div>
+              <h3 style={{ fontSize: '1.15rem', fontWeight: '800', color: '#0f172a', marginBottom: '8px' }}>
+                Sistema de Ventas & Prospección
+              </h3>
               <p style={{ color: '#64748b', fontSize: '0.9rem', lineHeight: '1.5' }}>
-                Le hablas a <strong>Ari</strong>. Ella activa a <strong>Nova</strong> y <strong>Valeria</strong> para encontrar las ideas más virales y definir ganchos psicológicos.
+                Agentes que conversan con prospectos en redes, resuelven objeciones comunes y agendan llamadas directamente en tu calendario.
               </p>
             </div>
 
-            <div className="pipeline-step">
-              <div className="step-num">2</div>
-              <h4 style={{ fontSize: '1.15rem', fontWeight: '800', color: '#0f172a', marginBottom: '8px' }}>
-                2. Redacción & Creativos
-              </h4>
+            <div className="system-item">
+              <div style={{ fontSize: '1.8rem', marginBottom: '12px' }}>🧠</div>
+              <h3 style={{ fontSize: '1.15rem', fontWeight: '800', color: '#0f172a', marginBottom: '8px' }}>
+                Agente Experto de tu Empresa
+              </h3>
               <p style={{ color: '#64748b', fontSize: '0.9rem', lineHeight: '1.5' }}>
-                <strong>Marco</strong> escribe los guiones listos para cámara. <strong>Pluma</strong> redacta copys de alta respuesta y <strong>Dalia</strong> diseña los recursos visuales.
+                Entrenado con tus manuales, precios, productos y políticas para responder con la precisión de tu mejor empleado las 24 horas del día.
               </p>
             </div>
 
-            <div className="pipeline-step">
-              <div className="step-num">3</div>
-              <h4 style={{ fontSize: '1.15rem', fontWeight: '800', color: '#0f172a', marginBottom: '8px' }}>
-                3. Montaje & Postproducción
-              </h4>
+            <div className="system-item">
+              <div style={{ fontSize: '1.8rem', marginBottom: '12px' }}>📊</div>
+              <h3 style={{ fontSize: '1.15rem', fontWeight: '800', color: '#0f172a', marginBottom: '8px' }}>
+                CRM Inteligente & Seguimiento
+              </h3>
               <p style={{ color: '#64748b', fontSize: '0.9rem', lineHeight: '1.5' }}>
-                El equipo audiovisual entra en acción: <strong>Martin</strong> corta, <strong>Tomás</strong> monta, <strong>Rita</strong> anima subtítulos, <strong>Lucas</strong> agrega B-Rolls y <strong>Sara</strong> masteriza.
+                Guarda datos de clientes, envía recordatorios automáticos de pago y reactiva a clientes antiguos sin que tengas que escribirles a mano.
               </p>
             </div>
 
-            <div className="pipeline-step">
-              <div className="step-num">4</div>
-              <h4 style={{ fontSize: '1.15rem', fontWeight: '800', color: '#0f172a', marginBottom: '8px' }}>
-                4. Publicación & Conversión
-              </h4>
+            <div className="system-item">
+              <div style={{ fontSize: '1.8rem', marginBottom: '12px' }}>⚙️</div>
+              <h3 style={{ fontSize: '1.15rem', fontWeight: '800', color: '#0f172a', marginBottom: '8px' }}>
+                Automatización de Procesos Internos
+              </h3>
               <p style={{ color: '#64748b', fontSize: '0.9rem', lineHeight: '1.5' }}>
-                Tu contenido sale al aire en tiempo récord y <strong>Sofia</strong> modera comentarios y atiende los DMs para convertir visualizaciones en ventas.
+                Conexión fluida entre tus herramientas (Sheets, Notion, WhatsApp, Gmail, Make y bases de datos) eliminando el trabajo repetitivo.
               </p>
             </div>
           </div>
@@ -966,7 +1168,7 @@ export default function AgentsLanding() {
               display: 'inline-block',
               marginBottom: '20px'
             }}>
-              🚀 Oportunidad Diciembre / Enero
+              🚀 Inscripciones Abiertas • Master IA
             </span>
 
             <h2 style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', fontWeight: '850', lineHeight: '1.15', marginBottom: '16px' }}>
@@ -974,7 +1176,7 @@ export default function AgentsLanding() {
             </h2>
 
             <p style={{ fontSize: '1.15rem', color: '#cbd5e1', maxWidth: '650px', margin: '0 auto 36px auto', lineHeight: '1.6' }}>
-              Deja a tu asistente de IA y a tu equipo de 11 especialistas listos durante diciembre para arrancar el año comunicando y facturando en automático.
+              Deja a tu asistente de IA y a tu equipo de agentes listos durante diciembre para arrancar el año comunicando y facturando en automático.
             </p>
 
             <a 
@@ -984,7 +1186,7 @@ export default function AgentsLanding() {
               style={{
                 display: 'inline-flex',
                 alignItems: 'center',
-                gap: '10px',
+                gap: '12px',
                 background: '#ffffff',
                 color: '#09090b',
                 padding: '18px 40px',
@@ -996,7 +1198,7 @@ export default function AgentsLanding() {
                 transition: 'all 0.3s ease'
               }}
             >
-              <span>Quiero Activar Mi Equipo por WhatsApp</span>
+              <span>Ir a WhatsApp para los detalles de inscripción</span>
               <svg width="22" height="22" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
               </svg>
@@ -1013,7 +1215,7 @@ export default function AgentsLanding() {
         color: '#64748b', 
         fontSize: '0.875rem' 
       }}>
-        <p>© {new Date().getFullYear()} Marketing Xperience. Ecosistema de Agentes de Inteligencia Artificial.</p>
+        <p>© {new Date().getFullYear()} Marketing Xperience. Master de Inteligencia Artificial.</p>
       </footer>
     </div>
   );
