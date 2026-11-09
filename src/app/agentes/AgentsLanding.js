@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 
 // Datos de Ari (Coordinadora que está arriba de todos)
@@ -167,9 +167,178 @@ const AGENTS = [
   }
 ];
 
+// Conversación cotidiana interactiva de WhatsApp (Asistente Personal de IA)
+const WHATSAPP_CONVERSATION = [
+  // 1. Mensaje del usuario sobre su agenda
+  {
+    id: 'msg-1',
+    sender: 'user',
+    text: '¡Hola! 👋 ¿Qué reuniones y pendientes tengo para hoy en mi calendario?',
+    time: '9:15 AM'
+  },
+  // 2. Respuesta con recordatorio y link de Google Meet
+  {
+    id: 'msg-2',
+    sender: 'assistant',
+    text: '¡Buenos días! 🗓️ Tienes 2 compromisos programados para hoy:\n\n• 11:30 AM — Revisión de copies con Pluma y Sofía.\n• 3:30 PM — Reunión con María para afinar el lanzamiento.',
+    meetCard: {
+      title: 'Reunión con María (Lanzamiento)',
+      time: 'Hoy, 3:30 PM • Google Meet',
+      link: 'meet.google.com/mar-ia-meet'
+    },
+    footerNote: '🔔 Te avisaré 10 minutos antes. ¿Quieres que prepare algo?',
+    time: '9:15 AM'
+  },
+  // 3. Usuario reporta un gasto
+  {
+    id: 'msg-3',
+    sender: 'user',
+    text: 'Anota $45 que acabo de pagar en el almuerzo de trabajo con un cliente.',
+    time: '9:16 AM'
+  },
+  // 4. Asistente registra el gasto en tiempo real
+  {
+    id: 'msg-4',
+    sender: 'assistant',
+    text: '✅ Registrado de inmediato en tu control financiero de este mes:',
+    expenseCard: {
+      amount: '$45.00 USD',
+      category: 'Alimentación & Reuniones de Negocio',
+      monthTotal: '$310.00 USD acumulados en el mes',
+      status: 'Sincronizado en Google Sheets en vivo 📊'
+    },
+    footerNote: 'Tu presupuesto mensual sigue en orden.',
+    time: '9:16 AM'
+  },
+  // 5. Usuario solicita resumen de artículo
+  {
+    id: 'msg-5',
+    sender: 'user',
+    text: '¿Pudiste revisar el artículo de tendencias de IA que te mandé? Sácame los 3 puntos clave.',
+    time: '9:17 AM'
+  },
+  // 6. Asistente entrega el resumen ejecutivo
+  {
+    id: 'msg-6',
+    sender: 'assistant',
+    text: '📄 ¡Revisado! Aquí tienes los 3 puntos clave resumidos:',
+    summaryPoints: [
+      'La automatización sin código creció 4x este año en negocios digitales.',
+      'Los videos cortos con ganchos psicológicos duplican la retención de audiencia.',
+      'Empresas con asistentes IA responden en < 1 min y cierran 60% más ventas.'
+    ],
+    footerNote: '¿Quieres que le pida a Marco que arme un guion para video con el punto #2? 🚀',
+    time: '9:17 AM'
+  }
+];
+
 export default function AgentsLanding() {
   const [isPaused, setIsPaused] = useState(false);
   const marqueeRef = useRef(null);
+
+  // Estados para la simulación interactiva de WhatsApp en tiempo real
+  const [currentStep, setCurrentStep] = useState(0);
+  const [isAssistantTyping, setIsAssistantTyping] = useState(false);
+  const [activeMessages, setActiveMessages] = useState([]);
+  const [isChatPaused, setIsChatPaused] = useState(false);
+  const chatBodyRef = useRef(null);
+
+  // Simulación en tiempo real paso a paso
+  useEffect(() => {
+    if (isChatPaused) return;
+
+    let timer;
+    switch (currentStep) {
+      case 0:
+        // Mensaje inicial del usuario (pregunta por calendario)
+        setActiveMessages([WHATSAPP_CONVERSATION[0]]);
+        setIsAssistantTyping(false);
+        timer = setTimeout(() => setCurrentStep(1), 1200);
+        break;
+      case 1:
+        // El asistente empieza a escribir...
+        setIsAssistantTyping(true);
+        timer = setTimeout(() => setCurrentStep(2), 1600);
+        break;
+      case 2:
+        // Llega la respuesta del asistente con recordatorio y link de Meet
+        setIsAssistantTyping(false);
+        setActiveMessages([WHATSAPP_CONVERSATION[0], WHATSAPP_CONVERSATION[1]]);
+        timer = setTimeout(() => setCurrentStep(3), 3200);
+        break;
+      case 3:
+        // El usuario pide anotar un gasto
+        setActiveMessages([
+          WHATSAPP_CONVERSATION[0],
+          WHATSAPP_CONVERSATION[1],
+          WHATSAPP_CONVERSATION[2]
+        ]);
+        timer = setTimeout(() => setCurrentStep(4), 1300);
+        break;
+      case 4:
+        // El asistente escribe confirmación de gasto...
+        setIsAssistantTyping(true);
+        timer = setTimeout(() => setCurrentStep(5), 1500);
+        break;
+      case 5:
+        // Llega el registro del gasto en tiempo real
+        setIsAssistantTyping(false);
+        setActiveMessages([
+          WHATSAPP_CONVERSATION[0],
+          WHATSAPP_CONVERSATION[1],
+          WHATSAPP_CONVERSATION[2],
+          WHATSAPP_CONVERSATION[3]
+        ]);
+        timer = setTimeout(() => setCurrentStep(6), 3200);
+        break;
+      case 6:
+        // El usuario pide resumen de un artículo
+        setActiveMessages([
+          WHATSAPP_CONVERSATION[0],
+          WHATSAPP_CONVERSATION[1],
+          WHATSAPP_CONVERSATION[2],
+          WHATSAPP_CONVERSATION[3],
+          WHATSAPP_CONVERSATION[4]
+        ]);
+        timer = setTimeout(() => setCurrentStep(7), 1400);
+        break;
+      case 7:
+        // El asistente analiza y escribe los 3 puntos...
+        setIsAssistantTyping(true);
+        timer = setTimeout(() => setCurrentStep(8), 1900);
+        break;
+      case 8:
+        // Llega el resumen ejecutivo del artículo
+        setIsAssistantTyping(false);
+        setActiveMessages(WHATSAPP_CONVERSATION);
+        // Espera 10 segundos para que el usuario pueda leer con calma antes de reiniciar
+        timer = setTimeout(() => setCurrentStep(9), 10000);
+        break;
+      case 9:
+        // Reinicio suave del bucle
+        setActiveMessages([]);
+        setIsAssistantTyping(false);
+        timer = setTimeout(() => setCurrentStep(0), 600);
+        break;
+      default:
+        break;
+    }
+
+    return () => clearTimeout(timer);
+  }, [currentStep, isChatPaused]);
+
+  // Auto-scroll del chat de WhatsApp cada vez que entra un mensaje o empieza a escribir
+  useEffect(() => {
+    if (chatBodyRef.current) {
+      chatBodyRef.current.scrollTop = chatBodyRef.current.scrollHeight;
+    }
+  }, [activeMessages, isAssistantTyping]);
+
+  const restartSimulation = () => {
+    setActiveMessages([]);
+    setIsAssistantTyping(false);
+    setCurrentStep(0);
+  };
 
   const whatsappUrl = "https://wa.me/584123060970?text=" + encodeURIComponent(
     "Hola Eduar, quiero los detalles de inscripción para el Master de Inteligencia Artificial y crear mi ecosistema de agentes."
@@ -533,6 +702,449 @@ export default function AgentsLanding() {
           color: #334155;
           line-height: 1.45;
           font-style: italic;
+        }
+
+        /* Sección: Asistente Personal en WhatsApp (Simulación Interactiva) */
+        .assistant-section {
+          max-width: 1200px;
+          margin: 60px auto 80px auto;
+          padding: 0 24px;
+        }
+        .assistant-grid {
+          display: grid;
+          grid-template-columns: 1.15fr 0.85fr;
+          gap: 48px;
+          align-items: center;
+        }
+        @media (max-width: 960px) {
+          .assistant-grid {
+            grid-template-columns: 1fr;
+            gap: 40px;
+          }
+        }
+
+        .assistant-info {
+          display: flex;
+          flex-direction: column;
+        }
+        .assistant-badge {
+          display: inline-flex;
+          align-items: center;
+          gap: 8px;
+          background: #ecfdf5;
+          color: #047857;
+          border: 1px solid #a7f3d0;
+          padding: 6px 16px;
+          border-radius: 9999px;
+          font-size: 0.82rem;
+          font-weight: 750;
+          text-transform: uppercase;
+          letter-spacing: 0.05em;
+          width: fit-content;
+          margin-bottom: 16px;
+        }
+        .assistant-title {
+          font-size: clamp(2rem, 3.8vw, 2.75rem);
+          font-weight: 850;
+          color: #0f172a;
+          line-height: 1.15;
+          letter-spacing: -0.03em;
+          margin-bottom: 16px;
+        }
+        .assistant-desc {
+          font-size: 1.1rem;
+          color: #475569;
+          line-height: 1.6;
+          margin-bottom: 28px;
+        }
+
+        /* Lista de especificaciones del asistente */
+        .assistant-features-list {
+          display: flex;
+          flex-direction: column;
+          gap: 14px;
+          margin-bottom: 34px;
+        }
+        .assistant-feature-item {
+          display: flex;
+          align-items: flex-start;
+          gap: 16px;
+          background: #ffffff;
+          border: 1px solid #e2e8f0;
+          border-radius: 18px;
+          padding: 16px 20px;
+          box-shadow: 0 4px 12px -2px rgba(0, 0, 0, 0.03);
+          transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+        }
+        .assistant-feature-item:hover {
+          transform: translateY(-2px);
+          border-color: #cbd5e1;
+          box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.06);
+        }
+        .feature-icon-box {
+          width: 44px;
+          height: 44px;
+          border-radius: 12px;
+          background: #f0fdf4;
+          border: 1px solid #bbf7d0;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 1.35rem;
+          flex-shrink: 0;
+        }
+        .feature-title {
+          font-size: 1.02rem;
+          font-weight: 750;
+          color: #0f172a;
+          margin-bottom: 4px;
+        }
+        .feature-desc {
+          font-size: 0.88rem;
+          color: #64748b;
+          line-height: 1.45;
+        }
+
+        /* Maqueta del Teléfono Móvil (WhatsApp Mockup) */
+        .phone-mockup-wrapper {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+        }
+        .phone-chassis {
+          width: 100%;
+          max-width: 410px;
+          background: #0f172a;
+          border-radius: 46px;
+          padding: 12px;
+          box-shadow: 0 25px 60px -15px rgba(15, 23, 42, 0.3), 0 0 0 1px rgba(255, 255, 255, 0.12), inset 0 0 0 2px rgba(255, 255, 255, 0.08);
+          position: relative;
+        }
+        .phone-notch {
+          position: absolute;
+          top: 18px;
+          left: 50%;
+          transform: translateX(-50%);
+          width: 95px;
+          height: 22px;
+          background: #0f172a;
+          border-radius: 20px;
+          z-index: 30;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 8px;
+        }
+        .phone-camera-lens {
+          width: 8px;
+          height: 8px;
+          border-radius: 50%;
+          background: #1e293b;
+          box-shadow: inset 0 0 2px #38bdf8;
+        }
+        .phone-speaker {
+          width: 34px;
+          height: 4px;
+          border-radius: 4px;
+          background: #1e293b;
+        }
+
+        .phone-screen {
+          background-color: #efeae2;
+          background-image: radial-gradient(#d1d7db 0.8px, transparent 0.8px);
+          background-size: 16px 16px;
+          border-radius: 36px;
+          overflow: hidden;
+          height: 600px;
+          display: flex;
+          flex-direction: column;
+          position: relative;
+          box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.08);
+        }
+
+        /* Barra de WhatsApp Superior */
+        .wa-header {
+          background: #008069;
+          color: #ffffff;
+          padding: 34px 16px 12px 16px;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          flex-shrink: 0;
+          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+          z-index: 10;
+        }
+        .wa-header-left {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+        }
+        .wa-back-btn {
+          font-size: 1.1rem;
+          color: #ffffff;
+          opacity: 0.9;
+        }
+        .wa-avatar {
+          width: 40px;
+          height: 40px;
+          border-radius: 50%;
+          background: #ffffff;
+          border: 2px solid rgba(255, 255, 255, 0.8);
+          overflow: hidden;
+          position: relative;
+          box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+        }
+        .wa-user-details {
+          display: flex;
+          flex-direction: column;
+        }
+        .wa-user-name {
+          font-size: 0.95rem;
+          font-weight: 700;
+          color: #ffffff;
+          line-height: 1.2;
+        }
+        .wa-user-status {
+          font-size: 0.72rem;
+          color: #cbfbe2;
+          font-weight: 500;
+          display: flex;
+          align-items: center;
+          gap: 5px;
+        }
+        .wa-header-icons {
+          display: flex;
+          align-items: center;
+          gap: 16px;
+          color: #ffffff;
+          font-size: 0.95rem;
+          opacity: 0.9;
+        }
+
+        /* Cuerpo del Chat con Mensajes */
+        .wa-chat-body {
+          flex: 1;
+          padding: 14px 12px;
+          overflow-y: auto;
+          display: flex;
+          flex-direction: column;
+          gap: 12px;
+          scroll-behavior: smooth;
+        }
+        .wa-chat-body::-webkit-scrollbar {
+          width: 4px;
+        }
+        .wa-chat-body::-webkit-scrollbar-thumb {
+          background: rgba(0, 0, 0, 0.15);
+          border-radius: 4px;
+        }
+
+        .wa-date-pill {
+          align-self: center;
+          background: rgba(255, 255, 255, 0.92);
+          color: #54656f;
+          font-size: 0.68rem;
+          font-weight: 700;
+          padding: 4px 12px;
+          border-radius: 8px;
+          box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08);
+          margin-bottom: 4px;
+          text-transform: uppercase;
+          letter-spacing: 0.04em;
+        }
+
+        /* Burbujas de chat */
+        .wa-msg {
+          display: flex;
+          flex-direction: column;
+          max-width: 86%;
+          animation: waFadeIn 0.25s ease-out;
+        }
+        @keyframes waFadeIn {
+          from {
+            opacity: 0;
+            transform: translateY(6px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+        .wa-msg.user {
+          align-self: flex-end;
+          background: #d9fdd3;
+          color: #111b21;
+          border-radius: 12px 12px 2px 12px;
+          padding: 9px 12px;
+          box-shadow: 0 1px 1.5px rgba(0, 0, 0, 0.12);
+        }
+        .wa-msg.assistant {
+          align-self: flex-start;
+          background: #ffffff;
+          color: #111b21;
+          border-radius: 12px 12px 12px 2px;
+          padding: 9px 12px;
+          box-shadow: 0 1px 1.5px rgba(0, 0, 0, 0.12);
+        }
+
+        .wa-msg-text {
+          font-size: 0.86rem;
+          line-height: 1.45;
+          white-space: pre-line;
+        }
+        .wa-msg-meta {
+          display: flex;
+          align-items: center;
+          justify-content: flex-end;
+          gap: 4px;
+          margin-top: 4px;
+          font-size: 0.65rem;
+          color: #667781;
+        }
+
+        /* Tarjetas interactivas dentro de los mensajes del asistente */
+        .wa-card-meet {
+          background: #f8fafc;
+          border: 1px solid #e2e8f0;
+          border-left: 4px solid #1a73e8;
+          border-radius: 10px;
+          padding: 8px 10px;
+          margin: 8px 0;
+        }
+        .wa-card-expense {
+          background: #f0fdf4;
+          border: 1px solid #bbf7d0;
+          border-left: 4px solid #10b981;
+          border-radius: 10px;
+          padding: 8px 10px;
+          margin: 8px 0;
+        }
+        .wa-card-summary {
+          background: #faf5ff;
+          border: 1px solid #e9d5ff;
+          border-left: 4px solid #9333ea;
+          border-radius: 10px;
+          padding: 8px 10px;
+          margin: 8px 0;
+        }
+
+        /* Burbuja de Escribiendo... */
+        .wa-typing-bubble {
+          align-self: flex-start;
+          background: #ffffff;
+          border-radius: 12px 12px 12px 2px;
+          padding: 8px 14px;
+          box-shadow: 0 1px 1.5px rgba(0, 0, 0, 0.12);
+          display: flex;
+          align-items: center;
+          gap: 5px;
+          animation: waFadeIn 0.2s ease-out;
+        }
+        .wa-dot {
+          width: 6px;
+          height: 6px;
+          border-radius: 50%;
+          background: #008069;
+          animation: waBounce 1.2s infinite ease-in-out;
+        }
+        .wa-dot:nth-child(1) { animation-delay: 0s; }
+        .wa-dot:nth-child(2) { animation-delay: 0.2s; }
+        .wa-dot:nth-child(3) { animation-delay: 0.4s; }
+        @keyframes waBounce {
+          0%, 80%, 100% {
+            transform: translateY(0);
+            opacity: 0.4;
+          }
+          40% {
+            transform: translateY(-5px);
+            opacity: 1;
+          }
+        }
+
+        /* Barra inferior del chat */
+        .wa-footer-bar {
+          background: #f0f2f5;
+          padding: 8px 10px;
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          flex-shrink: 0;
+        }
+        .wa-fake-input {
+          flex: 1;
+          background: #ffffff;
+          border-radius: 20px;
+          padding: 8px 14px;
+          font-size: 0.8rem;
+          color: #8696a0;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        .wa-mic-btn {
+          width: 36px;
+          height: 36px;
+          border-radius: 50%;
+          background: #008069;
+          color: #ffffff;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 1rem;
+          flex-shrink: 0;
+          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Controles de reproducción debajo del teléfono */
+        .phone-controls {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          width: 100%;
+          max-width: 410px;
+          margin-top: 14px;
+          padding: 0 6px;
+        }
+        .live-indicator {
+          display: flex;
+          align-items: center;
+          gap: 6px;
+          font-size: 0.78rem;
+          font-weight: 700;
+          color: #047857;
+        }
+        .live-dot {
+          width: 8px;
+          height: 8px;
+          border-radius: 50%;
+          background: #10b981;
+          animation: pulseDot 1.5s infinite;
+        }
+        @keyframes pulseDot {
+          0% { transform: scale(0.9); opacity: 0.8; }
+          50% { transform: scale(1.3); opacity: 1; }
+          100% { transform: scale(0.9); opacity: 0.8; }
+        }
+        .phone-ctrl-btn {
+          background: #ffffff;
+          border: 1px solid #cbd5e1;
+          border-radius: 9999px;
+          padding: 5px 12px;
+          font-size: 0.75rem;
+          font-weight: 600;
+          color: #475569;
+          cursor: pointer;
+          display: inline-flex;
+          align-items: center;
+          gap: 4px;
+          transition: all 0.2s ease;
+        }
+        .phone-ctrl-btn:hover {
+          background: #f8fafc;
+          border-color: #94a3b8;
+          color: #0f172a;
         }
 
         /* Dashboard Showcase Section */
@@ -1012,7 +1624,7 @@ export default function AgentsLanding() {
               Tu equipo de marketing en marcha
             </h2>
             <p style={{ color: '#64748b', fontSize: '1.1rem', maxWidth: '650px', margin: '0 auto' }}>
-              Cada agente domina su rol al 100% y se pasan los entregables entre ellos de forma instantánea.
+              Cada agente domina su rol al 100% y se pasan los entregables entre ellos de forma instantánea y automática.
             </p>
             
             {/* Controles para pausar o explorar */}
@@ -1145,6 +1757,311 @@ export default function AgentsLanding() {
                 </div>
               ))}
             </div>
+          </div>
+        </section>
+
+        {/* SECCIÓN INTERACTIVA: ASISTENTE PERSONAL EN WHATSAPP EN TIEMPO REAL */}
+        <section className="assistant-section">
+          <div className="assistant-grid">
+            
+            {/* Columna Izquierda: Especificaciones y Valor */}
+            <div className="assistant-info">
+              <span className="assistant-badge">
+                <span>🤖</span>
+                <span>Asistente Personal de IA en WhatsApp</span>
+              </span>
+
+              <h2 className="assistant-title">
+                Tu asistente te ayudará a resolver tu día a día
+              </h2>
+
+              <p className="assistant-desc">
+                No necesitas abrir herramientas complejas ni adaptarte a nuevos programas. Todo lo gestionas directamente desde tu WhatsApp enviando mensajes o notas de voz cotidianas, como si hablaras con tu asistente de confianza.
+              </p>
+
+              {/* Lista de especificaciones solicitadas por el usuario */}
+              <div className="assistant-features-list">
+                
+                {/* 1. Calendario */}
+                <div className="assistant-feature-item">
+                  <div className="feature-icon-box">
+                    <span>🗓️</span>
+                  </div>
+                  <div>
+                    <h3 className="feature-title">
+                      A que no se te olvide nada en tu calendario
+                    </h3>
+                    <p className="feature-desc">
+                      Recordatorios proactivos de tus citas diarias, sincronización con tu agenda y te pasa el link de Google Meet o Zoom con un solo toque antes de cada llamada.
+                    </p>
+                  </div>
+                </div>
+
+                {/* 2. Consultas en tiempo real */}
+                <div className="assistant-feature-item">
+                  <div className="feature-icon-box" style={{ background: '#eff6ff', borderColor: '#bfdbfe' }}>
+                    <span>⚡</span>
+                  </div>
+                  <div>
+                    <h3 className="feature-title">
+                      Cualquier consulta que tengas en tiempo real
+                    </h3>
+                    <p className="feature-desc">
+                      Dudas operativas, cálculos de negocio, redacción de respuestas difíciles para clientes o ideas estratégicas resueltas en cuestión de segundos.
+                    </p>
+                  </div>
+                </div>
+
+                {/* 3. Revisar artículos */}
+                <div className="assistant-feature-item">
+                  <div className="feature-icon-box" style={{ background: '#faf5ff', borderColor: '#e9d5ff' }}>
+                    <span>📑</span>
+                  </div>
+                  <div>
+                    <h3 className="feature-title">
+                      Revisar algún artículo o documento
+                    </h3>
+                    <p className="feature-desc">
+                      Pásale links, noticias o archivos PDF extensos; los lee al instante y te extrae los puntos clave y recomendaciones prácticas sin perder tiempo.
+                    </p>
+                  </div>
+                </div>
+
+                {/* 4. Gastos y cuentas */}
+                <div className="assistant-feature-item">
+                  <div className="feature-icon-box" style={{ background: '#fefce8', borderColor: '#fef08a' }}>
+                    <span>💰</span>
+                  </div>
+                  <div>
+                    <h3 className="feature-title">
+                      Llevar tus gastos y tus cuentas
+                    </h3>
+                    <p className="feature-desc">
+                      Solo dile <em>"Gasté $45 en almuerzo con cliente"</em> o envíale fotos de recibos; categoriza el gasto y actualiza tus hojas de cálculo en automático.
+                    </p>
+                  </div>
+                </div>
+
+                {/* 5. Y mucho más */}
+                <div className="assistant-feature-item">
+                  <div className="feature-icon-box" style={{ background: '#fff1f2', borderColor: '#fecdd3' }}>
+                    <span>✨</span>
+                  </div>
+                  <div>
+                    <h3 className="feature-title">
+                      Y mucho más...
+                    </h3>
+                    <p className="feature-desc">
+                      Transcribir notas de voz a listas de tareas pendientes, redactar correos ejecutivos y orquestar a tus 11 agentes especialistas de marketing cuando lo necesites.
+                    </p>
+                  </div>
+                </div>
+
+              </div>
+
+              {/* Botón WhatsApp */}
+              <div>
+                <a 
+                  href={whatsappUrl} 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="btn-primary"
+                  style={{ display: 'inline-flex' }}
+                >
+                  <span>Ir a WhatsApp para los detalles de inscripción</span>
+                  <svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+                  </svg>
+                </a>
+              </div>
+            </div>
+
+            {/* Columna Derecha: Teléfono WhatsApp en Vivo */}
+            <div className="phone-mockup-wrapper">
+              <div className="phone-chassis">
+                {/* Dynamic Island / Notch */}
+                <div className="phone-notch">
+                  <div className="phone-camera-lens"></div>
+                  <div className="phone-speaker"></div>
+                </div>
+
+                {/* Pantalla del Celular */}
+                <div className="phone-screen">
+                  {/* Barra de WhatsApp Superior */}
+                  <div className="wa-header">
+                    <div className="wa-header-left">
+                      <span className="wa-back-btn">←</span>
+                      <div className="wa-avatar">
+                        <img 
+                          src="/agentes/12_Ari_Coordinadora_Equipo.png" 
+                          alt="Asistente Personal IA"
+                          style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 10%' }}
+                        />
+                      </div>
+                      <div className="wa-user-details">
+                        <span className="wa-user-name">Asistente Personal IA</span>
+                        <span className="wa-user-status">
+                          {isAssistantTyping ? (
+                            <span style={{ color: '#ffffff', fontWeight: '700' }}>escribiendo...</span>
+                          ) : (
+                            <span>● en línea</span>
+                          )}
+                        </span>
+                      </div>
+                    </div>
+
+                    <div className="wa-header-icons">
+                      <span>📹</span>
+                      <span>📞</span>
+                      <span>⋮</span>
+                    </div>
+                  </div>
+
+                  {/* Cuerpo del Chat */}
+                  <div className="wa-chat-body" ref={chatBodyRef}>
+                    <div className="wa-date-pill">HOY</div>
+
+                    {/* Mensajes activos renderizados en tiempo real */}
+                    {activeMessages.map((msg) => (
+                      <div key={msg.id} className={`wa-msg ${msg.sender}`}>
+                        <div className="wa-msg-text">
+                          {msg.text}
+                        </div>
+
+                        {/* Tarjeta de Google Meet (Reunión con María) */}
+                        {msg.meetCard && (
+                          <div className="wa-card-meet">
+                            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '6px' }}>
+                              <span style={{ fontSize: '1.2rem' }}>📹</span>
+                              <div>
+                                <div style={{ fontSize: '0.8rem', fontWeight: '700', color: '#0f172a' }}>
+                                  {msg.meetCard.title}
+                                </div>
+                                <div style={{ fontSize: '0.7rem', color: '#64748b' }}>
+                                  {msg.meetCard.time}
+                                </div>
+                              </div>
+                            </div>
+                            <div style={{ 
+                              background: '#1a73e8', 
+                              color: '#ffffff', 
+                              borderRadius: '6px', 
+                              padding: '5px 10px', 
+                              fontSize: '0.74rem', 
+                              fontWeight: '700',
+                              textAlign: 'center',
+                              cursor: 'pointer'
+                            }}>
+                              👉 Unirse con Google Meet
+                            </div>
+                          </div>
+                        )}
+
+                        {/* Tarjeta de Registro de Gastos */}
+                        {msg.expenseCard && (
+                          <div className="wa-card-expense">
+                            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '4px' }}>
+                              <span style={{ fontSize: '0.72rem', fontWeight: '700', color: '#047857' }}>
+                                GASTO ANOTADO
+                              </span>
+                              <span style={{ fontSize: '0.95rem', fontWeight: '850', color: '#059669' }}>
+                                {msg.expenseCard.amount}
+                              </span>
+                            </div>
+                            <div style={{ fontSize: '0.75rem', color: '#334155', fontWeight: '600' }}>
+                              {msg.expenseCard.category}
+                            </div>
+                            <div style={{ fontSize: '0.7rem', color: '#64748b', marginTop: '4px' }}>
+                              {msg.expenseCard.monthTotal}
+                            </div>
+                            <div style={{ fontSize: '0.68rem', color: '#059669', fontWeight: '700', marginTop: '4px' }}>
+                              ✓ {msg.expenseCard.status}
+                            </div>
+                          </div>
+                        )}
+
+                        {/* Resumen de Artículo en 3 Puntos */}
+                        {msg.summaryPoints && (
+                          <div className="wa-card-summary">
+                            <div style={{ fontSize: '0.75rem', fontWeight: '800', color: '#7e22ce', marginBottom: '6px' }}>
+                              📌 PUNTOS CLAVE DEL ARTÍCULO:
+                            </div>
+                            {msg.summaryPoints.map((point, pIdx) => (
+                              <div key={pIdx} style={{ fontSize: '0.75rem', color: '#334155', marginBottom: '4px', lineHeight: '1.4' }}>
+                                <strong>{pIdx + 1}.</strong> {point}
+                              </div>
+                            ))}
+                          </div>
+                        )}
+
+                        {/* Nota final del mensaje */}
+                        {msg.footerNote && (
+                          <div style={{ fontSize: '0.8rem', color: '#475569', marginTop: '6px', fontStyle: 'italic' }}>
+                            {msg.footerNote}
+                          </div>
+                        )}
+
+                        {/* Metadatos (Hora y Checks) */}
+                        <div className="wa-msg-meta">
+                          <span>{msg.time}</span>
+                          {msg.sender === 'user' && (
+                            <span style={{ color: '#53bdeb', fontWeight: '800', fontSize: '0.75rem' }}>✓✓</span>
+                          )}
+                        </div>
+                      </div>
+                    ))}
+
+                    {/* Indicador de "Escribiendo..." con 3 puntitos que saltan */}
+                    {isAssistantTyping && (
+                      <div className="wa-typing-bubble">
+                        <div className="wa-dot"></div>
+                        <div className="wa-dot"></div>
+                        <div className="wa-dot"></div>
+                      </div>
+                    )}
+                  </div>
+
+                  {/* Barra inferior simulada de WhatsApp */}
+                  <div className="wa-footer-bar">
+                    <span style={{ fontSize: '1.2rem', color: '#8696a0' }}>😊</span>
+                    <div className="wa-fake-input">
+                      <span>Escribe un mensaje o envía un audio...</span>
+                      <span style={{ fontSize: '1rem', color: '#8696a0' }}>📎</span>
+                    </div>
+                    <div className="wa-mic-btn">
+                      🎙️
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Barra de Controles de la simulación */}
+              <div className="phone-controls">
+                <div className="live-indicator">
+                  <span className="live-dot"></span>
+                  <span>Simulación en tiempo real</span>
+                </div>
+
+                <div style={{ display: 'flex', gap: '8px' }}>
+                  <button 
+                    onClick={restartSimulation}
+                    className="phone-ctrl-btn"
+                    title="Reiniciar conversación desde el inicio"
+                  >
+                    <span>↺</span>
+                    <span>Reiniciar</span>
+                  </button>
+                  <button 
+                    onClick={() => setIsChatPaused(!isChatPaused)}
+                    className="phone-ctrl-btn"
+                    title={isChatPaused ? "Reanudar simulación" : "Pausar simulación"}
+                  >
+                    <span>{isChatPaused ? '▶ Reanudar' : '⏸ Pausar'}</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+
           </div>
         </section>
 
