@@ -2357,7 +2357,7 @@ export default function AgentsLanding() {
         .instructor-banner-stage {
           position: relative;
           width: 100%;
-          height: 380px;
+          height: 480px;
           background: #09090b;
           overflow: hidden;
         }
@@ -2365,29 +2365,32 @@ export default function AgentsLanding() {
           width: 100%;
           height: 100%;
           object-fit: cover;
-          object-position: 58% 22%;
-          transform: scale(1.38);
-          transform-origin: 58% 25%;
-          filter: contrast(1.05);
+          object-position: center top;
+          filter: contrast(1.04);
         }
         .instructor-banner-overlay {
           position: absolute;
           inset: 0;
-          background: linear-gradient(to top, #0f172a 0%, rgba(15, 23, 42, 0.45) 45%, transparent 100%);
+          background: linear-gradient(to top, #0f172a 0%, rgba(15, 23, 42, 0.25) 30%, transparent 70%);
+          pointer-events: none;
         }
         .instructor-card-body {
           padding: 38px 44px 44px 44px;
         }
-        @media (max-width: 640px) {
+        @media (max-width: 768px) {
           .instructor-banner-stage {
-            height: 270px;
-          }
-          .instructor-banner-img {
-            transform: scale(1.48);
-            transform-origin: 58% 22%;
+            height: 380px;
           }
           .instructor-card-body {
-            padding: 26px 20px 32px 20px;
+            padding: 28px 22px 34px 22px;
+          }
+        }
+        @media (max-width: 480px) {
+          .instructor-banner-stage {
+            height: 320px;
+          }
+          .instructor-card-body {
+            padding: 24px 18px 30px 18px;
           }
         }
         .instructor-badge {
@@ -3789,12 +3792,12 @@ export default function AgentsLanding() {
         {/* 5. SECCIÓN: INSTRUCTOR PRINCIPAL (EDUAR PEÑA - FORMATO VERTICAL CON FOTO ARRIBA) */}
         <section className="instructor-section">
           <div className="instructor-card-vertical">
-            {/* Foto de Eduar en la parte superior (de medio cuerpo / pecho para arriba en tarima) */}
+            {/* Foto de Eduar de frente recreada en formato horizontal (de medio cuerpo para arriba) */}
             <div className="instructor-banner-stage">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img 
-                src="/Marketing.png" 
-                alt="Eduar Peña en Vivo - Master Marketing Xperience"
+                src="/eduar_banner_horizontal.jpg" 
+                alt="Eduar Peña - Especialista en Inteligencia Artificial y Marketing"
                 className="instructor-banner-img"
               />
               <div className="instructor-banner-overlay"></div>
