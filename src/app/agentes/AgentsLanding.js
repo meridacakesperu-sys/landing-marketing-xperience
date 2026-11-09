@@ -1597,7 +1597,7 @@ export default function AgentsLanding() {
 
             {/* Titular Principal */}
             <h1 className="hero-title">
-              Domina la IA actualizada de 2026-2027
+              Si no tienes tiempo y quieres crear contenido AQUÍ ES
             </h1>
 
             {/* Subtítulo destacado en grande */}
