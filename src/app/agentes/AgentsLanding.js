@@ -232,6 +232,102 @@ const WHATSAPP_CONVERSATION = [
   }
 ];
 
+// Conversación en tiempo real con el Desarrollador Web IA (Leo)
+const DEV_CHAT_CONVERSATION = [
+  {
+    id: 1,
+    sender: 'user',
+    text: 'Hola Leo, quiero crear una tienda online de zapatos deportivos de alta gama, estilo futurista y minimalista como Apple. 👟⚡',
+    time: '10:04 AM'
+  },
+  {
+    id: 2,
+    sender: 'dev',
+    text: '¡Entendido! Diseñando concepto AERO Titanium Pro con suela de fibra de carbono, amortiguación aeroespacial y fotografía en 3D.',
+    badge: '🎨 UI/UX Generada',
+    time: '10:04 AM'
+  },
+  {
+    id: 3,
+    sender: 'dev',
+    text: 'Configurando selector de tallas, pasarela de pago en 12 cuotas y bento grid de ediciones especiales...',
+    badge: '⚙️ Código Next.js compilado',
+    time: '10:05 AM'
+  },
+  {
+    id: 4,
+    sender: 'dev',
+    text: '¡Tienda publicada y 100% interactiva! Mira el resultado en vivo al lado 👉',
+    badge: '🚀 Online en 0.4s',
+    time: '10:05 AM'
+  }
+];
+
+// 6 Pasos del Flujo de Trabajo Automatizado
+const WORKFLOW_STEPS = [
+  {
+    step: '01',
+    badge: 'Investigación Viral',
+    title: 'Detección de Tendencias',
+    desc: 'Escaneo continuo de redes sociales para detectar los videos con más de 1M de vistas y alta retención en tu sector.',
+    icon: '📱',
+    mockup: 'phone'
+  },
+  {
+    step: '02',
+    badge: 'Adaptación de Contenido',
+    title: 'Ingeniería Inversa',
+    desc: 'Descompone la estructura psicológica del video viral y la traslada a tu nicho y oferta manteniendo la fórmula ganadora.',
+    icon: '🔄',
+    mockup: 'adaptation'
+  },
+  {
+    step: '03',
+    badge: 'Guionización',
+    title: 'Guión de Alta Retención',
+    desc: 'Estructuración escrita segundo a segundo: gancho irresistible (0-3s), retención visual (3-30s) y llamada a la acción.',
+    icon: '📝',
+    mockup: 'script'
+  },
+  {
+    step: '04',
+    badge: 'Edición Inteligente',
+    title: 'Montaje & Dinamismo',
+    desc: 'Línea de tiempo automatizada con cortes de ritmo, subtítulos dinámicos de alto impacto y efectos sonoros.',
+    icon: '🎬',
+    mockup: 'editor'
+  },
+  {
+    step: '05',
+    badge: 'Diseño Gráfico',
+    title: 'Miniaturas & Portadas',
+    desc: 'Transforma el guión en piezas gráficas hiper-atractivas con tipografías de impacto para captar clics inmediatos.',
+    icon: '🎨',
+    mockup: 'design'
+  },
+  {
+    step: '06',
+    badge: 'Publicación Multicanal',
+    title: 'Distribución Automática',
+    desc: 'Programación y publicación automática sincronizada en Instagram Reels, TikTok, YouTube Shorts y Facebook sin tocar un botón.',
+    icon: '🚀',
+    mockup: 'publish'
+  }
+];
+
+// Fotos del Evento Marketing Xperience
+const EVENT_PHOTOS = [
+  'IMG_6061.jpg',
+  'IMG_6063.jpg',
+  'IMG_6110.JPG',
+  'IMG_6111.JPG',
+  'IMG_6132.JPG',
+  'IMG_1060.jpg',
+  'IMG_1174.jpg',
+  'IMG_1215.jpg',
+  'IMG_6153.JPG'
+];
+
 export default function AgentsLanding() {
   const [isPaused, setIsPaused] = useState(false);
   const marqueeRef = useRef(null);
@@ -340,6 +436,77 @@ export default function AgentsLanding() {
     setCurrentStep(0);
   };
 
+  // Estados para la simulación interactiva de chat con el Desarrollador Web (Leo)
+  const [devCurrentStep, setDevCurrentStep] = useState(0);
+  const [devActiveMessages, setDevActiveMessages] = useState([DEV_CHAT_CONVERSATION[0]]);
+  const [isDevTyping, setIsDevTyping] = useState(false);
+  const devChatBodyRef = useRef(null);
+
+  useEffect(() => {
+    let timer;
+    switch (devCurrentStep) {
+      case 0:
+        setDevActiveMessages([DEV_CHAT_CONVERSATION[0]]);
+        setIsDevTyping(false);
+        timer = setTimeout(() => {
+          setIsDevTyping(true);
+          setDevCurrentStep(1);
+        }, 1400);
+        break;
+      case 1:
+        timer = setTimeout(() => {
+          setIsDevTyping(false);
+          setDevActiveMessages((prev) => [...prev, DEV_CHAT_CONVERSATION[1]]);
+          timer = setTimeout(() => {
+            setIsDevTyping(true);
+            setDevCurrentStep(2);
+          }, 1100);
+        }, 1700);
+        break;
+      case 2:
+        timer = setTimeout(() => {
+          setIsDevTyping(false);
+          setDevActiveMessages((prev) => [...prev, DEV_CHAT_CONVERSATION[2]]);
+          timer = setTimeout(() => {
+            setIsDevTyping(true);
+            setDevCurrentStep(3);
+          }, 1100);
+        }, 1700);
+        break;
+      case 3:
+        timer = setTimeout(() => {
+          setIsDevTyping(false);
+          setDevActiveMessages((prev) => [...prev, DEV_CHAT_CONVERSATION[3]]);
+          // Reinicia ciclo después de 8 segundos para que el usuario aprecie el resultado
+          timer = setTimeout(() => {
+            setDevCurrentStep(0);
+          }, 8000);
+        }, 1600);
+        break;
+      default:
+        break;
+    }
+    return () => clearTimeout(timer);
+  }, [devCurrentStep]);
+
+  useEffect(() => {
+    if (devChatBodyRef.current) {
+      devChatBodyRef.current.scrollTop = devChatBodyRef.current.scrollHeight;
+    }
+  }, [devActiveMessages, isDevTyping]);
+
+  // Estados para el carrusel de flujo de 6 pasos con zoom en tarjeta activa
+  const [activeFlowIndex, setActiveFlowIndex] = useState(0);
+  const [isFlowPaused, setIsFlowPaused] = useState(false);
+
+  useEffect(() => {
+    if (isFlowPaused) return;
+    const interval = setInterval(() => {
+      setActiveFlowIndex((prev) => (prev + 1) % WORKFLOW_STEPS.length);
+    }, 4500);
+    return () => clearInterval(interval);
+  }, [isFlowPaused]);
+
   const whatsappUrl = "https://wa.me/584123060970?text=" + encodeURIComponent(
     "Hola Eduar, quiero los detalles de inscripción para el Master de Inteligencia Artificial y crear mi ecosistema de agentes."
   );
@@ -397,38 +564,39 @@ export default function AgentsLanding() {
         }
         .hero-eduar-bg {
           position: absolute;
-          right: 0;
+          right: -25px;
           bottom: 0;
-          height: 112%;
-          max-height: 880px;
+          height: 115%;
+          max-height: 900px;
           pointer-events: none;
           z-index: 2;
           display: flex;
           align-items: flex-end;
-          opacity: 0.32;
-          mask-image: linear-gradient(to left, black 70%, transparent 100%);
-          -webkit-mask-image: linear-gradient(to left, black 70%, transparent 100%);
+          opacity: 0.44;
+          mask-image: linear-gradient(to left, black 80%, transparent 100%);
+          -webkit-mask-image: linear-gradient(to left, black 80%, transparent 100%);
         }
         .eduar-bg-img {
           height: 100%;
           width: auto;
-          max-width: 720px;
+          max-width: 800px;
           object-fit: contain;
           object-position: right bottom;
-          filter: contrast(1.1) drop-shadow(0 0 40px rgba(59, 130, 246, 0.2));
+          filter: contrast(1.15) drop-shadow(0 0 50px rgba(59, 130, 246, 0.25));
         }
         .hero-content {
           position: relative;
           z-index: 10;
           max-width: 980px;
           margin: 0 auto;
-          padding: 55px 20px 45px 20px;
+          padding: 36px 20px 42px 20px;
           text-align: center;
         }
         .hero-logo-box {
           display: inline-block;
-          margin-bottom: 20px;
-          max-width: 200px;
+          margin-top: -10px;
+          margin-bottom: 12px;
+          max-width: 145px;
           transition: transform 0.3s ease;
         }
         .hero-logo-box:hover {
@@ -1166,9 +1334,165 @@ export default function AgentsLanding() {
 
         /* Web Developer Showcase Section */
         .dashboard-section {
-          max-width: 1140px;
+          max-width: 1320px;
           margin: 70px auto 40px auto;
           padding: 0 20px;
+        }
+
+        /* Layout Interactivo: Chat Izquierdo + Mockup de Tienda Derecho */
+        .dev-interactive-layout {
+          display: grid;
+          grid-template-columns: 360px 1fr;
+          gap: 28px;
+          align-items: stretch;
+          margin-bottom: 40px;
+        }
+        @media (max-width: 1100px) {
+          .dev-interactive-layout {
+            grid-template-columns: 1fr;
+            gap: 24px;
+          }
+        }
+        .dev-chat-card {
+          background: #ffffff;
+          border: 1px solid #e2e8f0;
+          border-radius: 28px;
+          box-shadow: 0 20px 45px -15px rgba(0, 0, 0, 0.08), 0 0 0 1px rgba(0, 0, 0, 0.02);
+          overflow: hidden;
+          display: flex;
+          flex-direction: column;
+          height: 100%;
+          min-height: 540px;
+        }
+        .dev-chat-header {
+          background: #f8fafc;
+          border-bottom: 1px solid #e2e8f0;
+          padding: 16px 20px;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+        }
+        .dev-chat-user {
+          display: flex;
+          align-items: center;
+          gap: 12px;
+        }
+        .dev-avatar {
+          width: 44px;
+          height: 44px;
+          border-radius: 14px;
+          background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          color: #ffffff;
+          font-size: 1.25rem;
+          box-shadow: 0 4px 12px rgba(2, 132, 199, 0.25);
+        }
+        .dev-chat-info h4 {
+          font-size: 0.95rem;
+          font-weight: 800;
+          color: #0f172a;
+          margin: 0;
+          line-height: 1.2;
+        }
+        .dev-status-row {
+          display: flex;
+          align-items: center;
+          gap: 6px;
+          font-size: 0.74rem;
+          color: #059669;
+          font-weight: 600;
+          margin-top: 3px;
+        }
+        .dev-pulse {
+          width: 7px;
+          height: 7px;
+          border-radius: 50%;
+          background: #10b981;
+          animation: pulseDot 1.5s infinite;
+        }
+        .dev-chat-body {
+          flex: 1;
+          padding: 20px 18px;
+          background: #fdfdfd;
+          overflow-y: auto;
+          display: flex;
+          flex-direction: column;
+          gap: 14px;
+          max-height: 520px;
+        }
+        .dev-date-pill {
+          align-self: center;
+          background: #f1f5f9;
+          color: #64748b;
+          font-size: 0.72rem;
+          font-weight: 700;
+          padding: 4px 12px;
+          border-radius: 9999px;
+          letter-spacing: 0.04em;
+        }
+        .dev-bubble {
+          max-width: 90%;
+          padding: 12px 16px;
+          border-radius: 18px;
+          font-size: 0.88rem;
+          line-height: 1.45;
+          position: relative;
+          animation: fadeIn 0.3s ease;
+          display: flex;
+          flex-direction: column;
+        }
+        .dev-bubble.user {
+          align-self: flex-end;
+          background: #0f172a;
+          color: #ffffff;
+          border-bottom-right-radius: 4px;
+        }
+        .dev-bubble.dev {
+          align-self: flex-start;
+          background: #f8fafc;
+          color: #1e293b;
+          border: 1px solid #e2e8f0;
+          border-bottom-left-radius: 4px;
+        }
+        .dev-bubble-badge {
+          display: inline-flex;
+          align-items: center;
+          gap: 4px;
+          background: #e0f2fe;
+          color: #0284c7;
+          font-size: 0.72rem;
+          font-weight: 700;
+          padding: 3px 8px;
+          border-radius: 6px;
+          margin-top: 6px;
+          width: fit-content;
+        }
+        .dev-msg-time {
+          font-size: 0.68rem;
+          color: #94a3b8;
+          align-self: flex-end;
+          margin-top: 4px;
+        }
+        .dev-bubble.user .dev-msg-time {
+          color: #94a3b8;
+        }
+        .dev-chat-footer {
+          padding: 14px 18px;
+          border-top: 1px solid #f1f5f9;
+          background: #ffffff;
+        }
+        .dev-input-dummy {
+          background: #f8fafc;
+          border: 1px solid #e2e8f0;
+          border-radius: 9999px;
+          padding: 9px 16px;
+          font-size: 0.82rem;
+          color: #94a3b8;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
         }
 
         /* Mockup de Navegador Estilo Apple Safari (Página de Muestra de Zapatos) */
@@ -1466,17 +1790,726 @@ export default function AgentsLanding() {
           transform: translateY(-4px);
         }
 
+        /* 4. Resumen del Flujo Section */
+        .flow-section {
+          max-width: 1240px;
+          margin: 90px auto 40px auto;
+          padding: 0 20px;
+        }
+        .flow-badge {
+          color: #4f46e5;
+          font-size: 0.85rem;
+          font-weight: 800;
+          text-transform: uppercase;
+          letter-spacing: 0.08em;
+          background: #eef2ff;
+          padding: 6px 16px;
+          border-radius: 9999px;
+          display: inline-flex;
+          align-items: center;
+          gap: 6px;
+        }
+        .flow-title {
+          font-size: clamp(2.1rem, 4.6vw, 3.4rem);
+          font-weight: 850;
+          color: #0f172a;
+          margin-top: 14px;
+          letter-spacing: -0.035em;
+          line-height: 1.18;
+          max-width: 950px;
+          margin-left: auto;
+          margin-right: auto;
+        }
+        .flow-desc {
+          color: #64748b;
+          font-size: 1.15rem;
+          max-width: 780px;
+          margin: 14px auto 0 auto;
+          line-height: 1.6;
+        }
+        .flow-pills-row {
+          display: flex;
+          justify-content: center;
+          gap: 10px;
+          flex-wrap: wrap;
+          margin-bottom: 35px;
+        }
+        .flow-pill-btn {
+          background: #ffffff;
+          border: 1px solid #e2e8f0;
+          border-radius: 9999px;
+          padding: 8px 18px;
+          font-size: 0.88rem;
+          font-weight: 600;
+          color: #475569;
+          cursor: pointer;
+          display: inline-flex;
+          align-items: center;
+          gap: 8px;
+          transition: all 0.25s ease;
+          box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+        }
+        .flow-pill-btn:hover {
+          border-color: #cbd5e1;
+          color: #0f172a;
+        }
+        .flow-pill-btn.active {
+          background: #0f172a;
+          color: #ffffff;
+          border-color: #0f172a;
+          box-shadow: 0 6px 16px rgba(15, 23, 42, 0.2);
+        }
+        .flow-pill-num {
+          font-weight: 800;
+          color: #3b82f6;
+          font-size: 0.82rem;
+        }
+        .flow-pill-btn.active .flow-pill-num {
+          color: #60a5fa;
+        }
+
+        /* Flow Carousel */
+        .flow-carousel-container {
+          position: relative;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          margin-bottom: 40px;
+        }
+        .flow-nav-btn {
+          position: absolute;
+          top: 50%;
+          transform: translateY(-50%);
+          z-index: 20;
+          width: 48px;
+          height: 48px;
+          border-radius: 50%;
+          background: #ffffff;
+          border: 1px solid #e2e8f0;
+          color: #0f172a;
+          font-size: 1.3rem;
+          font-weight: 700;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          cursor: pointer;
+          box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+          transition: all 0.2s ease;
+        }
+        .flow-nav-btn:hover {
+          background: #0f172a;
+          color: #ffffff;
+          transform: translateY(-50%) scale(1.08);
+        }
+        .flow-nav-btn.prev {
+          left: -14px;
+        }
+        .flow-nav-btn.next {
+          right: -14px;
+        }
+        @media (max-width: 768px) {
+          .flow-nav-btn.prev { left: 4px; }
+          .flow-nav-btn.next { right: 4px; }
+        }
+        .flow-cards-track {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 20px;
+          width: 100%;
+          overflow: hidden;
+          padding: 30px 10px;
+        }
+        .flow-card {
+          flex: 0 0 350px;
+          background: #ffffff;
+          border: 1px solid #e2e8f0;
+          border-radius: 28px;
+          padding: 28px 24px;
+          box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.05);
+          transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+          cursor: pointer;
+          display: flex;
+          flex-direction: column;
+          user-select: none;
+        }
+        @media (max-width: 640px) {
+          .flow-card {
+            flex: 0 0 290px;
+            padding: 22px 18px;
+          }
+        }
+        .flow-card.card-active {
+          transform: scale(1.08);
+          border: 2px solid #2563eb;
+          box-shadow: 0 25px 60px -15px rgba(37, 99, 235, 0.22);
+          z-index: 10;
+          opacity: 1;
+        }
+        .flow-card.card-adjacent {
+          transform: scale(0.94);
+          opacity: 0.65;
+          z-index: 5;
+        }
+        .flow-card.card-dimmed {
+          display: none;
+        }
+        @media (min-width: 1024px) {
+          .flow-card.card-dimmed {
+            display: flex;
+            transform: scale(0.88);
+            opacity: 0.35;
+          }
+        }
+        .flow-card-badge-row {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          margin-bottom: 12px;
+        }
+        .flow-step-pill {
+          background: #eff6ff;
+          color: #2563eb;
+          font-size: 0.76rem;
+          font-weight: 800;
+          padding: 4px 10px;
+          border-radius: 9999px;
+          letter-spacing: 0.05em;
+        }
+        .flow-icon-bubble {
+          font-size: 1.4rem;
+        }
+        .flow-card-title {
+          font-size: 1.25rem;
+          font-weight: 800;
+          color: #0f172a;
+          margin-bottom: 8px;
+          line-height: 1.25;
+        }
+        .flow-card-desc {
+          font-size: 0.9rem;
+          color: #64748b;
+          line-height: 1.5;
+          margin-bottom: 20px;
+        }
+
+        /* Flow Visual Mockup Stages */
+        .flow-graphic-stage {
+          background: #f8fafc;
+          border: 1px solid #e2e8f0;
+          border-radius: 18px;
+          padding: 16px;
+          min-height: 190px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          overflow: hidden;
+          position: relative;
+        }
+
+        /* 1. Mockup Phone Scroll */
+        .mockup-phone-frame {
+          width: 170px;
+          background: #09090b;
+          border-radius: 20px;
+          border: 3px solid #27272a;
+          padding: 6px;
+          box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+        .phone-screen-inner {
+          background: #18181b;
+          border-radius: 14px;
+          overflow: hidden;
+          padding: 10px 8px;
+          color: #ffffff;
+        }
+        .phone-feed-scroll {
+          display: flex;
+          flex-direction: column;
+          gap: 8px;
+        }
+        .phone-video-item {
+          background: #27272a;
+          border-radius: 8px;
+          padding: 6px;
+          font-size: 0.65rem;
+        }
+        .phone-video-item.active-feed {
+          background: linear-gradient(135deg, #1e3a8a 0%, #1e1b4b 100%);
+          border: 1px solid #3b82f6;
+        }
+        .feed-header {
+          display: flex;
+          align-items: center;
+          gap: 4px;
+          margin-bottom: 4px;
+        }
+        .feed-avatar {
+          width: 12px;
+          height: 12px;
+          border-radius: 50%;
+          background: #3b82f6;
+        }
+        .feed-viral-tag {
+          color: #facc15;
+          font-weight: 700;
+          margin-left: auto;
+        }
+        .feed-overlay-sound {
+          font-size: 0.6rem;
+          color: #94a3b8;
+        }
+        .phone-radar-scanner {
+          margin-top: 8px;
+          background: rgba(37, 99, 235, 0.2);
+          border: 1px dashed #3b82f6;
+          border-radius: 6px;
+          padding: 4px;
+          font-size: 0.62rem;
+          color: #60a5fa;
+          text-align: center;
+          font-weight: 700;
+        }
+
+        /* 2. Mockup Adaptation */
+        .mockup-adaptation-box {
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          width: 100%;
+        }
+        .adapt-col {
+          flex: 1;
+          background: #ffffff;
+          border: 1px solid #e2e8f0;
+          border-radius: 12px;
+          padding: 10px 8px;
+          font-size: 0.68rem;
+          display: flex;
+          flex-direction: column;
+          gap: 6px;
+        }
+        .adapt-tag {
+          font-weight: 800;
+          color: #64748b;
+          font-size: 0.65rem;
+          text-transform: uppercase;
+        }
+        .adapt-line {
+          padding: 4px 6px;
+          border-radius: 4px;
+          background: #f1f5f9;
+        }
+        .adapt-line.hook { background: #fee2e2; color: #991b1b; font-weight: 600; }
+        .adapt-line.hook-new { background: #dbeafe; color: #1e40af; font-weight: 700; }
+        .adapt-line.body-new { background: #f1f5f9; color: #334155; }
+        .adapt-line.cta-new { background: #dcfce7; color: #166534; font-weight: 700; }
+        .adapt-arrow {
+          font-size: 1.1rem;
+          color: #2563eb;
+          font-weight: 800;
+        }
+
+        /* 3. Mockup Script Sheet */
+        .mockup-script-sheet {
+          background: #ffffff;
+          border: 1px solid #e2e8f0;
+          border-radius: 12px;
+          width: 100%;
+          padding: 12px 14px;
+          box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+          font-size: 0.72rem;
+        }
+        .sheet-title {
+          font-weight: 800;
+          color: #0f172a;
+          margin-bottom: 8px;
+          letter-spacing: 0.04em;
+          border-bottom: 1px solid #f1f5f9;
+          padding-bottom: 4px;
+        }
+        .sheet-lines {
+          display: flex;
+          flex-direction: column;
+          gap: 6px;
+        }
+        .sheet-block {
+          color: #334155;
+          line-height: 1.4;
+        }
+        .sec-tag {
+          font-weight: 800;
+          color: #dc2626;
+          margin-right: 4px;
+        }
+
+        /* 4. Mockup Editor Window */
+        .mockup-editor-window {
+          background: #18181b;
+          border-radius: 12px;
+          width: 100%;
+          color: #ffffff;
+          padding: 10px;
+          font-size: 0.68rem;
+        }
+        .editor-topbar {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          margin-bottom: 8px;
+        }
+        .editor-title {
+          color: #a1a1aa;
+          font-size: 0.65rem;
+        }
+        .editor-badge {
+          background: #0284c7;
+          color: #ffffff;
+          padding: 2px 6px;
+          border-radius: 4px;
+          font-weight: 700;
+          font-size: 0.6rem;
+        }
+        .editor-preview-mini {
+          background: #09090b;
+          border-radius: 6px;
+          height: 55px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          margin-bottom: 8px;
+        }
+        .editor-subtitles-preview {
+          font-weight: 900;
+          font-size: 0.8rem;
+          color: #ffffff;
+          letter-spacing: 0.05em;
+        }
+        .sub-highlight {
+          color: #facc15;
+          background: #000000;
+          padding: 1px 4px;
+          border-radius: 3px;
+        }
+        .editor-timeline {
+          display: flex;
+          flex-direction: column;
+          gap: 4px;
+        }
+        .timeline-track {
+          display: flex;
+          align-items: center;
+          gap: 4px;
+          background: #27272a;
+          border-radius: 4px;
+          padding: 3px 6px;
+        }
+        .track-label {
+          color: #71717a;
+          font-weight: 800;
+          font-size: 0.6rem;
+          width: 16px;
+        }
+        .clip-bar {
+          padding: 2px 8px;
+          border-radius: 3px;
+          font-size: 0.6rem;
+          font-weight: 600;
+        }
+        .clip-v1 { background: #2563eb; color: #ffffff; }
+        .clip-v2 { background: #7c3aed; color: #ffffff; }
+        .clip-v3 { background: #059669; color: #ffffff; }
+        .clip-wave { color: #38bdf8; font-family: monospace; letter-spacing: 1px; }
+
+        /* 5. Mockup Design Canvas */
+        .mockup-design-canvas {
+          background: #ffffff;
+          border: 1px solid #e2e8f0;
+          border-radius: 12px;
+          width: 100%;
+          padding: 10px;
+        }
+        .canvas-header {
+          display: flex;
+          justify-content: space-between;
+          font-size: 0.65rem;
+          color: #64748b;
+          margin-bottom: 8px;
+        }
+        .canvas-badge {
+          background: #f1f5f9;
+          font-weight: 700;
+          padding: 2px 6px;
+          border-radius: 4px;
+        }
+        .canvas-artboard {
+          background: linear-gradient(135deg, #09090b 0%, #1e1b4b 100%);
+          border-radius: 8px;
+          padding: 14px;
+          color: #ffffff;
+          position: relative;
+          text-align: center;
+          overflow: hidden;
+        }
+        .canvas-badge-mini {
+          background: #ef4444;
+          color: #ffffff;
+          font-size: 0.58rem;
+          font-weight: 900;
+          padding: 2px 6px;
+          border-radius: 9999px;
+          display: inline-block;
+          margin-bottom: 4px;
+        }
+        .canvas-big-text {
+          font-size: 0.95rem;
+          font-weight: 900;
+          line-height: 1.1;
+          letter-spacing: -0.02em;
+        }
+        .canvas-author-pill {
+          margin-top: 6px;
+          font-size: 0.62rem;
+          color: #93c5fd;
+          font-weight: 700;
+        }
+
+        /* 6. Mockup Publish Dashboard */
+        .mockup-publish-dashboard {
+          width: 100%;
+        }
+        .publish-grid {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 8px;
+        }
+        .pub-card {
+          background: #ffffff;
+          border: 1px solid #e2e8f0;
+          border-radius: 10px;
+          padding: 8px;
+          display: flex;
+          align-items: center;
+          gap: 6px;
+          font-size: 0.68rem;
+        }
+        .pub-card.active {
+          border-color: #bbf7d0;
+          background: #f0fdf4;
+        }
+        .pub-icon {
+          font-size: 1.1rem;
+        }
+        .pub-info {
+          display: flex;
+          flex-direction: column;
+        }
+        .pub-info strong {
+          color: #0f172a;
+          font-size: 0.7rem;
+        }
+        .pub-info span {
+          color: #15803d;
+          font-size: 0.6rem;
+        }
+        .pub-check {
+          margin-left: auto;
+          color: #16a34a;
+          font-weight: 900;
+          font-size: 0.85rem;
+        }
+
+        /* 5. Instructor Section (Eduar Peña) */
+        .instructor-section {
+          max-width: 1140px;
+          margin: 80px auto 40px auto;
+          padding: 0 20px;
+        }
+        .instructor-card {
+          background: linear-gradient(135deg, #09090b 0%, #0f172a 60%, #1e1b4b 100%);
+          border-radius: 32px;
+          border: 1px solid rgba(255, 255, 255, 0.12);
+          box-shadow: 0 30px 70px -15px rgba(0, 0, 0, 0.4);
+          padding: 50px 45px;
+          color: #ffffff;
+          display: grid;
+          grid-template-columns: 1.15fr 0.85fr;
+          gap: 40px;
+          align-items: center;
+          position: relative;
+          overflow: hidden;
+        }
+        @media (max-width: 900px) {
+          .instructor-card {
+            grid-template-columns: 1fr;
+            padding: 35px 24px;
+            gap: 30px;
+          }
+        }
+        .instructor-badge {
+          background: rgba(59, 130, 246, 0.2);
+          color: #60a5fa;
+          font-size: 0.82rem;
+          font-weight: 800;
+          padding: 6px 14px;
+          border-radius: 9999px;
+          border: 1px solid rgba(59, 130, 246, 0.3);
+          display: inline-flex;
+          align-items: center;
+          gap: 6px;
+          margin-bottom: 16px;
+        }
+        .instructor-title {
+          font-size: clamp(2rem, 4vw, 3rem);
+          font-weight: 850;
+          line-height: 1.18;
+          letter-spacing: -0.03em;
+          margin-bottom: 16px;
+        }
+        .instructor-bio {
+          font-size: 1.12rem;
+          color: #cbd5e1;
+          line-height: 1.65;
+          margin-bottom: 24px;
+        }
+        .instructor-pillars {
+          display: flex;
+          flex-direction: column;
+          gap: 16px;
+        }
+        .pillar-item {
+          display: flex;
+          align-items: flex-start;
+          gap: 12px;
+        }
+        .pillar-icon {
+          font-size: 1.3rem;
+          line-height: 1;
+          margin-top: 2px;
+        }
+        .pillar-item strong {
+          display: block;
+          color: #ffffff;
+          font-size: 1rem;
+          margin-bottom: 2px;
+        }
+        .pillar-item p {
+          color: #94a3b8;
+          font-size: 0.88rem;
+          margin: 0;
+          line-height: 1.45;
+        }
+        .instructor-photo-col {
+          position: relative;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+        }
+        .instructor-glow-bg {
+          position: absolute;
+          width: 320px;
+          height: 320px;
+          border-radius: 50%;
+          background: radial-gradient(circle, rgba(37, 99, 235, 0.35) 0%, transparent 70%);
+          pointer-events: none;
+        }
+        .instructor-photo-img {
+          width: 100%;
+          max-width: 380px;
+          height: auto;
+          position: relative;
+          z-index: 2;
+          filter: drop-shadow(0 15px 35px rgba(0, 0, 0, 0.5));
+        }
+        .instructor-pill-tag {
+          position: relative;
+          z-index: 3;
+          margin-top: -20px;
+          background: rgba(15, 23, 42, 0.85);
+          backdrop-filter: blur(10px);
+          border: 1px solid rgba(255, 255, 255, 0.15);
+          color: #f1f5f9;
+          font-size: 0.8rem;
+          font-weight: 700;
+          padding: 8px 16px;
+          border-radius: 9999px;
+          display: inline-flex;
+          align-items: center;
+          gap: 8px;
+          box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+        }
+
+        /* 6. Brand Section (Marketing Xperience) */
+        .brand-section {
+          max-width: 1240px;
+          margin: 80px auto 40px auto;
+          padding: 0 20px;
+          text-align: center;
+        }
+        .brand-logo-container {
+          max-width: 240px;
+          margin: 18px auto;
+          display: flex;
+          justify-content: center;
+        }
+        .brand-logo-img {
+          width: 100%;
+          height: auto;
+          object-fit: contain;
+          filter: drop-shadow(0 4px 12px rgba(0,0,0,0.08));
+        }
+        .event-gallery-wrap {
+          overflow: hidden;
+          position: relative;
+          margin-top: 32px;
+          mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
+          -webkit-mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
+        }
+        .event-gallery-track {
+          display: flex;
+          gap: 16px;
+          animation: marqueeEvent 35s linear infinite;
+          width: max-content;
+        }
+        .event-gallery-track:hover {
+          animation-play-state: paused;
+        }
+        .event-photo-card {
+          width: 260px;
+          height: 175px;
+          border-radius: 18px;
+          overflow: hidden;
+          flex-shrink: 0;
+          border: 1px solid #e2e8f0;
+          box-shadow: 0 6px 16px rgba(0,0,0,0.06);
+          position: relative;
+        }
+        .event-img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          transition: transform 0.4s ease;
+        }
+        .event-photo-card:hover .event-img {
+          transform: scale(1.08);
+        }
+        @keyframes marqueeEvent {
+          0% { transform: translateX(0); }
+          100% { transform: translateX(-50%); }
+        }
+
         /* Responsive tweaks */
         @media (max-width: 768px) {
           .hero-content {
             padding: 35px 16px 30px 16px;
           }
           .hero-eduar-bg {
-            right: -25px;
+            right: -15px;
             bottom: 0;
-            opacity: 0.28;
+            opacity: 0.36;
             height: 100%;
-            max-height: 680px;
+            max-height: 700px;
           }
           .coord-content-row {
             flex-direction: column;
@@ -1652,14 +2685,14 @@ export default function AgentsLanding() {
 
           {/* Contenido del Hero (por encima) */}
           <div className="hero-content">
-            {/* Logo del curso más pequeño */}
+            {/* Logo del curso más pequeño y más arriba */}
             <div className="hero-logo-box">
               <Image 
                 src="/logo_master_ia.png" 
                 alt="Master de Inteligencia Artificial" 
-                width={200} 
-                height={106}
-                style={{ objectFit: 'contain', width: '100%', height: 'auto', maxWidth: '200px' }}
+                width={145} 
+                height={77}
+                style={{ objectFit: 'contain', width: '100%', height: 'auto', maxWidth: '145px' }}
                 priority
               />
             </div>
@@ -2240,15 +3273,70 @@ export default function AgentsLanding() {
               Tu desarrollador web
             </h2>
             <h3 style={{ fontSize: 'clamp(1.2rem, 2.5vw, 1.7rem)', fontWeight: '750', color: '#1e1b4b', marginTop: '12px', letterSpacing: '-0.02em', lineHeight: '1.3' }}>
-              Será el encargado de crearte cualquier pagina web, sistema o apps para tu negocio
+              Personalizado y profesional que va a crearte cualquier pagina web, sistema o apps para tu negocio
             </h3>
             <p style={{ color: '#64748b', fontSize: '1.15rem', maxWidth: '780px', margin: '14px auto 0 auto', lineHeight: '1.6' }}>
               Dile exactamente lo que necesitas en texto o audio. Tu desarrollador de IA diseñará la interfaz, programará el código y publicará sitios web modernos, sistemas a la medida y aplicaciones listas para vender sin depender de programadores costosos.
             </p>
           </div>
 
-          {/* Maqueta de Navegador Safari Estilo Apple (Tienda Oficial de Calzado AERO) */}
-          <div className="apple-browser-mockup">
+          {/* Layout Interactivo: Conversación con el Desarrollador a la izquierda + Tienda de Calzado a la derecha */}
+          <div className="dev-interactive-layout">
+            
+            {/* Panel de Chat con el Desarrollador Web (Fondo blanco, animado en tiempo real) */}
+            <div className="dev-chat-card">
+              <div className="dev-chat-header">
+                <div className="dev-chat-user">
+                  <div className="dev-avatar">💻</div>
+                  <div className="dev-chat-info">
+                    <h4>Leo • Desarrollador Web IA</h4>
+                    <div className="dev-status-row">
+                      <span className="dev-pulse"></span>
+                      <span>En línea • Programando en vivo</span>
+                    </div>
+                  </div>
+                </div>
+                <div style={{ display: 'flex', gap: '6px' }}>
+                  <span style={{ fontSize: '0.72rem', background: '#f1f5f9', color: '#475569', padding: '4px 8px', borderRadius: '6px', fontWeight: '700' }}>
+                    Next.js 16
+                  </span>
+                </div>
+              </div>
+
+              <div className="dev-chat-body" ref={devChatBodyRef}>
+                <div className="dev-date-pill">CREACIÓN DE TIENDA ONLINE</div>
+                {devActiveMessages.map((msg) => (
+                  <div key={msg.id} className={`dev-bubble ${msg.sender}`}>
+                    <div className="dev-bubble-text">{msg.text}</div>
+                    {msg.badge && (
+                      <div className="dev-bubble-badge">
+                        <span>{msg.badge}</span>
+                      </div>
+                    )}
+                    <span className="dev-msg-time">{msg.time}</span>
+                  </div>
+                ))}
+                {isDevTyping && (
+                  <div className="dev-bubble dev" style={{ width: 'fit-content', padding: '10px 16px' }}>
+                    <div className="typing-dots">
+                      <span></span>
+                      <span></span>
+                      <span></span>
+                    </div>
+                  </div>
+                )}
+              </div>
+
+              <div className="dev-chat-footer">
+                <div className="dev-input-dummy">
+                  <span>Describe la web o app que necesitas...</span>
+                  <span style={{ color: '#0284c7', fontWeight: '700' }}>⚡ Enviar</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Maqueta de Navegador Safari Estilo Apple (Tienda Oficial de Calzado AERO) */}
+            <div className="apple-browser-mockup">
             {/* Topbar de Safari macOS */}
             <div className="apple-browser-topbar">
               <div className="apple-window-dots">
@@ -2403,8 +3491,9 @@ export default function AgentsLanding() {
               <span>💳 <strong>12 cuotas</strong> sin interés con todos los medios de pago</span>
             </div>
           </div>
+        </div>
 
-          {/* 4 Soluciones que tu Desarrollador Web creará para tu negocio */}
+        {/* 4 Soluciones que tu Desarrollador Web creará para tu negocio */}
           <div className="systems-grid">
             <div className="system-item">
               <div style={{ fontSize: '1.8rem', marginBottom: '12px' }}>🌐</div>
@@ -2448,7 +3537,350 @@ export default function AgentsLanding() {
           </div>
         </section>
 
-        {/* 4. SECCIÓN DE CONVERSIÓN FINAL */}
+        {/* 4. SECCIÓN: RESUMEN DEL FLUJO (CARRUSEL INTERACTIVO CON ZOOM AL CENTRO) */}
+        <section className="flow-section">
+          <div style={{ textAlign: 'center', marginBottom: '45px' }}>
+            <span className="flow-badge">
+              <span>⚡</span>
+              <span>Ecosistema de Producción Automatizado</span>
+            </span>
+            <h2 className="flow-title">
+              Imagínate tener una agencia de marketing, editores, asistente personal y desarrollador web, trabajando para ti 24/7
+            </h2>
+            <p className="flow-desc">
+              Cada agente cumple un rol preciso en una cadena perfecta. Cuando un paso termina, el siguiente se dispara en automático:
+            </p>
+          </div>
+
+          {/* Selector de Pasos en Pills */}
+          <div className="flow-pills-row">
+            {WORKFLOW_STEPS.map((s, idx) => (
+              <button
+                key={s.step}
+                onClick={() => setActiveFlowIndex(idx)}
+                className={`flow-pill-btn ${idx === activeFlowIndex ? 'active' : ''}`}
+              >
+                <span className="flow-pill-num">{s.step}</span>
+                <span className="flow-pill-name">{s.badge}</span>
+              </button>
+            ))}
+          </div>
+
+          {/* Carrusel con tarjeta centrada destacada y ampliada */}
+          <div 
+            className="flow-carousel-container"
+            onMouseEnter={() => setIsFlowPaused(true)}
+            onMouseLeave={() => setIsFlowPaused(false)}
+          >
+            <button 
+              className="flow-nav-btn prev"
+              onClick={() => setActiveFlowIndex((prev) => (prev - 1 + WORKFLOW_STEPS.length) % WORKFLOW_STEPS.length)}
+              aria-label="Paso anterior"
+            >
+              ←
+            </button>
+
+            <div className="flow-cards-track">
+              {WORKFLOW_STEPS.map((item, idx) => {
+                const isActive = idx === activeFlowIndex;
+                const isAdjacent = Math.abs(idx - activeFlowIndex) === 1 || 
+                  (activeFlowIndex === 0 && idx === WORKFLOW_STEPS.length - 1) || 
+                  (activeFlowIndex === WORKFLOW_STEPS.length - 1 && idx === 0);
+
+                return (
+                  <div
+                    key={item.step}
+                    onClick={() => setActiveFlowIndex(idx)}
+                    className={`flow-card ${isActive ? 'card-active' : isAdjacent ? 'card-adjacent' : 'card-dimmed'}`}
+                  >
+                    <div className="flow-card-header">
+                      <div className="flow-card-badge-row">
+                        <span className="flow-step-pill">PASO {item.step}</span>
+                        <span className="flow-icon-bubble">{item.icon}</span>
+                      </div>
+                      <h3 className="flow-card-title">{item.title}</h3>
+                      <p className="flow-card-desc">{item.desc}</p>
+                    </div>
+
+                    {/* Gráficos Visuales Especializados para cada paso */}
+                    <div className="flow-graphic-stage">
+                      {item.mockup === 'phone' && (
+                        /* Visual 1: Teléfono con redes sociales haciendo scroll */
+                        <div className="mockup-phone-frame">
+                          <div className="phone-screen-inner">
+                            <div className="phone-feed-scroll">
+                              <div className="phone-video-item active-feed">
+                                <div className="feed-header">
+                                  <div className="feed-avatar"></div>
+                                  <span>@tendencias_ia</span>
+                                  <span className="feed-viral-tag">🔥 1.4M vistas</span>
+                                </div>
+                                <div className="feed-overlay-sound">🎵 Audio viral detectado</div>
+                              </div>
+                              <div className="phone-video-item">
+                                <div className="feed-header">
+                                  <div className="feed-avatar" style={{ background: '#ec4899' }}></div>
+                                  <span>@marketing_tips</span>
+                                  <span className="feed-viral-tag">⚡ 890K vistas</span>
+                                </div>
+                              </div>
+                            </div>
+                            <div className="phone-radar-scanner">
+                              <span>📡 Radar Escaneando Virales...</span>
+                            </div>
+                          </div>
+                        </div>
+                      )}
+
+                      {item.mockup === 'adaptation' && (
+                        /* Visual 2: Adaptación de contenido de un tema a otro */
+                        <div className="mockup-adaptation-box">
+                          <div className="adapt-col">
+                            <div className="adapt-tag">Guión Viral Original</div>
+                            <div className="adapt-line hook">Hook: "El 90% comete este error..."</div>
+                            <div className="adapt-line" style={{ background: '#f8fafc', color: '#64748b' }}>Estructura de Retención</div>
+                            <div className="adapt-line" style={{ background: '#f8fafc', color: '#64748b' }}>Llamada a la Acción</div>
+                          </div>
+                          <div className="adapt-arrow">➔</div>
+                          <div className="adapt-col">
+                            <div className="adapt-tag" style={{ color: '#2563eb' }}>Adaptado a Tu Marca</div>
+                            <div className="adapt-line hook-new">Gancho con Tu Oferta</div>
+                            <div className="adapt-line body-new">Misma Fórmula Ganadora</div>
+                            <div className="adapt-line cta-new">Cierre a Tu WhatsApp</div>
+                          </div>
+                        </div>
+                      )}
+
+                      {item.mockup === 'script' && (
+                        /* Visual 3: Guión estructurado en hoja de papel */
+                        <div className="mockup-script-sheet">
+                          <div className="sheet-title">📄 GUION_REEL_VIRAL.MD</div>
+                          <div className="sheet-lines">
+                            <div className="sheet-block">
+                              <span className="sec-tag">[0:00 - 0:03] Gancho:</span> "Si estás perdiendo 3 horas al día creando contenido..."
+                            </div>
+                            <div className="sheet-block">
+                              <span className="sec-tag" style={{ color: '#0284c7' }}>[0:04 - 0:24] Desarrollo:</span> Muestra los agentes resolviendo tu flujo.
+                            </div>
+                            <div className="sheet-block">
+                              <span className="sec-tag" style={{ color: '#059669' }}>[0:25 - 0:30] CTA:</span> Toca el enlace y únete al Master de IA.
+                            </div>
+                          </div>
+                        </div>
+                      )}
+
+                      {item.mockup === 'editor' && (
+                        /* Visual 4: Pantallazo de programa de edición editando */
+                        <div className="mockup-editor-window">
+                          <div className="editor-topbar">
+                            <span className="editor-title">Editor Pro • Render 4K 60fps</span>
+                            <span className="editor-badge">Auto-Cortes Activos</span>
+                          </div>
+                          <div className="editor-preview-mini">
+                            <div className="editor-subtitles-preview">
+                              <span className="sub-highlight">"AUTOMATIZA</span> TU CONTENIDO"
+                            </div>
+                          </div>
+                          <div className="editor-timeline">
+                            <div className="timeline-track">
+                              <span className="track-label">V1</span>
+                              <div className="clip-bar clip-v1">Gancho</div>
+                              <div className="clip-bar clip-v2">B-Roll IA</div>
+                              <div className="clip-bar clip-v3">Remate</div>
+                            </div>
+                            <div className="timeline-track">
+                              <span className="track-label">A1</span>
+                              <div className="clip-bar clip-wave"> ▂▃▅▆▇▆▅▃▂ ▂▃▅▆▇▆▅▃▂ </div>
+                            </div>
+                          </div>
+                        </div>
+                      )}
+
+                      {item.mockup === 'design' && (
+                        /* Visual 5: Diseñadora creando portada/diseño desde un escrito */
+                        <div className="mockup-design-canvas">
+                          <div className="canvas-header">
+                            <span>Canvas IA • 9:16 Vertical</span>
+                            <span className="canvas-badge">Diseño Generado</span>
+                          </div>
+                          <div className="canvas-artboard">
+                            <div className="canvas-badge-mini">MINIATURA VIRAL</div>
+                            <div className="canvas-big-text">SECRETOS<br/>DE LA IA</div>
+                            <div className="canvas-author-pill">⚡ Eduar Peña</div>
+                          </div>
+                        </div>
+                      )}
+
+                      {item.mockup === 'publish' && (
+                        /* Visual 6: Publicación automática multicanal */
+                        <div className="mockup-publish-dashboard">
+                          <div className="publish-grid">
+                            <div className="pub-card active">
+                              <div className="pub-icon">📸</div>
+                              <div className="pub-info">
+                                <strong>Instagram</strong>
+                                <span>Publicado 10:00 AM</span>
+                              </div>
+                              <span className="pub-check">✓</span>
+                            </div>
+                            <div className="pub-card active">
+                              <div className="pub-icon">🎵</div>
+                              <div className="pub-info">
+                                <strong>TikTok</strong>
+                                <span>Publicado 10:00 AM</span>
+                              </div>
+                              <span className="pub-check">✓</span>
+                            </div>
+                            <div className="pub-card active">
+                              <div className="pub-icon">▶️</div>
+                              <div className="pub-info">
+                                <strong>Shorts</strong>
+                                <span>Publicado 10:01 AM</span>
+                              </div>
+                              <span className="pub-check">✓</span>
+                            </div>
+                            <div className="pub-card active">
+                              <div className="pub-icon">👥</div>
+                              <div className="pub-info">
+                                <strong>Facebook</strong>
+                                <span>Publicado 10:01 AM</span>
+                              </div>
+                              <span className="pub-check">✓</span>
+                            </div>
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+
+            <button 
+              className="flow-nav-btn next"
+              onClick={() => setActiveFlowIndex((prev) => (prev + 1) % WORKFLOW_STEPS.length)}
+              aria-label="Paso siguiente"
+            >
+              →
+            </button>
+          </div>
+        </section>
+
+        {/* 5. SECCIÓN: INSTRUCTOR PRINCIPAL (EDUAR PEÑA) */}
+        <section className="instructor-section">
+          <div className="instructor-card">
+            <div className="instructor-text-col">
+              <span className="instructor-badge">
+                <span>✦</span>
+                <span>Instructor Principal</span>
+              </span>
+              <h2 className="instructor-title">
+                El encargado de enseñarte será Eduar Peña
+              </h2>
+              <p className="instructor-bio">
+                Especialista en Inteligencia Artificial y marketing digital, dedicado hace más de 7 años a crear campañas exitosas de marketing y ecosistemas de ventas.
+              </p>
+
+              <div className="instructor-pillars">
+                <div className="pillar-item">
+                  <span className="pillar-icon">⚡</span>
+                  <div>
+                    <strong>+7 Años de Trayectoria Comprobada</strong>
+                    <p>Diseñando campañas de marketing y embudos de alta conversión para cientos de empresas y creadores.</p>
+                  </div>
+                </div>
+                <div className="pillar-item">
+                  <span className="pillar-icon">🤖</span>
+                  <div>
+                    <strong>Ecosistemas de IA en Producción</strong>
+                    <p>No aprenderás teoría de laboratorio: verás cómo operan agentes reales que facturan y automatizan procesos a diario.</p>
+                  </div>
+                </div>
+                <div className="pillar-item">
+                  <span className="pillar-icon">🎯</span>
+                  <div>
+                    <strong>Metodología Paso a Paso sin Código</strong>
+                    <p>Aprende de forma práctica y directa para que salgas con tu asistente y tus agentes totalmente configurados.</p>
+                  </div>
+                </div>
+              </div>
+
+              <div style={{ marginTop: '30px' }}>
+                <a 
+                  href={whatsappUrl} 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="btn-primary"
+                  style={{ background: '#2563eb' }}
+                >
+                  <span>Aprende directamente con Eduar</span>
+                  <svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+                  </svg>
+                </a>
+              </div>
+            </div>
+
+            <div className="instructor-photo-col">
+              <div className="instructor-glow-bg"></div>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img 
+                src="/Eduar_Pena.png" 
+                alt="Eduar Peña - Especialista en Inteligencia Artificial y Marketing"
+                className="instructor-photo-img"
+              />
+              <div className="instructor-pill-tag">
+                <span style={{ color: '#10b981', fontSize: '0.8rem' }}>●</span>
+                <span>Eduar Peña • Founder Marketing Xperience</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* 6. SECCIÓN: PRODUCTORA & EVENTOS (MARKETING XPERIENCE) */}
+        <section className="brand-section">
+          <div style={{ textAlign: 'center', marginBottom: '28px' }}>
+            <span style={{ 
+              fontSize: '1rem', 
+              fontWeight: '700', 
+              color: '#64748b', 
+              textTransform: 'uppercase', 
+              letterSpacing: '0.08em' 
+            }}>
+              Un programa diseñado por:
+            </span>
+            <div className="brand-logo-container">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img 
+                src="/logo.png" 
+                alt="Marketing Xperience" 
+                className="brand-logo-img"
+              />
+            </div>
+            <p style={{ color: '#64748b', fontSize: '1.05rem', maxWidth: '620px', margin: '0 auto', lineHeight: '1.55' }}>
+              Comunidad y productora pionera en eventos presenciales y formación de alto nivel en negocios, marketing e innovación tecnológica.
+            </p>
+          </div>
+
+          {/* Carrusel pequeño de fotos de eventos masivos */}
+          <div className="event-gallery-wrap">
+            <div className="event-gallery-track">
+              {EVENT_PHOTOS.concat(EVENT_PHOTOS).map((img, i) => (
+                <div key={`event-${i}`} className="event-photo-card">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img 
+                    src={`/bloque_3/${img}`} 
+                    alt="Eventos Marketing Xperience" 
+                    className="event-img"
+                    loading="lazy"
+                  />
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* 7. SECCIÓN DE CONVERSIÓN FINAL */}
         <section style={{ 
           maxWidth: '960px', 
           margin: '60px auto 90px auto', 
