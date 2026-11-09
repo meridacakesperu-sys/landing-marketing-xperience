@@ -2153,9 +2153,12 @@ export default function AgentsLanding() {
               <span>💻</span>
               <span>Desarrollo Web & Software Inteligente</span>
             </span>
-            <h2 style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', fontWeight: '850', color: '#0f172a', marginTop: '14px', letterSpacing: '-0.03em', lineHeight: '1.2' }}>
-              Tu desarrollador web: Será el encargado de crearte cualquier pagina web, sistema o apps para tu negocio
+            <h2 style={{ fontSize: 'clamp(2.3rem, 5vw, 3.5rem)', fontWeight: '850', color: '#0f172a', marginTop: '14px', letterSpacing: '-0.035em', lineHeight: '1.15' }}>
+              Tu desarrollador web
             </h2>
+            <h3 style={{ fontSize: 'clamp(1.2rem, 2.5vw, 1.7rem)', fontWeight: '750', color: '#1e1b4b', marginTop: '12px', letterSpacing: '-0.02em', lineHeight: '1.3' }}>
+              Será el encargado de crearte cualquier pagina web, sistema o apps para tu negocio
+            </h3>
             <p style={{ color: '#64748b', fontSize: '1.15rem', maxWidth: '780px', margin: '14px auto 0 auto', lineHeight: '1.6' }}>
               Dile exactamente lo que necesitas en texto o audio. Tu desarrollador de IA diseñará la interfaz, programará el código y publicará sitios web modernos, sistemas a la medida y aplicaciones listas para vender sin depender de programadores costosos.
             </p>
@@ -2174,7 +2177,7 @@ export default function AgentsLanding() {
               {/* Barra de Direcciones URL */}
               <div className="apple-address-bar">
                 <span style={{ fontSize: '0.75rem', color: '#a1a1aa' }}>🔒</span>
-                <span style={{ fontWeight: '500' }}>aero-footwear.apple/la/titanium</span>
+                <span style={{ fontWeight: '500' }}>aero-footwear.com/titanium</span>
               </div>
 
               <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
@@ -2192,11 +2195,11 @@ export default function AgentsLanding() {
               </div>
             </div>
 
-            {/* Navegación global estilo Apple (apple.com/la) */}
+            {/* Navegación global estilo tienda premium */}
             <nav className="apple-web-nav">
               <div className="apple-nav-brand">
-                <span style={{ fontSize: '1.1rem' }}></span>
-                <span>AERO</span>
+                <span style={{ fontSize: '1.05rem', color: '#60a5fa' }}>✦</span>
+                <span style={{ fontWeight: '800', letterSpacing: '0.04em' }}>AERO</span>
               </div>
 
               <div className="apple-nav-items">
@@ -2310,11 +2313,11 @@ export default function AgentsLanding() {
 
             </div>
 
-            {/* Apple Bottom Strip / Beneficios */}
+            {/* Bottom Strip / Beneficios */}
             <div className="apple-bottom-strip">
               <span>🚀 <strong>Envío gratuito</strong> en todos los pedidos</span>
               <span>🔄 <strong>Devoluciones gratis</strong> por 30 días</span>
-              <span>💳 <strong>12 cuotas</strong> sin interés con Apple Pay</span>
+              <span>💳 <strong>12 cuotas</strong> sin interés con todos los medios de pago</span>
             </div>
           </div>
 
