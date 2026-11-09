@@ -228,25 +228,26 @@ export default function AgentsLanding() {
         }
         .hero-eduar-bg {
           position: absolute;
-          right: -20px;
-          bottom: 0;
-          height: 100%;
-          max-height: 780px;
+          right: -80px;
+          bottom: -40px;
+          height: 145%;
+          min-height: 950px;
+          max-height: 1250px;
           pointer-events: none;
           z-index: 2;
           display: flex;
           align-items: flex-end;
-          opacity: 0.22;
-          mask-image: linear-gradient(to top, transparent 0%, black 15%, black 85%, transparent 100%), linear-gradient(to left, black 65%, transparent 100%);
-          -webkit-mask-image: linear-gradient(to top, transparent 0%, black 15%, black 85%, transparent 100%), linear-gradient(to left, black 65%, transparent 100%);
+          opacity: 0.24;
+          mask-image: linear-gradient(to top, transparent 0%, black 15%, black 85%, transparent 100%), linear-gradient(to left, black 55%, transparent 100%);
+          -webkit-mask-image: linear-gradient(to top, transparent 0%, black 15%, black 85%, transparent 100%), linear-gradient(to left, black 55%, transparent 100%);
         }
         .eduar-bg-img {
           height: 100%;
           width: auto;
-          max-width: 600px;
+          max-width: 1000px;
           object-fit: contain;
           object-position: right bottom;
-          filter: contrast(1.08) drop-shadow(0 0 30px rgba(59, 130, 246, 0.15));
+          filter: contrast(1.1) drop-shadow(0 0 50px rgba(59, 130, 246, 0.25));
         }
         .hero-content {
           position: relative;
@@ -634,9 +635,10 @@ export default function AgentsLanding() {
             padding: 35px 16px 30px 16px;
           }
           .hero-eduar-bg {
-            right: -60px;
-            opacity: 0.13;
-            height: 70%;
+            right: -80px;
+            bottom: -20px;
+            opacity: 0.16;
+            height: 105%;
           }
           .coord-content-row {
             flex-direction: column;
