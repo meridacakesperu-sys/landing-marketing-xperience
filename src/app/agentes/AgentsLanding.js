@@ -208,11 +208,52 @@ export default function AgentsLanding() {
           align-items: center;
         }
 
-        /* Hero */
-        .hero-section {
+        /* Hero con Fondo Neural y Foto de Eduar */
+        .hero-wrapper {
+          position: relative;
+          overflow: hidden;
+          background: #ffffff;
+          border-bottom: 1px solid rgba(226, 232, 240, 0.7);
+          min-height: 560px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+        .hero-neural-bg {
+          position: absolute;
+          inset: 0;
+          pointer-events: none;
+          z-index: 1;
+          opacity: 0.75;
+        }
+        .hero-eduar-bg {
+          position: absolute;
+          right: -20px;
+          bottom: 0;
+          height: 100%;
+          max-height: 780px;
+          pointer-events: none;
+          z-index: 2;
+          display: flex;
+          align-items: flex-end;
+          opacity: 0.22;
+          mask-image: linear-gradient(to top, transparent 0%, black 15%, black 85%, transparent 100%), linear-gradient(to left, black 65%, transparent 100%);
+          -webkit-mask-image: linear-gradient(to top, transparent 0%, black 15%, black 85%, transparent 100%), linear-gradient(to left, black 65%, transparent 100%);
+        }
+        .eduar-bg-img {
+          height: 100%;
+          width: auto;
+          max-width: 600px;
+          object-fit: contain;
+          object-position: right bottom;
+          filter: contrast(1.08) drop-shadow(0 0 30px rgba(59, 130, 246, 0.15));
+        }
+        .hero-content {
+          position: relative;
+          z-index: 10;
           max-width: 980px;
           margin: 0 auto;
-          padding: 40px 20px 30px 20px;
+          padding: 55px 20px 45px 20px;
           text-align: center;
         }
         .hero-logo-box {
@@ -589,8 +630,13 @@ export default function AgentsLanding() {
 
         /* Responsive tweaks */
         @media (max-width: 768px) {
-          .hero-section {
-            padding: 30px 16px 20px 16px;
+          .hero-content {
+            padding: 35px 16px 30px 16px;
+          }
+          .hero-eduar-bg {
+            right: -60px;
+            opacity: 0.13;
+            height: 70%;
           }
           .coord-content-row {
             flex-direction: column;
@@ -661,71 +707,178 @@ export default function AgentsLanding() {
         </div>
       </header>
 
-      {/* Hero Section */}
+      {/* Hero Section con Fondo de Redes Neuronales y Foto de Eduar en Transparencia */}
       <main>
-        <section className="hero-section">
-          {/* Logo del curso más pequeño */}
-          <div className="hero-logo-box">
-            <Image 
-              src="/logo_master_ia.png" 
-              alt="Master de Inteligencia Artificial" 
-              width={200} 
-              height={106}
-              style={{ objectFit: 'contain', width: '100%', height: 'auto', maxWidth: '200px' }}
-              priority
+        <section className="hero-wrapper">
+          {/* Fondo de Redes Neuronales Azules */}
+          <div className="hero-neural-bg">
+            <svg 
+              width="100%" 
+              height="100%" 
+              viewBox="0 0 1440 850" 
+              fill="none" 
+              xmlns="http://www.w3.org/2000/svg"
+              preserveAspectRatio="xMidYMid slice"
+            >
+              <defs>
+                <linearGradient id="neuralGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stopColor="#3b82f6" stopOpacity="0.4" />
+                  <stop offset="100%" stopColor="#6366f1" stopOpacity="0.1" />
+                </linearGradient>
+                <linearGradient id="neuralGrad2" x1="100%" y1="0%" x2="0%" y2="100%">
+                  <stop offset="0%" stopColor="#0ea5e9" stopOpacity="0.45" />
+                  <stop offset="100%" stopColor="#3b82f6" stopOpacity="0.05" />
+                </linearGradient>
+                <radialGradient id="nodeGlow" cx="50%" cy="50%" r="50%">
+                  <stop offset="0%" stopColor="#38bdf8" stopOpacity="0.8" />
+                  <stop offset="60%" stopColor="#2563eb" stopOpacity="0.25" />
+                  <stop offset="100%" stopColor="#2563eb" stopOpacity="0" />
+                </radialGradient>
+              </defs>
+
+              {/* Red de conexiones / sinapsis */}
+              <g stroke="url(#neuralGrad1)" strokeWidth="1.2" strokeDasharray="3 3">
+                <line x1="150" y1="120" x2="320" y2="240" />
+                <line x1="320" y1="240" x2="480" y2="160" />
+                <line x1="320" y1="240" x2="280" y2="420" />
+                <line x1="480" y1="160" x2="680" y2="210" />
+                <line x1="280" y1="420" x2="520" y2="480" />
+                <line x1="680" y1="210" x2="820" y2="140" />
+                <line x1="680" y1="210" x2="740" y2="380" />
+                <line x1="740" y1="380" x2="520" y2="480" />
+                <line x1="820" y1="140" x2="1040" y2="200" />
+                <line x1="1040" y1="200" x2="1200" y2="110" />
+                <line x1="1040" y1="200" x2="980" y2="390" />
+                <line x1="1200" y1="110" x2="1360" y2="260" />
+                <line x1="980" y1="390" x2="1180" y2="460" />
+                <line x1="1180" y1="460" x2="1360" y2="260" />
+                <line x1="740" y1="380" x2="980" y2="390" />
+                <line x1="980" y1="390" x2="920" y2="580" />
+                <line x1="1180" y1="460" x2="1280" y2="620" />
+                <line x1="520" y1="480" x2="640" y2="660" />
+                <line x1="640" y1="660" x2="920" y2="580" />
+                <line x1="920" y1="580" x2="1120" y2="720" />
+                <line x1="1180" y1="460" x2="1380" y2="520" />
+              </g>
+
+              {/* Conexiones secundarias continuas */}
+              <g stroke="url(#neuralGrad2)" strokeWidth="0.8">
+                <line x1="220" y1="280" x2="420" y2="350" />
+                <line x1="600" y1="110" x2="780" y2="260" />
+                <line x1="880" y1="290" x2="1080" y2="320" />
+                <line x1="1120" y1="210" x2="1300" y2="380" />
+                <line x1="780" y1="260" x2="950" y2="220" />
+                <line x1="860" y1="450" x2="1060" y2="540" />
+                <line x1="420" y1="350" x2="620" y2="420" />
+              </g>
+
+              {/* Nodos con resplandor */}
+              <g fill="#2563eb">
+                <circle cx="150" cy="120" r="4" fill="#3b82f6" opacity="0.6" />
+                <circle cx="320" cy="240" r="5" fill="#2563eb" opacity="0.7" />
+                <circle cx="480" cy="160" r="4" fill="#60a5fa" opacity="0.6" />
+                <circle cx="280" cy="420" r="3.5" fill="#3b82f6" opacity="0.5" />
+                <circle cx="680" cy="210" r="6" fill="#1d4ed8" opacity="0.8" />
+                <circle cx="520" cy="480" r="4.5" fill="#3b82f6" opacity="0.7" />
+                <circle cx="740" cy="380" r="5.5" fill="#2563eb" opacity="0.75" />
+                <circle cx="820" cy="140" r="4" fill="#60a5fa" opacity="0.6" />
+                <circle cx="1040" cy="200" r="7" fill="#1d4ed8" opacity="0.85" />
+                <circle cx="980" cy="390" r="6.5" fill="#2563eb" opacity="0.8" />
+                <circle cx="1200" cy="110" r="4.5" fill="#3b82f6" opacity="0.6" />
+                <circle cx="1360" cy="260" r="5.5" fill="#2563eb" opacity="0.7" />
+                <circle cx="1180" cy="460" r="6" fill="#1d4ed8" opacity="0.8" />
+                <circle cx="920" cy="580" r="5" fill="#3b82f6" opacity="0.7" />
+                <circle cx="640" cy="660" r="4" fill="#60a5fa" opacity="0.6" />
+                <circle cx="1280" cy="620" r="4.5" fill="#3b82f6" opacity="0.65" />
+                <circle cx="1120" cy="720" r="4" fill="#60a5fa" opacity="0.5" />
+                <circle cx="1380" cy="520" r="3.5" fill="#3b82f6" opacity="0.5" />
+              </g>
+
+              {/* Halos de luz en nodos clave */}
+              <circle cx="680" cy="210" r="28" fill="url(#nodeGlow)" />
+              <circle cx="1040" cy="200" r="35" fill="url(#nodeGlow)" />
+              <circle cx="980" cy="390" r="32" fill="url(#nodeGlow)" />
+              <circle cx="1180" cy="460" r="30" fill="url(#nodeGlow)" />
+              <circle cx="740" cy="380" r="24" fill="url(#nodeGlow)" />
+            </svg>
+          </div>
+
+          {/* Foto de Eduar sonriendo de frente a gran escala a un lado en transparencia */}
+          <div className="hero-eduar-bg">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img 
+              src="/eduar_cta.png" 
+              alt="Eduar Peña" 
+              className="eduar-bg-img"
             />
           </div>
 
-          {/* Titular Principal */}
-          <h1 className="hero-title">
-            Domina la IA actualizada de 2026-2027
-          </h1>
+          {/* Contenido del Hero (por encima) */}
+          <div className="hero-content">
+            {/* Logo del curso más pequeño */}
+            <div className="hero-logo-box">
+              <Image 
+                src="/logo_master_ia.png" 
+                alt="Master de Inteligencia Artificial" 
+                width={200} 
+                height={106}
+                style={{ objectFit: 'contain', width: '100%', height: 'auto', maxWidth: '200px' }}
+                priority
+              />
+            </div>
 
-          {/* Subtítulo destacado en grande */}
-          <h2 className="hero-subtitle">
-            Crea tu ecosistema de Agentes de IA interconectados
-          </h2>
+            {/* Titular Principal */}
+            <h1 className="hero-title">
+              Domina la IA actualizada de 2026-2027
+            </h1>
 
-          {/* Descripción */}
-          <p className="hero-desc">
-            Empieza en Diciembre y llega a Enero con tu asistente personal de IA y tu equipo de marketing en marcha. Ahora podrás tener ideas ilimitadas, guiones comprobados listos, un equipo de editores y sistemas a tu medida.
-          </p>
+            {/* Subtítulo destacado en grande */}
+            <h2 className="hero-subtitle">
+              Crea tu ecosistema de Agentes de IA interconectados
+            </h2>
 
-          <div style={{ display: 'flex', justifyContent: 'center', gap: '16px', flexWrap: 'wrap' }}>
-            <a 
-              href={whatsappUrl} 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              className="btn-primary"
-            >
-              <span>Ir a WhatsApp para los detalles de inscripción</span>
-              <svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
-              </svg>
-            </a>
+            {/* Descripción */}
+            <p className="hero-desc">
+              Empieza en Diciembre y llega a Enero con tu asistente personal de IA y tu equipo de marketing en marcha. Ahora podrás tener ideas ilimitadas, guiones comprobados listos, un equipo de editores y sistemas a tu medida.
+            </p>
 
-            <button 
-              onClick={() => {
-                const el = document.getElementById('agentes-carrusel');
-                if (el) el.scrollIntoView({ behavior: 'smooth' });
-              }}
-              style={{
-                background: '#ffffff',
-                border: '1px solid #cbd5e1',
-                color: '#334155',
-                padding: '18px 28px',
-                borderRadius: '9999px',
-                fontSize: '1.05rem',
-                fontWeight: '600',
-                cursor: 'pointer',
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: '8px'
-              }}
-            >
-              <span>Ver cómo trabajan los agentes</span>
-              <span>↓</span>
-            </button>
+            <div style={{ display: 'flex', justifyContent: 'center', gap: '16px', flexWrap: 'wrap' }}>
+              <a 
+                href={whatsappUrl} 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="btn-primary"
+              >
+                <span>Ir a WhatsApp para los detalles de inscripción</span>
+                <svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+                </svg>
+              </a>
+
+              <button 
+                onClick={() => {
+                  const el = document.getElementById('agentes-carrusel');
+                  if (el) el.scrollIntoView({ behavior: 'smooth' });
+                }}
+                style={{
+                  background: '#ffffff',
+                  border: '1px solid #cbd5e1',
+                  color: '#334155',
+                  padding: '18px 28px',
+                  borderRadius: '9999px',
+                  fontSize: '1.05rem',
+                  fontWeight: '600',
+                  cursor: 'pointer',
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '8px',
+                  boxShadow: '0 2px 5px rgba(0,0,0,0.04)'
+                }}
+              >
+                <span>Ver cómo trabajan los agentes</span>
+                <span>↓</span>
+              </button>
+            </div>
           </div>
         </section>
 
