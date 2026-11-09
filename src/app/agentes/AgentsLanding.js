@@ -434,13 +434,86 @@ export default function AgentsLanding() {
         .hero-logo-box:hover {
           transform: scale(1.03);
         }
+        .hero-bottom-fade {
+          position: absolute;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          height: 90px;
+          background: linear-gradient(to top, #ffffff 0%, rgba(255, 255, 255, 0.85) 45%, rgba(255, 255, 255, 0) 100%);
+          pointer-events: none;
+          z-index: 3;
+        }
         .hero-title {
-          font-size: clamp(2.4rem, 5.5vw, 4.1rem);
-          font-weight: 850;
-          line-height: 1.12;
+          margin-bottom: 22px;
+        }
+        .hero-title-main {
+          display: block;
+          font-size: clamp(2.5rem, 6.2vw, 4.6rem);
+          font-weight: 950;
+          line-height: 1.08;
           letter-spacing: -0.04em;
           color: #09090b;
-          margin-bottom: 16px;
+          margin-bottom: 10px;
+        }
+        @media (min-width: 580px) {
+          .hero-title-main {
+            white-space: nowrap;
+          }
+        }
+        .hero-title-sub {
+          display: block;
+          font-size: clamp(1.6rem, 4vw, 2.85rem);
+          font-weight: 800;
+          line-height: 1.25;
+          letter-spacing: -0.03em;
+          color: #1e1b4b;
+        }
+        .hero-highlight-wrap {
+          position: relative;
+          display: inline-block;
+          white-space: nowrap;
+          color: #2563eb;
+          padding: 0 12px;
+          margin-left: 4px;
+        }
+        .hero-circle-svg {
+          position: absolute;
+          top: -15%;
+          left: -8%;
+          width: 116%;
+          height: 130%;
+          pointer-events: none;
+          overflow: visible;
+          transform: rotate(-1.5deg);
+        }
+        .hero-circle-path {
+          stroke: #2563eb;
+          stroke-width: 3.5;
+          stroke-linecap: round;
+          stroke-linejoin: round;
+          fill: none;
+          stroke-dasharray: 750;
+          stroke-dashoffset: 750;
+          animation: drawMarkerCircle 4s cubic-bezier(0.65, 0, 0.35, 1) infinite;
+          filter: drop-shadow(0 2px 8px rgba(37, 99, 235, 0.35));
+        }
+        @keyframes drawMarkerCircle {
+          0% {
+            stroke-dashoffset: 750;
+            opacity: 0;
+          }
+          10% {
+            opacity: 1;
+          }
+          45%, 82% {
+            stroke-dashoffset: 0;
+            opacity: 1;
+          }
+          92%, 100% {
+            stroke-dashoffset: 0;
+            opacity: 0;
+          }
         }
         .hero-subtitle {
           font-size: clamp(1.35rem, 2.8vw, 2.1rem);
@@ -1399,11 +1472,11 @@ export default function AgentsLanding() {
             padding: 35px 16px 30px 16px;
           }
           .hero-eduar-bg {
-            right: -30px;
+            right: -25px;
             bottom: 0;
             opacity: 0.28;
-            height: 92%;
-            max-height: 520px;
+            height: 100%;
+            max-height: 680px;
           }
           .coord-content-row {
             flex-direction: column;
@@ -1574,6 +1647,9 @@ export default function AgentsLanding() {
             />
           </div>
 
+          {/* Desvanecimiento inferior ultra suave para evitar cualquier corte o cinta blanca */}
+          <div className="hero-bottom-fade" />
+
           {/* Contenido del Hero (por encima) */}
           <div className="hero-content">
             {/* Logo del curso más pequeño */}
@@ -1588,9 +1664,28 @@ export default function AgentsLanding() {
               />
             </div>
 
-            {/* Titular Principal */}
+            {/* Titular Principal en 2 líneas con Si no tienes tiempo destacado y círculo animado en AQUÍ ES */}
             <h1 className="hero-title">
-              Si no tienes tiempo y quieres crear contenido AQUÍ ES
+              <span className="hero-title-main">
+                Si no tienes tiempo
+              </span>
+              <span className="hero-title-sub">
+                y quieres crear contenido{' '}
+                <span className="hero-highlight-wrap">
+                  AQUÍ ES
+                  <svg 
+                    className="hero-circle-svg" 
+                    viewBox="0 0 250 85" 
+                    fill="none" 
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M 15 42 C 18 18, 90 8, 170 10 C 228 12, 246 28, 242 48 C 236 66, 178 78, 102 76 C 45 74, 8 62, 14 38 C 20 18, 98 12, 188 15"
+                      className="hero-circle-path"
+                    />
+                  </svg>
+                </span>
+              </span>
             </h1>
 
             {/* Subtítulo destacado en grande */}
