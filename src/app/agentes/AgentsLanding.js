@@ -173,7 +173,7 @@ const WHATSAPP_CONVERSATION = [
   {
     id: 'msg-1',
     sender: 'user',
-    text: '¡Hola! 👋 ¿Qué reuniones y pendientes tengo para hoy en mi calendario?',
+    text: '¡Hola Mia! 👋 ¿Qué reuniones y pendientes tengo para hoy en mi calendario?',
     time: '9:15 AM'
   },
   // 2. Respuesta con recordatorio y link de Google Meet
@@ -1740,12 +1740,12 @@ export default function AgentsLanding() {
                       <div className="wa-avatar">
                         <img 
                           src="/agentes/12_Ari_Coordinadora_Equipo.png" 
-                          alt="Asistente Personal IA"
+                          alt="Mia - Asistente personal"
                           style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 10%' }}
                         />
                       </div>
                       <div className="wa-user-details">
-                        <span className="wa-user-name">Asistente Personal IA</span>
+                        <span className="wa-user-name">Mia - Asistente personal</span>
                         <span className="wa-user-status">
                           {isAssistantTyping ? (
                             <span style={{ color: '#ffffff', fontWeight: '700' }}>escribiendo...</span>
