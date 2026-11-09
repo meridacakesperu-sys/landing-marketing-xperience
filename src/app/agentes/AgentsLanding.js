@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef } from 'react';
 import Image from 'next/image';
 
 // Datos de Ari (Coordinadora que está arriba de todos)
@@ -9,14 +9,14 @@ const COORDINATOR = {
   name: 'Ari',
   role: 'Coordinadora General & Directora de Operaciones',
   department: 'Orquestación & Estrategia',
-  badge: '🧠 Mente Maestra 24/7',
-  cover: '/agentes/ari-cover.jpg',
-  avatar: '/agentes/ari-avatar.jpg',
-  color: 'from-amber-500 to-indigo-600',
+  badge: '👑 Coordinadora del Equipo',
+  image: '/agentes/12_Ari_Coordinadora_Equipo.png',
+  gradient: 'linear-gradient(135deg, #1e1b4b 0%, #312e81 40%, #4338ca 100%)',
+  colorTheme: '#6366f1',
   description: 'Recibe tus metas de negocio en notas de voz o texto. Desglosa la estrategia mensual, asigna automáticamente las tareas a los 11 especialistas y supervisa cada entrega para que nunca te detengas.',
   connectedTo: 'Enlace directo con los 11 especialistas',
-  status: 'Orquestando equipo',
-  sampleMessage: '🎯 Campaña de diciembre orquestada: Guiones asignados a Marco, creativos con Dalia y montaje de video con Tomás. El calendario avanza en automático.',
+  status: 'Orquestando equipo 24/7',
+  sampleMessage: '🎯 Campaña de diciembre orquestada: Guiones asignados a Marco, creativos con Dalia y montaje de video con Tomás y Rita. El calendario avanza en automático.',
   time: '10:05 AM',
 };
 
@@ -27,10 +27,10 @@ const AGENTS = [
     name: 'Sofia',
     role: 'Community Manager',
     category: 'Comunidad & Ventas',
-    gradient: 'from-purple-500 to-pink-500',
+    image: '/agentes/01_Sofia_Community_Manager.png',
     coverBg: 'linear-gradient(135deg, #a855f7 0%, #ec4899 100%)',
     avatarBg: '#9333ea',
-    initials: 'SO',
+    accentColor: '#a855f7',
     description: 'Monitorea tus redes sociales, responde comentarios con tono humano y clasifica prospectos en mensajes directos para agendar llamadas o ventas.',
     connectedTo: 'Ari & Audiencia',
     sampleMessage: '💬 Respondí 48 comentarios en Instagram y clasifiqué a 9 personas interesadas listas para WhatsApp.',
@@ -41,13 +41,13 @@ const AGENTS = [
     name: 'Dalia',
     role: 'Diseñadora Gráfica',
     category: 'Identidad & Creativos',
-    gradient: 'from-emerald-500 to-teal-500',
+    image: '/agentes/02_Dalia_Disenadora.png',
     coverBg: 'linear-gradient(135deg, #10b981 0%, #06b6d4 100%)',
     avatarBg: '#059669',
-    initials: 'DA',
+    accentColor: '#10b981',
     description: 'Diseña portadas llamativas, carruseles de alto valor y piezas publicitarias consistentes con la paleta de colores y tipografía de tu marca.',
     connectedTo: 'Ari & Pluma',
-    sampleMessage: '🎨 5 portadas de reels y 2 carruseles listos con la tipografía bold y contraste para el post de hoy.',
+    sampleMessage: '🎨 5 portadas de reels y 2 carruseles listos con tipografía bold y contraste para el post de hoy.',
     time: '10:24 AM'
   },
   {
@@ -55,10 +55,10 @@ const AGENTS = [
     name: 'Nova',
     role: 'Investigador de Contenido',
     category: 'Tendencias & Nicho',
-    gradient: 'from-cyan-500 to-blue-600',
+    image: '/agentes/03_Nova_Investigador_Contenido.png',
     coverBg: 'linear-gradient(135deg, #06b6d4 0%, #3b82f6 100%)',
     avatarBg: '#0284c7',
-    initials: 'NO',
+    accentColor: '#0284c7',
     description: 'Rastrea en tiempo real qué formatos y temas están explotando en tu nicho en TikTok, Instagram y YouTube para no improvisar nunca.',
     connectedTo: 'Ari & Valeria',
     sampleMessage: '🔍 Analicé 45 videos virales de tu sector: este ángulo de automatización tiene 3.8x más engagement.',
@@ -69,10 +69,10 @@ const AGENTS = [
     name: 'Valeria',
     role: 'Adaptador de Contenido y Ganchos Virales',
     category: 'Retención & Hooks',
-    gradient: 'from-amber-500 to-orange-600',
+    image: '/agentes/04_Valeria_Ganchos_Virales.png',
     coverBg: 'linear-gradient(135deg, #f59e0b 0%, #ea580c 100%)',
     avatarBg: '#d97706',
-    initials: 'VA',
+    accentColor: '#ea580c',
     description: 'Transforma cualquier idea en ganchos psicológicos de alta retención para atrapar la atención en los primeros 3 segundos del video.',
     connectedTo: 'Nova & Marco',
     sampleMessage: '⚡ Creé 10 variaciones de ganchos de alta curiosidad negativa para el guion de Nova. Recomiendo el #2.',
@@ -83,10 +83,10 @@ const AGENTS = [
     name: 'Marco',
     role: 'Guionista',
     category: 'Estructura & Storytelling',
-    gradient: 'from-blue-600 to-indigo-700',
+    image: '/agentes/05_Marco_Guionista.png',
     coverBg: 'linear-gradient(135deg, #2563eb 0%, #4338ca 100%)',
     avatarBg: '#1d4ed8',
-    initials: 'MA',
+    accentColor: '#2563eb',
     description: 'Redacta los guiones completos palabra por palabra listos para leer en teleprónter o cámara: apertura, cuerpo dinámico y llamado a la acción.',
     connectedTo: 'Valeria & Pluma',
     sampleMessage: '📝 Guion de 48 segundos terminado: estructura de 3 puntos sin rodeos y CTA claro al enlace.',
@@ -97,10 +97,10 @@ const AGENTS = [
     name: 'Pluma',
     role: 'Copywriting',
     category: 'Persuasión & Captions',
-    gradient: 'from-fuchsia-600 to-pink-600',
+    image: '/agentes/06_Pluma_Copywriting.png',
     coverBg: 'linear-gradient(135deg, #c026d3 0%, #db2777 100%)',
     avatarBg: '#a21caf',
-    initials: 'PL',
+    accentColor: '#c026d3',
     description: 'Escribe los copies de publicaciones, descripciones de videos y secuencias de emails con fórmulas de persuasión que motivan a tomar acción.',
     connectedTo: 'Marco & Sofia',
     sampleMessage: '✍️ Copy del post listo con la técnica PAS y llamado a comentar "EQUIPO" para enviar el bono.',
@@ -111,10 +111,10 @@ const AGENTS = [
     name: 'Martin',
     role: 'Montaje para Edición',
     category: 'Corte & Ritmo',
-    gradient: 'from-sky-500 to-indigo-500',
+    image: '/agentes/07_Martin_Montaje_Edicion.png',
     coverBg: 'linear-gradient(135deg, #0ea5e9 0%, #6366f1 100%)',
     avatarBg: '#0369a1',
-    initials: 'MR',
+    accentColor: '#0ea5e9',
     description: 'Limpia el video en crudo: elimina silencios, muletillas y pausas para lograr un ritmo ágil y continuo que evita que la gente se vaya.',
     connectedTo: 'Marco & Tomás',
     sampleMessage: '✂️ Eliminé 18 segundos de pausas y tomas falsas. La estructura quedó limpia y con ritmo rápido.',
@@ -125,10 +125,10 @@ const AGENTS = [
     name: 'Tomas',
     role: 'Montaje de Video',
     category: 'Efectos & Dinamismo',
-    gradient: 'from-indigo-600 to-violet-700',
+    image: '/agentes/08_Tomas_Montaje_Video.png',
     coverBg: 'linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%)',
     avatarBg: '#4338ca',
-    initials: 'TO',
+    accentColor: '#4f46e5',
     description: 'Aplica zooms de énfasis (punch-ins), transiciones cinematográficas y movimientos de cámara en sincronía con el tono de voz.',
     connectedTo: 'Martin & Rita',
     sampleMessage: '🎥 Zooms dinámicos y transiciones sincronizadas con los cambios de argumento del audio.',
@@ -139,10 +139,10 @@ const AGENTS = [
     name: 'Rita',
     role: 'Movimiento',
     category: 'Motion & Subtítulos',
-    gradient: 'from-yellow-500 to-amber-600',
+    image: '/agentes/09_Rita_Movimiento.png',
     coverBg: 'linear-gradient(135deg, #eab308 0%, #d97706 100%)',
     avatarBg: '#ca8a04',
-    initials: 'RI',
+    accentColor: '#d97706',
     description: 'Crea subtítulos animados palabra por palabra estilo viral, destaca palabras clave con colores llamativos y añade stickers cinéticos.',
     connectedTo: 'Tomas & Lucas',
     sampleMessage: '✨ Subtítulos animados aplicados con tracking preciso y palabras clave en amarillo y blanco.',
@@ -153,10 +153,10 @@ const AGENTS = [
     name: 'Lucas',
     role: 'Tomas de Apoyo',
     category: 'B-Roll & Visuales',
-    gradient: 'from-emerald-600 to-green-600',
+    image: '/agentes/10_Lucas_Tomas_de_Apoyo.png',
     coverBg: 'linear-gradient(135deg, #059669 0%, #16a34a 100%)',
     avatarBg: '#047857',
-    initials: 'LU',
+    accentColor: '#059669',
     description: 'Selecciona e inserta clips de apoyo (B-rolls), capturas y metáforas visuales cada 3-4 segundos para que el video mantenga el interés visual.',
     connectedTo: 'Rita & Sara',
     sampleMessage: '🎞️ 6 tomas de apoyo B-Roll en alta definición insertadas en los momentos clave del concepto.',
@@ -167,10 +167,10 @@ const AGENTS = [
     name: 'Sara',
     role: 'Acabado',
     category: 'Color, Audio & Master',
-    gradient: 'from-rose-500 to-red-600',
+    image: '/agentes/11_Sara_Acabado.png',
     coverBg: 'linear-gradient(135deg, #f43f5e 0%, #dc2626 100%)',
     avatarBg: '#be123c',
-    initials: 'SA',
+    accentColor: '#e11d48',
     description: 'Realiza el pulido final de audio (ecualización y reducción de ruido), gradación de color cinematográfico y exporta en 4K listo para publicar.',
     connectedTo: 'Lucas & Ari',
     sampleMessage: '🎬 Audio calibrado a -14 LUFS con música de fondo sutil. Video exportado y listo para programar.',
@@ -180,7 +180,6 @@ const AGENTS = [
 
 export default function AgentsLanding() {
   const [isPaused, setIsPaused] = useState(false);
-  const [selectedAgent, setSelectedAgent] = useState(null);
   const marqueeRef = useRef(null);
 
   const whatsappUrl = "https://wa.me/584123060970?text=" + encodeURIComponent(
@@ -190,7 +189,7 @@ export default function AgentsLanding() {
   return (
     <div className="agents-page-wrapper">
       
-      {/* Estilos embebidos ultra-limpios para máxima compatibilidad */}
+      {/* Estilos embebidos modernos y minimalistas */}
       <style jsx>{`
         .agents-page-wrapper {
           min-height: 100vh;
@@ -206,10 +205,10 @@ export default function AgentsLanding() {
           position: sticky;
           top: 0;
           z-index: 50;
-          background: rgba(255, 255, 255, 0.85);
-          backdrop-filter: blur(12px);
-          -webkit-backdrop-filter: blur(12px);
-          border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+          background: rgba(255, 255, 255, 0.9);
+          backdrop-filter: blur(14px);
+          -webkit-backdrop-filter: blur(14px);
+          border-bottom: 1px solid rgba(226, 232, 240, 0.85);
           padding: 16px 24px;
         }
         .nav-inner {
@@ -245,24 +244,19 @@ export default function AgentsLanding() {
 
         /* Hero */
         .hero-section {
-          max-width: 1000px;
+          max-width: 1020px;
           margin: 0 auto;
           padding: 70px 20px 40px 20px;
           text-align: center;
         }
         .hero-title {
-          font-size: clamp(2.3rem, 5.5vw, 4.2rem);
+          font-size: clamp(2.3rem, 5.5vw, 4.1rem);
           font-weight: 850;
           line-height: 1.12;
           letter-spacing: -0.04em;
           color: #09090b;
           margin-top: 24px;
           margin-bottom: 24px;
-        }
-        .hero-title .highlight {
-          background: linear-gradient(135deg, #1e293b 0%, #475569 100%);
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
         }
         .hero-desc {
           font-size: clamp(1.1rem, 2.2vw, 1.35rem);
@@ -294,9 +288,9 @@ export default function AgentsLanding() {
           box-shadow: 0 15px 30px -5px rgba(0, 0, 0, 0.35);
         }
 
-        /* Coordinator Section */
+        /* Coordinator Section (Ari) */
         .coordinator-wrapper {
-          max-width: 820px;
+          max-width: 900px;
           margin: 40px auto 20px auto;
           padding: 0 20px;
           position: relative;
@@ -306,64 +300,47 @@ export default function AgentsLanding() {
           border: 1px solid #e2e8f0;
           border-radius: 28px;
           overflow: hidden;
-          box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.07), 0 0 0 1px rgba(0, 0, 0, 0.02);
+          box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.08), 0 0 0 1px rgba(0, 0, 0, 0.02);
           transition: transform 0.3s ease, box-shadow 0.3s ease;
-          position: relative;
+          display: flex;
+          flex-direction: column;
         }
-        .coordinator-card:hover {
-          box-shadow: 0 25px 50px -15px rgba(0, 0, 0, 0.12);
-        }
-        .coord-cover {
-          height: 140px;
+        .coord-top-banner {
           background: linear-gradient(135deg, #1e1b4b 0%, #312e81 40%, #4338ca 100%);
-          position: relative;
+          padding: 16px 24px;
           display: flex;
-          align-items: flex-end;
-          padding: 20px;
-        }
-        .coord-cover-pattern {
-          position: absolute;
-          inset: 0;
-          opacity: 0.15;
-          background-image: radial-gradient(#ffffff 1px, transparent 1px);
-          background-size: 16px 16px;
-        }
-        .coord-body {
-          padding: 24px 32px 32px 32px;
-          position: relative;
-        }
-        .coord-avatar-row {
-          display: flex;
-          align-items: flex-end;
-          gap: 20px;
-          margin-top: -65px;
-          margin-bottom: 20px;
-          position: relative;
-          z-index: 2;
-        }
-        .coord-avatar {
-          width: 90px;
-          height: 90px;
-          border-radius: 50%;
-          border: 4px solid #ffffff;
-          background: linear-gradient(135deg, #6366f1, #a855f7);
-          color: #ffffff;
-          display: flex;
+          justify-content: space-between;
           align-items: center;
-          justify-content: center;
-          font-size: 2rem;
-          font-weight: 800;
-          box-shadow: 0 10px 20px rgba(99, 102, 241, 0.3);
-          flex-shrink: 0;
+          color: #ffffff;
+        }
+        .coord-content-row {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          padding: 30px;
+          gap: 30px;
+        }
+        .coord-photo-wrapper {
+          width: 220px;
+          height: 260px;
+          position: relative;
+          border-radius: 20px;
           overflow: hidden;
+          background: #f1f5f9;
+          flex-shrink: 0;
+          box-shadow: 0 12px 24px -6px rgba(99, 102, 241, 0.25);
+          border: 2px solid rgba(99, 102, 241, 0.2);
+        }
+        .coord-info {
+          flex: 1;
         }
 
-        /* Lines connecting to carousel */
+        /* Connection connector */
         .connection-connector {
           display: flex;
           flex-direction: column;
           align-items: center;
-          margin: 15px 0 30px 0;
+          margin: 25px 0 35px 0;
         }
         .connector-line {
           width: 2px;
@@ -374,13 +351,13 @@ export default function AgentsLanding() {
           background: #ffffff;
           border: 1px solid #cbd5e1;
           color: #475569;
-          font-size: 0.75rem;
+          font-size: 0.78rem;
           font-weight: 700;
           text-transform: uppercase;
           letter-spacing: 0.05em;
-          padding: 4px 12px;
+          padding: 6px 16px;
           border-radius: 9999px;
-          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+          box-shadow: 0 2px 5px rgba(0, 0, 0, 0.04);
         }
 
         /* Carousel Section (Vilma.ai style) */
@@ -422,9 +399,9 @@ export default function AgentsLanding() {
           }
         }
 
-        /* Agent Card (Like Vilma.ai screenshot) */
+        /* Agent Card (Estilo Vilma.ai) */
         .agent-card {
-          width: 380px;
+          width: 360px;
           background: #ffffff;
           border: 1px solid #e2e8f0;
           border-radius: 24px;
@@ -434,7 +411,6 @@ export default function AgentsLanding() {
           display: flex;
           flex-direction: column;
           flex-shrink: 0;
-          cursor: pointer;
         }
         .agent-card:hover {
           transform: translateY(-6px);
@@ -442,33 +418,35 @@ export default function AgentsLanding() {
           border-color: #cbd5e1;
         }
 
-        /* Card Cover (ready for uploaded images) */
+        /* Card Cover / Portrait (Pixar 3D image) */
         .card-cover {
-          height: 105px;
+          height: 180px;
           width: 100%;
           position: relative;
-          display: flex;
-          align-items: flex-end;
-          padding: 12px 16px;
+          overflow: hidden;
+          background: #f1f5f9;
         }
-        .card-cover-pattern {
-          position: absolute;
-          inset: 0;
-          opacity: 0.12;
-          background-image: radial-gradient(#ffffff 1px, transparent 1px);
-          background-size: 14px 14px;
+        .card-cover-image {
+          object-fit: cover;
+          object-position: top center;
+          transition: transform 0.4s ease;
+        }
+        .agent-card:hover .card-cover-image {
+          transform: scale(1.04);
         }
         .card-category-pill {
-          position: relative;
+          position: absolute;
+          bottom: 12px;
+          left: 14px;
           z-index: 2;
-          background: rgba(255, 255, 255, 0.9);
-          backdrop-filter: blur(4px);
-          padding: 3px 10px;
+          background: rgba(255, 255, 255, 0.95);
+          backdrop-filter: blur(6px);
+          padding: 4px 12px;
           border-radius: 9999px;
           font-size: 0.72rem;
           font-weight: 700;
           color: #0f172a;
-          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+          box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
         }
 
         /* Card Body */
@@ -477,40 +455,6 @@ export default function AgentsLanding() {
           display: flex;
           flex-direction: column;
           flex: 1;
-        }
-        .card-avatar-row {
-          display: flex;
-          align-items: flex-end;
-          gap: 14px;
-          margin-top: -46px;
-          margin-bottom: 12px;
-          position: relative;
-          z-index: 2;
-        }
-        .card-avatar {
-          width: 62px;
-          height: 62px;
-          border-radius: 50%;
-          border: 3px solid #ffffff;
-          color: #ffffff;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          font-size: 1.25rem;
-          font-weight: 700;
-          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
-          flex-shrink: 0;
-          overflow: hidden;
-        }
-        .avatar-online-dot {
-          position: absolute;
-          bottom: 2px;
-          right: 2px;
-          width: 14px;
-          height: 14px;
-          background: #10b981;
-          border: 2px solid #ffffff;
-          border-radius: 50%;
         }
 
         /* Slack/Zoom Style Bubble (Vilma.ai reference) */
@@ -584,11 +528,18 @@ export default function AgentsLanding() {
           .hero-section {
             padding: 40px 16px 20px 16px;
           }
+          .coord-content-row {
+            flex-direction: column;
+            text-align: center;
+            padding: 20px;
+          }
+          .coord-photo-wrapper {
+            width: 180px;
+            height: 220px;
+            margin: 0 auto;
+          }
           .agent-card {
             width: 320px;
-          }
-          .coord-body {
-            padding: 20px;
           }
         }
       `}</style>
@@ -702,76 +653,76 @@ export default function AgentsLanding() {
             }}>
               Liderazgo & Orquestación
             </span>
-            <h2 style={{ fontSize: '1.75rem', fontWeight: '800', color: '#0f172a', marginTop: '6px' }}>
+            <h2 style={{ fontSize: '1.85rem', fontWeight: '850', color: '#0f172a', marginTop: '6px' }}>
               Primero: La mente maestra que dirige todo
             </h2>
           </div>
 
           <div className="coordinator-card">
-            {/* Foto de portada placeholder (listo para la imagen de portada de Ari) */}
-            <div className="coord-cover">
-              <div className="coord-cover-pattern"></div>
-              <div style={{ position: 'relative', zIndex: 2, display: 'flex', justifyContent: 'space-between', width: '100%', alignItems: 'center' }}>
-                <span style={{ 
-                  background: 'rgba(255, 255, 255, 0.95)', 
-                  color: '#1e1b4b', 
-                  fontSize: '0.8rem', 
-                  fontWeight: '800', 
-                  padding: '4px 12px', 
-                  borderRadius: '9999px' 
-                }}>
-                  {COORDINATOR.badge}
-                </span>
+            {/* Barra superior de Ari */}
+            <div className="coord-top-banner">
+              <span style={{ 
+                background: 'rgba(255, 255, 255, 0.15)', 
+                color: '#ffffff', 
+                fontSize: '0.8rem', 
+                fontWeight: '800', 
+                padding: '4px 14px', 
+                borderRadius: '9999px',
+                border: '1px solid rgba(255, 255, 255, 0.2)' 
+              }}>
+                {COORDINATOR.badge}
+              </span>
 
-                <span style={{ 
-                  color: '#ffffff', 
-                  fontSize: '0.85rem', 
-                  display: 'flex', 
-                  alignItems: 'center', 
-                  gap: '6px',
-                  background: 'rgba(0,0,0,0.3)',
-                  padding: '4px 12px',
-                  borderRadius: '9999px'
-                }}>
-                  <span style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#4ade80' }}></span>
-                  {COORDINATOR.status}
-                </span>
-              </div>
+              <span style={{ 
+                color: '#ffffff', 
+                fontSize: '0.85rem', 
+                display: 'flex', 
+                alignItems: 'center', 
+                gap: '8px',
+                fontWeight: '600'
+              }}>
+                <span style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#4ade80' }}></span>
+                {COORDINATOR.status}
+              </span>
             </div>
 
-            {/* Cuerpo de la card de Ari */}
-            <div className="coord-body">
-              <div className="coord-avatar-row">
-                <div className="coord-avatar" style={{ position: 'relative' }}>
-                  {/* Avatar con foto o iniciales */}
-                  <span>AR</span>
-                  <div className="avatar-online-dot"></div>
-                </div>
+            {/* Contenido con la foto de avatar Pixar 3D de Ari */}
+            <div className="coord-content-row">
+              <div className="coord-photo-wrapper">
+                <Image 
+                  src={COORDINATOR.image} 
+                  alt={COORDINATOR.name} 
+                  fill 
+                  style={{ objectFit: 'cover', objectPosition: 'top center' }}
+                  priority
+                />
+              </div>
 
-                <div>
-                  <h3 style={{ fontSize: '1.6rem', fontWeight: '800', color: '#09090b', lineHeight: '1.2' }}>
-                    {COORDINATOR.name} <span style={{ fontSize: '1rem', fontWeight: '600', color: '#6366f1' }}>• La Coordinadora</span>
+              <div className="coord-info">
+                <div style={{ marginBottom: '12px' }}>
+                  <h3 style={{ fontSize: '1.85rem', fontWeight: '850', color: '#09090b', lineHeight: '1.2' }}>
+                    {COORDINATOR.name} <span style={{ fontSize: '1.1rem', fontWeight: '600', color: '#6366f1' }}>• La Coordinadora</span>
                   </h3>
-                  <p style={{ color: '#64748b', fontSize: '0.95rem', fontWeight: '500' }}>
+                  <p style={{ color: '#64748b', fontSize: '1rem', fontWeight: '600' }}>
                     {COORDINATOR.role}
                   </p>
                 </div>
-              </div>
 
-              <p style={{ color: '#334155', fontSize: '1.05rem', lineHeight: '1.6', marginBottom: '18px' }}>
-                {COORDINATOR.description}
-              </p>
+                <p style={{ color: '#334155', fontSize: '1.05rem', lineHeight: '1.6', marginBottom: '18px' }}>
+                  {COORDINATOR.description}
+                </p>
 
-              {/* Chat bubble como en el pantallazo de Slack/Vilma */}
-              <div className="chat-bubble-container" style={{ borderLeft: '4px solid #6366f1' }}>
-                <div className="chat-header">
-                  <span className="chat-user">
-                    <span>👑</span> Ari a Todo el Equipo
-                  </span>
-                  <span className="chat-time">{COORDINATOR.time}</span>
-                </div>
-                <div className="chat-bubble">
-                  {COORDINATOR.sampleMessage}
+                {/* Chat bubble como en el pantallazo de Slack/Vilma */}
+                <div className="chat-bubble-container" style={{ borderLeft: '4px solid #6366f1' }}>
+                  <div className="chat-header">
+                    <span className="chat-user">
+                      <span>👑</span> Ari a Todo el Equipo
+                    </span>
+                    <span className="chat-time">{COORDINATOR.time}</span>
+                  </div>
+                  <div className="chat-bubble">
+                    {COORDINATOR.sampleMessage}
+                  </div>
                 </div>
               </div>
             </div>
@@ -810,8 +761,8 @@ export default function AgentsLanding() {
                   color: isPaused ? '#ffffff' : '#475569',
                   border: '1px solid #cbd5e1',
                   borderRadius: '9999px',
-                  padding: '6px 14px',
-                  fontSize: '0.8rem',
+                  padding: '6px 16px',
+                  fontSize: '0.82rem',
                   fontWeight: '600',
                   cursor: 'pointer',
                   display: 'inline-flex',
@@ -842,14 +793,21 @@ export default function AgentsLanding() {
                 <div 
                   key={`${agent.id}-${index}`} 
                   className="agent-card"
-                  onClick={() => setSelectedAgent(agent)}
                 >
-                  {/* Foto de portada de cada agente (listo para conectar sus fotos) */}
-                  <div 
-                    className="card-cover"
-                    style={{ background: agent.coverBg }}
-                  >
-                    <div className="card-cover-pattern"></div>
+                  {/* Foto de portada/avatar Pixar 3D */}
+                  <div className="card-cover">
+                    <Image 
+                      src={agent.image} 
+                      alt={agent.name} 
+                      fill 
+                      className="card-cover-image"
+                      sizes="(max-width: 768px) 320px, 360px"
+                    />
+                    <div style={{
+                      position: 'absolute',
+                      inset: 0,
+                      background: 'linear-gradient(to bottom, rgba(0,0,0,0.05) 50%, rgba(0,0,0,0.6) 100%)'
+                    }}></div>
                     <span className="card-category-pill">
                       {agent.category}
                     </span>
@@ -857,37 +815,26 @@ export default function AgentsLanding() {
 
                   {/* Cuerpo del perfil del agente */}
                   <div className="card-body">
-                    <div className="card-avatar-row">
-                      <div 
-                        className="card-avatar"
-                        style={{ background: agent.avatarBg, position: 'relative' }}
-                      >
-                        <span>{agent.initials}</span>
-                        <div className="avatar-online-dot"></div>
-                      </div>
-
-                      <div style={{ flex: 1 }}>
-                        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                          <h4 style={{ fontSize: '1.25rem', fontWeight: '800', color: '#0f172a' }}>
-                            {agent.name}
-                          </h4>
-                          <span style={{ 
-                            fontSize: '0.68rem', 
-                            color: '#10b981', 
-                            fontWeight: '700',
-                            background: '#ecfdf5',
-                            padding: '2px 8px',
-                            borderRadius: '9999px',
-                            border: '1px solid #a7f3d0'
-                          }}>
-                            Activo 24/7
-                          </span>
-                        </div>
-                        <p style={{ color: '#64748b', fontSize: '0.85rem', fontWeight: '600' }}>
-                          {agent.role}
-                        </p>
-                      </div>
+                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '6px' }}>
+                      <h4 style={{ fontSize: '1.3rem', fontWeight: '850', color: '#0f172a' }}>
+                        {agent.name}
+                      </h4>
+                      <span style={{ 
+                        fontSize: '0.68rem', 
+                        color: '#10b981', 
+                        fontWeight: '700',
+                        background: '#ecfdf5',
+                        padding: '3px 8px',
+                        borderRadius: '9999px',
+                        border: '1px solid #a7f3d0'
+                      }}>
+                        Activo 24/7
+                      </span>
                     </div>
+
+                    <p style={{ color: '#64748b', fontSize: '0.88rem', fontWeight: '600', marginBottom: '10px' }}>
+                      {agent.role}
+                    </p>
 
                     {/* Descripción del agente */}
                     <p style={{ color: '#334155', fontSize: '0.92rem', lineHeight: '1.5', flex: 1 }}>
