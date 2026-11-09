@@ -239,7 +239,7 @@ export default function AgentsLanding() {
   // Estados para la simulación interactiva de WhatsApp en tiempo real
   const [currentStep, setCurrentStep] = useState(0);
   const [isAssistantTyping, setIsAssistantTyping] = useState(false);
-  const [activeMessages, setActiveMessages] = useState([]);
+  const [activeMessages, setActiveMessages] = useState([WHATSAPP_CONVERSATION[0]]);
   const [isChatPaused, setIsChatPaused] = useState(false);
   const chatBodyRef = useRef(null);
 
