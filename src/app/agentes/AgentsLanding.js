@@ -565,40 +565,126 @@ export default function AgentsLanding() {
           z-index: 1;
           opacity: 0.75;
         }
-        .hero-eduar-bg {
-          position: absolute;
-          right: -85px;
-          bottom: 0;
-          height: 122%;
-          max-height: 950px;
-          pointer-events: none;
-          z-index: 2;
-          display: flex;
-          align-items: flex-end;
-          opacity: 0.54;
-          mask-image: linear-gradient(to left, black 85%, transparent 100%);
-          -webkit-mask-image: linear-gradient(to left, black 85%, transparent 100%);
-        }
-        @media (min-width: 1400px) {
-          .hero-eduar-bg {
-            right: -65px;
-          }
-        }
-        .eduar-bg-img {
-          height: 100%;
-          width: auto;
-          max-width: 850px;
-          object-fit: contain;
-          object-position: right top;
-          filter: contrast(1.18) drop-shadow(0 0 50px rgba(59, 130, 246, 0.25));
-        }
-        .hero-content {
+        /* Hero Split Layout */
+        .hero-split-container {
           position: relative;
           z-index: 10;
-          max-width: 980px;
+          max-width: 1260px;
+          width: 100%;
           margin: 0 auto;
-          padding: 36px 20px 42px 20px;
-          text-align: center;
+          padding: 36px 24px 0 24px;
+          display: flex;
+          align-items: flex-end;
+          justify-content: space-between;
+          gap: 28px;
+          min-height: 560px;
+        }
+        .hero-text-col {
+          flex: 1 1 650px;
+          max-width: 700px;
+          text-align: left;
+          padding-bottom: 44px;
+        }
+        .hero-person-col {
+          flex: 0 0 450px;
+          position: relative;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: flex-end;
+          z-index: 5;
+        }
+        .hero-person-aura {
+          position: absolute;
+          bottom: 30px;
+          left: 50%;
+          transform: translateX(-50%);
+          width: 400px;
+          height: 400px;
+          background: radial-gradient(circle, rgba(59, 130, 246, 0.28) 0%, rgba(99, 102, 241, 0.12) 45%, transparent 70%);
+          border-radius: 50%;
+          filter: blur(25px);
+          pointer-events: none;
+          z-index: 1;
+        }
+        .hero-person-img {
+          position: relative;
+          z-index: 2;
+          width: 100%;
+          max-width: 450px;
+          height: auto;
+          object-fit: contain;
+          filter: contrast(1.12) drop-shadow(0 20px 40px rgba(0, 0, 0, 0.14)) drop-shadow(0 0 35px rgba(59, 130, 246, 0.22));
+          display: block;
+        }
+        .hero-person-badge {
+          position: absolute;
+          bottom: 24px;
+          background: rgba(15, 23, 42, 0.88);
+          backdrop-filter: blur(12px);
+          -webkit-backdrop-filter: blur(12px);
+          color: #f8fafc;
+          border: 1px solid rgba(255, 255, 255, 0.18);
+          padding: 7px 16px;
+          border-radius: 9999px;
+          font-size: 0.82rem;
+          font-weight: 700;
+          display: inline-flex;
+          align-items: center;
+          gap: 8px;
+          box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+          z-index: 3;
+        }
+        .person-badge-dot {
+          color: #10b981;
+          font-size: 0.8rem;
+          animation: pulseDot 2s infinite ease-in-out;
+        }
+        @keyframes pulseDot {
+          0%, 100% { opacity: 1; transform: scale(1); }
+          50% { opacity: 0.4; transform: scale(1.3); }
+        }
+        .btn-secondary-hero {
+          background: #ffffff;
+          border: 1px solid #cbd5e1;
+          color: #334155;
+          padding: 16px 26px;
+          border-radius: 9999px;
+          font-size: 1rem;
+          font-weight: 600;
+          cursor: pointer;
+          display: inline-flex;
+          align-items: center;
+          gap: 8px;
+          box-shadow: 0 2px 5px rgba(0,0,0,0.04);
+          transition: all 0.25s ease;
+        }
+        .btn-secondary-hero:hover {
+          background: #f8fafc;
+          border-color: #94a3b8;
+          transform: translateY(-1px);
+        }
+        .hero-trust-badges {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          flex-wrap: wrap;
+          margin-top: 22px;
+        }
+        .trust-pill {
+          background: #f8fafc;
+          color: #475569;
+          font-size: 0.78rem;
+          font-weight: 700;
+          padding: 5px 13px;
+          border-radius: 9999px;
+          border: 1px solid #e2e8f0;
+        }
+        .hero-cta-group {
+          display: flex;
+          align-items: center;
+          gap: 14px;
+          flex-wrap: wrap;
         }
         .hero-logo-box {
           display: inline-block;
@@ -2520,17 +2606,34 @@ export default function AgentsLanding() {
         }
 
         /* Responsive tweaks */
-        @media (max-width: 768px) {
-          .hero-content {
-            padding: 35px 16px 30px 16px;
+        @media (max-width: 991px) {
+          .hero-split-container {
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 32px 18px 0 18px;
+            gap: 24px;
           }
-          .hero-eduar-bg {
-            right: -15px;
-            bottom: 0;
-            opacity: 0.36;
-            height: 100%;
-            max-height: 700px;
+          .hero-text-col {
+            text-align: center;
+            max-width: 100%;
+            padding-bottom: 12px;
           }
+          .hero-logo-box {
+            margin: 0 auto 12px auto;
+          }
+          .hero-cta-group {
+            justify-content: center;
+          }
+          .hero-trust-badges {
+            justify-content: center;
+          }
+          .hero-person-col {
+            flex: 0 0 auto;
+            max-width: 360px;
+            width: 100%;
+          }
+        }
           .coord-content-row {
             flex-direction: column;
             text-align: center;
@@ -2690,100 +2793,103 @@ export default function AgentsLanding() {
             </svg>
           </div>
 
-          {/* Foto de Eduar sonriendo de frente con desvanecimiento inferior suave y más a la derecha */}
-          <div className="hero-eduar-bg">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img 
-              src="/eduar_hero_faded.png" 
-              alt="Eduar Peña" 
-              className="eduar-bg-img"
-            />
-          </div>
+          {/* Layout Split: Textos a la izquierda y Eduar claramente posicionado al lado derecho */}
+          <div className="hero-split-container">
+            {/* Columna Izquierda: Información, Títulos y Acciones */}
+            <div className="hero-text-col">
+              {/* Logo del curso más pequeño y más arriba */}
+              <div className="hero-logo-box">
+                <Image 
+                  src="/logo_master_ia.png" 
+                  alt="Master de Inteligencia Artificial" 
+                  width={145} 
+                  height={77}
+                  style={{ objectFit: 'contain', width: '100%', height: 'auto', maxWidth: '145px' }}
+                  priority
+                />
+              </div>
 
-          {/* Desvanecimiento inferior ultra suave para evitar cualquier corte o cinta blanca */}
-          <div className="hero-bottom-fade" />
-
-          {/* Contenido del Hero (por encima) */}
-          <div className="hero-content">
-            {/* Logo del curso más pequeño y más arriba */}
-            <div className="hero-logo-box">
-              <Image 
-                src="/logo_master_ia.png" 
-                alt="Master de Inteligencia Artificial" 
-                width={145} 
-                height={77}
-                style={{ objectFit: 'contain', width: '100%', height: 'auto', maxWidth: '145px' }}
-                priority
-              />
-            </div>
-
-            {/* Titular Principal en 2 líneas con Si no tienes tiempo destacado y círculo animado en AQUÍ ES */}
-            <h1 className="hero-title">
-              <span className="hero-title-main">
-                Si no tienes tiempo
-              </span>
-              <span className="hero-title-sub">
-                y quieres crear contenido{' '}
-                <span className="hero-highlight-wrap">
-                  AQUÍ ES
-                  <svg 
-                    className="hero-circle-svg" 
-                    viewBox="0 0 250 85" 
-                    fill="none" 
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M 15 42 C 18 18, 90 8, 170 10 C 228 12, 246 28, 242 48 C 236 66, 178 78, 102 76 C 45 74, 8 62, 14 38 C 20 18, 98 12, 188 15"
-                      className="hero-circle-path"
-                    />
-                  </svg>
+              {/* Titular Principal en 2 líneas con Si no tienes tiempo destacado y círculo animado en AQUÍ ES */}
+              <h1 className="hero-title">
+                <span className="hero-title-main">
+                  Si no tienes tiempo
                 </span>
-              </span>
-            </h1>
+                <span className="hero-title-sub">
+                  y quieres crear contenido{' '}
+                  <span className="hero-highlight-wrap">
+                    AQUÍ ES
+                    <svg 
+                      className="hero-circle-svg" 
+                      viewBox="0 0 250 85" 
+                      fill="none" 
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M 15 42 C 18 18, 90 8, 170 10 C 228 12, 246 28, 242 48 C 236 66, 178 78, 102 76 C 45 74, 8 62, 14 38 C 20 18, 98 12, 188 15"
+                        className="hero-circle-path"
+                      />
+                    </svg>
+                  </span>
+                </span>
+              </h1>
 
-            {/* Descripción */}
-            <p className="hero-desc">
-              Crea tu ecosistema de Agentes de IA interconectados. Empieza en Diciembre y llega a Enero con tu asistente personal de IA y tu equipo de marketing en marcha. Ahora podrás tener ideas ilimitadas, guiones comprobados listos, un equipo de editores y sistemas a tu medida.
-            </p>
+              {/* Descripción */}
+              <p className="hero-desc">
+                Crea tu ecosistema de Agentes de IA interconectados. Empieza en Diciembre y llega a Enero con tu asistente personal de IA y tu equipo de marketing en marcha. Ahora podrás tener ideas ilimitadas, guiones comprobados listos, un equipo de editores y sistemas a tu medida.
+              </p>
 
-            <div style={{ display: 'flex', justifyContent: 'center', gap: '16px', flexWrap: 'wrap' }}>
-              <a 
-                href={whatsappUrl} 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                className="btn-primary"
-              >
-                <span>Ir a WhatsApp para los detalles de inscripción</span>
-                <svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
-                </svg>
-              </a>
+              {/* Botones de acción */}
+              <div className="hero-cta-group">
+                <a 
+                  href={whatsappUrl} 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="btn-primary"
+                >
+                  <span>Ir a WhatsApp para detalles</span>
+                  <svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+                  </svg>
+                </a>
 
-              <button 
-                onClick={() => {
-                  const el = document.getElementById('agentes-carrusel');
-                  if (el) el.scrollIntoView({ behavior: 'smooth' });
-                }}
-                style={{
-                  background: '#ffffff',
-                  border: '1px solid #cbd5e1',
-                  color: '#334155',
-                  padding: '18px 28px',
-                  borderRadius: '9999px',
-                  fontSize: '1.05rem',
-                  fontWeight: '600',
-                  cursor: 'pointer',
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  gap: '8px',
-                  boxShadow: '0 2px 5px rgba(0,0,0,0.04)'
-                }}
-              >
-                <span>Ver cómo trabajan los agentes</span>
-                <span>↓</span>
-              </button>
+                <button 
+                  onClick={() => {
+                    const el = document.getElementById('agentes-carrusel');
+                    if (el) el.scrollIntoView({ behavior: 'smooth' });
+                  }}
+                  className="btn-secondary-hero"
+                >
+                  <span>Ver cómo trabajan</span>
+                  <span>↓</span>
+                </button>
+              </div>
+
+              {/* Badges de confianza */}
+              <div className="hero-trust-badges">
+                <span className="trust-pill">⚡ Automatización 24/7</span>
+                <span className="trust-pill">🤖 Sin código técnico</span>
+                <span className="trust-pill">🚀 En marcha desde Enero</span>
+              </div>
+            </div>
+
+            {/* Columna Derecha: Eduar Peña posicionado con total claridad al lado derecho */}
+            <div className="hero-person-col">
+              <div className="hero-person-aura" />
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img 
+                src="/eduar_hero_faded.png" 
+                alt="Eduar Peña - Instructor Master IA" 
+                className="hero-person-img"
+              />
+              <div className="hero-person-badge">
+                <span className="person-badge-dot">●</span>
+                <span>Eduar Peña • Founder & Mentor</span>
+              </div>
             </div>
           </div>
+
+          {/* Desvanecimiento inferior ultra suave */}
+          <div className="hero-bottom-fade" />
         </section>
 
         {/* 1. COORDINADORA (ARRIBA DE TODOS: ARI) */}
