@@ -1091,78 +1091,144 @@ export default function AgentsLanding() {
           color: #0f172a;
         }
 
-        /* Dashboard Showcase Section */
+        /* Web Developer Showcase Section */
         .dashboard-section {
           max-width: 1140px;
           margin: 70px auto 40px auto;
           padding: 0 20px;
         }
-        .dashboard-mockup {
-          background: #0f172a;
+        .browser-mockup {
+          background: #ffffff;
           border-radius: 28px;
-          border: 1px solid rgba(255, 255, 255, 0.1);
-          box-shadow: 0 25px 60px -15px rgba(15, 23, 42, 0.4);
+          border: 1px solid #e2e8f0;
+          box-shadow: 0 25px 60px -15px rgba(15, 23, 42, 0.12), 0 0 0 1px rgba(0, 0, 0, 0.02);
           overflow: hidden;
-          color: #ffffff;
         }
-        .dash-topbar {
-          background: #1e293b;
-          padding: 14px 24px;
+        .browser-topbar {
+          background: #f8fafc;
+          padding: 14px 20px;
           display: flex;
           align-items: center;
           justify-content: space-between;
-          border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+          border-bottom: 1px solid #e2e8f0;
+          gap: 16px;
         }
-        .dash-dots {
+        .browser-dots {
           display: flex;
           gap: 8px;
         }
-        .dash-dot {
+        .browser-dot {
           width: 12px;
           height: 12px;
           border-radius: 50%;
         }
-        .dash-body {
-          padding: 30px;
+        .browser-address-bar {
+          background: #ffffff;
+          border: 1px solid #cbd5e1;
+          border-radius: 10px;
+          padding: 6px 16px;
+          font-size: 0.82rem;
+          color: #475569;
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          max-width: 440px;
+          width: 100%;
+          box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
         }
-        .kpi-grid {
-          display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-          gap: 16px;
-          margin-bottom: 24px;
+        .browser-body {
+          background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+          padding: 36px 32px 42px 32px;
+          position: relative;
+          overflow: hidden;
         }
-        .kpi-card {
-          background: rgba(255, 255, 255, 0.04);
-          border: 1px solid rgba(255, 255, 255, 0.08);
-          border-radius: 16px;
-          padding: 18px;
-        }
-        .workflow-preview {
-          background: rgba(255, 255, 255, 0.02);
-          border: 1px solid rgba(255, 255, 255, 0.06);
-          border-radius: 20px;
-          padding: 24px;
+        .inner-web-nav {
           display: flex;
           align-items: center;
           justify-content: space-between;
-          gap: 16px;
-          flex-wrap: wrap;
+          padding-bottom: 22px;
+          border-bottom: 1px solid #f1f5f9;
+          margin-bottom: 34px;
         }
-        .workflow-node {
-          background: #1e293b;
-          border: 1px solid rgba(255, 255, 255, 0.12);
-          border-radius: 14px;
-          padding: 12px 18px;
+        .inner-nav-links {
           display: flex;
           align-items: center;
-          gap: 10px;
+          gap: 24px;
+          font-size: 0.85rem;
+          font-weight: 600;
+          color: #64748b;
+        }
+        .inner-web-hero {
+          max-width: 760px;
+          margin: 0 auto;
+          text-align: center;
+        }
+        .inner-hero-badge {
+          display: inline-flex;
+          align-items: center;
+          gap: 8px;
+          background: #eef2ff;
+          color: #4f46e5;
+          border: 1px solid #c7d2fe;
+          padding: 6px 14px;
+          border-radius: 9999px;
+          font-size: 0.78rem;
+          font-weight: 750;
+          margin-bottom: 18px;
+        }
+        .inner-hero-title {
+          font-size: clamp(1.8rem, 3.4vw, 2.7rem);
+          font-weight: 850;
+          color: #0f172a;
+          line-height: 1.18;
+          letter-spacing: -0.03em;
+          margin-bottom: 14px;
+        }
+        .inner-hero-desc {
+          font-size: 1.05rem;
+          color: #64748b;
+          line-height: 1.6;
+          margin-bottom: 26px;
+        }
+        .inner-hero-actions {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 12px;
+          flex-wrap: wrap;
+          margin-bottom: 34px;
+        }
+        .inner-btn-primary {
+          background: #0f172a;
+          color: #ffffff;
+          padding: 12px 24px;
+          border-radius: 9999px;
+          font-size: 0.88rem;
+          font-weight: 700;
+          box-shadow: 0 4px 14px rgba(15, 23, 42, 0.2);
+        }
+        .inner-btn-secondary {
+          background: #ffffff;
+          color: #334155;
+          border: 1px solid #cbd5e1;
+          padding: 12px 22px;
+          border-radius: 9999px;
           font-size: 0.88rem;
           font-weight: 600;
         }
-        .workflow-arrow {
-          color: #6366f1;
-          font-size: 1.2rem;
-          font-weight: 800;
+        .inner-features-grid {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 16px;
+          margin-top: 28px;
+          text-align: left;
+        }
+        .inner-feat-card {
+          background: #ffffff;
+          border: 1px solid #e2e8f0;
+          border-radius: 16px;
+          padding: 16px;
+          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
         }
 
         /* Business Capabilities Grid */
@@ -1215,13 +1281,14 @@ export default function AgentsLanding() {
           .character-img {
             max-height: 185px;
           }
-          .workflow-preview {
-            flex-direction: column;
-            align-items: stretch;
+          .inner-features-grid {
+            grid-template-columns: 1fr;
           }
-          .workflow-arrow {
-            text-align: center;
-            transform: rotate(90deg);
+          .inner-nav-links {
+            display: none;
+          }
+          .browser-body {
+            padding: 24px 16px;
           }
         }
       `}</style>
@@ -1924,7 +1991,7 @@ export default function AgentsLanding() {
             </div>
         </section>
 
-        {/* 3. SECCIÓN: DASHBOARD Y CREA CUALQUIER SISTEMA PARA TU NEGOCIO */}
+        {/* 3. SECCIÓN: TU DESARROLLADOR WEB */}
         <section className="dashboard-section">
           <div style={{ textAlign: 'center', marginBottom: '36px' }}>
             <span style={{ 
@@ -1935,192 +2002,216 @@ export default function AgentsLanding() {
               letterSpacing: '0.08em',
               background: '#e0f2fe',
               padding: '6px 16px',
-              borderRadius: '9999px'
+              borderRadius: '9999px',
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '6px'
             }}>
-              Personalización & Control Total
+              <span>💻</span>
+              <span>Desarrollo Web & Software Inteligente</span>
             </span>
-            <h2 style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', fontWeight: '850', color: '#0f172a', marginTop: '14px', letterSpacing: '-0.03em' }}>
-              Crea el sistema inteligente que quieras para tu negocio
+            <h2 style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', fontWeight: '850', color: '#0f172a', marginTop: '14px', letterSpacing: '-0.03em', lineHeight: '1.2' }}>
+              Tu desarrollador web: Será el encargado de crearte cualquier pagina web, sistema o apps para tu negocio
             </h2>
-            <p style={{ color: '#64748b', fontSize: '1.15rem', maxWidth: '750px', margin: '14px auto 0 auto', lineHeight: '1.6' }}>
-              No te limites únicamente a la creación de contenido. En el <strong>Master de Inteligencia Artificial</strong> aprenderás a diseñar la arquitectura y el panel de control exacto para automatizar ventas, soporte, CRM y operaciones de tu empresa.
+            <p style={{ color: '#64748b', fontSize: '1.15rem', maxWidth: '780px', margin: '14px auto 0 auto', lineHeight: '1.6' }}>
+              Dile exactamente lo que necesitas en texto o audio. Tu desarrollador de IA diseñará la interfaz, programará el código y publicará sitios web modernos, sistemas a la medida y aplicaciones listas para vender sin depender de programadores costosos.
             </p>
           </div>
 
-          {/* Maqueta moderna de Dashboard del Sistema */}
-          <div className="dashboard-mockup">
-            {/* Topbar del Dashboard */}
-            <div className="dash-topbar">
-              <div style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
-                <div className="dash-dots">
-                  <div className="dash-dot" style={{ background: '#ef4444' }}></div>
-                  <div className="dash-dot" style={{ background: '#eab308' }}></div>
-                  <div className="dash-dot" style={{ background: '#22c55e' }}></div>
-                </div>
-                <span style={{ fontSize: '0.82rem', color: '#94a3b8', fontWeight: '600' }}>
-                  Sistema Operativo de IA • Panel Central de Negocio
-                </span>
+          {/* Maqueta moderna de Navegador Web (Idea de Página Web Hermosa) */}
+          <div className="browser-mockup">
+            {/* Topbar del Navegador tipo Safari / Mac */}
+            <div className="browser-topbar">
+              <div className="browser-dots">
+                <div className="browser-dot" style={{ background: '#ef4444' }}></div>
+                <div className="browser-dot" style={{ background: '#eab308' }}></div>
+                <div className="browser-dot" style={{ background: '#22c55e' }}></div>
               </div>
 
-              <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+              {/* Barra de Direcciones URL */}
+              <div className="browser-address-bar">
+                <span style={{ fontSize: '0.78rem', color: '#10b981' }}>🔒</span>
+                <span style={{ fontWeight: '600' }}>https://tu-negocio-oficial.com/lanzamiento</span>
+              </div>
+
+              <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                 <span style={{ 
-                  background: 'rgba(34, 197, 94, 0.15)', 
-                  color: '#4ade80', 
-                  fontSize: '0.75rem', 
-                  fontWeight: '700',
-                  padding: '4px 12px',
+                  background: '#ecfdf5', 
+                  color: '#059669', 
+                  fontSize: '0.72rem', 
+                  fontWeight: '750',
+                  padding: '4px 10px',
                   borderRadius: '9999px',
-                  border: '1px solid rgba(74, 222, 128, 0.3)'
+                  border: '1px solid #a7f3d0'
                 }}>
-                  ● 12 Agentes Operando en Sincronía
-                </span>
-                <span style={{ fontSize: '0.8rem', color: '#cbd5e1' }}>
-                  Eficiencia: <strong>98.7%</strong>
+                  ● 100% Online
                 </span>
               </div>
             </div>
 
-            {/* Cuerpo del Dashboard */}
-            <div className="dash-body">
-              {/* KPIs de rendimiento */}
-              <div className="kpi-grid">
-                <div className="kpi-card">
-                  <span style={{ color: '#94a3b8', fontSize: '0.78rem', textTransform: 'uppercase', fontWeight: '700' }}>
-                    Tareas Automatizadas
-                  </span>
-                  <div style={{ fontSize: '1.8rem', fontWeight: '850', color: '#ffffff', marginTop: '6px' }}>
-                    1,420
+            {/* Contenido Visual de la Página Web Hermosa */}
+            <div className="browser-body">
+              {/* Header interior de la web creada */}
+              <div className="inner-web-nav">
+                <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                  <div style={{ 
+                    width: '32px', 
+                    height: '32px', 
+                    borderRadius: '10px', 
+                    background: 'linear-gradient(135deg, #4f46e5 0%, #06b6d4 100%)', 
+                    display: 'flex', 
+                    alignItems: 'center', 
+                    justifyContent: 'center',
+                    color: '#ffffff',
+                    fontWeight: '850',
+                    fontSize: '0.9rem'
+                  }}>
+                    ✦
                   </div>
-                  <span style={{ color: '#4ade80', fontSize: '0.75rem', fontWeight: '600' }}>
-                    ↑ +34% vs mes anterior
+                  <span style={{ fontSize: '1.05rem', fontWeight: '850', color: '#0f172a', letterSpacing: '-0.02em' }}>
+                    Tu Marca Digital
                   </span>
                 </div>
 
-                <div className="kpi-card">
-                  <span style={{ color: '#94a3b8', fontSize: '0.78rem', textTransform: 'uppercase', fontWeight: '700' }}>
-                    Horas de Equipo Ahorradas
-                  </span>
-                  <div style={{ fontSize: '1.8rem', fontWeight: '850', color: '#ffffff', marginTop: '6px' }}>
-                    186 hrs
-                  </div>
-                  <span style={{ color: '#38bdf8', fontSize: '0.75rem', fontWeight: '600' }}>
-                    Equivalente a 2 empleados tiempo completo
-                  </span>
+                <div className="inner-nav-links">
+                  <span style={{ color: '#0f172a', fontWeight: '700' }}>Inicio</span>
+                  <span>Servicios</span>
+                  <span>Casos de Éxito</span>
+                  <span>Precios</span>
+                  <span>Contacto</span>
                 </div>
 
-                <div className="kpi-card">
-                  <span style={{ color: '#94a3b8', fontSize: '0.78rem', textTransform: 'uppercase', fontWeight: '700' }}>
-                    Leads Calificados por IA
-                  </span>
-                  <div style={{ fontSize: '1.8rem', fontWeight: '850', color: '#ffffff', marginTop: '6px' }}>
-                    342
-                  </div>
-                  <span style={{ color: '#a78bfa', fontSize: '0.75rem', fontWeight: '600' }}>
-                    89% con alta intención de compra
-                  </span>
-                </div>
-
-                <div className="kpi-card">
-                  <span style={{ color: '#94a3b8', fontSize: '0.78rem', textTransform: 'uppercase', fontWeight: '700' }}>
-                    Tiempo Promedio de Respuesta
-                  </span>
-                  <div style={{ fontSize: '1.8rem', fontWeight: '850', color: '#ffffff', marginTop: '6px' }}>
-                    14 seg
-                  </div>
-                  <span style={{ color: '#facc15', fontSize: '0.75rem', fontWeight: '600' }}>
-                    Atención inmediata 24/7
+                <div>
+                  <span style={{ 
+                    background: '#0f172a', 
+                    color: '#ffffff', 
+                    fontSize: '0.8rem', 
+                    fontWeight: '700', 
+                    padding: '8px 16px', 
+                    borderRadius: '9999px' 
+                  }}>
+                    Agendar Cita ↗
                   </span>
                 </div>
               </div>
 
-              {/* Visualización del Pipeline de Agentes Conectados */}
-              <div style={{ marginTop: '20px' }}>
-                <div style={{ fontSize: '0.9rem', fontWeight: '700', color: '#e2e8f0', marginBottom: '14px' }}>
-                  Flujo de Automatización de Negocio Activo:
+              {/* Hero de la página web hermosa */}
+              <div className="inner-web-hero">
+                <div className="inner-hero-badge">
+                  <span>✨</span>
+                  <span>Nueva Versión • Optimizado con Inteligencia Artificial</span>
                 </div>
-                
-                <div className="workflow-preview">
-                  <div className="workflow-node">
-                    <span style={{ fontSize: '1.2rem' }}>💬</span>
-                    <div>
-                      <div style={{ color: '#ffffff' }}>Mensaje Entrante</div>
-                      <div style={{ fontSize: '0.72rem', color: '#94a3b8' }}>WhatsApp / Instagram</div>
-                    </div>
+
+                <h3 className="inner-hero-title">
+                  Convierte visitantes en clientes leales con una experiencia web inolvidable
+                </h3>
+
+                <p className="inner-hero-desc">
+                  Arquitectura minimalista, tiempos de carga instantáneos en cualquier teléfono y embudos estratégicos diseñados para multiplicar tus ventas en automático.
+                </p>
+
+                <div className="inner-hero-actions">
+                  <button className="inner-btn-primary" style={{ border: 'none', cursor: 'pointer' }}>
+                    Ver Productos y Promociones →
+                  </button>
+                  <button className="inner-btn-secondary" style={{ cursor: 'pointer' }}>
+                    ▷ Ver Demostración en Video
+                  </button>
+                </div>
+
+                {/* Reseñas / Calificación flotante */}
+                <div style={{ 
+                  display: 'inline-flex', 
+                  alignItems: 'center', 
+                  gap: '8px',
+                  background: 'rgba(255, 255, 255, 0.95)',
+                  border: '1px solid #e2e8f0',
+                  padding: '6px 16px',
+                  borderRadius: '9999px',
+                  fontSize: '0.8rem',
+                  fontWeight: '600',
+                  color: '#334155',
+                  boxShadow: '0 2px 8px rgba(0,0,0,0.04)'
+                }}>
+                  <span style={{ color: '#eab308' }}>★★★★★</span>
+                  <span><strong>4.9/5</strong> de satisfacción (+1,400 clientes activos este mes)</span>
+                </div>
+              </div>
+
+              {/* 3 Tarjetas destacadas dentro de la web */}
+              <div className="inner-features-grid">
+                <div className="inner-feat-card">
+                  <div style={{ fontSize: '1.4rem', marginBottom: '8px' }}>🚀</div>
+                  <div style={{ fontSize: '0.92rem', fontWeight: '800', color: '#0f172a', marginBottom: '4px' }}>
+                    Carga Ultra Rápida (0.6s)
                   </div>
+                  <p style={{ fontSize: '0.8rem', color: '#64748b', lineHeight: '1.4', margin: 0 }}>
+                    Optimización técnica de código para que nadie abandone tu página por lentitud.
+                  </p>
+                </div>
 
-                  <span className="workflow-arrow">→</span>
-
-                  <div className="workflow-node" style={{ borderColor: 'rgba(99, 102, 241, 0.4)' }}>
-                    <span style={{ fontSize: '1.2rem' }}>🤖</span>
-                    <div>
-                      <div style={{ color: '#a5b4fc' }}>Agente Calificador</div>
-                      <div style={{ fontSize: '0.72rem', color: '#94a3b8' }}>Filtra necesidad y presupuesto</div>
-                    </div>
+                <div className="inner-feat-card">
+                  <div style={{ fontSize: '1.4rem', marginBottom: '8px' }}>💳</div>
+                  <div style={{ fontSize: '0.92rem', fontWeight: '800', color: '#0f172a', marginBottom: '4px' }}>
+                    Pasarelas de Pago Listas
                   </div>
+                  <p style={{ fontSize: '0.8rem', color: '#64748b', lineHeight: '1.4', margin: 0 }}>
+                    Integración directa con tarjetas, PayPal, transferencias y cobros directos por WhatsApp.
+                  </p>
+                </div>
 
-                  <span className="workflow-arrow">→</span>
-
-                  <div className="workflow-node" style={{ borderColor: 'rgba(16, 185, 129, 0.4)' }}>
-                    <span style={{ fontSize: '1.2rem' }}>🗂️</span>
-                    <div>
-                      <div style={{ color: '#6ee7b7' }}>CRM & Base de Datos</div>
-                      <div style={{ fontSize: '0.72rem', color: '#94a3b8' }}>Registro automático</div>
-                    </div>
+                <div className="inner-feat-card">
+                  <div style={{ fontSize: '1.4rem', marginBottom: '8px' }}>📱</div>
+                  <div style={{ fontSize: '0.92rem', fontWeight: '800', color: '#0f172a', marginBottom: '4px' }}>
+                    100% Adaptada a Móviles
                   </div>
-
-                  <span className="workflow-arrow">→</span>
-
-                  <div className="workflow-node" style={{ borderColor: 'rgba(245, 158, 11, 0.4)' }}>
-                    <span style={{ fontSize: '1.2rem' }}>🚀</span>
-                    <div>
-                      <div style={{ color: '#fcd34d' }}>Ventas & Cierre</div>
-                      <div style={{ fontSize: '0.72rem', color: '#94a3b8' }}>Agenda llamada o cobra</div>
-                    </div>
-                  </div>
+                  <p style={{ fontSize: '0.8rem', color: '#64748b', lineHeight: '1.4', margin: 0 }}>
+                    Visualización perfecta e intuitiva en cualquier pantalla, iPhone, Android o tablet.
+                  </p>
                 </div>
               </div>
             </div>
           </div>
 
-          {/* 4 Sistemas que vas a poder construir */}
+          {/* 4 Soluciones que tu Desarrollador Web creará para tu negocio */}
           <div className="systems-grid">
             <div className="system-item">
-              <div style={{ fontSize: '1.8rem', marginBottom: '12px' }}>🎯</div>
+              <div style={{ fontSize: '1.8rem', marginBottom: '12px' }}>🌐</div>
               <h3 style={{ fontSize: '1.15rem', fontWeight: '800', color: '#0f172a', marginBottom: '8px' }}>
-                Sistema de Ventas & Prospección
+                Landing Pages de Alta Conversión
               </h3>
               <p style={{ color: '#64748b', fontSize: '0.9rem', lineHeight: '1.5' }}>
-                Agentes que conversan con prospectos en redes, resuelven objeciones comunes y agendan llamadas directamente en tu calendario.
+                Páginas de captura y de venta directa creadas a la medida de tu oferta, listas para recibir tráfico de anuncios o redes.
               </p>
             </div>
 
             <div className="system-item">
-              <div style={{ fontSize: '1.8rem', marginBottom: '12px' }}>🧠</div>
+              <div style={{ fontSize: '1.8rem', marginBottom: '12px' }}>📱</div>
               <h3 style={{ fontSize: '1.15rem', fontWeight: '800', color: '#0f172a', marginBottom: '8px' }}>
-                Agente Experto de tu Empresa
+                Aplicaciones Web & Portales
               </h3>
               <p style={{ color: '#64748b', fontSize: '0.9rem', lineHeight: '1.5' }}>
-                Entrenado con tus manuales, precios, productos y políticas para responder con la precisión de tu mejor empleado las 24 horas del día.
+                Áreas de miembros para cursos, calculadoras personalizadas o plataformas de consulta privada para tus clientes.
               </p>
             </div>
 
             <div className="system-item">
-              <div style={{ fontSize: '1.8rem', marginBottom: '12px' }}>📊</div>
+              <div style={{ fontSize: '1.8rem', marginBottom: '12px' }}>🛒</div>
               <h3 style={{ fontSize: '1.15rem', fontWeight: '800', color: '#0f172a', marginBottom: '8px' }}>
-                CRM Inteligente & Seguimiento
+                Tiendas Online & Embudos
               </h3>
               <p style={{ color: '#64748b', fontSize: '0.9rem', lineHeight: '1.5' }}>
-                Guarda datos de clientes, envía recordatorios automáticos de pago y reactiva a clientes antiguos sin que tengas que escribirles a mano.
+                Catálogos visuales con carritos de compra ágiles y confirmaciones automáticas de pedido enviadas a WhatsApp.
               </p>
             </div>
 
             <div className="system-item">
               <div style={{ fontSize: '1.8rem', marginBottom: '12px' }}>⚙️</div>
               <h3 style={{ fontSize: '1.15rem', fontWeight: '800', color: '#0f172a', marginBottom: '8px' }}>
-                Automatización de Procesos Internos
+                Sistemas Internos & Dashboards
               </h3>
               <p style={{ color: '#64748b', fontSize: '0.9rem', lineHeight: '1.5' }}>
-                Conexión fluida entre tus herramientas (Sheets, Notion, WhatsApp, Gmail, Make y bases de datos) eliminando el trabajo repetitivo.
+                Paneles para gestionar tus pedidos, clientes y métricas conectando bases de datos sin escribir una sola línea de código.
               </p>
             </div>
           </div>
