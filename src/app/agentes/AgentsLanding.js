@@ -315,17 +315,20 @@ const WORKFLOW_STEPS = [
   }
 ];
 
-// Fotos del Evento Marketing Xperience
-const EVENT_PHOTOS = [
-  'IMG_6061.jpg',
-  'IMG_6063.jpg',
-  'IMG_6110.JPG',
-  'IMG_6111.JPG',
-  'IMG_6132.JPG',
-  'IMG_1060.jpg',
-  'IMG_1174.jpg',
-  'IMG_1215.jpg',
-  'IMG_6153.JPG'
+// Fotos del Evento Oficial Marketing Xperience de este año (Galería)
+const GALLERY_THIS_YEAR_PHOTOS = [
+  "https://res.cloudinary.com/ahf1iif4/image/upload/v1790087497/DSC09995.jpg",
+  "https://res.cloudinary.com/ahf1iif4/image/upload/v1790087496/DSC09980.jpg",
+  "https://res.cloudinary.com/ahf1iif4/image/upload/v1790087494/DSC09955.jpg",
+  "https://res.cloudinary.com/ahf1iif4/image/upload/v1790087492/DSC09920.jpg",
+  "https://res.cloudinary.com/ahf1iif4/image/upload/v1790087491/DSC09882.jpg",
+  "https://res.cloudinary.com/ahf1iif4/image/upload/v1790087488/DSC09857.jpg",
+  "https://res.cloudinary.com/ahf1iif4/image/upload/v1790087486/DSC09795.jpg",
+  "https://res.cloudinary.com/ahf1iif4/image/upload/v1790087484/DSC00630.jpg",
+  "https://res.cloudinary.com/ahf1iif4/image/upload/v1790087482/DSC00592.jpg",
+  "https://res.cloudinary.com/ahf1iif4/image/upload/v1790087478/DSC00512.jpg",
+  "https://res.cloudinary.com/ahf1iif4/image/upload/v1790087474/DSC00465.jpg",
+  "https://res.cloudinary.com/ahf1iif4/image/upload/v1790087471/DSC00386.jpg"
 ];
 
 export default function AgentsLanding() {
@@ -564,25 +567,30 @@ export default function AgentsLanding() {
         }
         .hero-eduar-bg {
           position: absolute;
-          right: -25px;
+          right: -85px;
           bottom: 0;
-          height: 115%;
-          max-height: 900px;
+          height: 122%;
+          max-height: 950px;
           pointer-events: none;
           z-index: 2;
           display: flex;
           align-items: flex-end;
-          opacity: 0.44;
-          mask-image: linear-gradient(to left, black 80%, transparent 100%);
-          -webkit-mask-image: linear-gradient(to left, black 80%, transparent 100%);
+          opacity: 0.54;
+          mask-image: linear-gradient(to left, black 85%, transparent 100%);
+          -webkit-mask-image: linear-gradient(to left, black 85%, transparent 100%);
+        }
+        @media (min-width: 1400px) {
+          .hero-eduar-bg {
+            right: -65px;
+          }
         }
         .eduar-bg-img {
           height: 100%;
           width: auto;
-          max-width: 800px;
+          max-width: 850px;
           object-fit: contain;
-          object-position: right bottom;
-          filter: contrast(1.15) drop-shadow(0 0 50px rgba(59, 130, 246, 0.25));
+          object-position: right top;
+          filter: contrast(1.18) drop-shadow(0 0 50px rgba(59, 130, 246, 0.25));
         }
         .hero-content {
           position: relative;
@@ -1911,23 +1919,44 @@ export default function AgentsLanding() {
           .flow-nav-btn.prev { left: 4px; }
           .flow-nav-btn.next { right: 4px; }
         }
+        /* Flow Carousel Smooth Sliding Track */
+        .flow-carousel-container {
+          position: relative;
+          width: 100%;
+          max-width: 1240px;
+          margin: 0 auto 40px auto;
+          --card-w: 360px;
+          --card-gap: 24px;
+        }
+        @media (max-width: 640px) {
+          .flow-carousel-container {
+            --card-w: 290px;
+            --card-gap: 16px;
+          }
+        }
+        .flow-carousel-viewport {
+          overflow: hidden;
+          width: 100%;
+          padding: 30px 0;
+        }
         .flow-cards-track {
           display: flex;
-          align-items: center;
-          justify-content: center;
-          gap: 20px;
-          width: 100%;
-          overflow: hidden;
-          padding: 30px 10px;
+          gap: var(--card-gap);
+          transition: transform 0.55s cubic-bezier(0.25, 1, 0.5, 1);
+          width: max-content;
+          will-change: transform;
+          position: relative;
+          left: 50%;
         }
         .flow-card {
-          flex: 0 0 350px;
+          width: var(--card-w);
+          flex: 0 0 var(--card-w);
           background: #ffffff;
           border: 1px solid #e2e8f0;
           border-radius: 28px;
           padding: 28px 24px;
-          box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.05);
-          transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+          box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
+          transition: transform 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease, opacity 0.4s ease;
           cursor: pointer;
           display: flex;
           flex-direction: column;
@@ -1935,31 +1964,23 @@ export default function AgentsLanding() {
         }
         @media (max-width: 640px) {
           .flow-card {
-            flex: 0 0 290px;
             padding: 22px 18px;
           }
         }
         .flow-card.card-active {
-          transform: scale(1.08);
+          transform: scale(1.06);
           border: 2px solid #2563eb;
-          box-shadow: 0 25px 60px -15px rgba(37, 99, 235, 0.22);
-          z-index: 10;
+          box-shadow: 0 25px 50px -12px rgba(37, 99, 235, 0.28);
           opacity: 1;
-        }
-        .flow-card.card-adjacent {
-          transform: scale(0.94);
-          opacity: 0.65;
           z-index: 5;
         }
-        .flow-card.card-dimmed {
-          display: none;
+        .flow-card.card-inactive {
+          transform: scale(0.93);
+          opacity: 0.55;
         }
-        @media (min-width: 1024px) {
-          .flow-card.card-dimmed {
-            display: flex;
-            transform: scale(0.88);
-            opacity: 0.35;
-          }
+        .flow-card.card-inactive:hover {
+          opacity: 0.85;
+          transform: scale(0.96);
         }
         .flow-card-badge-row {
           display: flex;
@@ -2319,31 +2340,54 @@ export default function AgentsLanding() {
           font-size: 0.85rem;
         }
 
-        /* 5. Instructor Section (Eduar Peña) */
+        /* 5. Instructor Section (Eduar Peña - Formato Vertical con Imagen Arriba) */
         .instructor-section {
-          max-width: 1140px;
+          max-width: 900px;
           margin: 80px auto 40px auto;
           padding: 0 20px;
         }
-        .instructor-card {
-          background: linear-gradient(135deg, #09090b 0%, #0f172a 60%, #1e1b4b 100%);
-          border-radius: 32px;
+        .instructor-card-vertical {
+          background: #0f172a;
           border: 1px solid rgba(255, 255, 255, 0.12);
-          box-shadow: 0 30px 70px -15px rgba(0, 0, 0, 0.4);
-          padding: 50px 45px;
+          border-radius: 32px;
+          overflow: hidden;
+          box-shadow: 0 30px 80px -20px rgba(0, 0, 0, 0.45);
           color: #ffffff;
-          display: grid;
-          grid-template-columns: 1.15fr 0.85fr;
-          gap: 40px;
-          align-items: center;
+        }
+        .instructor-banner-stage {
           position: relative;
+          width: 100%;
+          height: 380px;
+          background: #09090b;
           overflow: hidden;
         }
-        @media (max-width: 900px) {
-          .instructor-card {
-            grid-template-columns: 1fr;
-            padding: 35px 24px;
-            gap: 30px;
+        .instructor-banner-img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          object-position: 58% 22%;
+          transform: scale(1.38);
+          transform-origin: 58% 25%;
+          filter: contrast(1.05);
+        }
+        .instructor-banner-overlay {
+          position: absolute;
+          inset: 0;
+          background: linear-gradient(to top, #0f172a 0%, rgba(15, 23, 42, 0.45) 45%, transparent 100%);
+        }
+        .instructor-card-body {
+          padding: 38px 44px 44px 44px;
+        }
+        @media (max-width: 640px) {
+          .instructor-banner-stage {
+            height: 270px;
+          }
+          .instructor-banner-img {
+            transform: scale(1.48);
+            transform-origin: 58% 22%;
+          }
+          .instructor-card-body {
+            padding: 26px 20px 32px 20px;
           }
         }
         .instructor-badge {
@@ -2360,7 +2404,7 @@ export default function AgentsLanding() {
           margin-bottom: 16px;
         }
         .instructor-title {
-          font-size: clamp(2rem, 4vw, 3rem);
+          font-size: clamp(2rem, 4vw, 2.9rem);
           font-weight: 850;
           line-height: 1.18;
           letter-spacing: -0.03em;
@@ -2370,7 +2414,7 @@ export default function AgentsLanding() {
           font-size: 1.12rem;
           color: #cbd5e1;
           line-height: 1.65;
-          margin-bottom: 24px;
+          margin-bottom: 26px;
         }
         .instructor-pillars {
           display: flex;
@@ -2380,76 +2424,49 @@ export default function AgentsLanding() {
         .pillar-item {
           display: flex;
           align-items: flex-start;
-          gap: 12px;
+          gap: 14px;
+          background: rgba(255, 255, 255, 0.03);
+          border: 1px solid rgba(255, 255, 255, 0.06);
+          padding: 16px 20px;
+          border-radius: 18px;
         }
-        .pillar-icon {
-          font-size: 1.3rem;
-          line-height: 1;
-          margin-top: 2px;
+        .pillar-star {
+          color: #ffffff;
+          font-size: 1rem;
+          line-height: 1.4;
         }
         .pillar-item strong {
           display: block;
           color: #ffffff;
-          font-size: 1rem;
-          margin-bottom: 2px;
+          font-size: 1.02rem;
+          margin-bottom: 4px;
         }
         .pillar-item p {
           color: #94a3b8;
-          font-size: 0.88rem;
+          font-size: 0.9rem;
           margin: 0;
           line-height: 1.45;
         }
-        .instructor-photo-col {
-          position: relative;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          justify-content: center;
-        }
-        .instructor-glow-bg {
-          position: absolute;
-          width: 320px;
-          height: 320px;
-          border-radius: 50%;
-          background: radial-gradient(circle, rgba(37, 99, 235, 0.35) 0%, transparent 70%);
-          pointer-events: none;
-        }
-        .instructor-photo-img {
-          width: 100%;
-          max-width: 380px;
-          height: auto;
-          position: relative;
-          z-index: 2;
-          filter: drop-shadow(0 15px 35px rgba(0, 0, 0, 0.5));
-        }
-        .instructor-pill-tag {
-          position: relative;
-          z-index: 3;
-          margin-top: -20px;
-          background: rgba(15, 23, 42, 0.85);
-          backdrop-filter: blur(10px);
-          border: 1px solid rgba(255, 255, 255, 0.15);
-          color: #f1f5f9;
-          font-size: 0.8rem;
-          font-weight: 700;
-          padding: 8px 16px;
-          border-radius: 9999px;
-          display: inline-flex;
-          align-items: center;
-          gap: 8px;
-          box-shadow: 0 10px 25px rgba(0,0,0,0.3);
-        }
 
-        /* 6. Brand Section (Marketing Xperience) */
+        /* 6. Brand Section (Marketing Xperience - Fondo Oscuro Elegante) */
         .brand-section {
           max-width: 1240px;
           margin: 80px auto 40px auto;
           padding: 0 20px;
+        }
+        .brand-card {
+          background: linear-gradient(135deg, #09090b 0%, #0f172a 60%, #18181b 100%);
+          border-radius: 36px;
+          border: 1px solid rgba(255, 255, 255, 0.12);
+          box-shadow: 0 30px 80px -20px rgba(0, 0, 0, 0.45);
+          padding: 55px 30px;
           text-align: center;
+          color: #ffffff;
+          overflow: hidden;
         }
         .brand-logo-container {
-          max-width: 240px;
-          margin: 18px auto;
+          max-width: 260px;
+          margin: 20px auto;
           display: flex;
           justify-content: center;
         }
@@ -2457,32 +2474,32 @@ export default function AgentsLanding() {
           width: 100%;
           height: auto;
           object-fit: contain;
-          filter: drop-shadow(0 4px 12px rgba(0,0,0,0.08));
+          filter: drop-shadow(0 6px 18px rgba(0,0,0,0.4));
         }
         .event-gallery-wrap {
           overflow: hidden;
           position: relative;
-          margin-top: 32px;
+          margin-top: 36px;
           mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
           -webkit-mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
         }
         .event-gallery-track {
           display: flex;
           gap: 16px;
-          animation: marqueeEvent 35s linear infinite;
+          animation: marqueeEvent 40s linear infinite;
           width: max-content;
         }
         .event-gallery-track:hover {
           animation-play-state: paused;
         }
         .event-photo-card {
-          width: 260px;
-          height: 175px;
+          width: 270px;
+          height: 180px;
           border-radius: 18px;
           overflow: hidden;
           flex-shrink: 0;
-          border: 1px solid #e2e8f0;
-          box-shadow: 0 6px 16px rgba(0,0,0,0.06);
+          border: 1px solid rgba(255, 255, 255, 0.15);
+          box-shadow: 0 6px 20px rgba(0,0,0,0.3);
           position: relative;
         }
         .event-img {
@@ -3580,19 +3597,21 @@ export default function AgentsLanding() {
               ←
             </button>
 
-            <div className="flow-cards-track">
-              {WORKFLOW_STEPS.map((item, idx) => {
-                const isActive = idx === activeFlowIndex;
-                const isAdjacent = Math.abs(idx - activeFlowIndex) === 1 || 
-                  (activeFlowIndex === 0 && idx === WORKFLOW_STEPS.length - 1) || 
-                  (activeFlowIndex === WORKFLOW_STEPS.length - 1 && idx === 0);
-
-                return (
-                  <div
-                    key={item.step}
-                    onClick={() => setActiveFlowIndex(idx)}
-                    className={`flow-card ${isActive ? 'card-active' : isAdjacent ? 'card-adjacent' : 'card-dimmed'}`}
-                  >
+            <div className="flow-carousel-viewport">
+              <div 
+                className="flow-cards-track"
+                style={{
+                  transform: `translateX(calc(-1 * (${activeFlowIndex} * (var(--card-w) + var(--card-gap)) + (var(--card-w) / 2))))`
+                }}
+              >
+                {WORKFLOW_STEPS.map((item, idx) => {
+                  const isActive = idx === activeFlowIndex;
+                  return (
+                    <div
+                      key={item.step}
+                      onClick={() => setActiveFlowIndex(idx)}
+                      className={`flow-card ${isActive ? 'card-active' : 'card-inactive'}`}
+                    >
                     <div className="flow-card-header">
                       <div className="flow-card-badge-row">
                         <span className="flow-step-pill">PASO {item.step}</span>
@@ -3754,6 +3773,7 @@ export default function AgentsLanding() {
                   </div>
                 );
               })}
+              </div>
             </div>
 
             <button 
@@ -3766,10 +3786,21 @@ export default function AgentsLanding() {
           </div>
         </section>
 
-        {/* 5. SECCIÓN: INSTRUCTOR PRINCIPAL (EDUAR PEÑA) */}
+        {/* 5. SECCIÓN: INSTRUCTOR PRINCIPAL (EDUAR PEÑA - FORMATO VERTICAL CON FOTO ARRIBA) */}
         <section className="instructor-section">
-          <div className="instructor-card">
-            <div className="instructor-text-col">
+          <div className="instructor-card-vertical">
+            {/* Foto de Eduar en la parte superior (de medio cuerpo / pecho para arriba en tarima) */}
+            <div className="instructor-banner-stage">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img 
+                src="/Marketing.png" 
+                alt="Eduar Peña en Vivo - Master Marketing Xperience"
+                className="instructor-banner-img"
+              />
+              <div className="instructor-banner-overlay"></div>
+            </div>
+
+            <div className="instructor-card-body">
               <span className="instructor-badge">
                 <span>✦</span>
                 <span>Instructor Principal</span>
@@ -3783,21 +3814,21 @@ export default function AgentsLanding() {
 
               <div className="instructor-pillars">
                 <div className="pillar-item">
-                  <span className="pillar-icon">⚡</span>
+                  <span className="pillar-star">★</span>
                   <div>
                     <strong>+7 Años de Trayectoria Comprobada</strong>
                     <p>Diseñando campañas de marketing y embudos de alta conversión para cientos de empresas y creadores.</p>
                   </div>
                 </div>
                 <div className="pillar-item">
-                  <span className="pillar-icon">🤖</span>
+                  <span className="pillar-star">★</span>
                   <div>
                     <strong>Ecosistemas de IA en Producción</strong>
                     <p>No aprenderás teoría de laboratorio: verás cómo operan agentes reales que facturan y automatizan procesos a diario.</p>
                   </div>
                 </div>
                 <div className="pillar-item">
-                  <span className="pillar-icon">🎯</span>
+                  <span className="pillar-star">★</span>
                   <div>
                     <strong>Metodología Paso a Paso sin Código</strong>
                     <p>Aprende de forma práctica y directa para que salgas con tu asistente y tus agentes totalmente configurados.</p>
@@ -3805,7 +3836,7 @@ export default function AgentsLanding() {
                 </div>
               </div>
 
-              <div style={{ marginTop: '30px' }}>
+              <div style={{ marginTop: '32px' }}>
                 <a 
                   href={whatsappUrl} 
                   target="_blank" 
@@ -3820,30 +3851,16 @@ export default function AgentsLanding() {
                 </a>
               </div>
             </div>
-
-            <div className="instructor-photo-col">
-              <div className="instructor-glow-bg"></div>
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img 
-                src="/Eduar_Pena.png" 
-                alt="Eduar Peña - Especialista en Inteligencia Artificial y Marketing"
-                className="instructor-photo-img"
-              />
-              <div className="instructor-pill-tag">
-                <span style={{ color: '#10b981', fontSize: '0.8rem' }}>●</span>
-                <span>Eduar Peña • Founder Marketing Xperience</span>
-              </div>
-            </div>
           </div>
         </section>
 
-        {/* 6. SECCIÓN: PRODUCTORA & EVENTOS (MARKETING XPERIENCE) */}
+        {/* 6. SECCIÓN: PRODUCTORA & EVENTOS (MARKETING XPERIENCE - FONDO OSCURO) */}
         <section className="brand-section">
-          <div style={{ textAlign: 'center', marginBottom: '28px' }}>
+          <div className="brand-card">
             <span style={{ 
-              fontSize: '1rem', 
+              fontSize: '0.95rem', 
               fontWeight: '700', 
-              color: '#64748b', 
+              color: '#94a3b8', 
               textTransform: 'uppercase', 
               letterSpacing: '0.08em' 
             }}>
@@ -3857,25 +3874,25 @@ export default function AgentsLanding() {
                 className="brand-logo-img"
               />
             </div>
-            <p style={{ color: '#64748b', fontSize: '1.05rem', maxWidth: '620px', margin: '0 auto', lineHeight: '1.55' }}>
-              Comunidad y productora pionera en eventos presenciales y formación de alto nivel en negocios, marketing e innovación tecnológica.
+            <p style={{ color: '#cbd5e1', fontSize: '1.1rem', maxWidth: '680px', margin: '0 auto', lineHeight: '1.6' }}>
+              Comunidad y evento centrado en el aprendizaje aplicado, llevando la experiencia del marketing, ventas y creacion de contenido a otro nivel
             </p>
-          </div>
 
-          {/* Carrusel pequeño de fotos de eventos masivos */}
-          <div className="event-gallery-wrap">
-            <div className="event-gallery-track">
-              {EVENT_PHOTOS.concat(EVENT_PHOTOS).map((img, i) => (
-                <div key={`event-${i}`} className="event-photo-card">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img 
-                    src={`/bloque_3/${img}`} 
-                    alt="Eventos Marketing Xperience" 
-                    className="event-img"
-                    loading="lazy"
-                  />
-                </div>
-              ))}
+            {/* Carrusel con las fotos oficiales de este año (Galería) */}
+            <div className="event-gallery-wrap">
+              <div className="event-gallery-track">
+                {GALLERY_THIS_YEAR_PHOTOS.concat(GALLERY_THIS_YEAR_PHOTOS).map((imgUrl, i) => (
+                  <div key={`gallery-photo-${i}`} className="event-photo-card">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img 
+                      src={imgUrl} 
+                      alt="Evento Marketing Xperience 2026" 
+                      className="event-img"
+                      loading="lazy"
+                    />
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </section>
@@ -3913,7 +3930,7 @@ export default function AgentsLanding() {
               fontSize: '0.85rem', 
               fontWeight: '700', 
               padding: '6px 16px', 
-              borderRadius: '9999px',
+              borderRadius: '9999px', 
               border: '1px solid rgba(250, 204, 21, 0.2)',
               display: 'inline-block',
               marginBottom: '20px'
@@ -3922,11 +3939,11 @@ export default function AgentsLanding() {
             </span>
 
             <h2 style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', fontWeight: '850', lineHeight: '1.15', marginBottom: '16px' }}>
-              No esperes a enero para empezar desde cero
+              No esperes a Enero para empezar desde cero
             </h2>
 
             <p style={{ fontSize: '1.15rem', color: '#cbd5e1', maxWidth: '650px', margin: '0 auto 36px auto', lineHeight: '1.6' }}>
-              Deja a tu asistente de IA y a tu equipo de agentes listos durante diciembre para arrancar el año comunicando y facturando en automático.
+              Deja a tu asistente de IA y a tu equipo de agentes listos durante Diciembre para arrancar en Enero comunicando y facturando en automático.
             </p>
 
             <a 
