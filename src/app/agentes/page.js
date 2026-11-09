@@ -1,11 +1,11 @@
 import AgentsLanding from './AgentsLanding';
 
 export const metadata = {
-  title: 'Crea tu ecosistema de Agentes de IA interconectados | Master IA',
-  description: 'Empieza en diciembre y llega a enero con tu asistente de IA y tu equipo de marketing en marcha. Crea el sistema inteligente para tu negocio.',
+  title: 'Domina la IA actualizada de 2026-2027 | Master IA',
+  description: 'Crea tu ecosistema de Agentes de IA interconectados. Empieza en Diciembre y llega a Enero con tu asistente personal de IA y tu equipo de marketing en marcha.',
   openGraph: {
-    title: 'Crea tu ecosistema de Agentes de IA interconectados | Master IA',
-    description: 'Empieza en diciembre y llega a enero con tu asistente de IA y tu equipo de marketing en marcha.',
+    title: 'Domina la IA actualizada de 2026-2027 | Master IA',
+    description: 'Crea tu ecosistema de Agentes de IA interconectados. Empieza en Diciembre y llega a Enero con tu asistente personal de IA y tu equipo de marketing en marcha.',
     url: 'https://landing-marketing-xperience.vercel.app/agentes',
     siteName: 'Marketing Xperience',
     locale: 'es_LA',

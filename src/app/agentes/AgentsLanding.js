@@ -212,30 +212,39 @@ export default function AgentsLanding() {
         .hero-section {
           max-width: 980px;
           margin: 0 auto;
-          padding: 50px 20px 30px 20px;
+          padding: 40px 20px 30px 20px;
           text-align: center;
         }
         .hero-logo-box {
           display: inline-block;
-          margin-bottom: 24px;
+          margin-bottom: 20px;
+          max-width: 200px;
           transition: transform 0.3s ease;
         }
         .hero-logo-box:hover {
-          transform: scale(1.02);
+          transform: scale(1.03);
         }
         .hero-title {
-          font-size: clamp(2.4rem, 5.5vw, 4.2rem);
+          font-size: clamp(2.4rem, 5.5vw, 4.1rem);
           font-weight: 850;
           line-height: 1.12;
           letter-spacing: -0.04em;
           color: #09090b;
-          margin-bottom: 22px;
+          margin-bottom: 16px;
+        }
+        .hero-subtitle {
+          font-size: clamp(1.35rem, 2.8vw, 2.1rem);
+          font-weight: 750;
+          line-height: 1.25;
+          letter-spacing: -0.025em;
+          color: #1e1b4b;
+          margin-bottom: 20px;
         }
         .hero-desc {
-          font-size: clamp(1.1rem, 2.1vw, 1.3rem);
+          font-size: clamp(1.05rem, 1.8vw, 1.22rem);
           color: #475569;
           line-height: 1.65;
-          max-width: 820px;
+          max-width: 800px;
           margin: 0 auto 36px auto;
           font-weight: 400;
         }
@@ -655,26 +664,31 @@ export default function AgentsLanding() {
       {/* Hero Section */}
       <main>
         <section className="hero-section">
-          {/* Logo del curso recibido */}
+          {/* Logo del curso más pequeño */}
           <div className="hero-logo-box">
             <Image 
               src="/logo_master_ia.png" 
               alt="Master de Inteligencia Artificial" 
-              width={320} 
-              height={170}
-              style={{ objectFit: 'contain' }}
+              width={200} 
+              height={106}
+              style={{ objectFit: 'contain', width: '100%', height: 'auto', maxWidth: '200px' }}
               priority
             />
           </div>
 
-          {/* Nuevo Titular Exacto */}
+          {/* Titular Principal */}
           <h1 className="hero-title">
-            Crea tu ecosistema de Agentes de IA interconectados
+            Domina la IA actualizada de 2026-2027
           </h1>
 
-          {/* Nueva Descripción Completa */}
+          {/* Subtítulo destacado en grande */}
+          <h2 className="hero-subtitle">
+            Crea tu ecosistema de Agentes de IA interconectados
+          </h2>
+
+          {/* Descripción */}
           <p className="hero-desc">
-            Empieza en diciembre y llega a enero con tu asistente de IA y tu equipo de marketing en marcha. Ahora podrás tener ideas ilimitadas, guiones comprobados listos, un equipo de editores, y vas a poder comunicar en automatico.
+            Empieza en Diciembre y llega a Enero con tu asistente personal de IA y tu equipo de marketing en marcha. Ahora podrás tener ideas ilimitadas, guiones comprobados listos, un equipo de editores y sistemas a tu medida.
           </p>
 
           <div style={{ display: 'flex', justifyContent: 'center', gap: '16px', flexWrap: 'wrap' }}>
