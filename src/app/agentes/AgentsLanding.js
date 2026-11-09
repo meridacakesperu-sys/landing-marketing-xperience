@@ -706,26 +706,17 @@ export default function AgentsLanding() {
 
         /* Sección: Asistente Personal en WhatsApp (Simulación Interactiva) */
         .assistant-section {
-          max-width: 1200px;
+          max-width: 1000px;
           margin: 60px auto 80px auto;
-          padding: 0 24px;
+          padding: 0 20px;
         }
-        .assistant-grid {
-          display: grid;
-          grid-template-columns: 1.15fr 0.85fr;
-          gap: 48px;
-          align-items: center;
-        }
-        @media (max-width: 960px) {
-          .assistant-grid {
-            grid-template-columns: 1fr;
-            gap: 40px;
-          }
-        }
-
-        .assistant-info {
+        .assistant-header {
+          max-width: 780px;
+          margin: 0 auto 36px auto;
           display: flex;
           flex-direction: column;
+          align-items: center;
+          text-align: center;
         }
         .assistant-badge {
           display: inline-flex;
@@ -752,57 +743,10 @@ export default function AgentsLanding() {
           margin-bottom: 16px;
         }
         .assistant-desc {
-          font-size: 1.1rem;
+          font-size: 1.15rem;
           color: #475569;
           line-height: 1.6;
-          margin-bottom: 28px;
-        }
-
-        /* Lista de especificaciones del asistente */
-        .assistant-features-list {
-          display: flex;
-          flex-direction: column;
-          gap: 14px;
-          margin-bottom: 34px;
-        }
-        .assistant-feature-item {
-          display: flex;
-          align-items: flex-start;
-          gap: 16px;
-          background: #ffffff;
-          border: 1px solid #e2e8f0;
-          border-radius: 18px;
-          padding: 16px 20px;
-          box-shadow: 0 4px 12px -2px rgba(0, 0, 0, 0.03);
-          transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
-        }
-        .assistant-feature-item:hover {
-          transform: translateY(-2px);
-          border-color: #cbd5e1;
-          box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.06);
-        }
-        .feature-icon-box {
-          width: 44px;
-          height: 44px;
-          border-radius: 12px;
-          background: #f0fdf4;
-          border: 1px solid #bbf7d0;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          font-size: 1.35rem;
-          flex-shrink: 0;
-        }
-        .feature-title {
-          font-size: 1.02rem;
-          font-weight: 750;
-          color: #0f172a;
-          margin-bottom: 4px;
-        }
-        .feature-desc {
-          font-size: 0.88rem;
-          color: #64748b;
-          line-height: 1.45;
+          margin-bottom: 0;
         }
 
         /* Maqueta del Teléfono Móvil (WhatsApp Mockup) */
@@ -1762,122 +1706,24 @@ export default function AgentsLanding() {
 
         {/* SECCIÓN INTERACTIVA: ASISTENTE PERSONAL EN WHATSAPP EN TIEMPO REAL */}
         <section className="assistant-section">
-          <div className="assistant-grid">
-            
-            {/* Columna Izquierda: Especificaciones y Valor */}
-            <div className="assistant-info">
-              <span className="assistant-badge">
-                <span>🤖</span>
-                <span>Asistente Personal de IA en WhatsApp</span>
-              </span>
+          {/* Encabezado Centrado */}
+          <div className="assistant-header">
+            <span className="assistant-badge">
+              <span>🤖</span>
+              <span>Asistente Personal de IA en WhatsApp</span>
+            </span>
 
-              <h2 className="assistant-title">
-                Tu asistente te ayudará a resolver tu día a día
-              </h2>
+            <h2 className="assistant-title">
+              Tu asistente personal te ayudará a resolver tu día a día
+            </h2>
 
-              <p className="assistant-desc">
-                No necesitas abrir herramientas complejas ni adaptarte a nuevos programas. Todo lo gestionas directamente desde tu WhatsApp enviando mensajes o notas de voz cotidianas, como si hablaras con tu asistente de confianza.
-              </p>
+            <p className="assistant-desc">
+              No necesitas abrir herramientas complejas ni adaptarte a nuevos programas. Tu dia lo gestionas directamente desde tu WhatsApp enviando mensajes o notas de voz cotidianas, como si hablaras con tu asistente de confianza.
+            </p>
+          </div>
 
-              {/* Lista de especificaciones solicitadas por el usuario */}
-              <div className="assistant-features-list">
-                
-                {/* 1. Calendario */}
-                <div className="assistant-feature-item">
-                  <div className="feature-icon-box">
-                    <span>🗓️</span>
-                  </div>
-                  <div>
-                    <h3 className="feature-title">
-                      A que no se te olvide nada en tu calendario
-                    </h3>
-                    <p className="feature-desc">
-                      Recordatorios proactivos de tus citas diarias, sincronización con tu agenda y te pasa el link de Google Meet o Zoom con un solo toque antes de cada llamada.
-                    </p>
-                  </div>
-                </div>
-
-                {/* 2. Consultas en tiempo real */}
-                <div className="assistant-feature-item">
-                  <div className="feature-icon-box" style={{ background: '#eff6ff', borderColor: '#bfdbfe' }}>
-                    <span>⚡</span>
-                  </div>
-                  <div>
-                    <h3 className="feature-title">
-                      Cualquier consulta que tengas en tiempo real
-                    </h3>
-                    <p className="feature-desc">
-                      Dudas operativas, cálculos de negocio, redacción de respuestas difíciles para clientes o ideas estratégicas resueltas en cuestión de segundos.
-                    </p>
-                  </div>
-                </div>
-
-                {/* 3. Revisar artículos */}
-                <div className="assistant-feature-item">
-                  <div className="feature-icon-box" style={{ background: '#faf5ff', borderColor: '#e9d5ff' }}>
-                    <span>📑</span>
-                  </div>
-                  <div>
-                    <h3 className="feature-title">
-                      Revisar algún artículo o documento
-                    </h3>
-                    <p className="feature-desc">
-                      Pásale links, noticias o archivos PDF extensos; los lee al instante y te extrae los puntos clave y recomendaciones prácticas sin perder tiempo.
-                    </p>
-                  </div>
-                </div>
-
-                {/* 4. Gastos y cuentas */}
-                <div className="assistant-feature-item">
-                  <div className="feature-icon-box" style={{ background: '#fefce8', borderColor: '#fef08a' }}>
-                    <span>💰</span>
-                  </div>
-                  <div>
-                    <h3 className="feature-title">
-                      Llevar tus gastos y tus cuentas
-                    </h3>
-                    <p className="feature-desc">
-                      Solo dile <em>"Gasté $45 en almuerzo con cliente"</em> o envíale fotos de recibos; categoriza el gasto y actualiza tus hojas de cálculo en automático.
-                    </p>
-                  </div>
-                </div>
-
-                {/* 5. Y mucho más */}
-                <div className="assistant-feature-item">
-                  <div className="feature-icon-box" style={{ background: '#fff1f2', borderColor: '#fecdd3' }}>
-                    <span>✨</span>
-                  </div>
-                  <div>
-                    <h3 className="feature-title">
-                      Y mucho más...
-                    </h3>
-                    <p className="feature-desc">
-                      Transcribir notas de voz a listas de tareas pendientes, redactar correos ejecutivos y orquestar a tus 11 agentes especialistas de marketing cuando lo necesites.
-                    </p>
-                  </div>
-                </div>
-
-              </div>
-
-              {/* Botón WhatsApp */}
-              <div>
-                <a 
-                  href={whatsappUrl} 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
-                  className="btn-primary"
-                  style={{ display: 'inline-flex' }}
-                >
-                  <span>Ir a WhatsApp para los detalles de inscripción</span>
-                  <svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
-                  </svg>
-                </a>
-              </div>
-            </div>
-
-            {/* Columna Derecha: Teléfono WhatsApp en Vivo */}
-            <div className="phone-mockup-wrapper">
+          {/* Teléfono WhatsApp con la simulación interactiva directamente */}
+          <div className="phone-mockup-wrapper">
               <div className="phone-chassis">
                 {/* Dynamic Island / Notch */}
                 <div className="phone-notch">
@@ -2060,9 +1906,22 @@ export default function AgentsLanding() {
                   </button>
                 </div>
               </div>
-            </div>
 
-          </div>
+              {/* Botón WhatsApp centrado debajo del teléfono */}
+              <div style={{ marginTop: '30px' }}>
+                <a 
+                  href={whatsappUrl} 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="btn-primary"
+                >
+                  <span>Ir a WhatsApp para los detalles de inscripción</span>
+                  <svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+                  </svg>
+                </a>
+              </div>
+            </div>
         </section>
 
         {/* 3. SECCIÓN: DASHBOARD Y CREA CUALQUIER SISTEMA PARA TU NEGOCIO */}
