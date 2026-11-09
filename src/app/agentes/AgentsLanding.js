@@ -1688,14 +1688,9 @@ export default function AgentsLanding() {
               </span>
             </h1>
 
-            {/* Subtítulo destacado en grande */}
-            <h2 className="hero-subtitle">
-              Crea tu ecosistema de Agentes de IA interconectados
-            </h2>
-
             {/* Descripción */}
             <p className="hero-desc">
-              Empieza en Diciembre y llega a Enero con tu asistente personal de IA y tu equipo de marketing en marcha. Ahora podrás tener ideas ilimitadas, guiones comprobados listos, un equipo de editores y sistemas a tu medida.
+              Crea tu ecosistema de Agentes de IA interconectados. Empieza en Diciembre y llega a Enero con tu asistente personal de IA y tu equipo de marketing en marcha. Ahora podrás tener ideas ilimitadas, guiones comprobados listos, un equipo de editores y sistemas a tu medida.
             </p>
 
             <div style={{ display: 'flex', justifyContent: 'center', gap: '16px', flexWrap: 'wrap' }}>
