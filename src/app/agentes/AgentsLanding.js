@@ -1097,138 +1097,281 @@ export default function AgentsLanding() {
           margin: 70px auto 40px auto;
           padding: 0 20px;
         }
-        .browser-mockup {
-          background: #ffffff;
+
+        /* Mockup de Navegador Estilo Apple Safari (Página de Muestra de Zapatos) */
+        .apple-browser-mockup {
+          background: #000000;
           border-radius: 28px;
-          border: 1px solid #e2e8f0;
-          box-shadow: 0 25px 60px -15px rgba(15, 23, 42, 0.12), 0 0 0 1px rgba(0, 0, 0, 0.02);
+          border: 1px solid #27272a;
+          box-shadow: 0 30px 80px -20px rgba(0, 0, 0, 0.45), 0 0 0 1px rgba(255, 255, 255, 0.08);
           overflow: hidden;
+          color: #f5f5f7;
+          font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Segoe UI", Roboto, sans-serif;
         }
-        .browser-topbar {
-          background: #f8fafc;
-          padding: 14px 20px;
+        .apple-browser-topbar {
+          background: #18181b;
+          padding: 12px 20px;
           display: flex;
           align-items: center;
           justify-content: space-between;
-          border-bottom: 1px solid #e2e8f0;
+          border-bottom: 1px solid #27272a;
           gap: 16px;
         }
-        .browser-dots {
+        .apple-window-dots {
           display: flex;
           gap: 8px;
         }
-        .browser-dot {
+        .apple-dot {
           width: 12px;
           height: 12px;
           border-radius: 50%;
         }
-        .browser-address-bar {
-          background: #ffffff;
-          border: 1px solid #cbd5e1;
+        .apple-address-bar {
+          background: #27272a;
+          border: 1px solid #3f3f46;
           border-radius: 10px;
-          padding: 6px 16px;
-          font-size: 0.82rem;
-          color: #475569;
+          padding: 6px 18px;
+          font-size: 0.8rem;
+          color: #a1a1aa;
           display: flex;
           align-items: center;
           gap: 8px;
           max-width: 440px;
           width: 100%;
-          box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
+          justify-content: center;
         }
-        .browser-body {
-          background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
-          padding: 36px 32px 42px 32px;
-          position: relative;
-          overflow: hidden;
-        }
-        .inner-web-nav {
+
+        /* Apple Store Navigation Bar (dentro de la web creada) */
+        .apple-web-nav {
+          background: rgba(22, 22, 23, 0.94);
+          backdrop-filter: blur(20px);
+          -webkit-backdrop-filter: blur(20px);
+          border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+          padding: 0 24px;
+          height: 48px;
           display: flex;
           align-items: center;
           justify-content: space-between;
-          padding-bottom: 22px;
-          border-bottom: 1px solid #f1f5f9;
-          margin-bottom: 34px;
+          font-size: 0.78rem;
+          letter-spacing: -0.01em;
         }
-        .inner-nav-links {
+        .apple-nav-brand {
           display: flex;
           align-items: center;
-          gap: 24px;
-          font-size: 0.85rem;
-          font-weight: 600;
-          color: #64748b;
+          gap: 6px;
+          font-weight: 700;
+          color: #f5f5f7;
+          font-size: 0.95rem;
+          letter-spacing: -0.02em;
         }
-        .inner-web-hero {
-          max-width: 760px;
-          margin: 0 auto;
-          text-align: center;
-        }
-        .inner-hero-badge {
-          display: inline-flex;
+        .apple-nav-items {
+          display: flex;
           align-items: center;
-          gap: 8px;
-          background: #eef2ff;
-          color: #4f46e5;
-          border: 1px solid #c7d2fe;
-          padding: 6px 14px;
-          border-radius: 9999px;
-          font-size: 0.78rem;
-          font-weight: 750;
-          margin-bottom: 18px;
+          gap: 26px;
+          color: #a1a1a6;
+          font-weight: 400;
         }
-        .inner-hero-title {
-          font-size: clamp(1.8rem, 3.4vw, 2.7rem);
+        .apple-nav-items span {
+          transition: color 0.2s ease;
+          cursor: pointer;
+        }
+        .apple-nav-items span:hover {
+          color: #ffffff;
+        }
+        .apple-nav-actions {
+          display: flex;
+          align-items: center;
+          gap: 16px;
+          color: #a1a1a6;
+          font-size: 0.95rem;
+        }
+
+        /* Main Hero Unit (AERO TITANIUM PRO - Estilo Apple) */
+        .apple-hero-unit {
+          background: radial-gradient(circle at 50% 30%, #1c1c1f 0%, #000000 70%);
+          padding: 50px 24px 20px 24px;
+          text-align: center;
+          position: relative;
+          overflow: hidden;
+        }
+        .apple-tag {
+          font-size: 0.82rem;
+          font-weight: 700;
+          color: #f56300;
+          letter-spacing: 0.04em;
+          text-transform: uppercase;
+          margin-bottom: 8px;
+          display: inline-block;
+        }
+        .apple-product-title {
+          font-size: clamp(2.3rem, 5.2vw, 3.8rem);
           font-weight: 850;
-          color: #0f172a;
-          line-height: 1.18;
-          letter-spacing: -0.03em;
-          margin-bottom: 14px;
+          color: #f5f5f7;
+          letter-spacing: -0.035em;
+          line-height: 1.05;
+          margin-bottom: 10px;
         }
-        .inner-hero-desc {
-          font-size: 1.05rem;
-          color: #64748b;
-          line-height: 1.6;
-          margin-bottom: 26px;
+        .apple-product-subtitle {
+          font-size: clamp(1.05rem, 2vw, 1.35rem);
+          color: #a1a1a6;
+          font-weight: 400;
+          max-width: 650px;
+          margin: 0 auto 20px auto;
+          line-height: 1.4;
         }
-        .inner-hero-actions {
+        .apple-cta-row {
           display: flex;
           align-items: center;
           justify-content: center;
-          gap: 12px;
-          flex-wrap: wrap;
-          margin-bottom: 34px;
-        }
-        .inner-btn-primary {
-          background: #0f172a;
-          color: #ffffff;
-          padding: 12px 24px;
-          border-radius: 9999px;
-          font-size: 0.88rem;
-          font-weight: 700;
-          box-shadow: 0 4px 14px rgba(15, 23, 42, 0.2);
-        }
-        .inner-btn-secondary {
-          background: #ffffff;
-          color: #334155;
-          border: 1px solid #cbd5e1;
-          padding: 12px 22px;
-          border-radius: 9999px;
-          font-size: 0.88rem;
-          font-weight: 600;
-        }
-        .inner-features-grid {
-          display: grid;
-          grid-template-columns: repeat(3, 1fr);
           gap: 16px;
-          margin-top: 28px;
-          text-align: left;
+          margin-bottom: 24px;
+          flex-wrap: wrap;
         }
-        .inner-feat-card {
-          background: #ffffff;
-          border: 1px solid #e2e8f0;
-          border-radius: 16px;
+        .apple-btn-blue {
+          background: #0071e3;
+          color: #ffffff;
+          padding: 9px 22px;
+          border-radius: 9999px;
+          font-size: 0.9rem;
+          font-weight: 500;
+          text-decoration: none;
+          display: inline-flex;
+          align-items: center;
+          gap: 6px;
+          box-shadow: 0 4px 12px rgba(0, 113, 227, 0.3);
+        }
+        .apple-btn-outline {
+          background: transparent;
+          color: #2997ff;
+          border: 1px solid #0071e3;
+          padding: 9px 22px;
+          border-radius: 9999px;
+          font-size: 0.9rem;
+          font-weight: 500;
+          text-decoration: none;
+          display: inline-flex;
+          align-items: center;
+          gap: 6px;
+        }
+
+        /* Escenario del Zapato Principal */
+        .apple-shoe-stage {
+          max-width: 680px;
+          margin: 0 auto;
+          position: relative;
+          padding: 10px 0 0 0;
+        }
+        .apple-shoe-img {
+          width: 100%;
+          max-height: 350px;
+          object-fit: contain;
+          display: block;
+          filter: drop-shadow(0 20px 30px rgba(0, 0, 0, 0.9));
+          transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .apple-shoe-stage:hover .apple-shoe-img {
+          transform: translateY(-6px) scale(1.02);
+        }
+        .apple-shoe-glow {
+          position: absolute;
+          bottom: 10px;
+          left: 50%;
+          transform: translateX(-50%);
+          width: 75%;
+          height: 30px;
+          background: radial-gradient(ellipse at center, rgba(37, 99, 235, 0.3) 0%, transparent 70%);
+          pointer-events: none;
+        }
+
+        /* Dual Bento Grid (Estilo Apple.com) */
+        .apple-bento-grid {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 16px;
           padding: 16px;
-          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+          background: #000000;
+        }
+        .apple-bento-card {
+          border-radius: 22px;
+          padding: 34px 24px 20px 24px;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          text-align: center;
+          overflow: hidden;
+          position: relative;
+          min-height: 370px;
+        }
+        .apple-card-dark {
+          background: #161617;
+          color: #f5f5f7;
+          border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .apple-card-light {
+          background: #fbfbfd;
+          color: #1d1d1f;
+          border: 1px solid #e5e5e7;
+        }
+        .apple-card-badge {
+          font-size: 0.75rem;
+          font-weight: 700;
+          letter-spacing: 0.04em;
+          text-transform: uppercase;
+          margin-bottom: 6px;
+        }
+        .apple-card-title {
+          font-size: clamp(1.5rem, 2.5vw, 2.1rem);
+          font-weight: 850;
+          letter-spacing: -0.025em;
+          line-height: 1.15;
+          margin-bottom: 6px;
+        }
+        .apple-card-subtitle {
+          font-size: 0.95rem;
+          line-height: 1.4;
+          max-width: 380px;
+          margin-bottom: 12px;
+          opacity: 0.85;
+        }
+        .apple-card-links {
+          display: flex;
+          align-items: center;
+          gap: 18px;
+          font-size: 0.88rem;
+          font-weight: 500;
+          margin-bottom: 16px;
+        }
+        .apple-card-img-wrap {
+          width: 100%;
+          max-width: 320px;
+          margin-top: auto;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+        .apple-card-shoe-img {
+          width: 100%;
+          max-height: 185px;
+          object-fit: contain;
+          filter: drop-shadow(0 12px 18px rgba(0,0,0,0.25));
+          transition: transform 0.35s ease;
+        }
+        .apple-bento-card:hover .apple-card-shoe-img {
+          transform: translateY(-4px) scale(1.03);
+        }
+
+        /* Apple Bottom Strip */
+        .apple-bottom-strip {
+          background: #111113;
+          border-top: 1px solid rgba(255, 255, 255, 0.08);
+          padding: 16px 20px;
+          display: flex;
+          align-items: center;
+          justify-content: space-around;
+          font-size: 0.8rem;
+          color: #a1a1a6;
+          flex-wrap: wrap;
+          gap: 14px;
         }
 
         /* Business Capabilities Grid */
@@ -2018,158 +2161,160 @@ export default function AgentsLanding() {
             </p>
           </div>
 
-          {/* Maqueta moderna de Navegador Web (Idea de Página Web Hermosa) */}
-          <div className="browser-mockup">
-            {/* Topbar del Navegador tipo Safari / Mac */}
-            <div className="browser-topbar">
-              <div className="browser-dots">
-                <div className="browser-dot" style={{ background: '#ef4444' }}></div>
-                <div className="browser-dot" style={{ background: '#eab308' }}></div>
-                <div className="browser-dot" style={{ background: '#22c55e' }}></div>
+          {/* Maqueta de Navegador Safari Estilo Apple (Tienda Oficial de Calzado AERO) */}
+          <div className="apple-browser-mockup">
+            {/* Topbar de Safari macOS */}
+            <div className="apple-browser-topbar">
+              <div className="apple-window-dots">
+                <div className="apple-dot" style={{ background: '#ff5f56' }}></div>
+                <div className="apple-dot" style={{ background: '#ffbd2e' }}></div>
+                <div className="apple-dot" style={{ background: '#27c93f' }}></div>
               </div>
 
               {/* Barra de Direcciones URL */}
-              <div className="browser-address-bar">
-                <span style={{ fontSize: '0.78rem', color: '#10b981' }}>🔒</span>
-                <span style={{ fontWeight: '600' }}>https://tu-negocio-oficial.com/lanzamiento</span>
+              <div className="apple-address-bar">
+                <span style={{ fontSize: '0.75rem', color: '#a1a1aa' }}>🔒</span>
+                <span style={{ fontWeight: '500' }}>aero-footwear.apple/la/titanium</span>
               </div>
 
               <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                 <span style={{ 
-                  background: '#ecfdf5', 
-                  color: '#059669', 
+                  background: 'rgba(255, 255, 255, 0.1)', 
+                  color: '#e4e4e7', 
                   fontSize: '0.72rem', 
-                  fontWeight: '750',
-                  padding: '4px 10px',
+                  fontWeight: '600',
+                  padding: '3px 10px',
                   borderRadius: '9999px',
-                  border: '1px solid #a7f3d0'
+                  border: '1px solid rgba(255, 255, 255, 0.15)'
                 }}>
-                  ● 100% Online
+                  Tienda Oficial 2026
                 </span>
               </div>
             </div>
 
-            {/* Contenido Visual de la Página Web Hermosa */}
-            <div className="browser-body">
-              {/* Header interior de la web creada */}
-              <div className="inner-web-nav">
-                <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-                  <div style={{ 
-                    width: '32px', 
-                    height: '32px', 
-                    borderRadius: '10px', 
-                    background: 'linear-gradient(135deg, #4f46e5 0%, #06b6d4 100%)', 
-                    display: 'flex', 
-                    alignItems: 'center', 
-                    justifyContent: 'center',
-                    color: '#ffffff',
-                    fontWeight: '850',
-                    fontSize: '0.9rem'
-                  }}>
-                    ✦
-                  </div>
-                  <span style={{ fontSize: '1.05rem', fontWeight: '850', color: '#0f172a', letterSpacing: '-0.02em' }}>
-                    Tu Marca Digital
-                  </span>
-                </div>
-
-                <div className="inner-nav-links">
-                  <span style={{ color: '#0f172a', fontWeight: '700' }}>Inicio</span>
-                  <span>Servicios</span>
-                  <span>Casos de Éxito</span>
-                  <span>Precios</span>
-                  <span>Contacto</span>
-                </div>
-
-                <div>
-                  <span style={{ 
-                    background: '#0f172a', 
-                    color: '#ffffff', 
-                    fontSize: '0.8rem', 
-                    fontWeight: '700', 
-                    padding: '8px 16px', 
-                    borderRadius: '9999px' 
-                  }}>
-                    Agendar Cita ↗
-                  </span>
-                </div>
+            {/* Navegación global estilo Apple (apple.com/la) */}
+            <nav className="apple-web-nav">
+              <div className="apple-nav-brand">
+                <span style={{ fontSize: '1.1rem' }}></span>
+                <span>AERO</span>
               </div>
 
-              {/* Hero de la página web hermosa */}
-              <div className="inner-web-hero">
-                <div className="inner-hero-badge">
-                  <span>✨</span>
-                  <span>Nueva Versión • Optimizado con Inteligencia Artificial</span>
-                </div>
+              <div className="apple-nav-items">
+                <span>Store</span>
+                <span>Calzado</span>
+                <span style={{ color: '#ffffff', fontWeight: '600' }}>Aero Titanio</span>
+                <span>Air Pro</span>
+                <span>Innovación</span>
+                <span>Soporte</span>
+              </div>
 
-                <h3 className="inner-hero-title">
-                  Convierte visitantes en clientes leales con una experiencia web inolvidable
-                </h3>
+              <div className="apple-nav-actions">
+                <span title="Buscar" style={{ cursor: 'pointer' }}>🔍</span>
+                <span title="Bolsa de compra" style={{ cursor: 'pointer' }}>🛍️</span>
+              </div>
+            </nav>
 
-                <p className="inner-hero-desc">
-                  Arquitectura minimalista, tiempos de carga instantáneos en cualquier teléfono y embudos estratégicos diseñados para multiplicar tus ventas en automático.
+            {/* UNIDAD PRINCIPAL: HERO ESTILO APPLE (AERO TITANIUM PRO) */}
+            <div className="apple-hero-unit">
+              <span className="apple-tag">Nuevo</span>
+              
+              <h3 className="apple-product-title">
+                AERO TITANIUM PRO
+              </h3>
+
+              <p className="apple-product-subtitle">
+                Pura ingeniería aeroespacial. Amortiguación que desafía la gravedad.
+              </p>
+
+              <div className="apple-cta-row">
+                <a href="#comprar" onClick={(e) => e.preventDefault()} className="apple-btn-blue">
+                  Más información
+                </a>
+                <a href="#comprar" onClick={(e) => e.preventDefault()} className="apple-btn-outline">
+                  Comprar
+                </a>
+              </div>
+
+              {/* Escenario del Zapato Principal flotando */}
+              <div className="apple-shoe-stage">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img 
+                  src="/shoes/sneaker_hero_1.jpg" 
+                  alt="AERO Titanium Pro Sneaker" 
+                  className="apple-shoe-img"
+                />
+                <div className="apple-shoe-glow"></div>
+              </div>
+
+              <div style={{ fontSize: '0.82rem', color: '#71717a', marginTop: '14px' }}>
+                Desde $189 USD o $15.75/mes en 12 cuotas sin interés
+              </div>
+            </div>
+
+            {/* SECCIÓN DUAL BENTO GRID (ESTILO APPLE.COM) */}
+            <div className="apple-bento-grid">
+              
+              {/* Tarjeta 1: Dark Edition (Aero Carbon X) */}
+              <div className="apple-bento-card apple-card-dark">
+                <span className="apple-card-badge" style={{ color: '#60a5fa' }}>Edición Especial</span>
+                <h4 className="apple-card-title">AERO CARBON X</h4>
+                <p className="apple-card-subtitle" style={{ color: '#a1a1a6' }}>
+                  Placa 100% de fibra de carbono. Diseñado para romper tu récord personal.
                 </p>
 
-                <div className="inner-hero-actions">
-                  <button className="inner-btn-primary" style={{ border: 'none', cursor: 'pointer' }}>
-                    Ver Productos y Promociones →
-                  </button>
-                  <button className="inner-btn-secondary" style={{ cursor: 'pointer' }}>
-                    ▷ Ver Demostración en Video
-                  </button>
+                <div className="apple-card-links">
+                  <a href="#mas" onClick={(e) => e.preventDefault()} style={{ color: '#2997ff', textDecoration: 'none' }}>
+                    Más información &gt;
+                  </a>
+                  <a href="#comprar" onClick={(e) => e.preventDefault()} style={{ color: '#2997ff', textDecoration: 'none' }}>
+                    Comprar &gt;
+                  </a>
                 </div>
 
-                {/* Reseñas / Calificación flotante */}
-                <div style={{ 
-                  display: 'inline-flex', 
-                  alignItems: 'center', 
-                  gap: '8px',
-                  background: 'rgba(255, 255, 255, 0.95)',
-                  border: '1px solid #e2e8f0',
-                  padding: '6px 16px',
-                  borderRadius: '9999px',
-                  fontSize: '0.8rem',
-                  fontWeight: '600',
-                  color: '#334155',
-                  boxShadow: '0 2px 8px rgba(0,0,0,0.04)'
-                }}>
-                  <span style={{ color: '#eab308' }}>★★★★★</span>
-                  <span><strong>4.9/5</strong> de satisfacción (+1,400 clientes activos este mes)</span>
+                <div className="apple-card-img-wrap">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img 
+                    src="/shoes/sneaker_blue.jpg" 
+                    alt="Aero Carbon X" 
+                    className="apple-card-shoe-img"
+                  />
                 </div>
               </div>
 
-              {/* 3 Tarjetas destacadas dentro de la web */}
-              <div className="inner-features-grid">
-                <div className="inner-feat-card">
-                  <div style={{ fontSize: '1.4rem', marginBottom: '8px' }}>🚀</div>
-                  <div style={{ fontSize: '0.92rem', fontWeight: '800', color: '#0f172a', marginBottom: '4px' }}>
-                    Carga Ultra Rápida (0.6s)
-                  </div>
-                  <p style={{ fontSize: '0.8rem', color: '#64748b', lineHeight: '1.4', margin: 0 }}>
-                    Optimización técnica de código para que nadie abandone tu página por lentitud.
-                  </p>
+              {/* Tarjeta 2: Light Edition Studio (Stride Cloudflow) */}
+              <div className="apple-bento-card apple-card-light">
+                <span className="apple-card-badge" style={{ color: '#b91c1c' }}>Lo más vendido</span>
+                <h4 className="apple-card-title">STRIDE CLOUDFLOW</h4>
+                <p className="apple-card-subtitle" style={{ color: '#6e6e73' }}>
+                  La sensación de caminar sobre nubes. Pura comodidad para tu día a día.
+                </p>
+
+                <div className="apple-card-links">
+                  <a href="#mas" onClick={(e) => e.preventDefault()} style={{ color: '#0071e3', textDecoration: 'none' }}>
+                    Más información &gt;
+                  </a>
+                  <a href="#comprar" onClick={(e) => e.preventDefault()} style={{ color: '#0071e3', textDecoration: 'none' }}>
+                    Comprar &gt;
+                  </a>
                 </div>
 
-                <div className="inner-feat-card">
-                  <div style={{ fontSize: '1.4rem', marginBottom: '8px' }}>💳</div>
-                  <div style={{ fontSize: '0.92rem', fontWeight: '800', color: '#0f172a', marginBottom: '4px' }}>
-                    Pasarelas de Pago Listas
-                  </div>
-                  <p style={{ fontSize: '0.8rem', color: '#64748b', lineHeight: '1.4', margin: 0 }}>
-                    Integración directa con tarjetas, PayPal, transferencias y cobros directos por WhatsApp.
-                  </p>
-                </div>
-
-                <div className="inner-feat-card">
-                  <div style={{ fontSize: '1.4rem', marginBottom: '8px' }}>📱</div>
-                  <div style={{ fontSize: '0.92rem', fontWeight: '800', color: '#0f172a', marginBottom: '4px' }}>
-                    100% Adaptada a Móviles
-                  </div>
-                  <p style={{ fontSize: '0.8rem', color: '#64748b', lineHeight: '1.4', margin: 0 }}>
-                    Visualización perfecta e intuitiva en cualquier pantalla, iPhone, Android o tablet.
-                  </p>
+                <div className="apple-card-img-wrap">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img 
+                    src="/shoes/sneaker_hero_red.jpg" 
+                    alt="Stride Cloudflow" 
+                    className="apple-card-shoe-img"
+                  />
                 </div>
               </div>
+
+            </div>
+
+            {/* Apple Bottom Strip / Beneficios */}
+            <div className="apple-bottom-strip">
+              <span>🚀 <strong>Envío gratuito</strong> en todos los pedidos</span>
+              <span>🔄 <strong>Devoluciones gratis</strong> por 30 días</span>
+              <span>💳 <strong>12 cuotas</strong> sin interés con Apple Pay</span>
             </div>
           </div>
 
