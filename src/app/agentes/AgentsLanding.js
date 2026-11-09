@@ -228,26 +228,25 @@ export default function AgentsLanding() {
         }
         .hero-eduar-bg {
           position: absolute;
-          right: -80px;
-          bottom: -40px;
-          height: 145%;
-          min-height: 950px;
-          max-height: 1250px;
+          right: 0;
+          bottom: 0;
+          height: 112%;
+          max-height: 880px;
           pointer-events: none;
           z-index: 2;
           display: flex;
           align-items: flex-end;
-          opacity: 0.24;
-          mask-image: linear-gradient(to top, transparent 0%, black 15%, black 85%, transparent 100%), linear-gradient(to left, black 55%, transparent 100%);
-          -webkit-mask-image: linear-gradient(to top, transparent 0%, black 15%, black 85%, transparent 100%), linear-gradient(to left, black 55%, transparent 100%);
+          opacity: 0.32;
+          mask-image: linear-gradient(to left, black 70%, transparent 100%);
+          -webkit-mask-image: linear-gradient(to left, black 70%, transparent 100%);
         }
         .eduar-bg-img {
           height: 100%;
           width: auto;
-          max-width: 1000px;
+          max-width: 720px;
           object-fit: contain;
           object-position: right bottom;
-          filter: contrast(1.1) drop-shadow(0 0 50px rgba(59, 130, 246, 0.25));
+          filter: contrast(1.1) drop-shadow(0 0 40px rgba(59, 130, 246, 0.2));
         }
         .hero-content {
           position: relative;
@@ -635,10 +634,11 @@ export default function AgentsLanding() {
             padding: 35px 16px 30px 16px;
           }
           .hero-eduar-bg {
-            right: -80px;
-            bottom: -20px;
-            opacity: 0.16;
-            height: 105%;
+            right: -30px;
+            bottom: 0;
+            opacity: 0.28;
+            height: 92%;
+            max-height: 520px;
           }
           .coord-content-row {
             flex-direction: column;
@@ -805,11 +805,11 @@ export default function AgentsLanding() {
             </svg>
           </div>
 
-          {/* Foto de Eduar sonriendo de frente a gran escala a un lado en transparencia */}
+          {/* Foto de Eduar sonriendo de frente con desvanecimiento inferior suave y más a la derecha */}
           <div className="hero-eduar-bg">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img 
-              src="/eduar_cta.png" 
+              src="/eduar_hero_faded.png" 
               alt="Eduar Peña" 
               className="eduar-bg-img"
             />
