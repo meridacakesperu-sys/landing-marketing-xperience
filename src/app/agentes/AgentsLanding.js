@@ -295,7 +295,7 @@ export default function AgentsLanding() {
         }
         .coord-photo-wrapper {
           width: 200px;
-          height: 250px;
+          height: 240px;
           position: relative;
           border-radius: 20px;
           overflow: hidden;
@@ -365,7 +365,7 @@ export default function AgentsLanding() {
           }
         }
 
-        /* Agent Card (Formato con proporciones naturales sin alargamiento) */
+        /* Agent Card (Estilo Perfil Moderno) */
         .agent-card {
           width: 350px;
           background: #ffffff;
@@ -384,29 +384,34 @@ export default function AgentsLanding() {
           border-color: #cbd5e1;
         }
 
-        /* Card Cover / Stage de personaje (con altura y object-fit contain para 0 distorsión) */
-        .card-cover {
-          height: 230px;
+        /* Escenario de personaje Pixar 3D (CERO distorsión garantizada por width: auto + height: auto + max-height) */
+        .card-stage {
+          height: 220px;
           width: 100%;
           position: relative;
-          overflow: hidden;
           display: flex;
-          align-items: center;
+          align-items: flex-end;
           justify-content: center;
-          padding: 12px;
+          padding: 0 16px 6px 16px;
+          overflow: hidden;
         }
-        .card-cover-image {
+        .character-img {
+          max-height: 205px;
+          max-width: 100%;
+          width: auto !important;
+          height: auto !important;
           object-fit: contain !important;
-          object-position: center bottom !important;
-          filter: drop-shadow(0 10px 14px rgba(0, 0, 0, 0.1));
+          display: block;
+          filter: drop-shadow(0 10px 14px rgba(0, 0, 0, 0.12));
           transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
         }
-        .agent-card:hover .card-cover-image {
-          transform: scale(1.05) translateY(-4px);
+        .agent-card:hover .character-img {
+          transform: scale(1.05) translateY(-3px);
         }
+
         .card-category-pill {
           position: absolute;
-          top: 12px;
+          top: 14px;
           left: 14px;
           z-index: 2;
           background: rgba(255, 255, 255, 0.95);
@@ -422,10 +427,29 @@ export default function AgentsLanding() {
 
         /* Card Body */
         .card-body {
-          padding: 16px 20px 22px 20px;
+          padding: 18px 20px 22px 20px;
           display: flex;
           flex-direction: column;
           flex: 1;
+        }
+
+        /* Perfil Header con Mini-Avatar Circular */
+        .profile-header-row {
+          display: flex;
+          align-items: center;
+          gap: 12px;
+          margin-bottom: 12px;
+        }
+        .profile-avatar-circle {
+          width: 46px;
+          height: 46px;
+          border-radius: 50%;
+          border: 2px solid #ffffff;
+          box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+          overflow: hidden;
+          position: relative;
+          flex-shrink: 0;
+          background: #f1f5f9;
         }
 
         /* Slack/Zoom Style Bubble (Vilma.ai reference) */
@@ -566,14 +590,17 @@ export default function AgentsLanding() {
           }
           .coord-photo-wrapper {
             width: 170px;
-            height: 220px;
+            height: 210px;
             margin: 0 auto;
           }
           .agent-card {
             width: 310px;
           }
-          .card-cover {
+          .card-stage {
             height: 200px;
+          }
+          .character-img {
+            max-height: 185px;
           }
           .workflow-preview {
             flex-direction: column;
@@ -733,15 +760,23 @@ export default function AgentsLanding() {
               </span>
             </div>
 
-            {/* Contenido con la foto de avatar Pixar 3D de Ari (sin deformación) */}
+            {/* Contenido con la foto de avatar Pixar 3D de Ari (proporciones 100% naturales) */}
             <div className="coord-content-row">
               <div className="coord-photo-wrapper">
-                <Image 
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img 
                   src={COORDINATOR.image} 
                   alt={COORDINATOR.name} 
-                  fill 
-                  style={{ objectFit: 'contain', objectPosition: 'center bottom' }}
-                  priority
+                  style={{
+                    maxHeight: '220px',
+                    maxWidth: '100%',
+                    width: 'auto',
+                    height: 'auto',
+                    objectFit: 'contain',
+                    display: 'block',
+                    margin: '0 auto',
+                    filter: 'drop-shadow(0 10px 14px rgba(0, 0, 0, 0.15))'
+                  }}
                 />
               </div>
 
@@ -853,14 +888,13 @@ export default function AgentsLanding() {
                   key={`${agent.id}-${index}`} 
                   className="agent-card"
                 >
-                  {/* Foto de personaje Pixar 3D con altura óptima y contain (cero deformación) */}
-                  <div className="card-cover" style={{ background: agent.coverBg }}>
-                    <Image 
+                  {/* Escenario de personaje Pixar 3D: CERO distorsión con width: auto y max-height */}
+                  <div className="card-stage" style={{ background: agent.coverBg }}>
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img 
                       src={agent.image} 
                       alt={agent.name} 
-                      fill 
-                      className="card-cover-image"
-                      sizes="350px"
+                      className="character-img"
                     />
                     <span className="card-category-pill">
                       {agent.category}
@@ -869,26 +903,43 @@ export default function AgentsLanding() {
 
                   {/* Cuerpo del perfil del agente */}
                   <div className="card-body">
-                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '6px' }}>
-                      <h4 style={{ fontSize: '1.3rem', fontWeight: '850', color: '#0f172a' }}>
-                        {agent.name}
-                      </h4>
-                      <span style={{ 
-                        fontSize: '0.68rem', 
-                        color: '#10b981', 
-                        fontWeight: '700',
-                        background: '#ecfdf5',
-                        padding: '3px 8px',
-                        borderRadius: '9999px',
-                        border: '1px solid #a7f3d0'
-                      }}>
-                        Activo 24/7
-                      </span>
+                    {/* Encabezado con Avatar de perfil circular */}
+                    <div className="profile-header-row">
+                      <div className="profile-avatar-circle">
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                        <img 
+                          src={agent.image} 
+                          alt={agent.name} 
+                          style={{
+                            width: '100%',
+                            height: '100%',
+                            objectFit: 'cover',
+                            objectPosition: 'center 15%'
+                          }}
+                        />
+                      </div>
+                      <div style={{ flex: 1 }}>
+                        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                          <h4 style={{ fontSize: '1.25rem', fontWeight: '850', color: '#0f172a' }}>
+                            {agent.name}
+                          </h4>
+                          <span style={{ 
+                            fontSize: '0.68rem', 
+                            color: '#10b981', 
+                            fontWeight: '700',
+                            background: '#ecfdf5',
+                            padding: '3px 8px',
+                            borderRadius: '9999px',
+                            border: '1px solid #a7f3d0'
+                          }}>
+                            Activo 24/7
+                          </span>
+                        </div>
+                        <p style={{ color: '#64748b', fontSize: '0.85rem', fontWeight: '600' }}>
+                          {agent.role}
+                        </p>
+                      </div>
                     </div>
-
-                    <p style={{ color: '#64748b', fontSize: '0.88rem', fontWeight: '600', marginBottom: '10px' }}>
-                      {agent.role}
-                    </p>
 
                     {/* Descripción del agente */}
                     <p style={{ color: '#334155', fontSize: '0.92rem', lineHeight: '1.5', flex: 1 }}>
@@ -928,7 +979,7 @@ export default function AgentsLanding() {
           </div>
         </section>
 
-        {/* 3. SECCIÓN NUEVA: DASHBOARD Y CREA CUALQUIER SISTEMA PARA TU NEGOCIO */}
+        {/* 3. SECCIÓN: DASHBOARD Y CREA CUALQUIER SISTEMA PARA TU NEGOCIO */}
         <section className="dashboard-section">
           <div style={{ textAlign: 'center', marginBottom: '36px' }}>
             <span style={{ 
