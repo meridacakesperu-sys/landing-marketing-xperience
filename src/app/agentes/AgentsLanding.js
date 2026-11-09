@@ -1439,27 +1439,20 @@ export default function AgentsLanding() {
       {/* Top Navbar */}
       <header className="agents-nav">
         <div className="nav-inner">
-          <div style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
-            <Image 
-              src="/logo.png" 
-              alt="Marketing Xperience" 
-              width={160} 
-              height={45}
-              style={{ objectFit: 'contain' }}
-              priority
-            />
+          <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
             <span style={{ 
               background: '#0f172a', 
               color: '#ffffff', 
-              fontSize: '0.72rem', 
+              fontSize: '0.8rem', 
               fontWeight: '800', 
-              padding: '4px 10px', 
+              padding: '6px 14px', 
               borderRadius: '9999px',
               display: 'inline-flex',
               alignItems: 'center',
-              gap: '6px'
+              gap: '6px',
+              letterSpacing: '0.04em'
             }}>
-              <span>⚡</span> MASTER IA
+              <span>⚡</span> MASTER DE INTELIGENCIA ARTIFICIAL
             </span>
           </div>
 
