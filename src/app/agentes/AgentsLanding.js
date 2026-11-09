@@ -9,7 +9,7 @@ const COORDINATOR = {
   name: 'Ari',
   role: 'Coordinadora General & Directora de Operaciones',
   department: 'Orquestación & Estrategia',
-  badge: '👑 Coordinadora del Equipo',
+  badge: '👑 La Coordinadora IA',
   image: '/agentes/12_Ari_Coordinadora_Equipo.png',
   gradient: 'linear-gradient(135deg, #1e1b4b 0%, #312e81 40%, #4338ca 100%)',
   colorTheme: '#6366f1',
@@ -565,131 +565,21 @@ export default function AgentsLanding() {
           z-index: 1;
           opacity: 0.75;
         }
-        /* Hero Split Layout */
-        .hero-split-container {
+        .hero-content {
           position: relative;
           z-index: 10;
-          max-width: 1260px;
-          width: 100%;
+          max-width: 940px;
           margin: 0 auto;
-          padding: 36px 24px 0 24px;
-          display: flex;
-          align-items: flex-end;
-          justify-content: space-between;
-          gap: 28px;
-          min-height: 560px;
-        }
-        .hero-text-col {
-          flex: 1 1 650px;
-          max-width: 700px;
-          text-align: left;
-          padding-bottom: 44px;
-        }
-        .hero-person-col {
-          flex: 0 0 450px;
-          position: relative;
+          padding: 55px 20px 70px 20px;
+          text-align: center;
           display: flex;
           flex-direction: column;
           align-items: center;
-          justify-content: flex-end;
-          z-index: 5;
-        }
-        .hero-person-aura {
-          position: absolute;
-          bottom: 30px;
-          left: 50%;
-          transform: translateX(-50%);
-          width: 400px;
-          height: 400px;
-          background: radial-gradient(circle, rgba(59, 130, 246, 0.28) 0%, rgba(99, 102, 241, 0.12) 45%, transparent 70%);
-          border-radius: 50%;
-          filter: blur(25px);
-          pointer-events: none;
-          z-index: 1;
-        }
-        .hero-person-img {
-          position: relative;
-          z-index: 2;
-          width: 100%;
-          max-width: 450px;
-          height: auto;
-          object-fit: contain;
-          filter: contrast(1.12) drop-shadow(0 20px 40px rgba(0, 0, 0, 0.14)) drop-shadow(0 0 35px rgba(59, 130, 246, 0.22));
-          display: block;
-        }
-        .hero-person-badge {
-          position: absolute;
-          bottom: 24px;
-          background: rgba(15, 23, 42, 0.88);
-          backdrop-filter: blur(12px);
-          -webkit-backdrop-filter: blur(12px);
-          color: #f8fafc;
-          border: 1px solid rgba(255, 255, 255, 0.18);
-          padding: 7px 16px;
-          border-radius: 9999px;
-          font-size: 0.82rem;
-          font-weight: 700;
-          display: inline-flex;
-          align-items: center;
-          gap: 8px;
-          box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
-          z-index: 3;
-        }
-        .person-badge-dot {
-          color: #10b981;
-          font-size: 0.8rem;
-          animation: pulseDot 2s infinite ease-in-out;
-        }
-        @keyframes pulseDot {
-          0%, 100% { opacity: 1; transform: scale(1); }
-          50% { opacity: 0.4; transform: scale(1.3); }
-        }
-        .btn-secondary-hero {
-          background: #ffffff;
-          border: 1px solid #cbd5e1;
-          color: #334155;
-          padding: 16px 26px;
-          border-radius: 9999px;
-          font-size: 1rem;
-          font-weight: 600;
-          cursor: pointer;
-          display: inline-flex;
-          align-items: center;
-          gap: 8px;
-          box-shadow: 0 2px 5px rgba(0,0,0,0.04);
-          transition: all 0.25s ease;
-        }
-        .btn-secondary-hero:hover {
-          background: #f8fafc;
-          border-color: #94a3b8;
-          transform: translateY(-1px);
-        }
-        .hero-trust-badges {
-          display: flex;
-          align-items: center;
-          gap: 10px;
-          flex-wrap: wrap;
-          margin-top: 22px;
-        }
-        .trust-pill {
-          background: #f8fafc;
-          color: #475569;
-          font-size: 0.78rem;
-          font-weight: 700;
-          padding: 5px 13px;
-          border-radius: 9999px;
-          border: 1px solid #e2e8f0;
-        }
-        .hero-cta-group {
-          display: flex;
-          align-items: center;
-          gap: 14px;
-          flex-wrap: wrap;
         }
         .hero-logo-box {
           display: inline-block;
           margin-top: -10px;
-          margin-bottom: 12px;
+          margin-bottom: 14px;
           max-width: 145px;
           transition: transform 0.3s ease;
         }
@@ -708,6 +598,112 @@ export default function AgentsLanding() {
         }
         .hero-title {
           margin-bottom: 22px;
+        }
+        .hero-title-main {
+          display: block;
+          font-size: clamp(2.5rem, 6.2vw, 4.6rem);
+          font-weight: 950;
+          line-height: 1.08;
+          letter-spacing: -0.04em;
+          color: #09090b;
+          margin-bottom: 10px;
+        }
+        @media (min-width: 580px) {
+          .hero-title-main {
+            white-space: nowrap;
+          }
+        }
+        .hero-title-sub {
+          display: block;
+          font-size: clamp(1.6rem, 4vw, 2.85rem);
+          font-weight: 800;
+          line-height: 1.25;
+          letter-spacing: -0.03em;
+          color: #1e1b4b;
+        }
+        .hero-highlight-wrap {
+          position: relative;
+          display: inline-block;
+          white-space: nowrap;
+          color: #2563eb;
+          padding: 0 12px;
+          margin-left: 4px;
+        }
+        .hero-circle-svg {
+          position: absolute;
+          top: -15%;
+          left: -8%;
+          width: 116%;
+          height: 130%;
+          pointer-events: none;
+          overflow: visible;
+        }
+        .hero-circle-path {
+          stroke: #3b82f6;
+          stroke-width: 3.5;
+          stroke-linecap: round;
+          stroke-linejoin: round;
+          stroke-dasharray: 600;
+          stroke-dashoffset: 600;
+          animation: drawCircle 1.6s cubic-bezier(0.65, 0, 0.35, 1) forwards 0.4s;
+          filter: drop-shadow(0 2px 8px rgba(59, 130, 246, 0.4));
+        }
+        @keyframes drawCircle {
+          to {
+            stroke-dashoffset: 0;
+          }
+        }
+        .hero-desc {
+          font-size: clamp(1.05rem, 2vw, 1.22rem);
+          color: #475569;
+          line-height: 1.65;
+          margin: 0 auto 32px auto;
+          max-width: 760px;
+        }
+        .hero-cta-group {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 16px;
+          flex-wrap: wrap;
+        }
+        .btn-secondary-hero {
+          background: #ffffff;
+          border: 1px solid #cbd5e1;
+          color: #334155;
+          padding: 18px 28px;
+          border-radius: 9999px;
+          font-size: 1.05rem;
+          font-weight: 600;
+          cursor: pointer;
+          display: inline-flex;
+          align-items: center;
+          gap: 8px;
+          box-shadow: 0 2px 5px rgba(0,0,0,0.04);
+          transition: all 0.25s ease;
+        }
+        .btn-secondary-hero:hover {
+          background: #f8fafc;
+          border-color: #94a3b8;
+          transform: translateY(-1px);
+        }
+        .hero-trust-badges {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 12px;
+          flex-wrap: wrap;
+          margin-top: 26px;
+        }
+        .trust-pill {
+          background: #f8fafc;
+          color: #475569;
+          font-size: 0.78rem;
+          font-weight: 700;
+          padding: 5px 13px;
+          border-radius: 9999px;
+          border: 1px solid #e2e8f0;
+        }
         }
         .hero-title-main {
           display: block;
@@ -2606,32 +2602,9 @@ export default function AgentsLanding() {
         }
 
         /* Responsive tweaks */
-        @media (max-width: 991px) {
-          .hero-split-container {
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            padding: 32px 18px 0 18px;
-            gap: 24px;
-          }
-          .hero-text-col {
-            text-align: center;
-            max-width: 100%;
-            padding-bottom: 12px;
-          }
-          .hero-logo-box {
-            margin: 0 auto 12px auto;
-          }
-          .hero-cta-group {
-            justify-content: center;
-          }
-          .hero-trust-badges {
-            justify-content: center;
-          }
-          .hero-person-col {
-            flex: 0 0 auto;
-            max-width: 360px;
-            width: 100%;
+        @media (max-width: 768px) {
+          .hero-content {
+            padding: 40px 16px 50px 16px;
           }
         }
           .coord-content-row {
@@ -2793,98 +2766,80 @@ export default function AgentsLanding() {
             </svg>
           </div>
 
-          {/* Layout Split: Textos a la izquierda y Eduar claramente posicionado al lado derecho */}
-          <div className="hero-split-container">
-            {/* Columna Izquierda: Información, Títulos y Acciones */}
-            <div className="hero-text-col">
-              {/* Logo del curso más pequeño y más arriba */}
-              <div className="hero-logo-box">
-                <Image 
-                  src="/logo_master_ia.png" 
-                  alt="Master de Inteligencia Artificial" 
-                  width={145} 
-                  height={77}
-                  style={{ objectFit: 'contain', width: '100%', height: 'auto', maxWidth: '145px' }}
-                  priority
-                />
-              </div>
-
-              {/* Titular Principal en 2 líneas con Si no tienes tiempo destacado y círculo animado en AQUÍ ES */}
-              <h1 className="hero-title">
-                <span className="hero-title-main">
-                  Si no tienes tiempo
-                </span>
-                <span className="hero-title-sub">
-                  y quieres crear contenido{' '}
-                  <span className="hero-highlight-wrap">
-                    AQUÍ ES
-                    <svg 
-                      className="hero-circle-svg" 
-                      viewBox="0 0 250 85" 
-                      fill="none" 
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M 15 42 C 18 18, 90 8, 170 10 C 228 12, 246 28, 242 48 C 236 66, 178 78, 102 76 C 45 74, 8 62, 14 38 C 20 18, 98 12, 188 15"
-                        className="hero-circle-path"
-                      />
-                    </svg>
-                  </span>
-                </span>
-              </h1>
-
-              {/* Descripción */}
-              <p className="hero-desc">
-                Crea tu ecosistema de Agentes de IA interconectados. Empieza en Diciembre y llega a Enero con tu asistente personal de IA y tu equipo de marketing en marcha. Ahora podrás tener ideas ilimitadas, guiones comprobados listos, un equipo de editores y sistemas a tu medida.
-              </p>
-
-              {/* Botones de acción */}
-              <div className="hero-cta-group">
-                <a 
-                  href={whatsappUrl} 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
-                  className="btn-primary"
-                >
-                  <span>Ir a WhatsApp para detalles</span>
-                  <svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
-                  </svg>
-                </a>
-
-                <button 
-                  onClick={() => {
-                    const el = document.getElementById('agentes-carrusel');
-                    if (el) el.scrollIntoView({ behavior: 'smooth' });
-                  }}
-                  className="btn-secondary-hero"
-                >
-                  <span>Ver cómo trabajan</span>
-                  <span>↓</span>
-                </button>
-              </div>
-
-              {/* Badges de confianza */}
-              <div className="hero-trust-badges">
-                <span className="trust-pill">⚡ Automatización 24/7</span>
-                <span className="trust-pill">🤖 Sin código técnico</span>
-                <span className="trust-pill">🚀 En marcha desde Enero</span>
-              </div>
+          {/* Contenido del Hero (Centrado y Limpio) */}
+          <div className="hero-content">
+            {/* Logo del curso más pequeño y más arriba */}
+            <div className="hero-logo-box">
+              <Image 
+                src="/logo_master_ia.png" 
+                alt="Master de Inteligencia Artificial" 
+                width={145} 
+                height={77}
+                style={{ objectFit: 'contain', width: '100%', height: 'auto', maxWidth: '145px' }}
+                priority
+              />
             </div>
 
-            {/* Columna Derecha: Eduar Peña posicionado con total claridad al lado derecho */}
-            <div className="hero-person-col">
-              <div className="hero-person-aura" />
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img 
-                src="/eduar_hero_faded.png" 
-                alt="Eduar Peña - Instructor Master IA" 
-                className="hero-person-img"
-              />
-              <div className="hero-person-badge">
-                <span className="person-badge-dot">●</span>
-                <span>Eduar Peña • Founder & Mentor</span>
-              </div>
+            {/* Titular Principal en 2 líneas con Si no tienes tiempo destacado y círculo animado en AQUÍ ES */}
+            <h1 className="hero-title">
+              <span className="hero-title-main">
+                Si no tienes tiempo
+              </span>
+              <span className="hero-title-sub">
+                y quieres crear contenido{' '}
+                <span className="hero-highlight-wrap">
+                  AQUÍ ES
+                  <svg 
+                    className="hero-circle-svg" 
+                    viewBox="0 0 250 85" 
+                    fill="none" 
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M 15 42 C 18 18, 90 8, 170 10 C 228 12, 246 28, 242 48 C 236 66, 178 78, 102 76 C 45 74, 8 62, 14 38 C 20 18, 98 12, 188 15"
+                      className="hero-circle-path"
+                    />
+                  </svg>
+                </span>
+              </span>
+            </h1>
+
+            {/* Descripción */}
+            <p className="hero-desc">
+              Aprenderás a crear tu ecosistema de Agentes de IA interconectados. Empieza en Diciembre y llega a Enero con tu asistente personal de IA y tu equipo de marketing en marcha. Ahora podrás tener ideas ilimitadas, guiones comprobados listos, un equipo de editores y sistemas a tu medida.
+            </p>
+
+            {/* Botones de acción */}
+            <div className="hero-cta-group">
+              <a 
+                href={whatsappUrl} 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="btn-primary"
+              >
+                <span>Ir whatsapp para inscribirse</span>
+                <svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+                </svg>
+              </a>
+
+              <button 
+                onClick={() => {
+                  const el = document.getElementById('agentes-carrusel');
+                  if (el) el.scrollIntoView({ behavior: 'smooth' });
+                }}
+                className="btn-secondary-hero"
+              >
+                <span>Ver lo que voy a aprender</span>
+                <span>↓</span>
+              </button>
+            </div>
+
+            {/* Badges de confianza */}
+            <div className="hero-trust-badges">
+              <span className="trust-pill">⚡ Automatización 24/7</span>
+              <span className="trust-pill">🤖 Sin código técnico</span>
+              <span className="trust-pill">🚀 En marcha desde Enero</span>
             </div>
           </div>
 
@@ -2894,19 +2849,23 @@ export default function AgentsLanding() {
 
         {/* 1. COORDINADORA (ARRIBA DE TODOS: ARI) */}
         <section className="coordinator-wrapper">
-          <div style={{ textAlign: 'center', marginBottom: '20px' }}>
+          <div style={{ textAlign: 'center', marginBottom: '28px' }}>
+            <h2 style={{ fontSize: 'clamp(2.1rem, 4vw, 2.9rem)', fontWeight: '900', color: '#0f172a', letterSpacing: '-0.03em', marginBottom: '8px' }}>
+              ¿Qué lograrás?
+            </h2>
             <span style={{ 
               color: '#6366f1', 
-              fontSize: '0.85rem', 
+              fontSize: '0.9rem', 
               fontWeight: '800', 
               textTransform: 'uppercase', 
-              letterSpacing: '0.08em' 
+              letterSpacing: '0.08em',
+              display: 'inline-block'
             }}>
               Liderazgo & Orquestación
             </span>
-            <h2 style={{ fontSize: '1.85rem', fontWeight: '850', color: '#0f172a', marginTop: '6px' }}>
+            <p style={{ fontSize: '1.2rem', fontWeight: '700', color: '#475569', marginTop: '6px' }}>
               Primero: La mente maestra que dirige todo
-            </h2>
+            </p>
           </div>
 
           <div className="coordinator-card">
@@ -2960,7 +2919,7 @@ export default function AgentsLanding() {
               <div className="coord-info">
                 <div style={{ marginBottom: '12px' }}>
                   <h3 style={{ fontSize: '1.85rem', fontWeight: '850', color: '#09090b', lineHeight: '1.2' }}>
-                    {COORDINATOR.name} <span style={{ fontSize: '1.1rem', fontWeight: '600', color: '#6366f1' }}>• La Coordinadora</span>
+                    {COORDINATOR.name} <span style={{ fontSize: '1.1rem', fontWeight: '600', color: '#6366f1' }}>• La Coordinadora IA</span>
                   </h3>
                   <p style={{ color: '#64748b', fontSize: '1rem', fontWeight: '600' }}>
                     {COORDINATOR.role}
@@ -3825,16 +3784,26 @@ export default function AgentsLanding() {
                       )}
 
                       {item.mockup === 'design' && (
-                        /* Visual 5: Diseñadora creando portada/diseño desde un escrito */
+                        /* Visual 5: Diseñadora creando portada/miniatura a partir del escrito */
                         <div className="mockup-design-canvas">
                           <div className="canvas-header">
-                            <span>Canvas IA • 9:16 Vertical</span>
-                            <span className="canvas-badge">Diseño Generado</span>
+                            <span>Canvas IA • Miniatura Generada</span>
+                            <span className="canvas-badge" style={{ color: '#059669', background: '#dcfce7' }}>✓ Lista para clics</span>
                           </div>
-                          <div className="canvas-artboard">
-                            <div className="canvas-badge-mini">MINIATURA VIRAL</div>
-                            <div className="canvas-big-text">SECRETOS<br/>DE LA IA</div>
-                            <div className="canvas-author-pill">⚡ Eduar Peña</div>
+                          <div style={{
+                            position: 'relative',
+                            width: '100%',
+                            borderRadius: '12px',
+                            overflow: 'hidden',
+                            boxShadow: '0 8px 24px rgba(0,0,0,0.14)',
+                            aspectRatio: '16/9'
+                          }}>
+                            {/* eslint-disable-next-line @next/next/no-img-element */}
+                            <img 
+                              src="/postres_miniatura.jpg" 
+                              alt="Miniatura de alta conversión generada por IA"
+                              style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+                            />
                           </div>
                         </div>
                       )}
@@ -3926,7 +3895,7 @@ export default function AgentsLanding() {
                   <span className="pillar-star">★</span>
                   <div>
                     <strong>+7 Años de Trayectoria Comprobada</strong>
-                    <p>Diseñando campañas de marketing y embudos de alta conversión para cientos de empresas y creadores.</p>
+                    <p>Diseñando campañas de marketing y embudos de alta conversión para empresas y creadores.</p>
                   </div>
                 </div>
                 <div className="pillar-item">
