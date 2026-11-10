@@ -516,9 +516,17 @@ export default function AgentsLanding() {
   );
 
   const handleWhatsAppLead = (placement = 'General') => {
+    // 1. Evento de Cliente Potencial (Lead)
     trackMetaEvent('Lead', {
       content_name: `Inscripción Master IA - ${placement}`,
       content_category: 'Educacion / Inteligencia Artificial'
+    });
+    // 2. Evento de Iniciar Pago (InitiateCheckout) para Campañas de Ventas Advantage+
+    trackMetaEvent('InitiateCheckout', {
+      content_name: `Inscripción Master IA - ${placement}`,
+      content_category: 'Educacion / Inteligencia Artificial',
+      value: 120,
+      currency: 'USD'
     });
   };
 
