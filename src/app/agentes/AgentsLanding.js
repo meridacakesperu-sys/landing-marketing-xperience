@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
+import { trackMetaEvent } from '../../components/MetaPixel';
 
 // Datos de Ari (Coordinadora que está arriba de todos)
 const COORDINATOR = {
@@ -513,6 +514,13 @@ export default function AgentsLanding() {
   const whatsappUrl = "https://wa.me/584123060970?text=" + encodeURIComponent(
     "Hola Eduar, quiero los detalles de inscripción para el Master de Inteligencia Artificial y crear mi ecosistema de agentes."
   );
+
+  const handleWhatsAppLead = (placement = 'General') => {
+    trackMetaEvent('Lead', {
+      content_name: `Inscripción Master IA - ${placement}`,
+      content_category: 'Educacion / Inteligencia Artificial'
+    });
+  };
 
   return (
     <div className="agents-page-wrapper">
@@ -2664,6 +2672,7 @@ export default function AgentsLanding() {
             rel="noopener noreferrer" 
             className="btn-primary"
             style={{ padding: '10px 22px', fontSize: '0.88rem' }}
+            onClick={() => handleWhatsAppLead('Navbar')}
           >
             Detalles de Inscripción
           </a>
@@ -2816,6 +2825,7 @@ export default function AgentsLanding() {
                 target="_blank" 
                 rel="noopener noreferrer" 
                 className="btn-primary"
+                onClick={() => handleWhatsAppLead('Hero')}
               >
                 <span>Ir whatsapp para inscribirse</span>
                 <svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
@@ -3325,6 +3335,7 @@ export default function AgentsLanding() {
                   target="_blank" 
                   rel="noopener noreferrer" 
                   className="btn-primary"
+                  onClick={() => handleWhatsAppLead('ChatDemo')}
                 >
                   <span>Ir a WhatsApp para los detalles de inscripción</span>
                   <svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
@@ -3921,6 +3932,7 @@ export default function AgentsLanding() {
                   rel="noopener noreferrer" 
                   className="btn-primary"
                   style={{ background: '#2563eb' }}
+                  onClick={() => handleWhatsAppLead('Instructor')}
                 >
                   <span>Aprende directamente con Eduar</span>
                   <svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
@@ -4028,6 +4040,7 @@ export default function AgentsLanding() {
               href={whatsappUrl} 
               target="_blank" 
               rel="noopener noreferrer" 
+              onClick={() => handleWhatsAppLead('FinalCTA')}
               style={{
                 display: 'inline-flex',
                 alignItems: 'center',
